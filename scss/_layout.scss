@@ -1,0 +1,125 @@
+/*
+ * Styles for the website
+ */
+
+// Import helpers
+@import "helpers/normalize";
+@import "helpers/mixins";
+
+// Main-Color
+$color: #27aae2;
+
+
+// Default styles
+body {
+	font: 16px/1.4 Helvetica Neue, sans-serif;
+	color: #111;
+	text-align: center;
+}
+
+
+// Links
+a {
+	color: #111;
+	text-decoration: none;
+
+	&:visited {
+		color: #111;
+	}
+}
+
+
+// Buttons
+%button {
+	@include x-transition(0.2s);
+
+	display: inline-block;
+	background: #111;
+
+	color: #fff;
+
+	border-radius: 2px;
+	padding: 8px 15px;
+
+	&:visited {
+		color: #fff;
+	}
+
+	&:hover {
+		background: lighten($color, 5);
+	}
+}
+
+
+
+// Header
+.site-header {
+	background: $color;
+	padding: 30px 0 10px;
+
+	text-align: center;
+	color: #fff;
+
+	// Headline
+	h1 {
+		display: block;
+
+		font-size: 4em;
+		line-height: 1;
+		margin-bottom: 0.1em;
+
+		text-shadow: 0 1px 1px rgba(darken($color, 30), .8);
+	}
+
+	> p {
+		margin-top: 0;
+		font-size: 1.2em;
+	}
+}
+
+
+
+// Download button
+.download {
+	@extend %button;
+	margin-top: 0.5em;
+}
+
+// Content
+.main {
+	width: 50em;
+	margin: 0 auto;
+	padding: 0 20px;
+	text-align: left;
+}
+
+
+// Show features
+.features {
+	overflow: hidden;
+	margin: 20px -10px;
+
+	> div {
+		@include x-box-sizing;
+
+		float: left;
+		display: inline;
+		width: 33.333%;
+		padding: 0 10px;
+	}
+}
+
+
+// Demo
+.call-modal {
+	@extend %button;
+}
+
+
+// Footer
+.site-footer {
+	margin: 0 auto;
+	padding: 2em 0;
+	text-align: center;
+}
+

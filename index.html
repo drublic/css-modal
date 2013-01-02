@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSS Modal - Modals build out of pure CSS</title>
+
+		<!-- Link to the built CSS -->
+		<link rel="stylesheet" href="css/main.css">
+	</head>
+	<body>
+
+		<!-- Page-Header -->
+		<header class="site-header">
+			<div class="site-logo" role="banner">
+				<h1>CSS Modal</h1>
+			</div>
+
+			<p>Modals build out of pure CSS</p>
+
+			<p>
+				<a href="#" class="download">Download CSS Modal</a>
+			</p>
+		</header>
+
+		<!-- Content Area -->
+		<div class="main" role="main">
+
+			<!-- Features -->
+			<section class="features">
+				<div class="css">
+					<h2>Build with pure CSS</h2>
+					<p>CSS Modal is build out of pure CSS with some JavaScript sugar. This makes them perfectly accessible.</p>
+				</div>
+
+				<div class="rwd">
+					<h2>Optimized for mobile</h2>
+					<p>The modals are designed with responsive web design in mind. They work on mobile and on desktop screen size.</p>
+				</div>
+
+				<div class="plugin">
+					<h2>Use as Sass plugin</h2>
+					<p>You can use CSS Modal as Sass plugin and apply it to your custom classes. No need to understand all the code.</p>
+				</div>
+			</section>
+
+			<section class="demo">
+				<h2>Examples</h2>
+
+				<!-- Call the modal by clicking this link -->
+				<a href="#modal-text" class="call-modal" title="Clicking this link shows the modal">Show a text demo</a>
+				<a href="#modal-embed" class="call-modal" title="Clicking this link shows the modal">View a video demo</a>
+			</section>
+
+
+			<!-- Usage -->
+			<section>
+				<h2>How to use</h2>
+
+				<h3>Sass</h3>
+				<p>If you use Sass you can use the Sass file and include it into your project using <code>@import "modal";</code></p>
+				<p>There are properties using Sass 3.2's placeholders. You can use them by calling <code>@extend %modal;</code> in your modal's class name.</p>
+
+				<h3>CSS</h3>
+				<p>If you are not into Sass you can still use Vanilla CSS.</p>
+			</section>
+
+			<!-- A modal with its content -->
+			<section class="semantic-content" id="modal-text">
+
+				<div class="modal-inner">
+					<header class="modal-header">
+						<h2>I am a modal build out of pure CSS</h2>
+					</header>
+
+					<div class="modal-content">
+						<p>Vegan quinoa etsy, labore ethical ennui cupidatat. Pinterest vegan aute terry richardson kale chips enim. Pinterest butcher sint, craft beer kogi est umami selvage eu. Organic ex food truck, chillwave bushwick lo-fi proident jean shorts farm-to-table bespoke. Locavore tattooed veniam, brunch stumptown commodo etsy odio beard street art fanny pack cred art party next level aute. Freegan ethnic messenger bag gastropub exercitation, helvetica in wolf locavore yr high life PBR gentrify artisan dolore. Whatever mustache nulla fap, dreamcatcher in next level mollit cray.</p>
+						<p>Vegan quinoa etsy, labore ethical ennui cupidatat. Pinterest vegan aute terry richardson kale chips enim. Pinterest butcher sint, craft beer kogi est umami selvage eu. Organic ex food truck, chillwave bushwick lo-fi proident jean shorts farm-to-table bespoke. Locavore tattooed veniam, brunch stumptown commodo etsy odio beard street art fanny pack cred art party next level aute. Freegan ethnic messenger bag gastropub exercitation, helvetica in wolf locavore yr high life PBR gentrify artisan dolore. Whatever mustache nulla fap, dreamcatcher in next level mollit cray.</p>
+						<p>Vegan quinoa etsy, labore ethical ennui cupidatat. Pinterest vegan aute terry richardson kale chips enim. Pinterest butcher sint, craft beer kogi est umami selvage eu. Organic ex food truck, chillwave bushwick lo-fi proident jean shorts farm-to-table bespoke. Locavore tattooed veniam, brunch stumptown commodo etsy odio beard street art fanny pack cred art party next level aute. Freegan ethnic messenger bag gastropub exercitation, helvetica in wolf locavore yr high life PBR gentrify artisan dolore. Whatever mustache nulla fap, dreamcatcher in next level mollit cray.</p>
+					</div>
+
+					<footer class="modal-footer">
+						<p>
+							<a href="#modal-embed" class="open-modal" title="Open another modal">Open a new modal</a>
+							<a href="#!" class="close-action" title="Close this modal">Close</a>
+						</p>
+					</footer>
+				</div>
+
+				<!-- Use Hash-Bang to maintain scroll position when closing modal -->
+				<a href="#!" class="modal-close" title="Close this modal">&times;</a>
+			</section>
+
+
+			<!-- A modal with its content -->
+			<section class="semantic-content" id="modal-embed">
+
+				<div class="modal-inner">
+					<header class="modal-header">
+						<h2>Embed videos</h2>
+					</header>
+
+					<iframe src="http://player.vimeo.com/video/49246286?badge=0" width="650" height="370" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+				</div>
+
+				<!-- Use Hash-Bang to maintain scroll position when closing modal -->
+				<a href="#!" class="modal-close" title="Close this modal">&times;</a>
+			</section>
+
+
+			<!-- Footer -->
+			<footer class="site-footer">
+				<div class="follow-me">
+					<a href="https://twitter.com/share" class="twitter-share-button" data-via="drublic" data-size="large" data-related="drublic" data-count="none">Tweet</a>
+					<a href="https://twitter.com/drublic" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @drublic</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</div>
+			</footer>
+		</div>
+
+		<script src="js/main.js"></script>
+	</body>
+</html>
