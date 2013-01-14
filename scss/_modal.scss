@@ -54,7 +54,7 @@ $modal-max-width: 650px;
 	// Header
 	header {
 		border-bottom: 1px solid $modal-border-color;
-		padding: 0 20px;
+		padding: 0 1.2em;
 
 		> h2 {
 			margin: 0.5em 0;
@@ -66,7 +66,7 @@ $modal-max-width: 650px;
 	.modal-content {
 		max-height: 400px;
 		border-bottom: 1px solid $modal-border-color;
-		padding: 15px 20px;
+		padding: 15px 1.2em;
 		overflow-y: auto;
 	}
 
@@ -74,7 +74,7 @@ $modal-max-width: 650px;
 	// Footer
 	footer {
 		border-top: 1px solid lighten($modal-border-color, 20);
-		padding: 0 20px 18px;
+		padding: 0 1.2em 18px;
 		background: #f0f0f0;
 		border-radius: 2px;
 	}
@@ -120,7 +120,7 @@ $modal-max-width: 650px;
 	}
 
 
-	// When screen isn't as far as the modal anymore
+	// When screen isn't as wide as the modal anymore
 	@media screen and (max-width: $modal-max-width + 40) {
 		.modal-inner {
 			width: auto;
@@ -139,11 +139,7 @@ $modal-max-width: 650px;
 	// For small screnns adjust the modal
 	@media screen and (max-width: 30em) {
 		.modal-inner {
-			top: 2em;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			overflow-y: auto;
+			padding-top: 3em;
 		}
 
 		.modal-content {
@@ -151,11 +147,25 @@ $modal-max-width: 650px;
 		}
 
 		.modal-close {
-			top: 0.2em;
-			right: 1em;
-			font-size: 1.4em;
+			box-shadow: 0 0 10px rgba(0,0,0,.6);
+
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 999;
+			height: 3em;
+			background: #fff;
+
+			&:before {
+				display: none;
+			}
+
+			&:after {
+				top: 0.2em;
+				right: 1em;
+				font-size: 1.4em;
+			}
 		}
 	}
-
 }
-

@@ -490,6 +490,9 @@ body {
   color: #111;
   text-align: center;
 }
+body.has-overlay {
+  overflow: hidden;
+}
 
 a {
   color: #111;
@@ -523,7 +526,7 @@ a:visited {
 
 .site-header {
   background: #27aae2;
-  padding: 30px 0 10px;
+  padding: 2em 0 1em;
   text-align: center;
   color: #fff;
 }
@@ -533,6 +536,13 @@ a:visited {
   line-height: 1;
   margin-bottom: 0.1em;
   text-shadow: 0 1px 1px rgba(13, 73, 99, 0.8);
+}
+@media screen and (max-width: 30em) {
+  .site-header h1 {
+    margin-left: .2em;
+    margin-right: .2em;
+    font-size: 3em;
+  }
 }
 .site-header > p {
   margin-top: 0;
@@ -544,15 +554,15 @@ a:visited {
 }
 
 .main {
-  width: 50em;
+  max-width: 50em;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1.5em;
   text-align: left;
 }
 
 .features {
   overflow: hidden;
-  margin: 20px -10px;
+  margin: 1.5em -0.7em;
 }
 .features > div {
   -webkit-box-sizing: border-box;
@@ -561,7 +571,14 @@ a:visited {
   float: left;
   display: inline;
   width: 33.333%;
-  padding: 0 10px;
+  padding: 0 .7em;
+}
+@media screen and (max-width: 30em) {
+  .features > div {
+    float: none;
+    display: block;
+    width: 100%;
+  }
 }
 
 .site-footer {
@@ -607,7 +624,7 @@ a:visited {
 }
 .semantic-content header {
   border-bottom: 1px solid #dddddd;
-  padding: 0 20px;
+  padding: 0 1.2em;
 }
 .semantic-content header > h2 {
   margin: 0.5em 0;
@@ -615,12 +632,12 @@ a:visited {
 .semantic-content .modal-content {
   max-height: 400px;
   border-bottom: 1px solid #dddddd;
-  padding: 15px 20px;
+  padding: 15px 1.2em;
   overflow-y: auto;
 }
 .semantic-content footer {
   border-top: 1px solid white;
-  padding: 0 20px 18px;
+  padding: 0 1.2em 18px;
   background: #f0f0f0;
   border-radius: 2px;
 }
@@ -668,16 +685,25 @@ a:visited {
 }
 @media screen and (max-width: 30em) {
   .semantic-content .modal-inner {
-    top: 2em;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: auto;
+    padding-top: 3em;
   }
   .semantic-content .modal-content {
     max-height: none;
   }
   .semantic-content .modal-close {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    height: 3em;
+    background: #fff;
+  }
+  .semantic-content .modal-close:before {
+    display: none;
+  }
+  .semantic-content .modal-close:after {
     top: 0.2em;
     right: 1em;
     font-size: 1.4em;

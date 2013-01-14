@@ -9,12 +9,15 @@
 // Main-Color
 $color: #27aae2;
 
-
 // Default styles
 body {
 	font: 16px/1.4 Helvetica Neue, sans-serif;
 	color: #111;
 	text-align: center;
+
+	&.has-overlay {
+		overflow: hidden;
+	}
 }
 
 
@@ -55,7 +58,7 @@ a {
 // Header
 .site-header {
 	background: $color;
-	padding: 30px 0 10px;
+	padding: 2em 0 1em;
 
 	text-align: center;
 	color: #fff;
@@ -69,6 +72,12 @@ a {
 		margin-bottom: 0.1em;
 
 		text-shadow: 0 1px 1px rgba(darken($color, 30), .8);
+
+		@media screen and (max-width: 30em) {
+			margin-left: .2em;
+			margin-right: .2em;
+			font-size: 3em;
+		}
 	}
 
 	> p {
@@ -87,9 +96,9 @@ a {
 
 // Content
 .main {
-	width: 50em;
+	max-width: 50em;
 	margin: 0 auto;
-	padding: 0 20px;
+	padding: 0 1.5em;
 	text-align: left;
 }
 
@@ -97,7 +106,7 @@ a {
 // Show features
 .features {
 	overflow: hidden;
-	margin: 20px -10px;
+	margin: 1.5em -.7em;
 
 	> div {
 		@include x-box-sizing;
@@ -105,7 +114,13 @@ a {
 		float: left;
 		display: inline;
 		width: 33.333%;
-		padding: 0 10px;
+		padding: 0 .7em;
+
+		@media screen and (max-width: 30em) {
+			float: none;
+			display: block;
+			width: 100%;
+		}
 	}
 }
 
