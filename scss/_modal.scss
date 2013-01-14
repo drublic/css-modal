@@ -1,4 +1,4 @@
-/*
+/**
  * Modal as reusable module
  *
  * Usage:
@@ -26,10 +26,6 @@ $modal-max-width: 650px;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 999;
-
-	// Background for overlay
-	background: rgba(0,0,0,.8);
 
 	color: #222;
 	line-height: 1.3;
@@ -45,6 +41,7 @@ $modal-max-width: 650px;
 		position: absolute;
 		top: 50px;
 		left: 50%;
+		z-index: 999;
 		margin-left: ($modal-max-width / 2) * -1;
 
 		width: $modal-max-width;
@@ -55,7 +52,7 @@ $modal-max-width: 650px;
 	}
 
 	// Header
-	.modal-header {
+	header {
 		border-bottom: 1px solid $modal-border-color;
 		padding: 0 20px;
 
@@ -75,7 +72,7 @@ $modal-max-width: 650px;
 
 
 	// Footer
-	.modal-footer {
+	footer {
 		border-top: 1px solid lighten($modal-border-color, 20);
 		padding: 0 20px 18px;
 		background: #f0f0f0;
@@ -85,18 +82,41 @@ $modal-max-width: 650px;
 
 	// A close button
 	.modal-close {
-		position: absolute;
-		top: 25px;
-		left: 50%;
-		margin-left: ($modal-max-width / 2) - 40;
+		display: block;
+		text-indent: -100px;
+		overflow: hidden;
 
-		background: #fff;
+		// Background as close
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 998;
 
-		border-radius: 2px;
-		padding: 2px 8px;
+			// Background for overlay
+			background: rgba(0,0,0,.8);
+		}
 
-		font-size: 1.2em;
-		text-decoration: none;
+		&:after {
+			content: '×';
+			position: absolute;
+			top: 25px;
+			left: 50%;
+			z-index: 999;
+			margin-left: ($modal-max-width / 2) - 40;
+
+			background: #fff;
+
+			border-radius: 2px;
+			padding: 2px 8px;
+
+			font-size: 1.2em;
+			text-decoration: none;
+			text-indent: 0;
+		}
 	}
 
 
@@ -138,3 +158,4 @@ $modal-max-width: 650px;
 	}
 
 }
+

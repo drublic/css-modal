@@ -16,9 +16,8 @@
 // Apply the modal with all its possible parts
 .semantic-content {
 	@extend %modal;
-	@extend %modal-fade;
 
-	.modal-footer p {
+	footer > p {
 		margin-bottom: 0;
 	}
 
