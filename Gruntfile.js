@@ -10,6 +10,17 @@ module.exports = function (grunt) {
 			'<%= grunt.template.today("yyyy-mm-dd") %> */'
 		},
 
+		// JSHint
+		jshint: {
+			all: [
+				'Gruntfile.js',
+				'js/main.js'
+			],
+			options: {
+				jshintrc: '.jshintrc'
+			}
+		},
+
 		// Building CSS
 		sass: {
 			dev: {
@@ -33,10 +44,11 @@ module.exports = function (grunt) {
 	});
 
 	// Load some stuff
+	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// Default task
-	grunt.registerTask('default', ['sass']);
+	grunt.registerTask('default', ['sass', 'jshint']);
 
 };
