@@ -138,8 +138,19 @@ $modal-max-width: 650px;
 
 	// For small screnns adjust the modal
 	@media screen and (max-width: 30em) {
+		height: 100%;
+		bottom: auto;
+
 		.modal-inner {
+			@include x-box-sizing;
+
+			position: relative;
+			top: 0;
+			left: 0;
+			right: 0;
 			padding-top: 3em;
+			height: 100%;
+			overflow: auto;
 		}
 
 		.modal-content {

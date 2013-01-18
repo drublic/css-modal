@@ -684,8 +684,21 @@ a:visited {
   }
 }
 @media screen and (max-width: 30em) {
+  .semantic-content {
+    height: 100%;
+    bottom: auto;
+  }
   .semantic-content .modal-inner {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
     padding-top: 3em;
+    height: 100%;
+    overflow: auto;
   }
   .semantic-content .modal-content {
     max-height: none;
