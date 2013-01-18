@@ -24,7 +24,11 @@
 
 		// If hash is set
 		if (hash !== '' && hash !== '!') {
-			document.body.className += ' has-overlay';
+
+			// And has-overlay is not set yet
+			if (!document.body.className.match(/has-overlay/)) {
+				document.body.className += ' has-overlay';
+			}
 		} else {
 			document.body.className = document.body.className.replace(' has-overlay', '');
 		}
