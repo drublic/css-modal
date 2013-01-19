@@ -42,7 +42,7 @@ a {
 	color: #fff;
 
 	border-radius: 2px;
-	padding: 8px 15px;
+	padding: 0.5em 1em;
 
 	&:visited {
 		color: #fff;
@@ -128,6 +128,12 @@ a {
 // Demo
 .call-modal {
 	@extend %button;
+
+	@media screen and (max-width: 30em) {
+		display: block;
+		text-align: center;
+		margin-bottom: 0.5em;
+	}
 }
 
 
