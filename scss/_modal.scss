@@ -101,6 +101,7 @@ $modal-mobile-header: #27aae2;
 			background: rgba(0,0,0,.8);
 		}
 
+		// Actual close button on modal
 		&:after {
 			content: '×';
 			position: absolute;
@@ -134,6 +135,10 @@ $modal-mobile-header: #27aae2;
 			left: auto;
 			right: 33px;
 			margin-left: 0;
+
+			&:after {
+				margin-left: 40%;
+			}
 		}
 	}
 
@@ -167,7 +172,7 @@ $modal-mobile-header: #27aae2;
 
 		&:before {
 			@include x-linear-gradient("to bottom", $modal-mobile-header, $modal-mobile-header, darken($modal-mobile-header, 5%));
-			@include x-box-shadow(0 0 10px rgba(0,0,0,.6));
+			@include x-box-shadow(0 0 5px rgba(0,0,0,.6));
 
 			content: '';
 			position: fixed;
@@ -204,7 +209,7 @@ $modal-mobile-header: #27aae2;
 
 			&:after {
 				content: 'Close';
-				top: 0.3em;
+				top: 0.4em;
 				left: 1em;
 				z-index: 1001;
 				margin-left: 0;
