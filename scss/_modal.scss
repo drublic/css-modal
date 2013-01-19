@@ -17,9 +17,8 @@ $modal-mobile-header: #27aae2;
 
 
 %modal {
-
 	// Hide initially
-	display: none;
+	@include x-transform(translate3d(0, 100%, 0));
 
 	// Maintain a fixed position
 	position: fixed;
@@ -28,12 +27,16 @@ $modal-mobile-header: #27aae2;
 	right: 0;
 	bottom: 0;
 
+	opacity: 0;
+
 	color: #222;
 	line-height: 1.3;
 
 	// Show modal when requested
 	&:target {
-		display: block;
+		@include x-transform(translate3d(0, 0, 0));
+
+		opacity: 1;
 	}
 
 
@@ -144,8 +147,6 @@ $modal-mobile-header: #27aae2;
 
 	// For small screnns adjust the modal
 	@media screen and (max-width: 30em) {
-		@include x-transform(translate3d(0, 100%, 0));
-
 		-webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
 		   -moz-transition:    -moz-transform .25s ease-in-out, opacity 1ms .25s;
 		     -o-transition:      -o-transform .25s ease-in-out, opacity 1ms .25s;
@@ -156,18 +157,12 @@ $modal-mobile-header: #27aae2;
 		height: 100%;
 		bottom: auto;
 
-		opacity: 0;
-
 		&:target {
-			@include x-transform(translate3d(0, 0, 0));
-
-		-webkit-transition: -webkit-transform .25s ease-in-out;
-		   -moz-transition:    -moz-transform .25s ease-in-out;
-		     -o-transition:      -o-transform .25s ease-in-out;
-		    -ms-transition:     -ms-transform .25s ease-in-out;
-		        transition:         transform .25s ease-in-out;
-
-			opacity: 1;
+			-webkit-transition: -webkit-transform .25s ease-in-out;
+			   -moz-transition:    -moz-transform .25s ease-in-out;
+			     -o-transition:      -o-transform .25s ease-in-out;
+			    -ms-transition:     -ms-transform .25s ease-in-out;
+			        transition:         transform .25s ease-in-out;
 		}
 
 		&:before {
@@ -218,4 +213,15 @@ $modal-mobile-header: #27aae2;
 			}
 		}
 	}
+}
+
+
+// Fade in the modal
+%modal-fade {
+	@media screen and (min-width: 30em) {
+		@include x-transition(opacity 0.4s);
+	}
+
+
+	@extend %modal;
 }
