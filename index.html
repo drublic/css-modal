@@ -31,12 +31,12 @@
 			<section class="features">
 				<div class="css">
 					<h2>Build with pure CSS</h2>
-					<p>CSS Modal is build out of pure CSS with some JavaScript sugar. This makes them perfectly accessible.</p>
+					<p>CSS Modal is build out of pure CSS. JavaScript is only for sugar. This makes them perfectly accessible.</p>
 				</div>
 
 				<div class="rwd">
 					<h2>Optimized for mobile</h2>
-					<p>The modals are designed with responsive web design in mind. They work on mobile and on desktop screen size.</p>
+					<p>The modals are designed using responsive web design. They work on all screen sizes from small a mobile to high resolution screens.</p>
 				</div>
 
 				<div class="plugin">
@@ -49,7 +49,7 @@
 				<h2>Examples</h2>
 
 				<!-- Call the modal by clicking this link -->
-				<a href="#modal-text" class="call-modal" title="Clicking this link shows the modal">Show a text demo</a>
+				<a href="#modal-text" class="call-modal" title="Clicking this link shows the modal">Read more in this demo</a>
 				<a href="#modal-embed" class="call-modal" title="Clicking this link shows the modal">View a video demo</a>
 			</section>
 
@@ -58,12 +58,69 @@
 			<section>
 				<h2>How to use</h2>
 
-				<h3>Sass</h3>
-				<p>If you use Sass you can use the Sass file and include it into your project using <code>@import "modal";</code></p>
-				<p>There are properties using Sass 3.2's placeholders. You can use them by calling <code>@extend %modal;</code> in your modal's class name.</p>
+				<div class="content-tabbed">
+					<h3 class="tab-content-anchor" id="howto-markup"><a href="#howto-markup">Markup</a></h3>
+					<div class="tab-content">
+						<p>You need to include the markup and content for modals in you website. This has a positive effect on SEO. The example code:</p>
 
-				<h3>CSS</h3>
-				<p>If you are not into Sass you can still use Vanilla CSS.</p>
+						<pre><code>&lt;section class="semantic-content" id="modal-text"&gt;
+    &lt;div class="modal-inner"&gt;
+        &lt;header&gt;&lt;!-- Header --&gt;&lt;/header&gt;
+        &lt;div class="modal-content"&gt;&lt;!-- The modals content --&gt;&lt;/div&gt;
+        &lt;footer&gt;&lt;!-- Footer --&gt;&lt;/footer&gt;
+    &lt;/div&gt;
+
+    &lt;a href="#!" class="modal-close" title="Close this modal"&gt;&times;&lt;/a&gt;
+&lt;/section&gt;
+						</code></pre>
+
+						<p>Using header and footer is optional. Just leave out the tags if you don't want them in a modal.</p>
+						<p>You should leave the link's <code>href</code> attribtue to close the modal that way in order to prevent the page from scrolling to the top when clicking it.</p>
+					</div>
+
+
+					<h3 class="tab-content-anchor" id="howto-sass"><a href="#howto-sass">Sass</a></h3>
+					<div class="tab-content">
+						<p>If you use Sass you can use the file <code>_modal.scss</code> and include it into your project. Here is an example:</p>
+						<pre><code>@import "modules/modal";</code></pre>
+
+						<p>CSS Modals uses Sass 3.2's placeholders. You can use them by calling them via <code>@extend</code> in your modal's class name. The snippet looks something like that:</p>
+
+						<pre><code>.my-awesome-class-name {
+    @extend %modal;
+}</code></pre>
+					</div>
+
+					<h3 class="tab-content-anchor" id="howto-css"><a href="#howto-css">CSS</a></h3>
+					<div class="tab-content">
+						<p>If you are not into Sass you can still use Vanilla CSS. Include it in your CSS and don't forget to add it to your build. Here is the snippet for development:</p>
+						<pre><code>&lt;link rel="stylesheet" href="css/modal.css"&gt;</code></pre>
+
+						<p>You can now add the markup to your website as stated above and apply a class <code>.modal</code> to the element.</p>
+					</div>
+
+					<h3 class="tab-content-anchor" id="howto-javascript"><a href="#howto-javascript">JavaScript</a></h3>
+					<div class="tab-content">
+						<p>As stated above you don't need JavaScript to get a good experience out of CSS Modals. But there are two issues where JavaScript helps:</p>
+						<ul>
+							<li>Pressing escape: If you press ESC on your keyboard while the modal is visible it closes itself. This behavior cannot be done with CSS only.</li>
+							<li>Preventing background page from scrolling: If you scroll within the modal and you reach the end you don't want the page in the background to scroll. To prevent this JavaScript pushs a CSS class selector to the body element.</li>
+						</ul>
+
+						<p>To add this behavior to your website, please include the JavaScript file <code>modal.js</code> right before the closing <code>body</code>-tag:</p>
+						<pre><code>&lt;script src="js/modal.js"&gt;&lt;/script&gt;</code></pre>
+					</div>
+				</div>
+			</section>
+
+
+			<!-- Browser Support -->
+			<section>
+				<h2>Browser Support</h2>
+
+				<p>This modal is designed to work on all moderne browsers. Unfortunately this does not include Internet Explorer 7 or lower. But we deal with IE 8 &mdash; well,&hellip; at least it works.</p>
+				<p>On mobile Safari for iOS and Android 2.3, 4+ is tested, while Android 2.3 has some problems but it works.</p>
+				<p>In numbers: Chrome, Firefox, Safari 6, Opera 12, IE8 (functional), IE9+.</p>
 			</section>
 
 			<!-- A modal with its content -->
@@ -71,13 +128,14 @@
 
 				<div class="modal-inner">
 					<header>
-						<h2>I am a modal build out of pure CSS</h2>
+						<h2>Modals build with pure CSS</h2>
 					</header>
 
 					<div class="modal-content">
-						<p>Vegan quinoa etsy, labore ethical ennui cupidatat. Pinterest vegan aute terry richardson kale chips enim. Pinterest butcher sint, craft beer kogi est umami selvage eu. Organic ex food truck, chillwave bushwick lo-fi proident jean shorts farm-to-table bespoke. Locavore tattooed veniam, brunch stumptown commodo etsy odio beard street art fanny pack cred art party next level aute. Freegan ethnic messenger bag gastropub exercitation, helvetica in wolf locavore yr high life PBR gentrify artisan dolore. Whatever mustache nulla fap, dreamcatcher in next level mollit cray.</p>
-						<p>Vegan quinoa etsy, labore ethical ennui cupidatat. Pinterest vegan aute terry richardson kale chips enim. Pinterest butcher sint, craft beer kogi est umami selvage eu. Organic ex food truck, chillwave bushwick lo-fi proident jean shorts farm-to-table bespoke. Locavore tattooed veniam, brunch stumptown commodo etsy odio beard street art fanny pack cred art party next level aute. Freegan ethnic messenger bag gastropub exercitation, helvetica in wolf locavore yr high life PBR gentrify artisan dolore. Whatever mustache nulla fap, dreamcatcher in next level mollit cray.</p>
-						<p>Vegan quinoa etsy, labore ethical ennui cupidatat. Pinterest vegan aute terry richardson kale chips enim. Pinterest butcher sint, craft beer kogi est umami selvage eu. Organic ex food truck, chillwave bushwick lo-fi proident jean shorts farm-to-table bespoke. Locavore tattooed veniam, brunch stumptown commodo etsy odio beard street art fanny pack cred art party next level aute. Freegan ethnic messenger bag gastropub exercitation, helvetica in wolf locavore yr high life PBR gentrify artisan dolore. Whatever mustache nulla fap, dreamcatcher in next level mollit cray.</p>
+						<p>There are a lot of possiblilities to include content in the modal. Actually it is possible to add every bit of HTML to your source-code that you want to. Some examples could be normal text, images, videos (see the other example), iframes which embed services like a contact form and so.</p>
+						<p>Modals consist of an optional header and footer and a main content area. The main content area is scrollable if the modal's content is higher than the screen has space for.</p>
+						<p>You can easily deep link to a modal by including the element's id as a hash in the URL.</p>
+						<p>On <a href="http://drublic.de/">drublic.de</a> you can see the modals in action for normal text content and using it with third party services.</p>
 					</div>
 
 					<footer>
