@@ -20,6 +20,16 @@ body {
 	}
 }
 
+h2 {
+	margin: 2em 0 .5em;
+}
+
+h3 {
+	font-size: 1em;
+	font-weight: normal;
+	margin-bottom: 0;
+}
+
 
 // Links
 a {
@@ -133,6 +143,40 @@ a {
 		display: block;
 		text-align: center;
 		margin-bottom: 0.5em;
+	}
+}
+
+
+// Tabbed content
+.content-tabbed {
+	position: relative;
+
+	> h3 {
+		display: inline-block;
+		margin-top: 0;
+		padding-top: 1em;
+
+		> a {
+			@extend %button;
+		}
+
+		&:target > a,
+		&.is-active > a {
+			background: lighten($color, 5);
+		}
+	}
+}
+
+.tab-content {
+	display: none;
+
+	.tab-content-anchor:target + &,
+	.tab-content-anchor.is-active + & {
+		display: block;
+
+		.js & {
+			position: absolute;
+		}
 	}
 }
 

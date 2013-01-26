@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title>CSS Modal - Modals build out of pure CSS</title>
@@ -8,6 +8,7 @@
 
 		<!-- Link to the built CSS -->
 		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/prism.css">
 	</head>
 	<body>
 
@@ -63,7 +64,7 @@
 					<div class="tab-content">
 						<p>You need to include the markup and content for modals in you website. This has a positive effect on SEO. The example code:</p>
 
-						<pre><code>&lt;section class="semantic-content" id="modal-text"&gt;
+						<pre><code class="language-markup">&lt;section class="semantic-content" id="modal-text"&gt;
     &lt;div class="modal-inner"&gt;
         &lt;header&gt;&lt;!-- Header --&gt;&lt;/header&gt;
         &lt;div class="modal-content"&gt;&lt;!-- The modals content --&gt;&lt;/div&gt;
@@ -71,8 +72,7 @@
     &lt;/div&gt;
 
     &lt;a href="#!" class="modal-close" title="Close this modal"&gt;&times;&lt;/a&gt;
-&lt;/section&gt;
-						</code></pre>
+&lt;/section&gt;</code></pre>
 
 						<p>Using header and footer is optional. Just leave out the tags if you don't want them in a modal.</p>
 						<p>You should leave the link's <code>href</code> attribtue to close the modal that way in order to prevent the page from scrolling to the top when clicking it.</p>
@@ -82,11 +82,11 @@
 					<h3 class="tab-content-anchor" id="howto-sass"><a href="#howto-sass">Sass</a></h3>
 					<div class="tab-content">
 						<p>If you use Sass you can use the file <code>_modal.scss</code> and include it into your project. Here is an example:</p>
-						<pre><code>@import "modules/modal";</code></pre>
+						<pre><code class="language-css">@import "modules/modal";</code></pre>
 
 						<p>CSS Modals uses Sass 3.2's placeholders. You can use them by calling them via <code>@extend</code> in your modal's class name. The snippet looks something like that:</p>
 
-						<pre><code>.my-awesome-class-name {
+						<pre><code class="language-css">.my-awesome-class-name {
     @extend %modal;
 }</code></pre>
 					</div>
@@ -94,7 +94,7 @@
 					<h3 class="tab-content-anchor" id="howto-css"><a href="#howto-css">CSS</a></h3>
 					<div class="tab-content">
 						<p>If you are not into Sass you can still use Vanilla CSS. Include it in your CSS and don't forget to add it to your build. Here is the snippet for development:</p>
-						<pre><code>&lt;link rel="stylesheet" href="css/modal.css"&gt;</code></pre>
+						<pre><code class="language-markup">&lt;link rel="stylesheet" href="css/modal.css"&gt;</code></pre>
 
 						<p>You can now add the markup to your website as stated above and apply a class <code>.modal</code> to the element.</p>
 					</div>
@@ -108,7 +108,7 @@
 						</ul>
 
 						<p>To add this behavior to your website, please include the JavaScript file <code>modal.js</code> right before the closing <code>body</code>-tag:</p>
-						<pre><code>&lt;script src="js/modal.js"&gt;&lt;/script&gt;</code></pre>
+						<pre><code class="language-markup">&lt;script src="js/modal.js"&gt;&lt;/script&gt;</code></pre>
 					</div>
 				</div>
 			</section>
@@ -159,7 +159,7 @@
 						<h2>Embed videos</h2>
 					</header>
 
-					<iframe src="http://player.vimeo.com/video/49246286?badge=0" width="650" height="370" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+					<!--<iframe src="http://player.vimeo.com/video/49246286?badge=0" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>-->
 				</div>
 
 				<!-- Use Hash-Bang to maintain scroll position when closing modal -->
@@ -172,11 +172,16 @@
 				<div class="follow-me">
 					<a href="https://twitter.com/share" class="twitter-share-button" data-via="drublic" data-size="large" data-related="drublic" data-count="none">Tweet</a>
 					<a href="https://twitter.com/drublic" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @drublic</a>
-					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 				</div>
 			</footer>
 		</div>
 
-		<script src="js/main.js"></script>
+		<script src="js/modal.js"></script><!-- JS for Modal -->
+
+		<script src="js/jquery.min.js"></script><!-- jQuery -->
+		<script src="js/prism.js"></script><!-- code highlighting -->
+		<script src="js/page.js"></script><!-- demo page -->
+
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	</body>
 </html>

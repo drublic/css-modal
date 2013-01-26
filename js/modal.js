@@ -1,3 +1,11 @@
+/*!
+ * CSS Modal
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ * @version 1.0
+ */
+
 (function () {
 
 	'use strict';
