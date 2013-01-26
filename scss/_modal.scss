@@ -26,6 +26,7 @@ $modal-mobile-header: #27aae2;
 	left: 0;
 	right: 0;
 	bottom: 0;
+	z-index: 9999; // Set high z-index in order to appear above all other content
 
 	opacity: 0;
 
@@ -45,7 +46,7 @@ $modal-mobile-header: #27aae2;
 		position: absolute;
 		top: 50px;
 		left: 50%;
-		z-index: 999;
+		z-index: 20;
 		margin-left: ($modal-max-width / 2) * -1;
 
 		width: $modal-max-width;
@@ -117,7 +118,7 @@ $modal-mobile-header: #27aae2;
 			left: 0;
 			right: 0;
 			bottom: 0;
-			z-index: 998;
+			z-index: 10;
 
 			// Background for overlay
 			background: rgba(0,0,0,.8);
@@ -129,7 +130,7 @@ $modal-mobile-header: #27aae2;
 			position: absolute;
 			top: 25px;
 			left: 50%;
-			z-index: 999;
+			z-index: 20;
 			margin-left: ($modal-max-width / 2) - 40;
 
 			background: #fff;
@@ -193,7 +194,7 @@ $modal-mobile-header: #27aae2;
 			top: 0;
 			left: 0;
 			right: 0;
-			z-index: 1000;
+			z-index: 30;
 			height: 3em;
 			background-color: transparent; /* Chrome Canary 26.0.1386.0 Bug */
 		}
@@ -225,7 +226,7 @@ $modal-mobile-header: #27aae2;
 				content: 'Close';
 				top: 0.4em;
 				left: 1em;
-				z-index: 1001;
+				z-index: 40;
 				margin-left: 0;
 				font-size: 1em;
 				padding: 0.5em 1em;
