@@ -27,6 +27,7 @@
 @mixin x-linear-gradient($direction: "to bottom", $fallback: #ccc, $from: #ccc, $to: #aaa) {
 
 	$old-direction: $direction;
+	$veryold-direction: $direction;
 
 	// New Syntax has to be evaluated to old one
 	@if $direction == "to bottom" {
@@ -39,10 +40,22 @@
 		$old-direction: "right";
 	}
 
+	// And also for very old syntax
+	@if $direction == "to bottom" {
+		$veryold-direction: "left top, left bottom";
+	} @else if $direction == "to right" {
+		$veryold-direction: "top left, bottom right";
+	} @else if $direction == "to top" {
+		$veryold-direction: "left bottom, left top";
+	} @else if $direction == "to left" {
+		$veryold-direction: "top right, bottom left";
+	}
+
 	// Provide a fallback-color
 	background-color: $fallback;
 
 	// Cross-browser linear-gradients
+	background-image: -webkit-gradient(linear, unquote($veryold-direction), from($from), to($to)); // Android 2.1-3.0
 	background-image: -webkit-linear-gradient(unquote($old-direction), $from, $to);
 	background-image:    -moz-linear-gradient(unquote($old-direction), $from, $to);
 	background-image:     -ms-linear-gradient(unquote($old-direction), $from, $to);

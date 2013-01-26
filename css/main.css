@@ -773,6 +773,7 @@ a:visited {
   }
   .semantic-content:before {
     background-color: #27aae2;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#27aae2), to(#1c9cd3));
     background-image: -webkit-linear-gradient(top, #27aae2, #1c9cd3);
     background-image: -moz-linear-gradient(top, #27aae2, #1c9cd3);
     background-image: -ms-linear-gradient(top, #27aae2, #1c9cd3);
