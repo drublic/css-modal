@@ -18,7 +18,8 @@ $modal-mobile-header: #27aae2;
 
 %modal {
 	// Hide initially
-	@include x-transform(translate3d(0, 100%, 0));
+	@include x-transform(translate(0, 100%));
+	transform: translate3d(0, 100%);
 
 	// Maintain a fixed position
 	position: fixed;
@@ -35,7 +36,7 @@ $modal-mobile-header: #27aae2;
 
 	// Show modal when requested
 	&:target {
-		@include x-transform(translate3d(0, 0, 0));
+		@include x-transform(translate(0, 0));
 
 		opacity: 1;
 	}
