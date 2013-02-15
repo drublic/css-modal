@@ -7,7 +7,7 @@
 	'use strict';
 
 	// Set document class "js"
-	document.documentElement.className = 'js';
+	document.documentElement.className += 'js';
 
 
 	/*

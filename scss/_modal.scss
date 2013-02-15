@@ -40,6 +40,13 @@ $modal-mobile-header: #27aae2;
 		opacity: 1;
 	}
 
+	// Internet Explorer 8
+	display: none\9;
+
+	&.is-active {
+		display: block\9;
+	}
+
 
 	// Content Area
 	.modal-inner {
@@ -120,8 +127,8 @@ $modal-mobile-header: #27aae2;
 			bottom: 0;
 			z-index: 10;
 
-			// Background for overlay
-			background: rgba(0,0,0,.8);
+			// Background for overlay – Data URI because of IE8 not supporting rgba
+			background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42gEFAPr/AAAAAMwA0QDNTiUx4gAAAABJRU5ErkJggg==');
 		}
 
 		// Actual close button on modal

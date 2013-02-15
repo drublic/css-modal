@@ -10,8 +10,16 @@
 
 	'use strict';
 
+	// Store for currently active element
+	var activeElement;
+
+	// Polyfill addEventListener for IE8 (only very basic)
+	document._addEventListener = document.addEventListener || function (event, callback) {
+		document.attachEvent('on' + event, callback);
+	};
+
 	// Hide overlay when ESC is pressed
-	document.addEventListener('keyup', function (event) {
+	document._addEventListener('keyup', function (event) {
 		var hash = window.location.hash.replace('#', '');
 
 		// If hash is not set
@@ -27,7 +35,7 @@
 
 
 	// When showing overlay, prevent background from scrolling
-	window.addEventListener('hashchange', function () {
+	window.onhashchange = function () {
 		var hash = window.location.hash.replace('#', ''),
 		    modalChild;
 
@@ -35,14 +43,20 @@
 		if (hash !== '' && hash !== '!') {
 
 			// Get first element in selected element
-			modalChild = document.getElementById(hash).firstElementChild;
+			modalChild = document.getElementById(hash).children[0];
 
 			// When we deal with a modal and class `has-overlay` is not set on body yet
 			if (modalChild.className.match(/modal-inner/) && !document.body.className.match(/has-overlay/)) {
 				document.body.className += ' has-overlay';
+
+				// Mark modal as active
+				document.getElementById(hash).className += ' is-active';
+				activeElement = document.getElementById(hash);
 			}
 		} else {
 			document.body.className = document.body.className.replace(' has-overlay', '');
+			activeElement.className = activeElement.className.replace(' is-active', '');
+			activeElement = null;
 		}
-	}, false);
+	};
 }());
