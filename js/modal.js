@@ -55,8 +55,12 @@
 			}
 		} else {
 			document.body.className = document.body.className.replace(' has-overlay', '');
-			activeElement.className = activeElement.className.replace(' is-active', '');
-			activeElement = null;
+
+			// If activeElement is already defined, delete it
+			if (activeElement) {
+				activeElement.className = activeElement.className.replace(' is-active', '');
+				activeElement = null;
+			}
 		}
 	};
 }());
