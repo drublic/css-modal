@@ -19,7 +19,7 @@ $modal-mobile-header: #27aae2;
 %modal {
 	// Hide initially
 	@include x-transform(translate(0, 100%));
-	transform: translate3d(0, 100%);
+	transform: translate3d(0, 100%, 0);
 
 	// Maintain a fixed position
 	position: fixed;

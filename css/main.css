@@ -645,7 +645,7 @@ a:visited {
   -o-transform: translate(0, 100%);
   -ms-transform: translate(0, 100%);
   transform: translate(0, 100%);
-  transform: translate3d(0, 100%);
+  transform: translate3d(0, 100%, 0);
   position: fixed;
   top: 0;
   left: 0;
