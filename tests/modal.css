@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * Tests for CSS Modal
  * by @drublic - http://drublic.de/
@@ -161,21 +162,21 @@ html {
     -o-transform: translate(0, 400px);
     -ms-transform: translate(0, 400px);
     transform: translate(0, 400px);
-    -webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
-    -moz-transition: -moz-transform .25s ease-in-out, opacity 1ms .25s;
-    -o-transition: -o-transform .25s ease-in-out, opacity 1ms .25s;
-    -ms-transition: -ms-transform .25s ease-in-out, opacity 1ms .25s;
-    transition: transform .25s ease-in-out, opacity 1ms .25s;
+    -webkit-transition: -webkit-transform 0.25s ease-in-out, opacity 1ms 0.25s;
+    -moz-transition: -moz-transform 0.25s ease-in-out, opacity 1ms 0.25s;
+    -o-transition: -o-transform 0.25s ease-in-out, opacity 1ms 0.25s;
+    -ms-transition: -ms-transform 0.25s ease-in-out, opacity 1ms 0.25s;
+    transition: transform 0.25s ease-in-out, opacity 1ms 0.25s;
     display: block;
     height: 100%;
     bottom: auto;
   }
   .semantic-content:target {
-    -webkit-transition: -webkit-transform .25s ease-in-out;
-    -moz-transition: -moz-transform .25s ease-in-out;
-    -o-transition: -o-transform .25s ease-in-out;
-    -ms-transition: -ms-transform .25s ease-in-out;
-    transition: transform .25s ease-in-out;
+    -webkit-transition: -webkit-transform 0.25s ease-in-out;
+    -moz-transition: -moz-transform 0.25s ease-in-out;
+    -o-transition: -o-transform 0.25s ease-in-out;
+    -ms-transition: -ms-transform 0.25s ease-in-out;
+    transition: transform 0.25s ease-in-out;
   }
   .semantic-content:before {
     background-color: #27aae2;
