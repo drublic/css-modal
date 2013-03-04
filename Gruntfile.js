@@ -40,6 +40,16 @@ module.exports = function (grunt) {
 				files: ['scss/**/*.scss'],
 				tasks: 'sass'
 			}
+		},
+
+		// Server config
+		connect: {
+			server: {
+				options: {
+					port: 9001,
+					keepalive: true
+				}
+			}
 		}
 	});
 
@@ -47,6 +57,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-connect');
 
 	// Default task
 	grunt.registerTask('default', ['sass', 'jshint']);
