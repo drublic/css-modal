@@ -18,10 +18,10 @@
 	"license": "MIT",
 	"dependencies": {},
 	"devDependencies": {
-		"grunt": "~0.4.0",
-		"grunt-contrib-jshint": "git://github.com/gruntjs/grunt-contrib-jshint.git",
-		"grunt-contrib-watch": "git://github.com/gruntjs/grunt-contrib-watch.git",
-		"grunt-contrib-sass": "git://github.com/gruntjs/grunt-contrib-sass.git"
+		"grunt": "0.4.x",
+		"grunt-contrib-jshint": "0.2.0",
+		"grunt-contrib-watch": "0.3.1",
+		"grunt-contrib-sass": "0.2.2"
 	},
 	"keywords": [
 		"css",
