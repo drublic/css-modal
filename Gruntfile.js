@@ -29,7 +29,8 @@ module.exports = function (grunt) {
 					style: 'expanded'
 				},
 				files: {
-					'css/main.css': 'scss/page.scss'
+					'css/main.css': 'scss/page.scss',
+					'tests/modal.css': 'tests/modal.scss'
 				}
 			}
 		},
@@ -37,7 +38,7 @@ module.exports = function (grunt) {
 		// Watch that stuff
 		watch: {
 			scss: {
-				files: ['scss/**/*.scss'],
+				files: ['scss/**/*.scss', 'tests/*.scss'],
 				tasks: 'sass'
 			}
 		},
@@ -58,6 +59,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-jasmine');
 
 	// Default task
 	grunt.registerTask('default', ['sass', 'jshint']);

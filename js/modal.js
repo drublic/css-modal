@@ -36,8 +36,8 @@
 
 	// When showing overlay, prevent background from scrolling
 	window.onhashchange = function () {
-		var hash = window.location.hash.replace('#', ''),
-		    modalChild;
+		var hash = window.location.hash.replace('#', '');
+		var modalChild;
 
 		// If hash is set
 		if (hash !== '' && hash !== '!') {

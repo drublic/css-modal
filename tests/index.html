@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Jasmine Spec Runner</title>
+
+		<link rel="stylesheet" href="lib/jasmine-1.2.0/jasmine.css">
+		<script src="lib/jasmine-1.2.0/jasmine.js"></script>
+		<script src="lib/jasmine-1.2.0/jasmine-html.js"></script>
+
+		<!-- Source -->
+		<link rel="stylesheet" href="modal.css">
+		<script src="../js/modal.js"></script>
+
+		<!-- Specs -->
+		<script src="spec/modal.js"></script>
+
+		<section class="semantic-content" id="modal-text">
+			<div class="modal-inner">
+				<header></header>
+				<div class="modal-content"></div>
+				<footer></footer>
+			</div>
+			<a href="#!" class="modal-close" title="Close this modal">&times;</a>
+		</section>
+
+
+		<script>
+			(function() {
+				var jasmineEnv = jasmine.getEnv();
+				jasmineEnv.updateInterval = 1000;
+
+				var htmlReporter = new jasmine.HtmlReporter();
+
+				jasmineEnv.addReporter(htmlReporter);
+
+				jasmineEnv.specFilter = function(spec) {
+					return htmlReporter.specFilter(spec);
+				};
+
+				var currentWindowOnload = window.onload;
+
+				window.onload = function() {
+					if (currentWindowOnload) {
+						currentWindowOnload();
+					}
+					execJasmine();
+				};
+
+				function execJasmine() {
+					jasmineEnv.execute();
+				}
+
+			}());
+		</script>
+
+	</head>
+
+	<body>
+	</body>
+</html>

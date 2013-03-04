@@ -1,0 +1,17 @@
+/*
+ * Tests for CSS Modal
+ * by @drublic - http://drublic.de/
+ *
+ * http://drublic.github.com/css-modal
+ */
+
+@import "../scss/helpers/mixins";
+
+// Include Modal
+@import "../scss/modal";
+
+
+// Apply the modal with all its possible parts
+.semantic-content {
+	@extend %modal-fade;
+}
