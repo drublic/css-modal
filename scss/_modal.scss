@@ -18,7 +18,7 @@ $modal-mobile-header: #27aae2;
 
 %modal {
 	// Hide initially
-	@include x-transform(translate(0, 100%));
+	@include x-transform(translate(0, 400px)); // Use px to work around Android 2.3 bug
 	transform: translate3d(0, 100%, 0);
 
 	// Maintain a fixed position

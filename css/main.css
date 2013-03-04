@@ -640,11 +640,11 @@ a:visited {
  * Configuration
  */
 .semantic-content {
-  -webkit-transform: translate(0, 100%);
-  -moz-transform: translate(0, 100%);
-  -o-transform: translate(0, 100%);
-  -ms-transform: translate(0, 100%);
-  transform: translate(0, 100%);
+  -webkit-transform: translate(0, 400px);
+  -moz-transform: translate(0, 400px);
+  -o-transform: translate(0, 400px);
+  -ms-transform: translate(0, 400px);
+  transform: translate(0, 400px);
   transform: translate3d(0, 100%, 0);
   position: fixed;
   top: 0;
