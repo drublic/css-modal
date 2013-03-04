@@ -619,6 +619,7 @@ a:visited {
 }
 .js .tab-content-anchor:target + .tab-content, .js .tab-content-anchor.is-active + .tab-content {
   position: absolute;
+  max-width: 100%;
 }
 
 .site-footer {
