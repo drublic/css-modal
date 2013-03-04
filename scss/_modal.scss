@@ -247,12 +247,14 @@ $modal-mobile-header: #27aae2;
 	// For small heights
 	@media screen and (max-height: 46em) and (min-width: 30em) {
 		.modal-content {
+			max-height: 340px;
 			max-height: 50vh;
 		}
 	}
 
 	@media screen and (max-height: 36em) and (min-width: 30em) {
 		.modal-content {
+			max-height: 265px;
 			max-height: 40vh;
 		}
 	}
