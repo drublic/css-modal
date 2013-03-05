@@ -15,6 +15,14 @@
 /*
  * Configuration
  */
+html {
+  overflow-y: scroll;
+}
+
+.has-overlay > body {
+  overflow-y: hidden;
+}
+
 .semantic-content {
   -webkit-transform: translate(0, 100%);
   -moz-transform: translate(0, 100%);

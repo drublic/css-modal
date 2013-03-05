@@ -52,11 +52,11 @@
 			// Get first element in selected element
 			modalChild = document.getElementById(hash).children[0];
 
-			// When we deal with a modal and class `has-overlay` is not set on body yet
-			if (modalChild.className.match(/modal-inner/) && !document.body.className.match(/has-overlay/)) {
+			// When we deal with a modal and class `has-overlay` is not set on html yet
+			if (modalChild.className.match(/modal-inner/) && !document.documentElement.className.match(/has-overlay/)) {
 
-				// Set a body class to prevent scrolling
-				document.body.className += ' has-overlay';
+				// Set an html class to prevent scrolling
+				document.documentElement.className += ' has-overlay';
 
 				// Mark modal as active
 				document.getElementById(hash).className += ' is-active';
@@ -66,7 +66,7 @@
 				modal.setFocus(hash);
 			}
 		} else {
-			document.body.className = document.body.className.replace(' has-overlay', '');
+			document.documentElement.className = document.documentElement.className.replace(' has-overlay', '');
 
 			// If activeElement is already defined, delete it
 			if (modal.activeElement) {
