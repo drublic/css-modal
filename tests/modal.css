@@ -19,7 +19,11 @@ html {
   overflow-y: scroll;
 }
 
+.has-overlay {
+  height: 100%;
+}
 .has-overlay > body {
+  height: 100%;
   overflow-y: hidden;
 }
 

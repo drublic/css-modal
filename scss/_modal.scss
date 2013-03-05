@@ -21,8 +21,13 @@ html {
 	overflow-y: scroll;
 }
 
-.has-overlay > body {
-	overflow-y: hidden;
+.has-overlay {
+	height: 100%;
+
+	> body {
+		height: 100%;
+		overflow-y: hidden;
+	}
 }
 
 %modal {

@@ -53,7 +53,7 @@
 			modalChild = document.getElementById(hash).children[0];
 
 			// When we deal with a modal and class `has-overlay` is not set on html yet
-			if (modalChild.className.match(/modal-inner/) && !document.documentElement.className.match(/has-overlay/)) {
+			if (modalChild && modalChild.className.match(/modal-inner/) && !document.documentElement.className.match(/has-overlay/)) {
 
 				// Set an html class to prevent scrolling
 				document.documentElement.className += ' has-overlay';
