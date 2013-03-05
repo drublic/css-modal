@@ -126,11 +126,12 @@
 			</section>
 
 			<!-- A modal with its content -->
-			<section class="semantic-content" id="modal-text">
+			<section class="semantic-content" id="modal-text"
+					tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 
 				<div class="modal-inner">
 					<header>
-						<h2>Modals build with pure CSS</h2>
+						<h2 id="modal-label">Modals build with pure CSS</h2>
 					</header>
 
 					<div class="modal-content">
@@ -142,23 +143,27 @@
 
 					<footer>
 						<p>
-							<a href="#modal-embed" class="open-modal" title="Open another modal">Open a new modal</a>
-							<a href="#!" class="close-action" title="Close this modal">Close</a>
+							<a href="#modal-embed" class="open-modal" title="Open another modal"
+									role="button">Open a new modal</a>
+							<a href="#!" class="close-action" title="Close this modal"
+									data-dismiss="modal" aria-hidden="true">Close</a>
 						</p>
 					</footer>
 				</div>
 
 				<!-- Use Hash-Bang to maintain scroll position when closing modal -->
-				<a href="#!" class="modal-close" title="Close this modal">&times;</a>
+				<a href="#!" class="modal-close" title="Close this modal"
+						data-dismiss="modal" aria-hidden="true">&times;</a>
 			</section>
 
 
 			<!-- A modal with its content -->
-			<section class="semantic-content" id="modal-embed">
+			<section class="semantic-content" id="modal-embed"
+					tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 
 				<div class="modal-inner">
 					<header>
-						<h2>Embed videos</h2>
+						<h2 id="modal-label">Embed videos</h2>
 					</header>
 
 					<!--<iframe src="http://player.vimeo.com/video/49246286?badge=0" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>-->

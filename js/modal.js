@@ -10,8 +10,12 @@
 
 	'use strict';
 
+	// Storage variable
+	var modal = {};
+
 	// Store for currently active element
-	var activeElement;
+	modal.lastActive = undefined;
+	modal.activeElement = undefined;
 
 	// Polyfill addEventListener for IE8 (only very basic)
 	document._addEventListener = document.addEventListener || function (event, callback) {
@@ -30,6 +34,9 @@
 		// If key ESC is pressed
 		if (event.keyCode === 27) {
 			window.location.hash = '!';
+
+			// Unfocus
+			modal.removeFocus();
 		}
 	}, false);
 
@@ -47,20 +54,52 @@
 
 			// When we deal with a modal and class `has-overlay` is not set on body yet
 			if (modalChild.className.match(/modal-inner/) && !document.body.className.match(/has-overlay/)) {
+
+				// Set a body class to prevent scrolling
 				document.body.className += ' has-overlay';
 
 				// Mark modal as active
 				document.getElementById(hash).className += ' is-active';
-				activeElement = document.getElementById(hash);
+				modal.activeElement = document.getElementById(hash);
+
+				// Set the focus to the modal
+				modal.setFocus(hash);
 			}
 		} else {
 			document.body.className = document.body.className.replace(' has-overlay', '');
 
 			// If activeElement is already defined, delete it
-			if (activeElement) {
-				activeElement.className = activeElement.className.replace(' is-active', '');
-				activeElement = null;
+			if (modal.activeElement) {
+				modal.activeElement.className = modal.activeElement.className.replace(' is-active', '');
+				modal.activeElement = null;
+
+				// Unfocus
+				modal.removeFocus();
 			}
+		}
+	};
+
+
+	/*
+	 * Accessability
+	 */
+
+	// Focus modal
+	modal.setFocus = function (hash) {
+		if (modal.activeElement && !modal.activeElement.contains(hash)) {
+
+			// Set element with last focus
+			modal.lastActive = document.activeElement;
+
+			// New focussing
+			modal.activeElement.focus();
+		}
+	};
+
+	// Unfocus
+	modal.removeFocus = function () {
+		if (modal.lastActive) {
+			modal.lastActive.focus();
 		}
 	};
 }());
