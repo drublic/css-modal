@@ -5,6 +5,13 @@
  * http://drublic.github.com/css-modal
  */
 /**
+ * @include x-multiple-backgrounds(
+ *	rgba(0, 0, 0, 0.3),
+ *	url('../img/someImage.png') no-repeat,
+ *	('to bottom', #ddd, #aaa, #ddd)
+ * );
+ */
+/**
  * Modal as reusable module
  *
  * Usage:
@@ -237,9 +244,7 @@ html {
 @media screen and (min-width: 30em) {
   .semantic-content {
     -webkit-transition: opacity 0.4s;
-    -moz-transition: opacity 0.4s;
     -o-transition: opacity 0.4s;
-    -ms-transition: opacity 0.4s;
     transition: opacity 0.4s;
   }
 }

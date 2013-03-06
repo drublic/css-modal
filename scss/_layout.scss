@@ -17,11 +17,15 @@ body {
 }
 
 h2 {
+	@include x-rem(font-size, 2);
+
+	font-weight: normal;
 	margin: 2em 0 .5em;
 }
 
 h3 {
-	font-size: 1em;
+	@include x-rem(font-size, 1);
+
 	font-weight: normal;
 	margin-bottom: 0;
 }
@@ -71,9 +75,10 @@ a {
 
 	// Headline
 	h1 {
+		@include x-rem(font-size, 5);
+
 		display: block;
 
-		font-size: 4em;
 		line-height: 1;
 		margin-bottom: 0.1em;
 
@@ -97,7 +102,24 @@ a {
 // Download button
 .download {
 	@extend %button;
+
 	margin-top: 0.5em;
+
+	&:hover {
+		@include x-box-shadow(0 0 2px darken($color, 5));
+	}
+}
+
+// And Changelog
+.changelog {
+	@include x-rem(font-size, 0.9);
+
+	margin-top: 5px;
+	color: #fff;
+
+	&:visited {
+		color: #fff;
+	}
 }
 
 // Content
@@ -126,6 +148,43 @@ a {
 			float: none;
 			display: block;
 			width: 100%;
+		}
+	}
+
+	h2 {
+		@include x-rem(font-size, 1.5);
+	}
+}
+
+// Why would you???
+.selling {
+	font-weight: bold;
+}
+
+// Pages
+.pages {
+	ul {
+		list-style: none;
+		padding: 0;
+		overflow: hidden;
+		margin: 0 -20px;
+
+		> li {
+			@include x-box-sizing;
+			@include x-rem(padding, 0 1);
+
+			float: left;
+			display: inline;
+			width: 33%;
+		}
+
+		img {
+			@include x-border-radius(2px);
+
+			padding: 3px;
+			background: #ddd;
+			max-width: 100%;
+			height: auto;
 		}
 	}
 }

@@ -485,6 +485,13 @@ table {
   border-spacing: 0;
 }
 
+/**
+ * @include x-multiple-backgrounds(
+ *	rgba(0, 0, 0, 0.3),
+ *	url('../img/someImage.png') no-repeat,
+ *	('to bottom', #ddd, #aaa, #ddd)
+ * );
+ */
 body {
   font: 16px/1.4 Helvetica Neue, sans-serif;
   color: #111;
@@ -492,11 +499,15 @@ body {
 }
 
 h2 {
+  font-size: 32px;
+  font-size: 2rem;
+  font-weight: normal;
   margin: 2em 0 .5em;
 }
 
 h3 {
-  font-size: 1em;
+  font-size: 16px;
+  font-size: 1rem;
   font-weight: normal;
   margin-bottom: 0;
 }
@@ -512,9 +523,7 @@ a:visited {
 .download, .call-modal, .content-tabbed > h3 > a, .semantic-content .close-action,
 .semantic-content .open-modal {
   -webkit-transition: 0.2s;
-  -moz-transition: 0.2s;
   -o-transition: 0.2s;
-  -ms-transition: 0.2s;
   transition: 0.2s;
   display: inline-block;
   background: #111;
@@ -538,8 +547,9 @@ a:visited {
   color: #fff;
 }
 .site-header h1 {
+  font-size: 80px;
+  font-size: 5rem;
   display: block;
-  font-size: 4em;
   line-height: 1;
   margin-bottom: 0.1em;
   text-shadow: 0 1px 1px rgba(13, 73, 99, 0.8);
@@ -558,6 +568,20 @@ a:visited {
 
 .download {
   margin-top: 0.5em;
+}
+.download:hover {
+  -webkit-box-shadow: 0 0 2px #1c9cd3;
+  box-shadow: 0 0 2px #1c9cd3;
+}
+
+.changelog {
+  font-size: 14.4px;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: #fff;
+}
+.changelog:visited {
+  color: #fff;
 }
 
 .main {
@@ -586,6 +610,39 @@ a:visited {
     display: block;
     width: 100%;
   }
+}
+.features h2 {
+  font-size: 24px;
+  font-size: 1.5rem;
+}
+
+.selling {
+  font-weight: bold;
+}
+
+.pages ul {
+  list-style: none;
+  padding: 0;
+  overflow: hidden;
+  margin: 0 -20px;
+}
+.pages ul > li {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 16px;
+  padding: 0 1rem;
+  float: left;
+  display: inline;
+  width: 33%;
+}
+.pages ul img {
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  padding: 3px;
+  background: #ddd;
+  max-width: 100%;
+  height: auto;
 }
 
 @media screen and (max-width: 30em) {
@@ -858,9 +915,7 @@ html {
 @media screen and (min-width: 30em) {
   .semantic-content {
     -webkit-transition: opacity 0.4s;
-    -moz-transition: opacity 0.4s;
     -o-transition: opacity 0.4s;
-    -ms-transition: opacity 0.4s;
     transition: opacity 0.4s;
   }
 }
