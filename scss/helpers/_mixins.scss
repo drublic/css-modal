@@ -1,4 +1,3 @@
-
 // Generates border-radius on a given element
 // Documentation: docs/border-radius.md
 @mixin x-border-radius ($values) {
@@ -6,12 +5,16 @@
 	        border-radius: $values;
 }
 
+// @include x-border-radius(20px 10px);
+
 // Generates box-shadow on a given element
 // Documentation: docs/box-shadow.md
 @mixin x-box-shadow ($values) {
 	-webkit-box-shadow: $values; // iOS Safari 3.2 - 4.3, Android 2.1+
 	        box-shadow: $values;
 }
+
+// @include x-box-shadow(5px 5px 10px 5px #aaa);
 
 // Generates a given element in border-box box-sizing by default
 // Documentation: docs/box-sizing.md
@@ -21,10 +24,25 @@
 	        box-sizing: $type; // IE 8, Opera 9.5+
 }
 
+// @include x-box-sizing;
 
-// Generates a linear gradient for a given element
-// Documentation: docs/linear-gradient.md
-@mixin x-linear-gradient($direction: "to bottom", $fallback: #ccc, $from: #ccc, $to: #aaa) {
+// Helper for old syntax in linear-gradients
+
+// Return the corrected angle or position for a css gradient
+@function angle($deg) {
+	@if type-of($deg) == 'number' {
+		@return mod(abs($deg - 450), 360deg);
+	} @else {
+		$position: to + " ";
+		@each $pos in $deg {
+			$position: $position + opposite-position($pos) + " ";
+		}
+
+		@return $position;
+	}
+}
+
+@function helper-gradient-angle($direction) {
 
 	$old-direction: $direction;
 	$veryold-direction: $direction;
@@ -38,6 +56,8 @@
 		$old-direction: "bottom";
 	} @else if $direction == "to left" {
 		$old-direction: "right";
+	} @else {
+		$old-direction: angle($direction);
 	}
 
 	// And also for very old syntax
@@ -49,19 +69,139 @@
 		$veryold-direction: "left bottom, left top";
 	} @else if $direction == "to left" {
 		$veryold-direction: "top right, bottom left";
+	} @else {
+		$veryold-direction: angle($direction);
 	}
+
+
+	@return $old-direction, $veryold-direction;
+}
+
+
+// Generates a linear gradient for a given element
+// Documentation: docs/linear-gradient.md
+
+// Dependency: @function helper-gradient-angle;
+
+@mixin x-linear-gradient($direction: "to bottom", $fallback: #ccc, $from: #ccc, $to: #aaa) {
+
+	$directions: helper-gradient-angle($direction);
 
 	// Provide a fallback-color
 	background-color: $fallback;
 
 	// Cross-browser linear-gradients
-	background-image: -webkit-gradient(linear, unquote($veryold-direction), from($from), to($to)); // Android 2.1-3.0
-	background-image: -webkit-linear-gradient(unquote($old-direction), $from, $to);
-	background-image:    -moz-linear-gradient(unquote($old-direction), $from, $to);
-	background-image:     -ms-linear-gradient(unquote($old-direction), $from, $to);
-	background-image:      -o-linear-gradient(unquote($old-direction), $from, $to);
+	background-image: -webkit-gradient(linear, unquote(nth($directions, 2)), from($from), to($to)); // Android 2.1-3.0
+	background-image: -webkit-linear-gradient(unquote(nth($directions, 1)), $from, $to);
+	background-image:    -moz-linear-gradient(unquote(nth($directions, 1)), $from, $to);
+	background-image:     -ms-linear-gradient(unquote(nth($directions, 1)), $from, $to);
+	background-image:      -o-linear-gradient(unquote(nth($directions, 1)), $from, $to);
 	background-image:         linear-gradient(unquote($direction),     $from, $to);
 }
+
+// @include x-linear-gradient("to bottom", #ccc, #ddd, #bbb);
+
+// Generates multiple backgrounds for a given element
+
+// A function for prefixing gradients
+@function prefixed-gradient ($mode, $gradient) {
+
+	$prefix: '-' + $mode + '-';
+
+	// Get angles
+	$angles: helper-gradient-angle('' + nth($gradient, 2));
+	$angle: nth($angles, 1);
+
+	// If unprefixed
+	@if ($mode == '') {
+		$prefix: '';
+		$angle: nth($gradient, 2);
+	}
+
+	// @TODO define old webkit mode
+	@if ($mode == 'webkit-old') {
+		$prefix: '-webkit-';
+		$angle: nth($angles, 2);
+	}
+
+	$prefixed: '-' + $prefix + 'linear-gradient(' + $angle;
+
+	@for $i from 1 through length($gradient) {
+		@if ($i > 2) {
+			$prefixed: append(unquote($prefixed), nth($gradient, $i), comma);
+		}
+	}
+
+	$prefixed: $prefixed + ')';
+
+	@return unquote($prefixed);
+}
+
+@mixin x-multiple-backgrounds ($backgrounds...) {
+	$combined-background-webkit-old: ();
+	$combined-background-webkit: ();
+	$combined-background-moz: ();
+	$combined-background-o: ();
+	$combined-background: ();
+	$end: '';
+
+	// Itterate through all backgrounds passed
+	@each $background in $backgrounds {
+
+		// Prefix gradadients
+		@if (type-of($background) == list) {
+
+			@if (nth($background, 1) == 'linear-gradient') {
+				$combined-background-webkit-old: append($combined-background-webkit-old, prefixed-gradient('webkit-old', $background), comma);
+				$combined-background-webkit: append($combined-background-webkit, prefixed-gradient('webkit', $background), comma);
+				$combined-background-moz: append($combined-background-moz, prefixed-gradient('moz', $background), comma);
+				$combined-background-o: append($combined-background-o, prefixed-gradient('o', $background), comma);
+				$combined-background: append($combined-background, prefixed-gradient('', $background), comma);
+
+			// Nothing to do for non-gradients
+			} @else {
+				$combined-background-webkit-old: append($combined-background-webkit-old, $background, comma);
+				$combined-background-webkit: append($combined-background-webkit, $background, comma);
+				$combined-background-moz: append($combined-background-moz, $background, comma);
+				$combined-background-o: append($combined-background-o, $background, comma);
+				$combined-background: append($combined-background, $background, comma);
+			}
+
+		// Put colors at end of combined background
+		} @else if (type-of($background) == color) {
+			$end: $background;
+			$background: null;
+
+		}
+	}
+
+	// Append color if there is one
+	$combined-background-webkit-old: append($combined-background-webkit-old, $end, space);
+	$combined-background-webkit: append($combined-background-webkit, $end, comma);
+	$combined-background-moz: append($combined-background-moz, $end, comma);
+	$combined-background-o: append($combined-background-o, $end, comma);
+	$combined-background: append($combined-background, $end, comma);
+
+	// Only print all prefixed versions if necessary
+	@if ($combined-background != $combined-background-webkit) {
+		background: unquote($combined-background-webkit-old);
+		background: unquote($combined-background-webkit);
+		background: unquote($combined-background-moz);
+		background: unquote($combined-background-o);
+		background: unquote($combined-background);
+	} @else {
+		background: unquote($combined-background);
+	}
+
+}
+
+/**
+ * @include x-multiple-backgrounds(
+ *	rgba(0, 0, 0, 0.3),
+ *	url('../img/someImage.png') no-repeat,
+ *	('to bottom', #ddd, #aaa, #ddd)
+ * );
+ */
 
 // Generates multiple color stops in gradients for a given element
 // Documentation: docs/multiple-colored-gradient.md
@@ -113,13 +253,37 @@
 	background-image: unquote('linear-gradient(#{$pos_newsyntax}, #{$gradient})');
 }
 
+// @include x-multiple-colored-gradient(( "top", #aaa 0%, #bbb 50%, #ccc 100% ));
 
 // Enables using of CSS3 value `rem`
 // Documentation: docs/rem.md
-@mixin x-rem($property, $value, $mainFontSize: 16px) {
-  #{$property}: $value * $mainFontSize;
-  #{$property}: #{$value}rem;
+@mixin x-rem($property, $values, $main-font-size: 16px) {
+
+	// Empty list for all values in px
+	$px-values: ();
+	$rem-values: ();
+
+	// Iterate over entries
+	@each $value in $values {
+
+		// If the value is zero, return 0
+		@if $value == 0 or $value == auto {
+			$px-values: append($px-values, $value);
+			$rem-values: append($rem-values, $value);
+
+		// If the value is not zero, convert it from px to rem
+		} @else {
+			$px-values: append($px-values, ($value * $main-font-size) );
+			$rem-values: append($rem-values, #{$value}rem);
+		}
+	}
+
+	// Return the property and its list of converted values
+	#{$property}: #{$px-values};
+	#{$property}: #{$rem-values};
 }
+
+// @include x-rem(font-size, 1.3);
 
 // Generates tab-sizing
 @mixin x-tab-size ($value: 4) {
@@ -138,12 +302,14 @@
 	        transform: $values;
 }
 
+// @include x-transform(rotate(1deg));
+
 // Generates transitions on a given element
 // Documentation: docs/transition.md
 @mixin x-transition ($values) {
 	-webkit-transition: $values;
-	   -moz-transition: $values;
 	     -o-transition: $values;
-	    -ms-transition: $values;
 	        transition: $values;
 }
+
+// @include x-transition(background 0.3s ease-in);
