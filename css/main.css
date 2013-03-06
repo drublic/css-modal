@@ -502,11 +502,11 @@ h3 {
 }
 
 a {
-  color: #111;
+  color: #27aae2;
   text-decoration: none;
 }
 a:visited {
-  color: #111;
+  color: #27aae2;
 }
 
 .download, .call-modal, .content-tabbed > h3 > a, .semantic-content .close-action,

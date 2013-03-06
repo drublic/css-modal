@@ -29,11 +29,11 @@ h3 {
 
 // Links
 a {
-	color: #111;
+	color: $color;
 	text-decoration: none;
 
 	&:visited {
-		color: #111;
+		color: $color;
 	}
 }
 

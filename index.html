@@ -39,7 +39,7 @@
 
 				<div class="rwd">
 					<h2>Optimized for mobile</h2>
-					<p>The modals are designed using responsive web design. They work on all screen sizes from small a mobile to high resolution screens.</p>
+					<p>The modals are designed using responsive web design. They work on all screen sizes from small as mobile to high resolution screens.</p>
 				</div>
 
 				<div class="plugin">
@@ -48,8 +48,21 @@
 				</div>
 			</section>
 
+			<section class="selling">
+				<p>A few other advantages: accessible, cross-browser, media-adaptive, small and fast!</p>
+				<p>Check out these pages, that use CSS Modal already.</p>
+
+				<ul>
+					<li><a href="http://datacenter.sap.de/" title="SAP Data Center"><img src="" alt=""></a></li>
+					<li><a href="http://drublic.de/" title="drublic.de"><img src="" alt=""></a></li>
+					<li><img src="" alt=""></li>
+				</ul>
+			</section>
+
 			<section class="demo">
 				<h2>Examples</h2>
+
+				<p>Check out the following two examples of the CSS Modal. Please view the <a href="https://github.com/drublic/css-modal">source on GitHub</a> and the <a href="#howto" title="Read the documentation">documentation below</a>.</p>
 
 				<!-- Call the modal by clicking this link -->
 				<a href="#modal-text" class="call-modal" title="Clicking this link shows the modal">Read more in this demo</a>
@@ -58,22 +71,27 @@
 
 
 			<!-- Usage -->
-			<section>
+			<section id="howto">
 				<h2>How to use</h2>
 
 				<div class="content-tabbed">
+
+					<!-- Markup -->
 					<h3 class="tab-content-anchor" id="howto-markup"><a href="#howto-markup">Markup</a></h3>
 					<div class="tab-content">
 						<p>You need to include the markup and content for modals in you website. This has a positive effect on SEO. The example code:</p>
 
-						<pre><code class="language-markup">&lt;section class="semantic-content" id="modal-text"&gt;
+						<pre><code class="language-markup">&lt;section class="semantic-content" id="modal-text" tabindex="-1"
+        role="dialog" aria-labelledby="modal-label" aria-hidden="true"&gt;
+
     &lt;div class="modal-inner"&gt;
-        &lt;header&gt;&lt;!-- Header --&gt;&lt;/header&gt;
+        &lt;header id="modal-label"&gt;&lt;!-- Header --&gt;&lt;/header&gt;
         &lt;div class="modal-content"&gt;&lt;!-- The modals content --&gt;&lt;/div&gt;
         &lt;footer&gt;&lt;!-- Footer --&gt;&lt;/footer&gt;
     &lt;/div&gt;
 
-    &lt;a href="#!" class="modal-close" title="Close this modal"&gt;&times;&lt;/a&gt;
+    &lt;a href="#!" class="modal-close" title="Close this modal"
+        data-dismiss="modal" aria-hidden="true"&gt;&times;&lt;/a&gt;
 &lt;/section&gt;</code></pre>
 
 						<p>Using header and footer is optional. Just leave out the tags if you don't want them in a modal.</p>
@@ -81,6 +99,7 @@
 					</div>
 
 
+					<!-- Sass -->
 					<h3 class="tab-content-anchor" id="howto-sass"><a href="#howto-sass">Sass</a></h3>
 					<div class="tab-content">
 						<p>If you use Sass you can use the file <code>_modal.scss</code> and include it into your project. Here is an example:</p>
@@ -93,6 +112,8 @@
 }</code></pre>
 					</div>
 
+
+					<!-- CSS -->
 					<h3 class="tab-content-anchor" id="howto-css"><a href="#howto-css">CSS</a></h3>
 					<div class="tab-content">
 						<p>If you are not into Sass you can still use Vanilla CSS. Include it in your CSS and don't forget to add it to your build. Here is the snippet for development:</p>
@@ -101,6 +122,7 @@
 						<p>You can now add the markup to your website as stated above and apply a class <code>.modal</code> to the element.</p>
 					</div>
 
+					<!-- JavaScript -->
 					<h3 class="tab-content-anchor" id="howto-javascript"><a href="#howto-javascript">JavaScript</a></h3>
 					<div class="tab-content">
 						<p>As stated above you don't need JavaScript to get a good experience out of CSS Modals. But there are two issues where JavaScript helps:</p>
@@ -121,8 +143,21 @@
 				<h2>Browser Support</h2>
 
 				<p>This modal is designed to work on all moderne browsers. Unfortunately this does not include Internet Explorer 7 or lower. But we deal with IE 8 &mdash; well,&hellip; at least it works.</p>
-				<p>On mobile Safari for iOS and Android 2.3, 4+ is tested, while Android 2.3 has some problems but it works.</p>
-				<p>In numbers: Chrome, Firefox, Safari 6, Opera 12, IE8 (functional), IE9+.</p>
+				<p>On mobile Safari for iOS and Android 2.3, 4+ it is tested pretty well, while Android 2.3 has some problems – but it works.</p>
+				<p>In numbers: Chrome, Firefox, Safari 6, Opera 12, IE8 (functional), IE9+. And iOS 6, Android 2.3+.</p>
+			</section>
+
+
+			<!-- Issues -->
+			<section>
+				<h2>Bug Reports And Feature Requests</h2>
+
+				<p>If you got something that's worth including into the project please <a href="https://github.com/drublic/css-modal/issues">submit a Pull Request</a> or <a href="https://github.com/drublic/css-modal/issues">open an issue</a> for further discussion.</p>
+
+				<p><a href="https://github.com/necolas">@necolas</a> <a href="https://github.com/necolas/issue-guidelines">wrote down some good guidelines</a> for contributing to his projects. Please keep these in mind when contributing to this project. &lt;3</p>
+
+				<p>Please use the <code>.editorconfig</code>-file in order to set the right usage of tabs/spaces aso. in your editor. Visit <a href="http://editorconfig.org/">editorconfig.org</a> for more information.</p>
+
 			</section>
 
 			<!-- A modal with its content -->
