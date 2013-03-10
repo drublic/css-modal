@@ -32,7 +32,8 @@ html {
 
 %modal {
 	// Hide initially
-	@include x-transform(translate(0, 100%));
+	@include x-transform(translate(0, 100%)); // Use px to work around Android 2.3 bug
+	-webkit-transform: translate3d(0, 100%, 0); // iOS
 	transform: translate3d(0, 100%, 0);
 
 	// Maintain a fixed position
