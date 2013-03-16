@@ -507,7 +507,6 @@ h3 {
 
 a {
   color: #111;
-  text-decoration: none;
 }
 a:visited {
   color: #111;
@@ -522,6 +521,7 @@ a:visited {
   transition: 0.2s;
   display: inline-block;
   background: #111;
+  text-decoration: none;
   color: #fff;
   border-radius: 2px;
   padding: 0.5em 1em;

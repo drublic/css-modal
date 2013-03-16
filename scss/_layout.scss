@@ -34,7 +34,6 @@ h3 {
 // Links
 a {
 	color: $color;
-	text-decoration: none;
 
 	&:visited {
 		color: $color;
@@ -48,6 +47,7 @@ a {
 
 	display: inline-block;
 	background: #111;
+	text-decoration: none;
 
 	color: #fff;
 

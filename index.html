@@ -40,12 +40,12 @@
 
 				<div class="rwd">
 					<h2>Optimized for mobile</h2>
-					<p>The modals are designed using responsive web design. They work on all screen sizes from small as mobile to high resolution screens.</p>
+					<p>The modals are designed using responsive web design methods. They work on all screen sizes from a small mobile phone up to high resolution screens.</p>
 				</div>
 
 				<div class="plugin">
 					<h2>Use as Sass plugin</h2>
-					<p>You can use CSS Modal as Sass plugin and apply it to your custom classes. No need to understand all the code.</p>
+					<p>You can use CSS Modal as <a href="http://sass-lang.com/">Sass</a> plugin and apply it to your custom classes. No need to understand all the code.</p>
 				</div>
 			</section>
 
@@ -99,18 +99,18 @@
         data-dismiss="modal" aria-hidden="true"&gt;&times;&lt;/a&gt;
 &lt;/section&gt;</code></pre>
 
-						<p>Using header and footer is optional. Just leave out the tags if you don't want them in a modal.</p>
-						<p>You should leave the link's <code>href</code> attribtue to close the modal that way in order to prevent the page from scrolling to the top when clicking it.</p>
+						<p>Using <code>header</code> and <code>footer</code> is optional. Just remove the tags if you don't want them in a modal.</p>
+						<p>You should leave the link's <code>href</code> attribute that way to close the modal in order to prevent the page from scrolling to top when clicking on it.</p>
 					</div>
 
 
 					<!-- Sass -->
 					<h3 class="tab-content-anchor" id="howto-sass"><a href="#howto-sass">Sass</a></h3>
 					<div class="tab-content">
-						<p>If you use Sass you can use the file <code>_modal.scss</code> and include it into your project. Here is an example:</p>
+						<p>If you use <a href="http://sass-lang.com/">Sass</a> you can use the file <code>_modal.scss</code> and include it into your project. Here is an example:</p>
 						<pre><code class="language-css">@import "modules/modal";</code></pre>
 
-						<p>CSS Modals uses Sass 3.2's placeholders. You can use them by calling them via <code>@extend</code> in your modal's class name. The snippet looks something like that:</p>
+						<p>CSS Modals uses Sass 3.2's <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#placeholder_selectors_">placeholders</a>. You can use them by calling them via <code>@extend</code> in your modal's class name. The snippet looks something like that:</p>
 
 						<pre><code class="language-css">.my-awesome-class-name {
     @extend %modal;
@@ -121,7 +121,7 @@
 					<!-- CSS -->
 					<h3 class="tab-content-anchor" id="howto-css"><a href="#howto-css">CSS</a></h3>
 					<div class="tab-content">
-						<p>If you are not into Sass you can still use Vanilla CSS. Include it in your CSS and don't forget to add it to your build. Here is the snippet for development:</p>
+						<p>If you are not into Sass you can still use Vanilla CSS. Include it in your CSS and don't forget to add it to your <a href="http://gruntjs.com/" title="use grunt.js as build tool for example">build process</a>. Here is the snippet for development:</p>
 						<pre><code class="language-markup">&lt;link rel="stylesheet" href="css/modal.css"&gt;</code></pre>
 
 						<p>You can now add the markup to your website as stated above and apply a class <code>.modal</code> to the element.</p>
@@ -132,7 +132,7 @@
 					<div class="tab-content">
 						<p>As stated above you don't need JavaScript to get a good experience out of CSS Modals. But there are two issues where JavaScript helps:</p>
 						<ul>
-							<li>Pressing escape: If you press ESC on your keyboard while the modal is visible it closes itself. This behavior cannot be done with CSS only.</li>
+							<li>Pressing escape: If you press <code>ESC</code> on your keyboard while the modal is visible it closes itself. This behavior cannot be done with CSS only.</li>
 							<li>Preventing background page from scrolling: If you scroll within the modal and you reach the end you don't want the page in the background to scroll. To prevent this JavaScript pushs a CSS class selector to the body element.</li>
 						</ul>
 
@@ -147,7 +147,7 @@
 			<section>
 				<h2>Browser Support</h2>
 
-				<p>This modal is designed to work on all moderne browsers. Unfortunately this does not include Internet Explorer 7 or lower. But we deal with IE 8 &mdash; well,&hellip; at least it works.</p>
+				<p>This modal is designed to work on all modern browsers. Unfortunately this does not include Internet Explorer 7 or lower. But we deal with IE 8 &ndash; well,&hellip; at least it works.</p>
 				<p>On mobile Safari for iOS and Android 2.3, 4+ it is tested pretty well, while Android 2.3 has some problems – but it works.</p>
 				<p>In numbers: Chrome, Firefox, Safari 6, Opera 12, IE8 (functional), IE9+. And iOS 6, Android 2.3+.</p>
 			</section>
@@ -162,7 +162,6 @@
 				<p><a href="https://github.com/necolas">@necolas</a> <a href="https://github.com/necolas/issue-guidelines">wrote down some good guidelines</a> for contributing to his projects. Please keep these in mind when contributing to this project. &lt;3</p>
 
 				<p>Please use the <code>.editorconfig</code>-file in order to set the right usage of tabs/spaces aso. in your editor. Visit <a href="http://editorconfig.org/">editorconfig.org</a> for more information.</p>
-
 			</section>
 
 			<!-- A modal with its content -->
@@ -175,7 +174,7 @@
 					</header>
 
 					<div class="modal-content">
-						<p>There are a lot of possiblilities to include content in the modal. Actually it is possible to add every bit of HTML to your source-code that you want to. Some examples could be normal text, images, videos (see the other example), iframes which embed services like a contact form and so.</p>
+						<p>There are a lot of possibilities to include content in the modal. Actually it is possible to add every bit of HTML to your source-code that you want to. Some examples could be normal text, images, videos (see the other example), iframes which embed services like a contact form and so.</p>
 						<p>Modals consist of an optional header and footer and a main content area. The main content area is scrollable if the modal's content is higher than the screen has space for.</p>
 						<p>You can easily deep link to a modal by including the element's id as a hash in the URL.</p>
 						<p>On <a href="http://drublic.de/">drublic.de</a> you can see the modals in action for normal text content and using it with third party services.</p>
@@ -220,6 +219,7 @@
 					<a href="https://twitter.com/share" class="twitter-share-button" data-via="drublic" data-size="large" data-related="drublic" data-count="none">Tweet</a>
 					<a href="https://twitter.com/drublic" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @drublic</a>
 				</div>
+				<p>Contributors: <a href="https://twitter.com/drublic">@drublic</a>, <a href="https://twitter.com/helloanselm">@helloanselm</a></p>
 			</footer>
 		</div>
 
