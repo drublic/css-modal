@@ -38,8 +38,22 @@ a {
 	&:visited {
 		color: $color;
 	}
+
+	&:hover {
+		text-decoration: none;
+	}
 }
 
+
+// Code
+code {
+	@include x-rem(padding, 0.2);
+
+	background: #f5f2f0;
+	border-radius: 2px;
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	@include x-rem(font-size, 0.9);
+}
 
 // Buttons
 %button {
@@ -183,7 +197,7 @@ a {
 
 			padding: 3px;
 			background: #ddd;
-			max-width: 100%;
+			width: 100%;
 			height: auto;
 		}
 	}
