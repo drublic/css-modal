@@ -120,7 +120,9 @@ code {
 	margin-top: 0.5em;
 
 	&:hover {
-		@include x-box-shadow(0 0 2px darken($color, 5));
+		@include x-box-shadow(0 0 2px darken($color, 20));
+
+		background: lighten(#111, 10);
 	}
 }
 

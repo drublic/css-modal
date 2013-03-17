@@ -518,8 +518,9 @@ code {
 .download {
   margin-top: 0.5em; }
   .download:hover {
-    -webkit-box-shadow: 0 0 2px #1c9cd3;
-    box-shadow: 0 0 2px #1c9cd3; }
+    -webkit-box-shadow: 0 0 2px #136a90;
+    box-shadow: 0 0 2px #136a90;
+    background: #2b2b2b; }
 
 .changelog {
   font-size: 14.4px;
