@@ -48,11 +48,11 @@ a {
 // Code
 code {
 	@include x-rem(padding, 0.2);
+	@include x-rem(font-size, 0.9);
 
 	background: #f5f2f0;
 	border-radius: 2px;
 	font-family: Consolas, Monaco, 'Andale Mono', monospace;
-	@include x-rem(font-size, 0.9);
 }
 
 // Buttons

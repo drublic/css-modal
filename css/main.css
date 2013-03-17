@@ -470,11 +470,11 @@ a {
 code {
   padding: 3.2px;
   padding: 0.2rem;
+  font-size: 14.4px;
+  font-size: 0.9rem;
   background: #f5f2f0;
   border-radius: 2px;
-  font-family: Consolas, Monaco, 'Andale Mono', monospace;
-  font-size: 14.4px;
-  font-size: 0.9rem; }
+  font-family: Consolas, Monaco, 'Andale Mono', monospace; }
 
 .download, .call-modal, .content-tabbed > h3 > a, .semantic-content .close-action,
 .semantic-content .open-modal {
