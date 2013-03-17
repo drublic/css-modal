@@ -107,7 +107,7 @@
 					<!-- Sass -->
 					<h3 class="tab-content-anchor" id="howto-sass"><a href="#howto-sass">Sass</a></h3>
 					<div class="tab-content">
-						<p>If you use <a href="http://sass-lang.com/">Sass</a> you can use the file <code>_modal.scss</code> and include it into your project. Here is an example:</p>
+						<p>If you use <a href="http://sass-lang.com/">Sass</a> you can use the file <a href="download/_modal.scss"><code>_modal.scss</code></a> and include it into your project. Here is an example:</p>
 						<pre><code class="language-css">@import "modules/modal";</code></pre>
 
 						<p>CSS Modals uses Sass 3.2's <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#placeholder_selectors_">placeholders</a>. You can use them by calling them via <code>@extend</code> in your modal's class name. The snippet looks something like that:</p>
@@ -121,7 +121,7 @@
 					<!-- CSS -->
 					<h3 class="tab-content-anchor" id="howto-css"><a href="#howto-css">CSS</a></h3>
 					<div class="tab-content">
-						<p>If you are not into Sass you can still use Vanilla CSS. Include it in your CSS and don't forget to add it to your <a href="http://gruntjs.com/" title="use grunt.js as build tool for example">build process</a>. Here is the snippet for development:</p>
+						<p>If you are not into Sass you can still use Vanilla CSS. Include <a href="download/modal.css">the file</a> in your CSS and don't forget to add it to your <a href="http://gruntjs.com/" title="use grunt.js as build tool for example">build process</a>. Here is the snippet for development:</p>
 						<pre><code class="language-markup">&lt;link rel="stylesheet" href="css/modal.css"&gt;</code></pre>
 
 						<p>You can now add the markup to your website as stated above and apply a class <code>.modal</code> to the element.</p>
@@ -134,9 +134,10 @@
 						<ul>
 							<li>Pressing escape: If you press <code>ESC</code> on your keyboard while the modal is visible it closes itself. This behavior cannot be done with CSS only.</li>
 							<li>Preventing background page from scrolling: If you scroll within the modal and you reach the end you don't want the page in the background to scroll. To prevent this JavaScript pushs a CSS class selector to the body element.</li>
+							<li>Being accessible: To get the browser's focus to the modal and back after closing.</li>
 						</ul>
 
-						<p>To add this behavior to your website, please include the JavaScript file <code>modal.js</code> right before the closing <code>body</code>-tag:</p>
+						<p>To add this behavior to your website, please include the JavaScript file <a href="download/modal.js"><code>modal.js</code></a> right before the closing <code>body</code>-tag:</p>
 						<pre><code class="language-markup">&lt;script src="js/modal.js"&gt;&lt;/script&gt;</code></pre>
 					</div>
 				</div>
