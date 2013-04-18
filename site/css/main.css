@@ -658,6 +658,13 @@ code {
   width: 100%;
   height: auto;
 }
+@media screen and (max-width: 30em) {
+  .pages ul > li {
+    float: none;
+    display: block;
+    width: auto;
+  }
+}
 
 @media screen and (max-width: 30em) {
   .call-modal {

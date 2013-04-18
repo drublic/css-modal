@@ -203,6 +203,16 @@ code {
 			height: auto;
 		}
 	}
+
+	@media screen and (max-width: 30em) {
+		ul {
+			> li {
+				float: none;
+				display: block;
+				width: auto;
+			}
+		}
+	}
 }
 
 
