@@ -14,6 +14,7 @@ module.exports = function (grunt) {
 		jshint: {
 			all: [
 				'Gruntfile.js',
+				'modal.js',
 				'site/js/main.js'
 			],
 			options: {
@@ -63,6 +64,11 @@ module.exports = function (grunt) {
 			scss: {
 				files: ['modal.scss', 'site/scss/**/*.scss', 'tests/*.scss'],
 				tasks: 'sass:dev'
+			},
+
+			hint: {
+				files: ['modal.js', 'site/js/main.js'],
+				tasks: 'jshint'
 			}
 		},
 
