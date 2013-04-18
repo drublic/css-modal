@@ -63,6 +63,7 @@
 
 				<!-- Call the modal by clicking this link -->
 				<a href="#modal-text" class="call-modal" title="Clicking this link shows the modal">Read more in this demo</a>
+				<a href="#modal-pictures" class="call-modal" title="Clicking this link shows the modal">A demo with some pictures</a>
 				<a href="#modal-embed" class="call-modal" title="Clicking this link shows the modal">View a video demo</a>
 			</section>
 
@@ -133,11 +134,12 @@
 					<!-- JavaScript -->
 					<h3 class="tab-content-anchor" id="howto-javascript"><a href="#howto-javascript">JavaScript</a></h3>
 					<div class="tab-content">
-						<p>As stated above you don't need JavaScript to get a good experience out of CSS Modals. But there are two issues where JavaScript helps:</p>
+						<p>As stated above you don't need JavaScript to get a good experience out of CSS Modals. But there are some issues where JavaScript helps:</p>
 						<ul>
 							<li>Pressing escape: If you press <code>ESC</code> on your keyboard while the modal is visible it closes itself. This behavior cannot be done with CSS only.</li>
 							<li>Preventing background page from scrolling: If you scroll within the modal and you reach the end you don't want the page in the background to scroll. To prevent this JavaScript pushs a CSS class selector to the body element.</li>
 							<li>Being accessible: To get the browser's focus to the modal and back after closing.</li>
+							<li>Fireing events: When a modal opens a custom event is fired called <code>cssmodal:show</code>. When the modal is hidden, an event called <code>cssmodal:hide</code> is triggered.</li>
 						</ul>
 
 						<p>To add this behavior to your website, please include the JavaScript file <a href="download/modal.js"><code>modal.js</code></a> right before the closing <code>body</code>-tag:</p>
@@ -158,7 +160,7 @@
 
 
 			<!-- Issues -->
-			<section>
+			<section id="contributing">
 				<h2>Bug Reports And Feature Requests</h2>
 
 				<p>If you got something that's worth including into the project please <a href="https://github.com/drublic/css-modal/issues">submit a Pull Request</a> or <a href="https://github.com/drublic/css-modal/issues">open an issue</a> for further discussion.</p>
@@ -225,6 +227,32 @@
 					<iframe src="http://player.vimeo.com/video/49246286?badge=0"
 							frameborder="0" webkitAllowFullScreen
 							mozallowfullscreen allowFullScreen></iframe>
+				</div>
+
+				<!-- Use Hash-Bang to maintain scroll position when closing modal -->
+				<a href="#!" class="modal-close"
+						title="Close this modal">&times;</a>
+			</section>
+
+
+			<!-- A modal with its content -->
+			<section class="semantic-content" id="modal-pictures"
+					tabindex="-1" role="dialog" aria-labelledby="modal-label-3"
+					aria-hidden="true">
+
+				<div class="modal-inner">
+					<header>
+						<h2 id="modal-label-3">A set of pictures</h2>
+					</header>
+
+					<div class="modal-content">
+						<img src="http://placehold.it/1000x500" alt="">
+
+
+						<img src="http://placehold.it/200x200" alt="">
+						<img src="http://placehold.it/200x200" alt="">
+						<img src="http://placehold.it/200x200" alt="">
+					</div>
 				</div>
 
 				<!-- Use Hash-Bang to maintain scroll position when closing modal -->
