@@ -1,4 +1,4 @@
-# CSS Modals
+# CSS Modals [![Build Status](https://secure.travis-ci.org/drublic/css-modal.png?branch=master)](http://travis-ci.org/drublic/css-modal)
 
 Modals build out of pure CSS
 

@@ -16,6 +16,12 @@
 		"url": "https://github.com/drublic/css-modal/issues"
 	},
 	"license": "MIT",
+	"scripts": {
+		"test": "grunt travis --verbose"
+	},
+	"engines": {
+		"node": ">=0.6"
+	},
 	"dependencies": {},
 	"devDependencies": {
 		"grunt": "0.4.x",

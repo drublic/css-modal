@@ -97,4 +97,8 @@ module.exports = function (grunt) {
 	// Building a new version
 	grunt.registerTask('dist', ['sass:dist', 'copy:dist']);
 
+	// Travis CI task
+	grunt.registerTask('travis', ['jshint']);
+
+
 };
