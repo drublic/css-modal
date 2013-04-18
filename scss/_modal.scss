@@ -33,9 +33,13 @@ html {
 
 %modal {
 	// Hide initially
-	@include x-transform(translate(0, 100%)); // Use px to work around Android 2.3 bug
+	-webkit-transform: translate(0, 100%);
+	   -moz-transform: translate(0, 100%);
+	     -o-transform: translate(0, 100%);
+	    -ms-transform: translate(0, 100%);
+	        transform: translate(0, 100%);
 	-webkit-transform: translate3d(0, 100%, 0); // iOS
-	transform: translate3d(0, 100%, 0);
+	        transform: translate3d(0, 100%, 0);
 
 	// Maintain a fixed position
 	position: fixed;
@@ -52,7 +56,12 @@ html {
 
 	// Show modal when requested
 	&:target {
-		@include x-transform(translate(0, 0));
+
+	-webkit-transform: translate(0, 0);
+	   -moz-transform: translate(0, 0);
+	     -o-transform: translate(0, 0);
+	    -ms-transform: translate(0, 0);
+	        transform: translate(0, 0);
 
 		opacity: 1;
 	}
@@ -78,7 +87,8 @@ html {
 
 		border-radius: 2px;
 		background: #fff;
-		box-shadow: 0 0 30px rgba(0,0,0,.6);
+		-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.6);
+		        box-shadow: 0 0 30px rgba(0,0,0,0.6);
 
 		> img,
 		> video,
@@ -191,7 +201,7 @@ html {
 
 	// For small screens adjust the modal
 	@media screen and (max-width: 30em) {
-		@include x-transform(translate(0, 400px)); // Use px to work around Android 2.3 bug
+		-webkit-transform: translate(0, 400px); // Use px to work around Android 2.3 bug
 
 		-webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
 		   -moz-transition:    -moz-transform .25s ease-in-out, opacity 1ms .25s;
@@ -212,8 +222,12 @@ html {
 		}
 
 		&:before {
-			@include x-linear-gradient("to bottom", $modal-mobile-header, $modal-mobile-header, darken($modal-mobile-header, 5%));
-			@include x-box-shadow(0 0 5px rgba(0,0,0,.6));
+			background-color:  $modal-mobile-header;
+			background-image: -webkit-gradient(linear, left top, left bottom, from($modal-mobile-header), to(darken($modal-mobile-header, 5%)));
+			background-image: -webkit-linear-gradient(top, $modal-mobile-header, darken($modal-mobile-header, 5%));
+			background-image:    -moz-linear-gradient(top, $modal-mobile-header, darken($modal-mobile-header, 5%));
+			background-image:      -o-linear-gradient(top, $modal-mobile-header, darken($modal-mobile-header, 5%));
+			background-image:         linear-gradient(to bottom, $modal-mobile-header, darken($modal-mobile-header, 5%));
 
 			content: '';
 			position: fixed;
@@ -223,10 +237,14 @@ html {
 			z-index: 30;
 			height: 3em;
 			background-color: transparent; /* Chrome Canary 26.0.1386.0 Bug */
+			-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.6);
+			        box-shadow: 0 0 5px rgba(0,0,0,0.6);
 		}
 
 		.modal-inner {
-			@include x-box-sizing;
+			-webkit-box-sizing: border-box;
+			   -moz-box-sizing: border-box;
+			        box-sizing: border-box;
 
 			top: 0;
 			left: 0;
@@ -234,7 +252,8 @@ html {
 			padding-top: 3em;
 			height: 100%;
 			overflow: auto;
-			box-shadow: none;
+			-webkit-box-shadow: none;
+			        box-shadow: none;
 		}
 
 		.modal-content {
@@ -280,7 +299,9 @@ html {
 // Fade in the modal
 %modal-fade {
 	@media screen and (min-width: 30em) {
-		@include x-transition(opacity 0.4s);
+		-webkit-transition: opacity 0.4s;
+		     -o-transition: opacity 0.4s;
+		        transition: opacity 0.4s;
 	}
 
 

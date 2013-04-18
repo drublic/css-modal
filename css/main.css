@@ -759,6 +759,7 @@ html {
   overflow-x: hidden;
   border-radius: 2px;
   background: #fff;
+  -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
 }
 .semantic-content .modal-inner > img,
@@ -843,10 +844,6 @@ html {
 @media screen and (max-width: 30em) {
   .semantic-content {
     -webkit-transform: translate(0, 400px);
-    -moz-transform: translate(0, 400px);
-    -o-transform: translate(0, 400px);
-    -ms-transform: translate(0, 400px);
-    transform: translate(0, 400px);
     -webkit-transition: -webkit-transform 0.25s ease-in-out, opacity 1ms 0.25s;
     -moz-transition: -moz-transform 0.25s ease-in-out, opacity 1ms 0.25s;
     -o-transition: -o-transform 0.25s ease-in-out, opacity 1ms 0.25s;
@@ -868,11 +865,8 @@ html {
     background-image: -webkit-gradient(linear, left top, left bottom, from(#27aae2), to(#1c9cd3));
     background-image: -webkit-linear-gradient(top, #27aae2, #1c9cd3);
     background-image: -moz-linear-gradient(top, #27aae2, #1c9cd3);
-    background-image: -ms-linear-gradient(top, #27aae2, #1c9cd3);
     background-image: -o-linear-gradient(top, #27aae2, #1c9cd3);
     background-image: linear-gradient(to bottom, #27aae2, #1c9cd3);
-    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
     content: '';
     position: fixed;
     top: 0;
@@ -882,6 +876,8 @@ html {
     height: 3em;
     background-color: transparent;
     /* Chrome Canary 26.0.1386.0 Bug */
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
   }
   .semantic-content .modal-inner {
     -webkit-box-sizing: border-box;
@@ -893,6 +889,7 @@ html {
     padding-top: 3em;
     height: 100%;
     overflow: auto;
+    -webkit-box-shadow: none;
     box-shadow: none;
   }
   .semantic-content .modal-content {
