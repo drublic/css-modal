@@ -82,6 +82,7 @@ html {
 .semantic-content .modal-inner > iframe {
   width: 100%;
   height: auto;
+  min-height: 300px;
 }
 .semantic-content .modal-inner > img {
   width: auto;
