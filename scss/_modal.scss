@@ -14,6 +14,7 @@
 $modal-border-color: #ddd;
 $modal-max-width: 650px;
 $modal-mobile-header: #27aae2;
+$modal-layer: 999; // Set high z-index in order to appear above all other content
 
 
 // Prevent overflow on HTML element
@@ -42,7 +43,7 @@ html {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 9999; // Set high z-index in order to appear above all other content
+	z-index: $modal-layer;
 
 	opacity: 0;
 
