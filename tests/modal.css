@@ -239,11 +239,3 @@ html {
     max-height: 40vh;
   }
 }
-
-@media screen and (min-width: 30em) {
-  .semantic-content {
-    -webkit-transition: opacity 0.4s;
-    -o-transition: opacity 0.4s;
-    transition: opacity 0.4s;
-  }
-}
