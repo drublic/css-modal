@@ -2,23 +2,20 @@
 
 Modals build out of pure CSS
 
+Please [visit the website](http://drublic.github.io/css-modal) to read more about this project.
 
 ## What is it
 
-### Build with pure CSS
-CSS Modal is build out of pure CSS. JavaScript is only for sugar. This makes
+__Build with pure CSS:__ CSS Modal is build out of pure CSS. JavaScript is only for sugar. This makes
 them perfectly accessible.
 
-### Optimized for mobile
-The modals are designed using responsive web design methods. They work on all
+__Optimized for mobile:__ The modals are designed using responsive web design methods. They work on all
 screen sizes from a small mobile phone up to high resolution screens.
 
-### Use as Sass plugin
-You can use CSS Modal as [Sass](http://sass-lang.com/) plugin and apply it to
+__Use as Sass plugin:__ You can use CSS Modal as [Sass](http://sass-lang.com/) plugin and apply it to
 your custom classes. No need to understand all the code.
 
-### A few other advantages
-accessible, cross-browser, media-adaptive, small and fast!
+__A few other advantages:__ accessible, cross-browser, media-adaptive, small and fast!
 
 
 ## How to use
@@ -46,7 +43,7 @@ There events are not fired in IE8. Please be aware of that and use jQuery or
 something else to create custom events.
 
 
-# Bug Reports And Feature Requests
+## Bug reports and feature requests
 
 If you got something that's worth including into the project please
 [open an issue](https://github.com/drublic/css-modal/issues) for further
