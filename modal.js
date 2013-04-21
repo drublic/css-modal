@@ -6,7 +6,7 @@
  * @version 1.0
  */
 
-(function () {
+(function (global) {
 
 	'use strict';
 
@@ -128,4 +128,8 @@
 			modal.lastActive.focus();
 		}
 	};
-}());
+
+
+	global.CSSModal = modal;
+
+}(window));
