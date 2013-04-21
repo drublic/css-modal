@@ -4,26 +4,44 @@
 		<meta charset="utf-8">
 		<title>Jasmine Spec Runner</title>
 
-		<link rel="stylesheet" href="lib/jasmine-1.2.0/jasmine.css">
-		<script src="lib/jasmine-1.2.0/jasmine.js"></script>
-		<script src="lib/jasmine-1.2.0/jasmine-html.js"></script>
-
-		<!-- Source -->
+		<link rel="stylesheet" href="lib/jasmine-1.3.1/jasmine.css">
 		<link rel="stylesheet" href="modal.css">
-		<script src="../js/modal.js"></script>
+		<script src="lib/jasmine-1.3.1/jasmine.js"></script>
+		<script src="lib/jasmine-1.3.1/jasmine-html.js"></script>
+	</head>
 
-		<!-- Specs -->
-		<script src="spec/modal.js"></script>
+	<body>
 
-		<section class="semantic-content" id="modal-text">
+		<!-- A modal with its content -->
+		<section class="semantic-content" id="modal"
+				style="top: 101%;"
+				tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+
 			<div class="modal-inner">
-				<header></header>
-				<div class="modal-content"></div>
-				<footer></footer>
+				<header>
+					<h2 id="modal-label">Headline</h2>
+				</header>
+
+				<div class="modal-content">
+					<p>Content.</p>
+				</div>
+
+				<footer>
+					<p>Footer</p>
+				</footer>
 			</div>
-			<a href="#!" class="modal-close" title="Close this modal">&times;</a>
+
+			<!-- Use Hash-Bang to maintain scroll position when closing modal -->
+			<a href="#!" class="modal-close" title="Close this modal"
+					data-dismiss="modal" aria-hidden="true">&times;</a>
 		</section>
 
+		<!-- Source -->
+		<script src="../modal.js"></script>
+
+		<!-- Specs -->
+		<script src="lib/jquery.js"></script>
+		<script src="spec/modal.js"></script>
 
 		<script>
 			(function() {
@@ -54,8 +72,5 @@
 			}());
 		</script>
 
-	</head>
-
-	<body>
 	</body>
 </html>
