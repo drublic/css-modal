@@ -15,7 +15,8 @@ module.exports = function (grunt) {
 			all: [
 				'Gruntfile.js',
 				'modal.js',
-				'site/js/main.js'
+				'site/js/main.js',
+				'tests/spec/modal.js'
 			],
 			options: {
 				jshintrc: '.jshintrc'
@@ -67,7 +68,11 @@ module.exports = function (grunt) {
 			},
 
 			hint: {
-				files: ['modal.js', 'site/js/main.js'],
+				files: [
+					'modal.js',
+					'site/js/main.js',
+					'tests/spec/modal.js'
+				],
 				tasks: 'jshint'
 			}
 		},
