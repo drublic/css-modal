@@ -15,7 +15,8 @@ module.exports = function (grunt) {
 			all: [
 				'Gruntfile.js',
 				'modal.js',
-				'site/js/main.js'
+				'site/js/main.js',
+				'tests/spec/modal.js'
 			],
 			options: {
 				jshintrc: '.jshintrc'
@@ -59,6 +60,14 @@ module.exports = function (grunt) {
 			}
 		},
 
+		jasmine: {
+			src: 'modal.js',
+			options: {
+				outfile: 'tests/_SpecRunner.html',
+				template: 'tests/index.html'
+			}
+		},
+
 		// Watch that stuff
 		watch: {
 			scss: {
@@ -67,8 +76,17 @@ module.exports = function (grunt) {
 			},
 
 			hint: {
-				files: ['modal.js', 'site/js/main.js'],
+				files: [
+					'modal.js',
+					'site/js/main.js',
+					'tests/spec/modal.js'
+				],
 				tasks: 'jshint'
+			},
+
+			test: {
+				files: ['modal.js'],
+				tasks: 'jasmine'
 			}
 		},
 
@@ -92,13 +110,13 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jasmine');
 
 	// Default task
-	grunt.registerTask('default', ['sass', 'jshint']);
+	grunt.registerTask('default', ['sass', 'jshint', 'jasmine']);
 
 	// Building a new version
-	grunt.registerTask('dist', ['sass:dist', 'copy:dist']);
+	grunt.registerTask('dist', ['sass:dist', 'copy:dist', 'jasmine']);
 
 	// Travis CI task
-	grunt.registerTask('travis', ['jshint']);
+	grunt.registerTask('travis', ['jshint', 'jasmine']);
 
 
 };
