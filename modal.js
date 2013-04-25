@@ -105,7 +105,7 @@
 
 
 	/*
-	 * Accessability
+	 * Accessibility
 	 */
 
 	// Focus modal

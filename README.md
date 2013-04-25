@@ -1,12 +1,12 @@
 # CSS Modals [![Build Status](https://secure.travis-ci.org/drublic/css-modal.png?branch=master)](http://travis-ci.org/drublic/css-modal)
 
-Modals build out of pure CSS
+Modals built out of pure CSS
 
 Please [visit the website](http://drublic.github.io/css-modal) to read more about this project.
 
 ## What is it
 
-__Build with pure CSS:__ CSS Modal is build out of pure CSS. JavaScript is only for sugar. This makes
+__Built with pure CSS:__ CSS Modal is built out of pure CSS. JavaScript is only for sugar. This makes
 them perfectly accessible.
 
 __Optimized for mobile:__ The modals are designed using responsive web design methods. They work on all
