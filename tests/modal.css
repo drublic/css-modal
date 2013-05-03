@@ -192,8 +192,6 @@ html {
     right: 0;
     z-index: 30;
     height: 3em;
-    background-color: transparent;
-    /* Chrome Canary 26.0.1386.0 Bug */
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
   }
