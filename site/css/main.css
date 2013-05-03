@@ -605,6 +605,28 @@ code {
   text-align: left;
 }
 
+.on-github {
+  padding: 16px 32px 12px;
+  padding: 1rem 2rem 0.75rem;
+  background-color: #c4e8f7;
+  text-align: center;
+}
+.on-github > p {
+  margin: 0;
+}
+
+.icon-github {
+  margin-right: 8px;
+  margin-right: 0.5rem;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url(../img/github.svg) no-repeat;
+  background-size: contain;
+  text-indent: -200px;
+  overflow: hidden;
+}
+
 .features {
   overflow: hidden;
   margin: 1.5em -0.7em;

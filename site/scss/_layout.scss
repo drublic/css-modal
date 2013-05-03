@@ -147,6 +147,30 @@ code {
 }
 
 
+// The GitHubbers
+.on-github {
+	@include x-rem(padding, 1 2 0.75);
+
+	background-color: lighten($color, 35);
+	text-align: center;
+
+	> p {
+		margin: 0;
+	}
+}
+
+.icon-github {
+	@include x-rem(margin-right, 0.5);
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background: url(../img/github.svg) no-repeat;
+	background-size: contain;
+	text-indent: -200px;
+	overflow: hidden;
+}
+
+
 // Show features
 .features {
 	overflow: hidden;
