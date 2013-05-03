@@ -203,6 +203,8 @@ html {
 	// For small screens adjust the modal
 	@media screen and (max-width: 30em) {
 		-webkit-transform: translate(0, 400px); // Use px to work around Android 2.3 bug
+		-webkit-transform: translate3d(0, 100%, 0); // And overwrite px if 3D transforms are supported
+		        transform: translate3d(0, 100%, 0);
 
 		-webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
 		   -moz-transition:    -moz-transform .25s ease-in-out, opacity 1ms .25s;

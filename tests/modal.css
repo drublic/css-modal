@@ -160,6 +160,8 @@ html {
 @media screen and (max-width: 30em) {
   .semantic-content {
     -webkit-transform: translate(0, 400px);
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
     -webkit-transition: -webkit-transform 0.25s ease-in-out, opacity 1ms 0.25s;
     -moz-transition: -moz-transform 0.25s ease-in-out, opacity 1ms 0.25s;
     -o-transition: -o-transform 0.25s ease-in-out, opacity 1ms 0.25s;

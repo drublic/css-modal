@@ -246,6 +246,19 @@ code {
 			background: lighten($color, 5);
 		}
 	}
+
+	@media screen and (max-width: 30em) {
+		height: auto !important;
+
+		> h3 {
+			display: block;
+			padding-top: 0.5em;
+
+			> a {
+				display: block;
+			}
+		}
+	}
 }
 
 .tab-content {
@@ -258,6 +271,10 @@ code {
 		.js & {
 			position: absolute;
 			max-width: 100%;
+
+			@media screen and (max-width: 30em) {
+				position: relative;
+			}
 		}
 	}
 }
