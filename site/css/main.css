@@ -913,7 +913,7 @@ html {
     right: 0;
     padding-top: 3em;
     height: 100%;
-    overflow: auto;
+    overflow: scroll;
     -webkit-box-shadow: none;
     box-shadow: none;
   }
@@ -922,6 +922,7 @@ html {
   }
   .semantic-content .modal-close {
     right: auto;
+    text-decoration: none;
   }
   .semantic-content .modal-close:before {
     display: none;

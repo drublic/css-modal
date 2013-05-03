@@ -253,7 +253,7 @@ html {
 			right: 0;
 			padding-top: 3em;
 			height: 100%;
-			overflow: auto;
+			overflow: scroll;
 			-webkit-box-shadow: none;
 			        box-shadow: none;
 		}
@@ -264,6 +264,7 @@ html {
 
 		.modal-close {
 			right: auto;
+			text-decoration: none;
 
 			&:before {
 				display: none;
