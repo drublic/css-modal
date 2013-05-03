@@ -55,7 +55,5 @@ on the website.
 
 ## Contributors
 
-This is a project by [Hans Christian Reinl](http://drublic.de).
-
-A special thanks goes out to [@helloanselm](https://twitter.com/helloanselm) for
-providing feedback and contributions in general
+This is a project by [Hans Christian Reinl](http://drublic.de). Thanks goes out
+to [all other contributors](https://github.com/drublic/css-modal/contributors).
