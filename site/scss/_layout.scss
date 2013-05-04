@@ -138,6 +138,15 @@ code {
 	}
 }
 
+// The artwork above the content
+.artwork {
+	max-width: 100%;
+
+	@media screen and (max-width: 30em) {
+		display: none;
+	}
+}
+
 // Content
 .main {
 	max-width: 50em;
@@ -174,7 +183,7 @@ code {
 // Show features
 .features {
 	overflow: hidden;
-	margin: 1.5em -.7em;
+	margin: 1em -.7em 1.4em;
 
 	> div {
 		@include x-box-sizing;

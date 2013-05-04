@@ -598,6 +598,15 @@ code {
   color: #fff;
 }
 
+.artwork {
+  max-width: 100%;
+}
+@media screen and (max-width: 30em) {
+  .artwork {
+    display: none;
+  }
+}
+
 .main {
   max-width: 50em;
   margin: 0 auto;
@@ -629,7 +638,7 @@ code {
 
 .features {
   overflow: hidden;
-  margin: 1.5em -0.7em;
+  margin: 1em -0.7em 1.4em;
 }
 .features > div {
   -webkit-box-sizing: border-box;
