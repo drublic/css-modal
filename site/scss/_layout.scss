@@ -82,7 +82,7 @@ code {
 // Header
 .site-header {
 	background: $color;
-	padding: 2em 0;
+	padding: 2em 0 1em;
 
 	text-align: center;
 	color: #fff;
@@ -308,6 +308,18 @@ code {
 			@media screen and (max-width: 30em) {
 				position: relative;
 			}
+		}
+	}
+}
+
+// Small images in Modal
+.small-images {
+	> img {
+		max-width: 201px;
+	}
+	@media screen and (max-width: 30em) {
+		> img {
+			max-width: 100%;
 		}
 	}
 }
