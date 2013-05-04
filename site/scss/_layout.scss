@@ -314,12 +314,22 @@ code {
 
 // Small images in Modal
 .small-images {
+	margin: 0 -0.25em;
+	max-width: none !important;
+	overflow: hidden;
+
 	> img {
-		max-width: 32.8%;
+		@include x-box-sizing;
+
+		float: left;
+		padding: 0.15em 0.25em;
+		width: 33.33%;
 	}
+
 	@media screen and (max-width: 30em) {
 		> img {
 			max-width: 100%;
+			width: 100%;
 		}
 	}
 }
