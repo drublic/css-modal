@@ -746,7 +746,7 @@ code {
 }
 
 .small-images > img {
-  max-width: 201px;
+  max-width: 32.8%;
 }
 @media screen and (max-width: 30em) {
   .small-images > img {
