@@ -35,6 +35,10 @@
 		if (event.keyCode === 27) {
 			window.location.hash = '!';
 
+			if (modal.lastActive) {
+				return false;
+			}
+
 			// Unfocus
 			modal.removeFocus();
 		}
