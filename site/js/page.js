@@ -40,6 +40,9 @@
 		$(window).trigger('hashchange');
 	} else {
 		$('.content-tabbed > h3:first').trigger('click');
+
+		// Scroll to top
+		window.scrollTo(0, 1);
 	}
 
 }(jQuery));
