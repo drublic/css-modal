@@ -310,3 +310,7 @@ html {
 
 	@extend %modal;
 }
+
+.semantic-content {
+	@extend %modal-fade;
+}
