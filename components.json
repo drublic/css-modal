@@ -1,6 +1,6 @@
 {
 	"name": "css-modal",
-	"version": "1.0.0pre",
+	"version": "1.0.0",
 	"main": [
 		"modal.scss",
 		"modal.js"
@@ -11,7 +11,10 @@
 		"node_modules",
 		"site",
 		"tests",
-		".*",
+		".editorconfig",
+		".gitignore",
+		".jshintrc",
+		".travis.yml",
 		"Gruntfile.js",
 		"package.json"
 	]
