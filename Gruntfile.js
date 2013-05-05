@@ -51,6 +51,7 @@ module.exports = function (grunt) {
 		copy: {
 			dist: {
 				files: [{
+					expand: true,
 					src: [
 						'modal.scss',
 						'modal.js'
@@ -113,7 +114,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', ['sass', 'jshint', 'jasmine']);
 
 	// Building a new version
-	grunt.registerTask('dist', ['sass:dist', 'copy:dist', 'jasmine']);
+	grunt.registerTask('dist', ['jasmine', 'sass:dist', 'copy:dist']);
 
 	// Travis CI task
 	grunt.registerTask('travis', ['jshint', 'jasmine']);
