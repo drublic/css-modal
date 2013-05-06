@@ -116,7 +116,7 @@
 	modal.setFocus = function (hash) {
 		if (modal.activeElement &&
 				typeof modal.activeElement.contains === 'function' &&
-				!modal.activeElement.contains(hash)) {
+				!modal.activeElement.contains(document.getElementById(hash))) {
 
 			// Set element with last focus
 			modal.lastActive = document.activeElement;
