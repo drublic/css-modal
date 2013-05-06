@@ -45,4 +45,23 @@
 		window.scrollTo(0, 1);
 	}
 
+	/*
+	 * On closing the modal, stop video
+	 */
+
+	$(document)
+		.on('cssmodal:hide', function () {
+			var $video = $('.semantic-content iframe');
+			var source = $video.attr('src');
+
+			$video.attr('src', '').attr('data-src', source);
+		})
+
+		.on('cssmodal:show', function () {
+			var $video = $('.semantic-content iframe');
+			if ($video.attr('data-src') !== '') {
+				$video.attr('src', $video.attr('data-src')).attr('data-src', '');
+			}
+		});
+
 }(jQuery));
