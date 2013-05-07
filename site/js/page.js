@@ -27,9 +27,8 @@
 	 * On hash change
 	 */
 	$(window).on('hashchange', function () {
-		var hash = location.hash.replace('!', '');
-
-		if ($(hash).hasClass('tab-content-anchor')) {
+		var hash = location.hash.replace('#!', '');
+		if (hash && $(hash).hasClass('tab-content-anchor')) {
 			setTimeout(function () {
 				$(hash).trigger('click');
 			});
@@ -52,14 +51,18 @@
 	$(document)
 		.on('cssmodal:hide', function () {
 			var $video = $('.semantic-content iframe');
-			var source = $video.attr('src');
+			var source;
 
-			$video.attr('src', '').attr('data-src', source);
+			if ($video.length > 0) {
+				source = $video.attr('src');
+
+				$video.attr('src', '').attr('data-src', source);
+			}
 		})
 
 		.on('cssmodal:show', function () {
 			var $video = $('.semantic-content iframe');
-			if ($video.attr('data-src') !== '') {
+			if ($video.length > 0 && $video.attr('data-src') !== '') {
 				$video.attr('src', $video.attr('data-src')).attr('data-src', '');
 			}
 		});
