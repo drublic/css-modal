@@ -113,7 +113,7 @@
 	 */
 
 	// Focus modal
-	modal.setFocus = function (hash) {
+	modal.setFocus = function () {
 		if (modal.activeElement) {
 
 			// Set element with last focus
