@@ -53,6 +53,18 @@
 			}, 0);
 		});
 
+		it('has correct scroll position', function () {
+			var scrollTop = $(window).scrollTop();
+			$('body').height(5555);
+
+			window.location.hash = '#modal';
+
+			setTimeout(function () {
+				expect($(window).scrollTop()).toBe(scrollTop);
+			}, 0);
+			$('body').height('auto');
+		});
+
 		// Testing the event displatcher (triggerer)
 		describe('dispatch event', function () {
 
