@@ -3,7 +3,7 @@
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 (function (global) {
@@ -64,13 +64,14 @@
 	// When showing overlay, prevent background from scrolling
 	window.onhashchange = function () {
 		var hash = window.location.hash.replace('#', '');
+		var modalElement = document.getElementById(hash);
 		var modalChild;
 
-		// If hash is set
-		if (hash !== '' && hash !== '!') {
+		// If the hash element exists
+		if (modalElement) {
 
 			// Get first element in selected element
-			modalChild = document.getElementById(hash).children[0];
+			modalChild = modalElement.children[0];
 
 			// When we deal with a modal and class `has-overlay` is not set on html yet
 			if (modalChild && modalChild.className.match(/modal-inner/) && !document.documentElement.className.match(/has-overlay/)) {
@@ -79,8 +80,8 @@
 				document.documentElement.className += ' has-overlay';
 
 				// Mark modal as active
-				document.getElementById(hash).className += ' is-active';
-				modal.activeElement = document.getElementById(hash);
+				modalElement.className += ' is-active';
+				modal.activeElement = modalElement;
 
 				// Set the focus to the modal
 				modal.setFocus(hash);
@@ -113,10 +114,8 @@
 	 */
 
 	// Focus modal
-	modal.setFocus = function (hash) {
-		if (modal.activeElement &&
-				typeof modal.activeElement.contains === 'function' &&
-				!modal.activeElement.contains(hash)) {
+	modal.setFocus = function () {
+		if (modal.activeElement) {
 
 			// Set element with last focus
 			modal.lastActive = document.activeElement;
