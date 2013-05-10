@@ -170,7 +170,7 @@ code {
 
 .icon-github {
 	@include x-rem(margin-right, 0.5);
-	display: inline-block;
+	display: inline-table;
 	width: 24px;
 	height: 24px;
 	background: url(../img/github.svg) no-repeat;

@@ -627,7 +627,7 @@ code {
 .icon-github {
   margin-right: 8px;
   margin-right: 0.5rem;
-  display: inline-block;
+  display: inline-table;
   width: 24px;
   height: 24px;
   background: url(../img/github.svg) no-repeat;
