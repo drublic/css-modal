@@ -787,11 +787,11 @@ html {
 }
 
 .has-overlay {
-  height: 100%;
+  overflow: hidden;
 }
 .has-overlay > body {
   height: 100%;
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 
 .semantic-content {

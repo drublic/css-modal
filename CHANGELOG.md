@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Prevent page from jumping when opening a modal (#24)
 * Remove an error when a hash has no HTML element associate (#27)
 * Remove check if modal contains an id on focus - it is not necessary (#25)
 * Rename component.json to bower.json to match new bower spec
