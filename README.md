@@ -21,7 +21,7 @@ __A few other advantages:__ accessible, cross-browser, media-adaptive, small and
 ## How to use
 
 Please visit [the website's section](http://drublic.github.io/css-modal/#howto-markup)
-on how to use the CSS Modal.
+on how to use CSS Modals.
 
 
 ## Browser Support
@@ -35,9 +35,8 @@ Internet Explorer 7 or lower.
 Please be aware that you need to stop playing videos or audio manually after
 hiding the modal.
 
-There is an event that is fired on the modal itself after the modal is show
-which is called `cssmodal:show` and an event after the modal is hidden called
-`cssmodal:hide`.
+There is an event `cssmodal:show` fired on the modal itself after the modal is
+shown. Another event `cssmodal:hide` is fired after the modal is hidden.
 
 There events are not fired in IE8. Please be aware of that and use jQuery or
 something else to create custom events.
