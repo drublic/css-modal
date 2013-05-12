@@ -50,8 +50,8 @@ discussion.
 Please see the [section on contributing](http://drublic.github.io/css-modal/#contributing)
 on the website.
 
-cd 
+
 ## Contributors
- 
+
 This is a project by [Hans Christian Reinl](http://drublic.de). Thanks goes out
-to [all other contributors](https://github.com/drublic/css-modal/contributors).
+to [all other contributors](https://github.com/drublic/css-modal/contributors). 
