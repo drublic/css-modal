@@ -36,7 +36,8 @@ Please be aware that you need to stop playing videos or audio manually after
 hiding the modal.
 
 For extensibility there is an event `cssmodal:show` fired on the modal itself after
-the modal is shown.  Another event `cssmodal:hide` is fired after the modal is hidden.
+the modal is shown.  
+Another event `cssmodal:hide` is fired after the modal is hidden.
 
 These events are not fired in IE8. Please be aware and use e.g. jQuery to create custom events.
 
