@@ -35,7 +35,7 @@ Internet Explorer 7 or lower.
 Please be aware that you need to stop playing videos or audio manually after
 hiding the modal.
 
-For extensibility there is an event `cssmodal:show` fired on the modal itself after
+There is an event `cssmodal:show` fired on the modal itself after
 the modal is shown.  
 Another event `cssmodal:hide` is fired after the modal is hidden.
 
