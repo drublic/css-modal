@@ -312,13 +312,19 @@ code {
 	}
 }
 
-// Small images in Modal
+// Images in Modal
+.big-image {
+	> img {
+		max-width: 100%;
+	}
+}
+
 .small-images {
 	margin: 0 -0.25em;
 	max-width: none !important;
 	overflow: hidden;
 
-	> img {
+	img {
 		@include x-box-sizing;
 
 		float: left;

@@ -200,7 +200,7 @@ kbd,
 pre,
 samp {
   font-family: monospace, serif;
-  _font-family: "courier new", monospace;
+  _font-family: 'courier new', monospace;
   font-size: 1em;
 }
 
@@ -335,7 +335,7 @@ form {
  * Define consistent border, margin, and padding.
  */
 fieldset {
-  border: 1px solid silver;
+  border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
@@ -502,7 +502,7 @@ h2 {
   font-size: 32px;
   font-size: 2rem;
   font-weight: normal;
-  margin: 2em 0 0.5em;
+  margin: 2em 0 .5em;
 }
 
 h3 {
@@ -529,7 +529,7 @@ code {
   font-size: 0.9rem;
   background: #f5f2f0;
   border-radius: 2px;
-  font-family: Consolas, Monaco, "Andale Mono", monospace;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
 }
 
 .download, .call-modal, .content-tabbed > h3 > a, .semantic-content .close-action,
@@ -638,7 +638,7 @@ code {
 
 .features {
   overflow: hidden;
-  margin: 1em -0.7em 1.4em;
+  margin: 1em -.7em 1.4em;
 }
 .features > div {
   -webkit-box-sizing: border-box;
@@ -647,7 +647,7 @@ code {
   float: left;
   display: inline;
   width: 33.333%;
-  padding: 0 0.7em;
+  padding: 0 .7em;
 }
 @media screen and (max-width: 30em) {
   .features > div {
@@ -745,12 +745,16 @@ code {
   }
 }
 
+.big-image > img {
+  max-width: 100%;
+}
+
 .small-images {
   margin: 0 -0.25em;
   max-width: none !important;
   overflow: hidden;
 }
-.small-images > img {
+.small-images img {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -922,21 +926,21 @@ html {
     -webkit-transform: translate(0, 400px);
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
-    -webkit-transition: -webkit-transform 0.25s ease-in-out, opacity 1ms 0.25s;
-    -moz-transition: -moz-transform 0.25s ease-in-out, opacity 1ms 0.25s;
-    -o-transition: -o-transform 0.25s ease-in-out, opacity 1ms 0.25s;
-    -ms-transition: -ms-transform 0.25s ease-in-out, opacity 1ms 0.25s;
-    transition: transform 0.25s ease-in-out, opacity 1ms 0.25s;
+    -webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
+    -moz-transition: -moz-transform .25s ease-in-out, opacity 1ms .25s;
+    -o-transition: -o-transform .25s ease-in-out, opacity 1ms .25s;
+    -ms-transition: -ms-transform .25s ease-in-out, opacity 1ms .25s;
+    transition: transform .25s ease-in-out, opacity 1ms .25s;
     display: block;
     height: 100%;
     bottom: auto;
   }
   .semantic-content:target {
-    -webkit-transition: -webkit-transform 0.25s ease-in-out;
-    -moz-transition: -moz-transform 0.25s ease-in-out;
-    -o-transition: -o-transform 0.25s ease-in-out;
-    -ms-transition: -ms-transform 0.25s ease-in-out;
-    transition: transform 0.25s ease-in-out;
+    -webkit-transition: -webkit-transform .25s ease-in-out;
+    -moz-transition: -moz-transform .25s ease-in-out;
+    -o-transition: -o-transform .25s ease-in-out;
+    -ms-transition: -ms-transform .25s ease-in-out;
+    transition: transform .25s ease-in-out;
   }
   .semantic-content:before {
     background-color: #27aae2;

@@ -67,4 +67,19 @@
 			}
 		});
 
+
+	/*
+	 * Gallery
+	 */
+
+	$(document).on('click', '.gallery a', function (e) {
+		e.preventDefault();
+
+		var $newImage = $(this).html();
+		var $oldImage = $('.gallery .big-image').html();
+
+		$('.gallery .big-image').html($newImage);
+		$(this).html($oldImage);
+	});
+
 }(jQuery));
