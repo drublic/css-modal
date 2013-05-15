@@ -2,6 +2,8 @@
 
 ## HEAD
 
+* Minor clean up of Sass and JS
+
 ## 1.0.1 - 10.05.2013
 
 * Prevent page from jumping when opening a modal (#24)

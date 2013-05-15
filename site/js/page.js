@@ -28,6 +28,7 @@
 	 */
 	$(window).on('hashchange', function () {
 		var hash = location.hash.replace('#!', '');
+
 		if (hash && $(hash).hasClass('tab-content-anchor')) {
 			setTimeout(function () {
 				$(hash).trigger('click');
@@ -62,8 +63,9 @@
 
 		.on('cssmodal:show', function () {
 			var $video = $('.semantic-content iframe');
-			if ($video.length > 0 && $video.attr('data-src') !== '') {
-				$video.attr('src', $video.attr('data-src')).attr('data-src', '');
+			var dataSource = $video.attr('data-src');
+			if ($video.length > 0 && dataSource !== '') {
+				$video.attr('src', dataSource).attr('data-src', '');
 			}
 		});
 
