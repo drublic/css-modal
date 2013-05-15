@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Overwrite IE8 hack for IE9 and 10 to get modal working without JS (#33)
 * Minor clean up of Sass and JS
 
 ## 1.0.1 - 10.05.2013

@@ -828,6 +828,9 @@ html {
 .is-active.semantic-content {
   display: block\9;
 }
+.semantic-content:target {
+  display: block\9;
+}
 .semantic-content .modal-inner {
   position: absolute;
   top: 50px;

@@ -64,6 +64,9 @@ html {
 .is-active.semantic-content, .is-active._modal {
   display: block\9;
 }
+.semantic-content:target, ._modal:target {
+  display: block\9;
+}
 .semantic-content .modal-inner, ._modal .modal-inner {
   position: absolute;
   top: 50px;

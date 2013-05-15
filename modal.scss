@@ -73,6 +73,11 @@ html {
 		display: block\9;
 	}
 
+	// Overwrite IE8 hack for IE9 and IE10
+	&:target {
+		display: block\9;
+	}
+
 
 	// Content Area
 	.modal-inner {
