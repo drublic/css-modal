@@ -47,6 +47,25 @@ module.exports = function (grunt) {
 			}
 		},
 
+		less: {
+			dev: {
+				options: {
+				},
+				files: {
+					'tests/modal.css': 'tests/modal.less'
+				}
+			},
+
+			dist: {
+				options: {
+					yuicompress: true
+				},
+				files: {
+					'download/modal.css': 'modal.less'
+				}
+			}
+		},
+
 		// Copy
 		copy: {
 			dist: {
@@ -74,6 +93,11 @@ module.exports = function (grunt) {
 			scss: {
 				files: ['modal.scss', 'site/scss/**/*.scss', 'tests/*.scss'],
 				tasks: 'sass:dev'
+			},
+
+			less: {
+				files: ['modal.less', 'tests/*.less'],
+				tasks: 'less:dev'
 			},
 
 			hint: {
@@ -109,12 +133,15 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-jasmine');
+	grunt.loadNpmTasks('grunt-contrib-less');
 
 	// Default task
-	grunt.registerTask('default', ['sass', 'jshint', 'jasmine']);
+	//grunt.registerTask('default', ['sass', 'jshint', 'jasmine']);
+	grunt.registerTask('default', ['less', 'jshint', 'jasmine']);
 
 	// Building a new version
-	grunt.registerTask('dist', ['jasmine', 'sass:dist', 'copy:dist']);
+	//grunt.registerTask('dist', ['jasmine', 'sass:dist', 'copy:dist']);
+	grunt.registerTask('dist', ['jasmine', 'less:dist', 'copy:dist']);
 
 	// Travis CI task
 	grunt.registerTask('travis', ['jshint', 'jasmine']);
