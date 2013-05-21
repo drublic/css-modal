@@ -3,7 +3,7 @@
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 (function (global) {
