@@ -24,33 +24,8 @@ module.exports = function (grunt) {
 		},
 
 		// Building CSS
-		sass: {
-			dev: {
-				options: {
-					unixNewlines: true,
-					style: 'expanded'
-				},
-				files: {
-					'site/css/main.css': 'site/scss/page.scss',
-					'tests/modal.css': 'tests/modal.scss'
-				}
-			},
-
-			dist: {
-				options: {
-					unixNewlines: true,
-					style: 'expanded'
-				},
-				files: {
-					'download/modal.css': 'modal.scss'
-				}
-			}
-		},
-
 		less: {
 			dev: {
-				options: {
-				},
 				files: {
 					'tests/modal.css': 'tests/modal.less'
 				}
@@ -72,7 +47,7 @@ module.exports = function (grunt) {
 				files: [{
 					expand: true,
 					src: [
-						'modal.scss',
+						'modal.less',
 						'modal.js'
 					],
 					dest: 'download/'
@@ -90,14 +65,9 @@ module.exports = function (grunt) {
 
 		// Watch that stuff
 		watch: {
-			scss: {
-				files: ['modal.scss', 'site/scss/**/*.scss', 'tests/*.scss'],
-				tasks: 'sass:dev'
-			},
-
 			less: {
 				files: ['modal.less', 'tests/*.less'],
-				tasks: 'less:dev'
+				tasks: 'sass:dev'
 			},
 
 			hint: {
@@ -128,7 +98,6 @@ module.exports = function (grunt) {
 
 	// Load some stuff
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-copy');
@@ -136,11 +105,9 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-less');
 
 	// Default task
-	//grunt.registerTask('default', ['sass', 'jshint', 'jasmine']);
 	grunt.registerTask('default', ['less', 'jshint', 'jasmine']);
 
 	// Building a new version
-	//grunt.registerTask('dist', ['jasmine', 'sass:dist', 'copy:dist']);
 	grunt.registerTask('dist', ['jasmine', 'less:dist', 'copy:dist']);
 
 	// Travis CI task

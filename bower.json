@@ -1,15 +1,14 @@
 {
-	"name": "css-modal",
-	"version": "1.0.1",
+	"name": "css-modal-less",
+	"version": "1.0.2dev",
 	"main": [
-		"modal.scss",
+		"modal.less",
 		"modal.js"
 	],
 	"author": "Hans Christian Reinl",
 	"ignore": [
 		"download",
 		"node_modules",
-		"site",
 		"tests",
 		".editorconfig",
 		".gitignore",

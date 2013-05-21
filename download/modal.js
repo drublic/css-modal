@@ -18,9 +18,10 @@
 	modal.activeElement = undefined;
 
 	// Polyfill addEventListener for IE8 (only very basic)
-	document._addEventListener = document.addEventListener || function (event, callback) {
-		document.attachEvent('on' + event, callback);
-	};
+	document._addEventListener = document.addEventListener ||
+		function (event, callback) {
+			document.attachEvent('on' + event, callback);
+		};
 
 	// Hide overlay when ESC is pressed
 	document._addEventListener('keyup', function (event) {
@@ -44,7 +45,7 @@
 		}
 	}, false);
 
-	// Conveniance function to trigger event
+	// Convenience function to trigger event
 	modal._dispatchEvent = function (event, modal) {
 		var eventTigger;
 
@@ -65,6 +66,7 @@
 	window.onhashchange = function () {
 		var hash = window.location.hash.replace('#', '');
 		var modalElement = document.getElementById(hash);
+		var htmlClasses = document.documentElement.className;
 		var modalChild;
 
 		// If the hash element exists
@@ -73,8 +75,9 @@
 			// Get first element in selected element
 			modalChild = modalElement.children[0];
 
-			// When we deal with a modal and class `has-overlay` is not set on html yet
-			if (modalChild && modalChild.className.match(/modal-inner/) && !document.documentElement.className.match(/has-overlay/)) {
+			// When we deal with a modal and body-class `has-overlay` is not set
+			if (modalChild && modalChild.className.match(/modal-inner/) &&
+					!htmlClasses.match(/has-overlay/)) {
 
 				// Set an html class to prevent scrolling
 				document.documentElement.className += ' has-overlay';
@@ -90,11 +93,13 @@
 				modal._dispatchEvent('cssmodal:show', modal.activeElement);
 			}
 		} else {
-			document.documentElement.className = document.documentElement.className.replace(' has-overlay', '');
+			document.documentElement.className =
+					htmlClasses.replace(' has-overlay', '');
 
 			// If activeElement is already defined, delete it
 			if (modal.activeElement) {
-				modal.activeElement.className = modal.activeElement.className.replace(' is-active', '');
+				modal.activeElement.className =
+						modal.activeElement.className.replace(' is-active', '');
 
 				// Fire an event
 				modal._dispatchEvent('cssmodal:hide', modal.activeElement);
@@ -132,7 +137,7 @@
 		}
 	};
 
-
+	// Export CSSModal into global space
 	global.CSSModal = modal;
 
 }(window));
