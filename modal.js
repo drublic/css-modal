@@ -63,7 +63,7 @@
 
 
 	// When showing overlay, prevent background from scrolling
-	window.onhashchange = function () {
+	modal.mainHandler = function () {
 		var hash = window.location.hash.replace('#', '');
 		var modalElement = document.getElementById(hash);
 		var htmlClasses = document.documentElement.className;
@@ -113,6 +113,8 @@
 		}
 	};
 
+	window.addEventListener('hashchange', modal.mainHandler, false);
+	window.addEventListener('load', modal.mainHandler, false);
 
 	/*
 	 * Accessibility

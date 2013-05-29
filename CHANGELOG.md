@@ -2,6 +2,9 @@
 
 ## HEAD
 
+* Fire an event if page loads with hash (#37)
+* Add string for close button on mobile as data-attribute (#39)
+
 ## 1.0.2 - 21.05.2013
 
 * Overwrite IE8 hack for IE9 and 10 to get modal working without JS (#33)
