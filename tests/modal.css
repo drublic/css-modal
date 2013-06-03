@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * Tests for CSS Modal
  * by @drublic - http://drublic.de/
@@ -224,7 +225,7 @@ html {
     display: none;
   }
   .semantic-content .modal-close:after, ._modal .modal-close:after {
-    content: 'Close';
+    content: attr(data-close);
     top: 0.4em;
     left: 1em;
     z-index: 40;

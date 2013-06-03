@@ -276,7 +276,7 @@ html {
 			}
 
 			&:after {
-				content: 'Close';
+				content: attr(data-close);
 				top: 0.4em;
 				left: 1em;
 				z-index: 40;
