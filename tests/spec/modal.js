@@ -34,7 +34,7 @@
 		});
 
 		it('has event listener stub', function () {
-			expect(typeof document._addEventListener).toBe('function');
+			expect(typeof CSSModal._addEventListener).toBe('function');
 		});
 
 		it('has event triggerer', function () {
