@@ -2,6 +2,8 @@
 
 ## HEAD
 
+## 1.0.3 - 04.06.2013
+
 * Rewrite addEventListener polyfill to work with elements other than document
 * Fire an event if page loads with hash (#37)
 * Add string for close button on mobile as data-attribute (#39)
