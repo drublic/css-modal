@@ -18,13 +18,16 @@
 	modal.activeElement = undefined;
 
 	// Polyfill addEventListener for IE8 (only very basic)
-	document._addEventListener = document.addEventListener ||
-		function (event, callback) {
-			document.attachEvent('on' + event, callback);
-		};
+	modal._addEventListener = function (element, event, callback) {
+		if (element.addEventListener) {
+			element.addEventListener(event, callback, false);
+		} else {
+			element.attachEvent('on' + event, callback);
+		}
+	};
 
 	// Hide overlay when ESC is pressed
-	document._addEventListener('keyup', function (event) {
+	modal._addEventListener(document, 'keyup', function (event) {
 		var hash = window.location.hash.replace('#', '');
 
 		// If hash is not set
@@ -63,7 +66,7 @@
 
 
 	// When showing overlay, prevent background from scrolling
-	window.onhashchange = function () {
+	modal.mainHandler = function () {
 		var hash = window.location.hash.replace('#', '');
 		var modalElement = document.getElementById(hash);
 		var htmlClasses = document.documentElement.className;
@@ -113,6 +116,8 @@
 		}
 	};
 
+	modal._addEventListener(window, 'hashchange', modal.mainHandler, false);
+	modal._addEventListener(window, 'load', modal.mainHandler, false);
 
 	/*
 	 * Accessibility
