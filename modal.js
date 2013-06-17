@@ -71,6 +71,7 @@
 		var modalElement = document.getElementById(hash);
 		var htmlClasses = document.documentElement.className;
 		var modalChild;
+		var oldModal;
 
 		// If the hash element exists
 		if (modalElement) {
@@ -79,12 +80,18 @@
 			modalChild = modalElement.children[0];
 
 			// When we deal with a modal and body-class `has-overlay` is not set
-			if (modalChild && modalChild.className.match(/modal-inner/) &&
-					!htmlClasses.match(/has-overlay/)) {
+			if (modalChild && modalChild.className.match(/modal-inner/)) {
+				if (!htmlClasses.match(/has-overlay/)) {
 
-				// Set an html class to prevent scrolling
-				document.documentElement.className += ' has-overlay';
+					// Set an html class to prevent scrolling
+					document.documentElement.className += ' has-overlay';
+				}
 
+				// Unmark previous active element 
+				if (modal.activeElement) {
+					oldModal = modal.activeElement;
+					oldModal.className = oldModal.className.replace(' is-active', '');
+				}
 				// Mark modal as active
 				modalElement.className += ' is-active';
 				modal.activeElement = modalElement;
