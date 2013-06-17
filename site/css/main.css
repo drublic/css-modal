@@ -787,7 +787,7 @@ html {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42gEFAPr/AAAAAMwA0QDNTiUx4gAAAABJRU5ErkJggg==");
 }
 .semantic-content .modal-close:after {
-  content: '×';
+  content: '\00d7';
   position: absolute;
   top: 25px;
   left: 50%;
