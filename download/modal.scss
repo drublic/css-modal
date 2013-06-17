@@ -166,7 +166,7 @@ html {
 
 		// Actual close button on modal
 		&:after {
-			content: '×';
+			content: '\00d7';
 			position: absolute;
 			top: 25px;
 			left: 50%;
