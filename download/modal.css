@@ -1,6 +1,10 @@
-@charset "UTF-8";
 /**
+ * CSS Modal
  * Modal as reusable module
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ * @version 1.0.4
  *
  * Usage:
  *    selector {

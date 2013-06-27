@@ -2,6 +2,11 @@
 
 ## HEAD
 
+## 1.0.4 - 27.06.2013
+
+* Remove and add is-active-class properly on modals (#44)
+* Change × for its hex code (\00d7) to avoid causing problems during minification (#43)
+
 ## 1.0.3 - 04.06.2013
 
 * Rewrite addEventListener polyfill to work with elements other than document
