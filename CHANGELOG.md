@@ -2,6 +2,8 @@
 
 ## HEAD
 
+* Add native style momentum scrolling to content area
+
 ## 1.0.4 - 27.06.2013
 
 * Remove and add is-active-class properly on modals (#44)

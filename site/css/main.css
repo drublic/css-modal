@@ -667,7 +667,12 @@ code {
 }
 
 /**
+ * CSS Modal
  * Modal as reusable module
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ * @version 1.0.4
  *
  * Usage:
  *    selector {
@@ -730,6 +735,7 @@ html {
   margin-left: -325px;
   width: 650px;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   border-radius: 2px;
   background: #fff;
   -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);

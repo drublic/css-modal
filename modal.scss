@@ -95,6 +95,8 @@ html {
 		width: $modal-max-width;
 		overflow-x: hidden;
 
+		-webkit-overflow-scrolling: touch; // Native style momentum scrolling
+
 		border-radius: 2px;
 		background: #fff;
 		-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.6);
