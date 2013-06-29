@@ -1,5 +1,6 @@
 /*global describe, it, expect, afterEach */
 (function ($, CSSModal) {
+
 	'use strict';
 
 	// Testing if the modal works in general
@@ -63,6 +64,28 @@
 				expect($(window).scrollTop()).toBe(scrollTop);
 			}, 0);
 			$('body').height('auto');
+		});
+
+		// Class helper functions
+		describe('classes', function () {
+
+			it('adds class to an element', function () {
+				var docClasses;
+
+				CSSModal.addClass(document.documentElement, 'test-class');
+
+				docClasses = document.documentElement.className;
+				expect(docClasses).toMatch('test-class');
+			});
+
+			it('removes class on element', function () {
+				var docClasses;
+
+				CSSModal.removeClass(document.documentElement, 'test-class');
+
+				docClasses = document.documentElement.className;
+				expect(docClasses).not.toMatch('test-class');
+			});
 		});
 
 		// Testing the event displatcher (triggerer)

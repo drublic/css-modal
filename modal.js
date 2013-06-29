@@ -64,6 +64,15 @@
 		document.dispatchEvent(eventTigger);
 	};
 
+	// Convenience function to add a class to an element
+	modal.addClass = function (element, className) {
+		element.className += className;
+	};
+
+	// Convenience function to remove a class from an element
+	modal.removeClass = function (element, className) {
+		element.className = element.className.replace(className, '');
+	};
 
 	// When showing overlay, prevent background from scrolling
 	modal.mainHandler = function () {
@@ -84,16 +93,16 @@
 				if (!htmlClasses.match(/has-overlay/)) {
 
 					// Set an html class to prevent scrolling
-					document.documentElement.className += ' has-overlay';
+					modal.addClass(document.documentElement, 'has-overlay');
 				}
 
 				// Unmark previous active element
 				if (modal.activeElement) {
 					oldModal = modal.activeElement;
-					oldModal.className = oldModal.className.replace(' is-active', '');
+					modal.removeClass(oldModal, 'is-active');
 				}
 				// Mark modal as active
-				modalElement.className += ' is-active';
+				modal.addClass(modalElement, 'is-active');
 				modal.activeElement = modalElement;
 
 				// Set the focus to the modal
@@ -103,13 +112,11 @@
 				modal._dispatchEvent('cssmodal:show', modal.activeElement);
 			}
 		} else {
-			document.documentElement.className =
-					htmlClasses.replace(' has-overlay', '');
+			modal.removeClass(document.documentElement, 'has-overlay');
 
 			// If activeElement is already defined, delete it
 			if (modal.activeElement) {
-				modal.activeElement.className =
-						modal.activeElement.className.replace(' is-active', '');
+				modal.removeClass(modal.activeElement, 'is-active');
 
 				// Fire an event
 				modal._dispatchEvent('cssmodal:hide', modal.activeElement);
@@ -123,6 +130,7 @@
 		}
 	};
 
+	// Trigger main handler on load and hashchange
 	modal._addEventListener(window, 'hashchange', modal.mainHandler);
 	modal._addEventListener(window, 'load', modal.mainHandler);
 

@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Add convinience functions to add and remove classes on elements
 * Add native style momentum scrolling to content area
 
 ## 1.0.4 - 27.06.2013
