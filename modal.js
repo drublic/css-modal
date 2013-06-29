@@ -66,7 +66,9 @@
 
 	// Convenience function to add a class to an element
 	modal.addClass = function (element, className) {
-		element.className += className;
+		if (element && !element.className.match(/className/)) {
+			element.className += className;
+		}
 	};
 
 	// Convenience function to remove a class from an element
@@ -89,7 +91,6 @@
 
 	// When showing overlay, prevent background from scrolling
 	modal.mainHandler = function () {
-		var htmlClasses = document.documentElement.className;
 		var hash = window.location.hash.replace('#', '');
 		var modalElement = document.getElementById(hash);
 		var modalChild;
@@ -102,11 +103,9 @@
 
 			// When we deal with a modal and body-class `has-overlay` is not set
 			if (modalChild && modalChild.className.match(/modal-inner/)) {
-				if (!htmlClasses.match(/has-overlay/)) {
 
-					// Set an html class to prevent scrolling
-					modal.addClass(document.documentElement, 'has-overlay');
-				}
+				// Set an html class to prevent scrolling
+				modal.addClass(document.documentElement, 'has-overlay');
 
 				// Unmark previous active element
 				modal.unsetActive(modalElement);
