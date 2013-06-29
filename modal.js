@@ -67,19 +67,25 @@
 	// Convenience function to add a class to an element
 	modal.addClass = function (element, className) {
 		if (element && !element.className.match(/className/)) {
-			element.className += className;
+			element.className += ' ' + className;
 		}
 	};
 
 	// Convenience function to remove a class from an element
 	modal.removeClass = function (element, className) {
-		element.className = element.className.replace(className, '');
+		element.className = element.className.replace(' ' + className, '');
 	};
 
 	// Mark modal as active
 	modal.setActive = function (element) {
 		modal.addClass(element, 'is-active');
 		modal.activeElement = element;
+
+		// Set the focus to the modal
+		modal.setFocus(element.id);
+
+		// Fire an event
+		modal._dispatchEvent('cssmodal:show', modal.activeElement);
 	};
 
 	// Unset previous active modal
@@ -112,19 +118,13 @@
 
 				// Mark the active element
 				modal.setActive(modalElement);
-
-				// Set the focus to the modal
-				modal.setFocus(hash);
-
-				// Fire an event
-				modal._dispatchEvent('cssmodal:show', modal.activeElement);
 			}
 		} else {
 			modal.removeClass(document.documentElement, 'has-overlay');
 
 			// If activeElement is already defined, delete it
 			if (modal.activeElement) {
-				modal.removeClass(modal.activeElement, 'is-active');
+				modal.unsetActive();
 
 				// Fire an event
 				modal._dispatchEvent('cssmodal:hide', modal.activeElement);

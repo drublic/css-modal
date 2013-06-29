@@ -45,7 +45,7 @@
 				CSSModal.addClass(document.documentElement, 'test-class');
 
 				docClasses = document.documentElement.className;
-				expect(docClasses).toMatch('test-class');
+				expect(docClasses).toMatch(' test-class');
 			});
 
 			it('removes class on element', function () {
@@ -54,7 +54,7 @@
 				CSSModal.removeClass(document.documentElement, 'test-class');
 
 				docClasses = document.documentElement.className;
-				expect(docClasses).not.toMatch('test-class');
+				expect(docClasses).not.toMatch(' test-class');
 			});
 		});
 
