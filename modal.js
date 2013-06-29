@@ -18,7 +18,7 @@
 	modal.activeElement = undefined;
 
 	// Polyfill addEventListener for IE8 (only very basic)
-	modal._addEventListener = function (element, event, callback) {
+	modal.on = function (event, element, callback) {
 		if (element.addEventListener) {
 			element.addEventListener(event, callback, false);
 		} else {
@@ -27,7 +27,7 @@
 	};
 
 	// Hide overlay when ESC is pressed
-	modal._addEventListener(document, 'keyup', function (event) {
+	modal.on('keyup', document, function (event) {
 		var hash = window.location.hash.replace('#', '');
 
 		// If hash is not set
@@ -137,8 +137,8 @@
 	};
 
 	// Trigger main handler on load and hashchange
-	modal._addEventListener(window, 'hashchange', modal.mainHandler);
-	modal._addEventListener(window, 'load', modal.mainHandler);
+	modal.on('hashchange', window, modal.mainHandler);
+	modal.on('load', window, modal.mainHandler);
 
 	/*
 	 * Accessibility

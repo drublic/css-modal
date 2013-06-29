@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Rename function `_addEventListener` to `on`
 * Move set and unset of modal in own function
 * Add convinience functions to add and remove classes on elements
 * Add native style momentum scrolling to content area

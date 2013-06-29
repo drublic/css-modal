@@ -63,7 +63,7 @@
 		describe('event functions', function () {
 
 			it('has event listener stub', function () {
-				expect(typeof CSSModal._addEventListener).toBe('function');
+				expect(typeof CSSModal.on).toBe('function');
 			});
 
 			it('has event triggerer', function () {
