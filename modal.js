@@ -92,6 +92,15 @@
 	modal.unsetActive = function () {
 		if (modal.activeElement) {
 			modal.removeClass(modal.activeElement, 'is-active');
+
+			// Fire an event
+			modal._dispatchEvent('cssmodal:hide', modal.activeElement);
+
+			// Unfocus
+			modal.removeFocus();
+
+			// Reset active element
+			modal.activeElement = null;
 		}
 	};
 
@@ -123,18 +132,7 @@
 			modal.removeClass(document.documentElement, 'has-overlay');
 
 			// If activeElement is already defined, delete it
-			if (modal.activeElement) {
-				modal.unsetActive();
-
-				// Fire an event
-				modal._dispatchEvent('cssmodal:hide', modal.activeElement);
-
-				// Reset active element
-				modal.activeElement = null;
-
-				// Unfocus
-				modal.removeFocus();
-			}
+			modal.unsetActive();
 		}
 	};
 
