@@ -49,7 +49,7 @@
 	}, false);
 
 	// Convenience function to trigger event
-	modal._dispatchEvent = function (event, modal) {
+	modal.trigger = function (event, modal) {
 		var eventTigger;
 
 		if (!document.createEvent) {
@@ -85,7 +85,7 @@
 		modal.setFocus(element.id);
 
 		// Fire an event
-		modal._dispatchEvent('cssmodal:show', modal.activeElement);
+		modal.trigger('cssmodal:show', modal.activeElement);
 	};
 
 	// Unset previous active modal
@@ -94,7 +94,7 @@
 			modal.removeClass(modal.activeElement, 'is-active');
 
 			// Fire an event
-			modal._dispatchEvent('cssmodal:hide', modal.activeElement);
+			modal.trigger('cssmodal:hide', modal.activeElement);
 
 			// Unfocus
 			modal.removeFocus();

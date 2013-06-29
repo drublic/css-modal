@@ -67,7 +67,7 @@
 			});
 
 			it('has event triggerer', function () {
-				expect(typeof CSSModal._dispatchEvent).toBe('function');
+				expect(typeof CSSModal.trigger).toBe('function');
 			});
 
 			it('is hidden after ESC key press', function () {
@@ -108,7 +108,7 @@
 					eventCalled = true;
 				});
 
-				CSSModal._dispatchEvent('newEvent', { 'id': 1 });
+				CSSModal.trigger('newEvent', { 'id': 1 });
 
 				expect(eventCalled).toBeTruthy();
 			});
@@ -121,7 +121,7 @@
 					eventData = e.originalEvent.customData;
 				});
 
-				CSSModal._dispatchEvent('newEvent', { 'id': 1 });
+				CSSModal.trigger('newEvent', { 'id': 1 });
 
 				expect(typeof eventData.modal).toBe('object');
 				expect(eventData.modal.id).toBe(1);
