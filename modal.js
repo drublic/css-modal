@@ -74,13 +74,25 @@
 		element.className = element.className.replace(className, '');
 	};
 
+	// Mark modal as active
+	modal.setActive = function (element) {
+		modal.addClass(element, 'is-active');
+		modal.activeElement = element;
+	};
+
+	// Unset previous active modal
+	modal.unsetActive = function () {
+		if (modal.activeElement) {
+			modal.removeClass(modal.activeElement, 'is-active');
+		}
+	};
+
 	// When showing overlay, prevent background from scrolling
 	modal.mainHandler = function () {
+		var htmlClasses = document.documentElement.className;
 		var hash = window.location.hash.replace('#', '');
 		var modalElement = document.getElementById(hash);
-		var htmlClasses = document.documentElement.className;
 		var modalChild;
-		var oldModal;
 
 		// If the hash element exists
 		if (modalElement) {
@@ -97,13 +109,10 @@
 				}
 
 				// Unmark previous active element
-				if (modal.activeElement) {
-					oldModal = modal.activeElement;
-					modal.removeClass(oldModal, 'is-active');
-				}
-				// Mark modal as active
-				modal.addClass(modalElement, 'is-active');
-				modal.activeElement = modalElement;
+				modal.unsetActive(modalElement);
+
+				// Mark the active element
+				modal.setActive(modalElement);
 
 				// Set the focus to the modal
 				modal.setFocus(hash);
