@@ -9,7 +9,6 @@
 	"ignore": [
 		"download",
 		"node_modules",
-		"site",
 		"tests",
 		".editorconfig",
 		".gitignore",

@@ -15,7 +15,6 @@ module.exports = function (grunt) {
 			all: [
 				'Gruntfile.js',
 				'modal.js',
-				'site/js/main.js',
 				'tests/spec/modal.js'
 			],
 			options: {
@@ -31,7 +30,6 @@ module.exports = function (grunt) {
 					style: 'expanded'
 				},
 				files: {
-					'site/css/main.css': 'site/scss/page.scss',
 					'tests/modal.css': 'tests/modal.scss'
 				}
 			},
@@ -72,14 +70,13 @@ module.exports = function (grunt) {
 		// Watch that stuff
 		watch: {
 			scss: {
-				files: ['modal.scss', 'site/scss/**/*.scss', 'tests/*.scss'],
+				files: ['modal.scss', 'tests/*.scss'],
 				tasks: 'sass:dev'
 			},
 
 			hint: {
 				files: [
 					'modal.js',
-					'site/js/main.js',
 					'tests/spec/modal.js'
 				],
 				tasks: 'jshint'
