@@ -15,8 +15,7 @@ module.exports = function (grunt) {
 			all: [
 				'Gruntfile.js',
 				'modal.js',
-				'site/js/main.js',
-				'tests/spec/modal.js'
+				'site/js/main.js'
 			],
 			options: {
 				jshintrc: '.jshintrc'
@@ -31,56 +30,22 @@ module.exports = function (grunt) {
 					style: 'expanded'
 				},
 				files: {
-					'site/css/main.css': 'site/scss/page.scss',
-					'tests/modal.css': 'tests/modal.scss'
+					'site/css/main.css': 'site/scss/page.scss'
 				}
-			},
-
-			dist: {
-				options: {
-					unixNewlines: true,
-					style: 'expanded'
-				},
-				files: {
-					'download/modal.css': 'modal.scss'
-				}
-			}
-		},
-
-		// Copy
-		copy: {
-			dist: {
-				files: [{
-					expand: true,
-					src: [
-						'modal.scss',
-						'modal.js'
-					],
-					dest: 'download/'
-				}]
-			}
-		},
-
-		jasmine: {
-			src: 'modal.js',
-			options: {
-				outfile: 'tests/_SpecRunner.html',
-				template: 'tests/index.html'
 			}
 		},
 
 		// Watch that stuff
 		watch: {
 			scss: {
-				files: ['modal.scss', 'site/scss/**/*.scss', 'tests/*.scss'],
+				files: ['modal.scss', 'site/scss/**/*.scss'],
 				tasks: 'sass:dev'
 			},
 
 			hint: {
 				files: [
 					'modal.js',
-					'site/js/main.js',
-					'tests/spec/modal.js'
+					'site/js/main.js'
 				],
 				tasks: 'jshint'
 			},
@@ -108,16 +73,8 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-jasmine');
 
 	// Default task
 	grunt.registerTask('default', ['sass', 'jshint', 'jasmine']);
-
-	// Building a new version
-	grunt.registerTask('dist', ['jasmine', 'sass:dist', 'copy:dist']);
-
-	// Travis CI task
-	grunt.registerTask('travis', ['jshint', 'jasmine']);
-
 
 };
