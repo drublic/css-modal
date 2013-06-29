@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Apply all functions directly on the modal-object
 * Rename function `_dispatchEvent` to `trigger`
 * Rename function `_addEventListener` to `on`
 * Move set and unset of modal in own function
