@@ -34,37 +34,7 @@
 			expect($modal.css('opacity')).toBe('1');
 		});
 
-		it('has event listener stub', function () {
-			expect(typeof CSSModal._addEventListener).toBe('function');
-		});
 
-		it('has event triggerer', function () {
-			expect(typeof CSSModal._dispatchEvent).toBe('function');
-		});
-
-		it('is hidden after ESC key press', function () {
-			window.location.hash = '#modal';
-
-			var e = $.Event('keypress');
-			e.which = 65; // ESC
-			$(document).trigger(e);
-
-			setTimeout(function () {
-				expect($modal.css('opacity')).toBe('0');
-			}, 0);
-		});
-
-		it('has correct scroll position', function () {
-			var scrollTop = $(window).scrollTop();
-			$('body').height(5555);
-
-			window.location.hash = '#modal';
-
-			setTimeout(function () {
-				expect($(window).scrollTop()).toBe(scrollTop);
-			}, 0);
-			$('body').height('auto');
-		});
 
 		// Class helper functions
 		describe('classes', function () {
@@ -87,6 +57,45 @@
 				expect(docClasses).not.toMatch('test-class');
 			});
 		});
+
+
+		// All functions for events
+		describe('event functions', function () {
+
+			it('has event listener stub', function () {
+				expect(typeof CSSModal._addEventListener).toBe('function');
+			});
+
+			it('has event triggerer', function () {
+				expect(typeof CSSModal._dispatchEvent).toBe('function');
+			});
+
+			it('is hidden after ESC key press', function () {
+				window.location.hash = '#modal';
+
+				var e = $.Event('keypress');
+				e.which = 65; // ESC
+				$(document).trigger(e);
+
+				setTimeout(function () {
+					expect($modal.css('opacity')).toBe('0');
+				}, 0);
+			});
+
+			// Double check
+			it('has correct scroll position', function () {
+				var scrollTop = $(window).scrollTop();
+				$('body').height(5555);
+
+				window.location.hash = '#modal';
+
+				setTimeout(function () {
+					expect($(window).scrollTop()).toBe(scrollTop);
+				}, 0);
+				$('body').height('auto');
+			});
+		});
+
 
 		// Testing the event displatcher (triggerer)
 		describe('dispatch event', function () {
