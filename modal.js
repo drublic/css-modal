@@ -17,6 +17,12 @@
 		lastActive: undefined, // Store for last active elemet
 		stackedElements: [], // Store for stacked elements
 
+		// All elements that can get focus, can be tabbed in a modal
+		tabbableElements: 'a[href], area[href], input:not([disabled]),' +
+			'select:not([disabled]), textarea:not([disabled]),' +
+			'button:not([disabled]), iframe, object, embed, *[tabindex],' +
+			'*[contenteditable]',
+
 		// Polyfill addEventListener for IE8 (only very basic)
 		on: function (event, element, callback) {
 			if (element.addEventListener) {
@@ -63,6 +69,9 @@
 
 				// New focussing
 				modal.activeElement.focus();
+
+				// Add handler to keep the focus
+				modal.keepFocus(modal.activeElement);
 			}
 		},
 
@@ -71,6 +80,30 @@
 			if (modal.lastActive) {
 				modal.lastActive.focus();
 			}
+		},
+
+		// Keep focus inside the modal
+		keepFocus: function (element) {
+			var allTabbableElements = element.querySelectorAll(modal.tabbableElements);
+			var firstTabbableElement = allTabbableElements[0];
+			var lastTabbableElement = allTabbableElements[allTabbableElements.length - 1];
+
+			var focusHandler = function (event) {
+				var keyCode = event.which || event.keyCode;
+
+				// TAB pressed
+				if (keyCode === 9) {
+					if (event.preventDefault) {
+						event.preventDefault();
+					} else {
+						event.returnValue = false;
+					}
+
+					firstTabbableElement.focus();
+				}
+			};
+
+			modal.on('keydown', lastTabbableElement, focusHandler);
 		},
 
 		// Mark modal as active

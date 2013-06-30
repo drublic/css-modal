@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Add function to keep focus in modal when tabbing through (#26)
 * Allow multiple, stackable modals (#20)
 * Apply all functions directly on the modal-object
 * Rename function `_dispatchEvent` to `trigger`
