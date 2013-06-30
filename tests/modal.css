@@ -6,16 +6,10 @@
  */
 /**
  * CSS Modal
- * Modal as reusable module
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @version 1.0.4
- *
- * Usage:
- *    selector {
- *        @extend %modal;
- *    }
+ * @version 1.1.0
  */
 /*
  * Configuration
@@ -243,6 +237,29 @@ html {
     max-height: 265px;
     max-height: 40vh;
   }
+}
+.is-stacked.semantic-content, .is-stacked._modal {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.is-stacked.semantic-content .modal-inner, .is-stacked._modal .modal-inner {
+  -webkit-transition: -webkit-transform .25s ease-in-out;
+  -moz-transition: -moz-transform .25s ease-in-out;
+  -o-transition: -o-transform .25s ease-in-out;
+  -ms-transition: -ms-transform .25s ease-in-out;
+  transition: transform .25s ease-in-out;
+  -webkit-transform: translate(0, 0) scale(0.9, 0.9);
+  -moz-transform: translate(0, 0) scale(0.9, 0.9);
+  -o-transform: translate(0, 0) scale(0.9, 0.9);
+  -ms-transform: translate(0, 0) scale(0.9, 0.9);
+  transform: translate(0, 0) scale(0.9, 0.9);
+}
+.is-stacked.semantic-content .modal-close, .is-stacked._modal .modal-close {
+  opacity: 0;
 }
 
 @media screen and (min-width: 30em) {

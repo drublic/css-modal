@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Allow multiple, stackable modals (#20)
 * Apply all functions directly on the modal-object
 * Rename function `_dispatchEvent` to `trigger`
 * Rename function `_addEventListener` to `on`

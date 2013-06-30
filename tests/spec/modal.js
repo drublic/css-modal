@@ -34,6 +34,21 @@
 			expect($modal.css('opacity')).toBe('1');
 		});
 
+		it('has class is-active when hash is set', function () {
+			window.location.hash = '#modal';
+
+			setTimeout(function () {
+				expect($modal.hasClass('is-active')).toBe(true);
+			}, 0);
+		});
+
+		it('has not class is-active when hash is #!', function () {
+			window.location.hash = '#!';
+
+			setTimeout(function () {
+				expect($modal.hasClass('is-active')).not.toBe(true);
+			}, 0);
+		});
 
 
 		// Class helper functions
@@ -156,6 +171,34 @@
 					expect(eventCalled).toBeTruthy();
 				}, 0);
 			});
+		});
+
+
+		// Stackable modals
+		describe('Stackable Modal', function () {
+
+			it('has class is-stacked', function () {
+				window.location.hash = '#modal';
+				window.location.hash = '#stackable';
+
+				setTimeout(function () {
+					expect($modal.hasClass('is-stacked')).toBe(true);
+				}, 0);
+			});
+
+			it('shows unstacked modal after close', function () {
+				window.location.hash = '#modal';
+				window.location.hash = '#stackable';
+
+				$('#stackable .modal-close').trigger('click');
+
+				setTimeout(function () {
+					expect($modal.hasClass('is-stacked')).not.toBe(true);
+					expect($modal.hasClass('is-active')).toBe(true);
+				}, 0);
+			});
+
+
 		});
 	});
 
