@@ -307,36 +307,54 @@ html {
 
 	// Stackable Modals
 	&.is-stacked {
-
-		-webkit-transform: translate(0, 0);
-		   -moz-transform: translate(0, 0);
-		     -o-transform: translate(0, 0);
-		    -ms-transform: translate(0, 0);
-		        transform: translate(0, 0);
+		-webkit-transform: translate(0, 0) scale(1, 1);
+		   -moz-transform: translate(0, 0) scale(1, 1);
+		     -o-transform: translate(0, 0) scale(1, 1);
+		    -ms-transform: translate(0, 0) scale(1, 1);
+		        transform: translate(0, 0) scale(1, 1);
 
 		opacity: 1;
 
 		.modal-inner {
-
-		-webkit-transition: -webkit-transform .25s ease-in-out;
-		   -moz-transition:    -moz-transform .25s ease-in-out;
-		     -o-transition:      -o-transform .25s ease-in-out;
-		    -ms-transition:     -ms-transform .25s ease-in-out;
-		        transition:         transform .25s ease-in-out;
-
-			-webkit-transform: translate(0, 0) scale(0.9, 0.9);
-			   -moz-transform: translate(0, 0) scale(0.9, 0.9);
-			     -o-transform: translate(0, 0) scale(0.9, 0.9);
-			    -ms-transform: translate(0, 0) scale(0.9, 0.9);
-			        transform: translate(0, 0) scale(0.9, 0.9);
+			-webkit-animation: scaleDown .7s ease both;
+			   -moz-animation: scaleDown .7s ease both;
+			        animation: scaleDown .7s ease both;
 		}
 
 		// Hide overlay and close button
 		.modal-close {
 			opacity: 0;
 		}
+
+		// On small screens
+		@media screen and (max-width: 30em) {
+			-webkit-animation: scaleDown .7s ease both;
+			   -moz-animation: scaleDown .7s ease both;
+			        animation: scaleDown .7s ease both;
+
+			.modal-inner {
+				-webkit-animation: none;
+				   -moz-animation: none;
+				        animation: none;
+			}
+
+			.modal-close {
+				opacity: 1;
+			}
+		}
 	}
 
+}
+
+// Keyframes for scale down of stacked modal on small screens
+@-webkit-keyframes scaleDown {
+	to { opacity: 0; -webkit-transform: scale(.8); }
+}
+@-moz-keyframes scaleDown {
+	to { opacity: 0; -moz-transform: scale(.8); }
+}
+@keyframes scaleDown {
+	to { opacity: 0; transform: scale(.8); }
 }
 
 
