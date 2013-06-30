@@ -13,9 +13,9 @@
 	// Storage for functions and attributes
 	var modal = {
 
-		// Store for currently active element
-		activeElement: undefined,
-		lastActive: undefined,
+		activeElement: undefined, // Store for currently active element
+		lastActive: undefined, // Store for last active elemet
+		stackedElements: [], // Store for stacked elements
 
 		// Polyfill addEventListener for IE8 (only very basic)
 		on: function (event, element, callback) {
@@ -86,7 +86,7 @@
 		},
 
 		// Unset previous active modal
-		unsetActive: function () {
+		unsetActive: function (isStacked) {
 			if (modal.activeElement) {
 				modal.removeClass(modal.activeElement, 'is-active');
 
@@ -96,9 +96,41 @@
 				// Unfocus
 				modal.removeFocus();
 
+				// Make modal stacked if needed
+				if (isStacked) {
+					modal.stackModal(modal.activeElement);
+				}
+
+				// If there are any stacked elements
+				if (!isStacked && modal.stackedElements.length > 0) {
+					modal.unstackModal();
+				}
+
 				// Reset active element
 				modal.activeElement = null;
 			}
+		},
+
+		// Stackable modal
+		stackModal: function (stackableModal) {
+			modal.addClass(stackableModal, 'is-stacked');
+
+			// Set modal as stacked
+			modal.stackedElements.push(modal.activeElement);
+		},
+
+		// Reactivate stacked modal
+		unstackModal: function () {
+			var stackedCount = modal.stackedElements.length;
+			var lastStacked = modal.stackedElements[stackedCount - 1];
+
+			modal.removeClass(lastStacked, 'is-stacked');
+
+			// Set hash to modal, activates the modal automatically
+			window.location.hash = lastStacked.id;
+
+			// Remove modal from stackedElements array
+			modal.stackedElements.splice(stackedCount - 1, 1);
 		},
 
 		// When showing overlay, prevent background from scrolling
@@ -119,8 +151,8 @@
 					// Set an html class to prevent scrolling
 					modal.addClass(document.documentElement, 'has-overlay');
 
-					// Unmark previous active element
-					modal.unsetActive(modalElement);
+					// Make previous element stackable
+					modal.unsetActive(true);
 
 					// Mark the active element
 					modal.setActive(modalElement);

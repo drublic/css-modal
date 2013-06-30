@@ -25,7 +25,31 @@
 
 			<div class="modal-inner">
 				<header>
-					<h2 id="modal-label">Headline</h2>
+					<h2 id="modal-label">A Modal</h2>
+				</header>
+
+				<div class="modal-content">
+					<p>Content.</p>
+					<p><a href="#stackable">Stackable Modal</a></p>
+				</div>
+
+				<footer>
+					<p>Footer</p>
+				</footer>
+			</div>
+
+			<!-- Use Hash-Bang to maintain scroll position when closing modal -->
+			<a href="#!" class="modal-close" title="Close this modal"
+					data-dismiss="modal">&times;</a>
+		</section>
+
+		<!-- A modal with its content -->
+		<section class="semantic-content" id="stackable"
+				tabindex="-1" role="dialog" aria-labelledby="stackable-label" aria-hidden="true">
+
+			<div class="modal-inner">
+				<header>
+					<h2 id="stackable-label">Stacked Modal</h2>
 				</header>
 
 				<div class="modal-content">
