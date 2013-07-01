@@ -92,18 +92,28 @@
 				var keyCode = event.which || event.keyCode;
 
 				// TAB pressed
-				if (keyCode === 9) {
-					if (event.preventDefault) {
-						event.preventDefault();
-					} else {
-						event.returnValue = false;
-					}
+				if (keyCode !== 9) {
+					return;
+				}
 
+				// Polyfill to prevent the default behavior of events
+				event.preventDefault = event.preventDefault || function () {
+					event.returnValue = false;
+				};
+
+				// Move focus to first element that can be tabbed if Shift isn't used
+				if (event.target === lastTabbableElement && !event.shiftKey) {
+					event.preventDefault();
 					firstTabbableElement.focus();
+
+				// Move focus to last element that can be tabbed if Shift is used
+				} else if (event.target === firstTabbableElement && event.shiftKey) {
+					event.preventDefault();
+					lastTabbableElement.focus();
 				}
 			};
 
-			modal.on('keydown', lastTabbableElement, focusHandler);
+			modal.on('keydown', element, focusHandler);
 		},
 
 		// Mark modal as active
