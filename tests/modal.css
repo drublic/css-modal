@@ -112,7 +112,9 @@ html {
 }
 .semantic-content .modal-close, ._modal .modal-close {
   display: block;
-  height: 0;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  margin: -1px;
   text-indent: -100px;
   overflow: hidden;
 }
