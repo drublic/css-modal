@@ -50,7 +50,7 @@
 
 		// Convenience function to add a class to an element
 		addClass: function (element, className) {
-			if (element && !element.className.match(/className/)) {
+			if (element && !element.className.match(className)) {
 				element.className += ' ' + className;
 			}
 		},
