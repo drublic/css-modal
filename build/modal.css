@@ -19,6 +19,15 @@ html {
   height: 100%;
   overflow-y: scroll;
 }
+@media screen and (max-width: 30em) {
+  .has-overlay {
+    height: 100%;
+  }
+  .has-overlay > body {
+    overflow: hidden;
+    height: 100%;
+  }
+}
 
 .semantic-content {
   -webkit-transform: translate(0, 100%);
