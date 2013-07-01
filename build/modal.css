@@ -197,7 +197,7 @@ html {
     right: 0;
     padding-top: 3em;
     height: 100%;
-    overflow: scroll;
+    overflow: auto;
     -webkit-box-shadow: none;
     box-shadow: none;
   }
