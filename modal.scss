@@ -146,7 +146,9 @@ html {
 	// A close button
 	.modal-close {
 		display: block;
-		height: 0; // Prevent close element to appear
+		height: 1px; // Prevent close element to appear
+		clip: rect(0 0 0 0);
+		margin: -1px;
 		text-indent: -100px;
 		overflow: hidden;
 
