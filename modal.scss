@@ -27,6 +27,15 @@ html {
 		height: 100%;
 		overflow-y: scroll;
 	}
+
+	@media screen and (max-width: 30em) {
+		height: 100%;
+
+		> body {
+			overflow: hidden;
+			height: 100%;
+		}
+	}
 }
 
 %modal {
