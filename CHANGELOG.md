@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Bugfix: open modal on pageload (#46)
 * Register CSSModal as module for AMD (#57)
 * Prevent body from scrolling when scrolling in modal on iOS and Android (#31)
 * Add function to keep focus in modal when tabbing through (#26)

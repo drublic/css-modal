@@ -62,7 +62,8 @@ html {
 	line-height: 1.3;
 
 	// Show modal when requested
-	&:target {
+	&:target,
+	&.is-active {
 
 	-webkit-transform: translate(0, 0);
 	   -moz-transform: translate(0, 0);
@@ -81,7 +82,8 @@ html {
 	}
 
 	// Overwrite IE8 hack for IE9 and IE10
-	&:target {
+	&:target,
+	&.is-active {
 		display: block\9;
 	}
 
@@ -232,7 +234,8 @@ html {
 		height: 100%;
 		bottom: auto;
 
-		&:target {
+		&:target,
+		&.is-active {
 			-webkit-transition: -webkit-transform .25s ease-in-out;
 			   -moz-transition:    -moz-transform .25s ease-in-out;
 			     -o-transition:      -o-transform .25s ease-in-out;
