@@ -48,7 +48,7 @@ html {
   line-height: 1.3;
   display: none\9;
 }
-.semantic-content:target {
+.semantic-content:target, .is-active.semantic-content {
   -webkit-transform: translate(0, 0);
   -moz-transform: translate(0, 0);
   -o-transform: translate(0, 0);
@@ -59,7 +59,7 @@ html {
 .is-active.semantic-content {
   display: block\9;
 }
-.semantic-content:target {
+.semantic-content:target, .is-active.semantic-content {
   display: block\9;
 }
 .semantic-content .modal-inner {
@@ -173,7 +173,7 @@ html {
     height: 100%;
     bottom: auto;
   }
-  .semantic-content:target {
+  .semantic-content:target, .is-active.semantic-content {
     -webkit-transition: -webkit-transform .25s ease-in-out;
     -moz-transition: -moz-transform .25s ease-in-out;
     -o-transition: -o-transform .25s ease-in-out;
