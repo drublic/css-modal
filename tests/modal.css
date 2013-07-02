@@ -5,13 +5,6 @@
  * http://drublic.github.com/css-modal
  */
 /**
- * @include x-multiple-backgrounds(
- *	rgba(0, 0, 0, 0.3),
- *	url('../img/someImage.png') no-repeat,
- *	('to bottom', #ddd, #aaa, #ddd)
- * );
- */
-/**
  * CSS Modal
  * Modal as reusable module
  * http://drublic.github.com/css-modal
