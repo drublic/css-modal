@@ -381,8 +381,8 @@ html {
 	@extend %modal;
 }
 
-// Fade in and scale the modal
-%modal--transition-scale {
+// Fade in and zoomIn the modal
+%modal--transition-zoomIn {
 	@extend %modal;
 
 	// Hide the modal
@@ -463,7 +463,7 @@ html {
 }
 
 // Fade in and downsample the modal
-%modal--transition-superscaled {
+%modal--transition-zoomOut {
 	@extend %modal;
 
 	// Hide the modal
@@ -618,6 +618,227 @@ html {
 			    -ms-transform: translateY(0);
 			        transform: translateY(0);
 
+			opacity: 1;
+			// Move back to proper position
+			top: 25px;
+		}
+	}
+}
+
+// Bounce in animation definition from top
+// shaking the window at the end
+@-webkit-keyframes shaky {
+	0% {
+		-webkit-transform: translateY(-100%);
+	}
+	60% {
+		-webkit-transform: translateX(5%) translateY(5%) rotate(-2deg);
+	}
+	80% {
+		-webkit-transform: translateX(5%) translateY(5%) rotate(2deg);
+	}
+	50%, 70%, 90% {
+		-webkit-transform: translateX(0%) translateY(0%);
+	}
+}
+
+// Bounce in animation definition from top
+@-webkit-keyframes bounce {
+	0% {
+		-webkit-transform: translateY(-100%);
+	}
+	60% {
+		-webkit-transform: translateY(5%);
+	}
+	85% {
+		-webkit-transform: translateY(0%);
+	}
+}
+
+@-moz-keyframes bounce {
+	0% {
+		-moz-transform: translateY(-100%);
+	}
+	60% {
+		-moz-transform: translateY(5%);
+	}
+	85% {
+		-moz-transform: translateY(0%);
+	}
+}
+
+@-o-keyframes bounce {
+	0% {
+		-o-transform: translateY(-100%);
+	}
+	60% {
+		-o-transform: translateY(5%);
+	}
+	85% {
+		-o-transform: translateY(0%);
+	}
+}
+
+@-ms-keyframes bounce {
+	0% {
+		-ms-transform: translateY(-100%);
+	}
+	60% {
+		-ms-transform: translateY(5%);
+	}
+	85% {
+		-ms-transform: translateY(0%);
+	}
+}
+
+@keyframes bounce {
+	0% {
+		transform: translateY(-100%);
+	}
+	60% {
+		transform: translateY(5%);
+	}
+	85% {
+		transform: translateY(0%);
+	}
+}
+
+// Bounce in from top
+%modal--transition-bounceFromTop {
+	@extend %modal;
+
+	// Hide the modal
+	width: 0;
+	height: 0;
+	overflow: hidden;
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+	}
+
+	.modal-close:after {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+		-webkit-transition-delay: 0.4s;
+		     -o-transition-delay: 0.4s;
+		        transition-delay: 0.4s;
+		opacity: 0;
+		// Needs to be moved into the center
+		// of the modal initially
+		top: 25px;
+		left: 50%;
+	}
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+		width: auto;
+		height: auto;
+
+		.modal-inner {
+			-webkit-animation-name: bounce;
+			   -moz-animation-name: bounce;
+			     -o-animation-name: bounce;
+			    -ms-animation-name: bounce;
+			        animation-name: bounce;
+
+			-webkit-animation-duration: 0.4s;
+			   -moz-animation-duration: 0.4s;
+			     -o-animation-duration: 0.4s;
+			    -ms-animation-duration: 0.4s;
+			        animation-duration: 0.4s;
+
+			-webkit-animation-fill-mode: both;
+			   -moz-animation-fill-mode: both;
+			     -o-animation-fill-mode: both;
+			    -ms-animation-fill-mode: both;
+			        animation-fill-mode: both;
+
+			opacity: 1;
+		}
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+		.modal-close:after {
+			opacity: 1;
+			// Move back to proper position
+			top: 25px;
+		}
+	}
+}
+
+// Bounce in from top
+%modal--transition-bounceFromTopShaky {
+	@extend %modal;
+
+	// Hide the modal
+	width: 0;
+	height: 0;
+	overflow: hidden;
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+	}
+
+	.modal-close:after {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+		-webkit-transition-delay: 0.6s;
+		     -o-transition-delay: 0.6s;
+		        transition-delay: 0.6s;
+
+		opacity: 0;
+		// Needs to be moved into the center
+		// of the modal initially
+		top: 25px;
+		left: 50%;
+	}
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+		width: auto;
+		height: auto;
+
+		.modal-inner {
+			-webkit-animation-name: shaky;
+			   -moz-animation-name: shaky;
+			     -o-animation-name: shaky;
+			    -ms-animation-name: shaky;
+			        animation-name: shaky;
+
+			-webkit-animation-duration: 0.6s;
+			   -moz-animation-duration: 0.6s;
+			     -o-animation-duration: 0.6s;
+			    -ms-animation-duration: 0.6s;
+			        animation-duration: 0.6s;
+
+			-webkit-animation-fill-mode: both;
+			   -moz-animation-fill-mode: both;
+			     -o-animation-fill-mode: both;
+			    -ms-animation-fill-mode: both;
+			        animation-fill-mode: both;
+
+			opacity: 1;
+		}
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+		.modal-close:after {
 			opacity: 1;
 			// Move back to proper position
 			top: 25px;
