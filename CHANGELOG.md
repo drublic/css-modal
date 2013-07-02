@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Add different modal animation styles (#51)
 * Bugfix: UTF-8 problem in Ruby 1.9.3 (#61)
 * Bugfix: open modal on pageload (#46)
 * Register CSSModal as module for AMD (#57)
