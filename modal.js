@@ -237,8 +237,17 @@
 	modal.on('hashchange', window, modal.mainHandler);
 	modal.on('load', window, modal.mainHandler);
 
+	// Expose modal for loaders that implement the Node module pattern.
+	if (typeof module === 'object' && module && typeof module.exports === 'object') {
+		module.exports = modal;
+
+	// Register as an AMD module
+	} else if (typeof define === 'function' && define.amd) {
+		define([], function () { return modal; });
 
 	// Export CSSModal into global space
-	global.CSSModal = modal;
+	} else if (typeof global === 'object' && typeof global.document === 'object') {
+		global.CSSModal = modal;
+	}
 
 }(window));
