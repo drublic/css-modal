@@ -149,7 +149,15 @@
 		}
 	};
 
-	// Export CSSModal into global space
-	global.CSSModal = modal;
+	if (typeof module === 'object' && module && typeof module.exports === 'object') {
+		// Expose modal for loaders that implement the Node module pattern.
+		module.exports = modal;
+	} else if (typeof define === 'function' && define.amd) {
+		// Register as an AMD module
+		define([], function () { return modal; });
+	} else if (typeof global === 'object' && typeof global.document === 'object') {
+		// Export CSSModal into global space
+		global.CSSModal = modal;
+	}
 
 }(window));
