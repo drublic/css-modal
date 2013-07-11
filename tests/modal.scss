@@ -12,4 +12,5 @@
 // Apply the modal with all its possible parts
 ._modal {
 	@extend %modal;
+	@extend %modal-theme;
 }
