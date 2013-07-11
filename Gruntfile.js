@@ -52,6 +52,9 @@ module.exports = function (grunt) {
 					expand: true,
 					src: [
 						'modal.scss',
+						'_modalConfig.scss',
+						'_modalCore.scss',
+						'_modalTheme.scss',
 						'modal.js'
 					],
 					dest: 'download/'
@@ -70,7 +73,13 @@ module.exports = function (grunt) {
 		// Watch that stuff
 		watch: {
 			scss: {
-				files: ['modal.scss', 'tests/*.scss'],
+				files: [
+					'modal.scss',
+					'_modalConfig.scss',
+					'_modalCore.scss',
+					'_modalTheme.scss',
+					'tests/*.scss'
+				],
 				tasks: 'sass'
 			},
 

@@ -1,0 +1,308 @@
+// Prevent overflow on HTML element
+html {
+	overflow-y: scroll;
+}
+
+.has-overlay {
+	overflow: hidden;
+
+	> body {
+		height: 100%;
+		overflow-y: scroll;
+	}
+
+	@media screen and (max-width: 30em) {
+		height: 100%;
+
+		> body {
+			overflow: hidden;
+			height: 100%;
+		}
+	}
+}
+
+%modal {
+	// Hide initially
+	-webkit-transform: translate(0, 100%);
+	   -moz-transform: translate(0, 100%);
+	     -o-transform: translate(0, 100%);
+	    -ms-transform: translate(0, 100%);
+	        transform: translate(0, 100%);
+	-webkit-transform: translate3d(0, 100%, 0); // iOS
+	        transform: translate3d(0, 100%, 0);
+
+	// Maintain a fixed position
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: $modal-layer;
+
+	opacity: 0;
+
+	// Show modal when requested
+	&:target {
+
+	-webkit-transform: translate(0, 0);
+	   -moz-transform: translate(0, 0);
+	     -o-transform: translate(0, 0);
+	    -ms-transform: translate(0, 0);
+	        transform: translate(0, 0);
+
+		opacity: 1;
+	}
+
+	// Internet Explorer 8
+	display: none\9;
+
+	&.is-active {
+		display: block\9;
+	}
+
+	// Overwrite IE8 hack for IE9 and IE10
+	&:target {
+		display: block\9;
+	}
+
+	// Content Area
+	.modal-inner {
+		position: absolute;
+		top: 50px;
+		left: 50%;
+		z-index: 20;
+		margin-left: ($modal-max-width / 2) * -1;
+
+		width: $modal-max-width;
+		overflow-x: hidden;
+
+		-webkit-overflow-scrolling: touch; // Native style momentum scrolling
+
+		> img,
+		> video,
+		> iframe {
+			width: 100%;
+			height: auto;
+			min-height: 300px;
+		}
+
+		> img {
+			width: auto;
+			max-width: 100%;
+		}
+	}
+
+
+	// Content
+	.modal-content {
+		max-height: 400px;
+		max-height: 70vh;
+		overflow-x: hidden;
+		overflow-y: auto;
+
+		> * {
+			max-width: 100%;
+		}
+	}
+
+
+	// A close button
+	.modal-close {
+		display: block;
+		height: 1px; // Prevent close element to appear
+		clip: rect(0 0 0 0);
+		margin: -1px;
+		overflow: hidden;
+
+		// Background as close
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 10;
+		}
+
+		// Actual close button on modal
+		&:after {
+			position: absolute;
+			top: 25px;
+			left: 50%;
+			z-index: 20;
+			margin-left: ($modal-max-width / 2) - 40;
+		}
+	}
+
+
+	// When screen isn't as wide as the modal anymore
+	@media screen and (max-width: $modal-max-width + 40) {
+		.modal-inner {
+			width: auto;
+			left: 20px;
+			right: 20px;
+			margin-left: 0;
+		}
+
+		.modal-close {
+			left: auto;
+			right: 33px;
+			margin-left: 0;
+
+			&:after {
+				margin-left: 40%;
+			}
+		}
+	}
+
+	// For small screens adjust the modal
+	@media screen and (max-width: 30em) {
+		-webkit-transform: translate(0, 400px); // Use px to work around Android 2.3 bug
+		-webkit-transform: translate3d(0, 100%, 0); // And overwrite px if 3D transforms are supported
+		        transform: translate3d(0, 100%, 0);
+
+		-webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
+		   -moz-transition:    -moz-transform .25s ease-in-out, opacity 1ms .25s;
+		     -o-transition:      -o-transform .25s ease-in-out, opacity 1ms .25s;
+		    -ms-transition:     -ms-transform .25s ease-in-out, opacity 1ms .25s;
+		        transition:         transform .25s ease-in-out, opacity 1ms .25s;
+
+		display: block;
+		height: 100%;
+		bottom: auto;
+
+		&:target {
+			-webkit-transition: -webkit-transform .25s ease-in-out;
+			   -moz-transition:    -moz-transform .25s ease-in-out;
+			     -o-transition:      -o-transform .25s ease-in-out;
+			    -ms-transition:     -ms-transform .25s ease-in-out;
+			        transition:         transform .25s ease-in-out;
+		}
+
+		&:before {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 30;
+		}
+
+		.modal-inner {
+			-webkit-box-sizing: border-box;
+			   -moz-box-sizing: border-box;
+			        box-sizing: border-box;
+
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 100%;
+			overflow: auto;
+		}
+
+		.modal-content {
+			max-height: none;
+		}
+
+		.modal-close {
+			right: auto;
+			text-decoration: none;
+
+			&:before {
+				display: none;
+			}
+
+			&:after {
+				top: 0.4em;
+				left: 1em;
+				z-index: 40;
+				margin-left: 0;
+			}
+		}
+	}
+
+	// For small heights
+	@media screen and (max-height: 46em) and (min-width: 30em) {
+		.modal-content {
+			max-height: 340px;
+			max-height: 50vh;
+		}
+	}
+
+	@media screen and (max-height: 36em) and (min-width: 30em) {
+		.modal-content {
+			max-height: 265px;
+			max-height: 40vh;
+		}
+	}
+
+
+	// Stackable Modals
+	&.is-stacked {
+		-webkit-transform: translate(0, 0) scale(1, 1);
+		   -moz-transform: translate(0, 0) scale(1, 1);
+		     -o-transform: translate(0, 0) scale(1, 1);
+		    -ms-transform: translate(0, 0) scale(1, 1);
+		        transform: translate(0, 0) scale(1, 1);
+
+		opacity: 1;
+
+		.modal-inner {
+			-webkit-animation: scaleDown .7s ease both;
+			   -moz-animation: scaleDown .7s ease both;
+			        animation: scaleDown .7s ease both;
+		}
+
+		// Hide overlay and close button
+		.modal-close {
+			opacity: 0;
+		}
+
+		// On small screens
+		@media screen and (max-width: 30em) {
+			-webkit-animation: scaleDown .7s ease both;
+			   -moz-animation: scaleDown .7s ease both;
+			        animation: scaleDown .7s ease both;
+
+			.modal-inner {
+				-webkit-animation: none;
+				   -moz-animation: none;
+				        animation: none;
+			}
+
+			.modal-close {
+				opacity: 1;
+			}
+		}
+	}
+
+}
+
+// Keyframes for scale down of stacked modal on small screens
+@-webkit-keyframes scaleDown {
+	to { opacity: 0; -webkit-transform: scale(.8); }
+}
+@-moz-keyframes scaleDown {
+	to { opacity: 0; -moz-transform: scale(.8); }
+}
+@keyframes scaleDown {
+	to { opacity: 0; transform: scale(.8); }
+}
+
+// Fade in the modal
+%modal-fade {
+	@media screen and (min-width: 30em) {
+		-webkit-transition: opacity 0.4s;
+		     -o-transition: opacity 0.4s;
+		        transition: opacity 0.4s;
+	}
+
+
+	@extend %modal;
+	@extend %modal-theme;
+}
+
+.semantic-content {
+	@extend %modal-fade;
+}
