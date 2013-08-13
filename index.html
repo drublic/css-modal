@@ -23,15 +23,24 @@
 		<h2>Examples</h2>
 
 		<!-- Call the modal by clicking this link -->
-		<a href="#modal-text" class="call-modal" title="Clicking this link shows the modal">Demo</a>
+		<ul>
+			<li><a href="#modal-show" title="Clicking this link shows the modal">Demo Show</a></li>
+			<li><a href="#modal-fade" title="Clicking this link shows the modal">Demo Fade</a></li>
+			<li><a href="#modal-zoomin" title="Clicking this link shows the modal">Demo ZoomIn</a></li>
+			<li><a href="#modal-plainscreen" title="Clicking this link shows the modal">Demo PlainScreen</a></li>
+			<li><a href="#modal-zoomout" title="Clicking this link shows the modal">Demo ZoomOut</a></li>
+			<li><a href="#modal-slidefromtop" title="Clicking this link shows the modal">Demo slideFromTop</a></li>
+			<li><a href="#modal-bouncefromtop" title="Clicking this link shows the modal">Demo bounceFromTop</a></li>
+			<li><a href="#modal-bouncefromtopshaky" title="Clicking this link shows the modal">Demo bounceFromTopShaky</a></li>
+		</ul>
 
 		<!-- A modal with its content -->
-		<section class="semantic-content" id="modal-text"
-				tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+		<section class="modal--show" id="modal-show"
+				tabindex="-1" role="dialog" aria-labelledby="label-show" aria-hidden="true">
 
 			<div class="modal-inner">
 				<header>
-					<h2 id="modal-label">A Modal</h2>
+					<h2 id="label-show">A modal</h2>
 				</header>
 
 				<div class="modal-content">
@@ -46,33 +55,111 @@
 				</footer>
 			</div>
 
-			<!-- Use Hash-Bang to maintain scroll position when closing modal -->
 			<a href="#!" class="modal-close" title="Close this modal"
 					data-dismiss="modal" data-close="Close">&times;</a>
 		</section>
 
-		<!-- A modal with its content -->
-		<section class="semantic-content" id="stackable"
+		<section class="modal--show" id="stackable"
 				tabindex="-1" role="dialog" aria-labelledby="stackable-label" aria-hidden="true">
 
 			<div class="modal-inner">
+				<header><h2 id="stackable-label">Stacked modal</h2></header>
+				<div class="modal-content"><p>Content.</p></div>
+			</div>
+
+			<a href="#!" class="modal-close" title="Close this modal"
+					data-dismiss="modal" data-close="Close">&times;</a>
+		</section>
+
+		<section class="modal--fade" id="modal-fade"
+				tabindex="-1" role="dialog" aria-labelledby="label-fade" aria-hidden="true">
+
+			<div class="modal-inner">
+				<header><h2 id="label-fade">A fading modal</h2></header>
+				<div class="modal-content"><p>Content.</p></div>
+			</div>
+
+			<a href="#!" class="modal-close" title="Close this modal"
+					data-dismiss="modal" data-close="Close">&times;</a>
+		</section>
+
+		<section class="modal--zoomin" id="modal-zoomin"
+				tabindex="-1" role="dialog" aria-labelledby="label-zoomin" aria-hidden="true">
+
+			<div class="modal-inner">
+				<header><h2 id="label-zoomin">A zoomed in modal</h2></header>
+				<div class="modal-content"><p>Content.</p></div>
+			</div>
+
+			<a href="#!" class="modal-close" title="Close this modal"
+					data-dismiss="modal" data-close="Close">&times;</a>
+		</section>
+
+		<section class="modal--plainscreen" id="modal-plainscreen"
+				tabindex="-1" role="dialog" aria-labelledby="modal-plainscreen" aria-hidden="true">
+
+			<div class="modal-inner">
+				<header><h2 id="modal-plainscreen">A plain screen modal</h2></header>
+				<div class="modal-content"><p>Content.</p></div>
+			</div>
+
+			<a href="#!" class="modal-close" title="Close this modal"
+					data-dismiss="modal" data-close="Close">&times;</a>
+		</section>
+
+		<section class="modal--zoomout" id="modal-zoomout"
+				tabindex="-1" role="dialog" aria-labelledby="label-zoomout" aria-hidden="true">
+
+			<div class="modal-inner">
 				<header>
-					<h2 id="stackable-label">Stacked Modal</h2>
+					<h2 id="label-zoomout">A zoomed out modal</h2>
 				</header>
 
 				<div class="modal-content">
 					<p>Content.</p>
 				</div>
-
-				<footer>
-					<p>Footer</p>
-				</footer>
 			</div>
 
-			<!-- Use Hash-Bang to maintain scroll position when closing modal -->
 			<a href="#!" class="modal-close" title="Close this modal"
 					data-dismiss="modal" data-close="Close">&times;</a>
 		</section>
+
+		<section class="modal--slidefromtop" id="modal-slidefromtop"
+				tabindex="-1" role="dialog" aria-labelledby="label-slidefromtop" aria-hidden="true">
+
+			<div class="modal-inner">
+				<header><h2 id="label-slidefromtop">A modal that slides from the top</h2></header>
+				<div class="modal-content"><p>Content.</p></div>
+			</div>
+
+			<a href="#!" class="modal-close" title="Close this modal"
+					data-dismiss="modal" data-close="Close">&times;</a>
+		</section>
+
+		<section class="modal--bouncefromtop" id="modal-bouncefromtop"
+				tabindex="-1" role="dialog" aria-labelledby="label-bouncefromtop" aria-hidden="true">
+
+			<div class="modal-inner">
+				<header><h2 id="label-bouncefromtop">A modal that bounces from the top</h2></header>
+				<div class="modal-content"><p>Content.</p></div>
+			</div>
+
+			<a href="#!" class="modal-close" title="Close this modal"
+					data-dismiss="modal" data-close="Close">&times;</a>
+		</section>
+
+		<section class="modal--bouncefromtopshaky" id="modal-bouncefromtopshaky"
+				tabindex="-1" role="dialog" aria-labelledby="label-bouncefromtopshaky" aria-hidden="true">
+
+			<div class="modal-inner">
+				<header><h2 id="label-bouncefromtopshaky">A modal that bounces shakey from the top</h2></header>
+				<div class="modal-content"><p>Content.</p></div>
+			</div>
+
+			<a href="#!" class="modal-close" title="Close this modal"
+					data-dismiss="modal" data-close="Close">&times;</a>
+		</section>
+
 
 		<div class="content">
 			<p>Disrupt brunch keffiyeh chillwave Williamsburg. Excepteur food truck thundercats voluptate ethical, whatever in craft beer leggings proident Vice pour-over polaroid. Terry Richardson hoodie Truffaut Wes Anderson kale chips, synth nostrud elit sint id cillum bespoke. Semiotics synth Cosby sweater brunch beard, lo-fi esse Godard Echo Park sapiente mollit wayfarers. Cillum lomo cliche, YOLO Cosby sweater fixie tumblr eu umami Schlitz assumenda culpa. Chillwave church-key plaid, labore nulla flannel kogi Tonx single-origin coffee cred ex sustainable. Mlkshk ennui polaroid post-ironic sunt, keytar semiotics sriracha fashion axe labore church-key art party.</p>
