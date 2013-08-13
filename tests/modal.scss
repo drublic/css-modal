@@ -13,3 +13,31 @@
 ._modal {
 	@extend %modal;
 }
+
+.modal--fade {
+	@extend %modal--transition-fade;
+}
+
+.modal--zoomin {
+	@extend %modal--transition-zoomIn;
+}
+
+.modal--plainscreen {
+	@extend %modal--transition-plainScreen;
+}
+
+.modal--zoomout {
+	@extend %modal--transition-zoomOut;
+}
+
+.modal--slidefromtop {
+	@extend %modal--transition-slideFromTop;
+}
+
+.modal--bouncefromtop {
+	@extend %modal--transition-bounceFromTop;
+}
+
+.modal--bouncefromtopshaky {
+	@extend %modal--transition-bounceFromTopShaky;
+}
