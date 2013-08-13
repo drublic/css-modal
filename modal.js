@@ -34,18 +34,19 @@
 
 		// Convenience function to trigger event
 		trigger: function (event, modal) {
-			var eventTigger;
+			var eventTrigger;
 
-			if (!document.createEvent) {
+			if (!window.CustomEvent) {
 				return;
 			}
 
-			eventTigger = document.createEvent('Event');
+			eventTrigger = new CustomEvent(event, {
+				detail: {
+					'modal': modal
+				}
+			});
 
-			eventTigger.initEvent(event, true, true);
-			eventTigger.customData = { 'modal': modal };
-
-			document.dispatchEvent(eventTigger);
+			document.dispatchEvent(eventTrigger);
 		},
 
 		// Convenience function to add a class to an element
