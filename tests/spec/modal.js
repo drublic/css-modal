@@ -133,7 +133,7 @@
 				var eventData;
 
 				$(document).on('newEvent', function (e) {
-					eventData = e.originalEvent.customData;
+					eventData = e.originalEvent.detail;
 				});
 
 				CSSModal.trigger('newEvent', { 'id': 1 });

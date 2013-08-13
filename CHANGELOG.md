@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Rewrite trigger method to use `new CustomEvent` (#56)
 * Update npm dependencies
 * Add different modal animation styles (#51)
 * Bugfix: UTF-8 problem in Ruby 1.9.3 (#61)
