@@ -17,13 +17,15 @@
 html {
   overflow-y: scroll;
 }
+html > body {
+  overflow-y: scroll;
+}
 
 .has-overlay {
   overflow: hidden;
 }
 .has-overlay > body {
   height: 100%;
-  overflow-y: scroll;
 }
 @media screen and (max-width: 30em) {
   .has-overlay {
@@ -50,7 +52,7 @@ html {
   bottom: 0;
   z-index: 999;
   opacity: 0;
-  color: #222;
+  color: #222222;
   line-height: 1.3;
   display: none\9;
 }
