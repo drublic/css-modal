@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Add better function documentation in JavaScript
 * Rewrite trigger method to use `new CustomEvent` (#56)
 * Update npm dependencies
 * Add different modal animation styles (#51)

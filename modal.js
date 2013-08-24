@@ -10,7 +10,9 @@
 
 	'use strict';
 
-	// Storage for functions and attributes
+	/*
+	 * Storage for functions and attributes
+	 */
 	var modal = {
 
 		activeElement: undefined, // Store for currently active element
@@ -23,7 +25,12 @@
 			'button:not([disabled]), iframe, object, embed, *[tabindex],' +
 			'*[contenteditable]',
 
-		// Polyfill addEventListener for IE8 (only very basic)
+		/*
+		 * Polyfill addEventListener for IE8 (only very basic)
+		 * @param event {string} event type
+		 * @param element {Node} node to fire event on
+		 * @param callback {function} gets fired if event is triggered
+		 */
 		on: function (event, element, callback) {
 			if (element.addEventListener) {
 				element.addEventListener(event, callback, false);
@@ -32,7 +39,11 @@
 			}
 		},
 
-		// Convenience function to trigger event
+		/*
+		 * Convenience function to trigger event
+		 * @param event {string} event type
+		 * @param modal {string} id of modal that the event is triggerd on
+		 */
 		trigger: function (event, modal) {
 			var eventTrigger;
 
@@ -49,19 +60,29 @@
 			document.dispatchEvent(eventTrigger);
 		},
 
-		// Convenience function to add a class to an element
+		/*
+		 * Convenience function to add a class to an element
+		 * @param element {Node} element to add class to
+		 * @param className {string}
+		 */
 		addClass: function (element, className) {
 			if (element && !element.className.match(className)) {
 				element.className += ' ' + className;
 			}
 		},
 
-		// Convenience function to remove a class from an element
+		/*
+		 * Convenience function to remove a class from an element
+		 * @param element {Node} element to remove class off
+		 * @param className {string}
+		 */
 		removeClass: function (element, className) {
-			element.className = element.className.replace(' ' + className, '');
+			element.className = element.className.replace(className, '').replace('  ', ' ');
 		},
 
-		// Focus modal
+		/*
+		 * Focus modal
+		 */
 		setFocus: function () {
 			if (modal.activeElement) {
 
@@ -76,14 +97,19 @@
 			}
 		},
 
-		// Unfocus
+		/*
+		 * Unfocus
+		 */
 		removeFocus: function () {
 			if (modal.lastActive) {
 				modal.lastActive.focus();
 			}
 		},
 
-		// Keep focus inside the modal
+		/*
+		 * Keep focus inside the modal
+		 * @param element {node} element to keep focus in
+		 */
 		keepFocus: function (element) {
 			var allTabbableElements = element.querySelectorAll(modal.tabbableElements);
 			var firstTabbableElement = allTabbableElements[0];
@@ -117,7 +143,10 @@
 			modal.on('keydown', element, focusHandler);
 		},
 
-		// Mark modal as active
+		/*
+		 * Mark modal as active
+		 * @param element {Node} element to set active
+		 */
 		setActive: function (element) {
 			modal.addClass(element, 'is-active');
 			modal.activeElement = element;
@@ -129,7 +158,10 @@
 			modal.trigger('cssmodal:show', modal.activeElement);
 		},
 
-		// Unset previous active modal
+		/*
+		 * Unset previous active modal
+		 * @param isStacked {boolean} true if element is stacked above another
+		 */
 		unsetActive: function (isStacked) {
 			if (modal.activeElement) {
 				modal.removeClass(modal.activeElement, 'is-active');
@@ -155,7 +187,10 @@
 			}
 		},
 
-		// Stackable modal
+		/*
+		 * Stackable modal
+		 * @param stackableModal {node} element to be stacked
+		 */
 		stackModal: function (stackableModal) {
 			modal.addClass(stackableModal, 'is-stacked');
 
@@ -163,7 +198,9 @@
 			modal.stackedElements.push(modal.activeElement);
 		},
 
-		// Reactivate stacked modal
+		/*
+		 * Reactivate stacked modal
+		 */
 		unstackModal: function () {
 			var stackedCount = modal.stackedElements.length;
 			var lastStacked = modal.stackedElements[stackedCount - 1];
@@ -177,7 +214,9 @@
 			modal.stackedElements.splice(stackedCount - 1, 1);
 		},
 
-		// When showing overlay, prevent background from scrolling
+		/*
+		 * When displaying modal, prevent background from scrolling
+		 */
 		mainHandler: function () {
 			var hash = window.location.hash.replace('#', '');
 			var modalElement = document.getElementById(hash);
@@ -211,7 +250,9 @@
 	};
 
 
-	// Hide overlay when ESC is pressed
+	/*
+	 * Hide overlay when ESC is pressed
+	 */
 	modal.on('keyup', document, function (event) {
 		var hash = window.location.hash.replace('#', '');
 
@@ -234,9 +275,15 @@
 	}, false);
 
 
-	// Trigger main handler on load and hashchange
+	/*
+	 * Trigger main handler on load and hashchange
+	 */
 	modal.on('hashchange', window, modal.mainHandler);
 	modal.on('load', window, modal.mainHandler);
+
+	/*
+	 * AMD, module loader, global registration
+	 */
 
 	// Expose modal for loaders that implement the Node module pattern.
 	if (typeof module === 'object' && module && typeof module.exports === 'object') {
