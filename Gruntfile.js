@@ -15,7 +15,6 @@ module.exports = function (grunt) {
 			all: [
 				'Gruntfile.js',
 				'modal.js',
-				'site/js/main.js',
 				'tests/spec/modal.js'
 			],
 			options: {
@@ -67,13 +66,12 @@ module.exports = function (grunt) {
 		watch: {
 			less: {
 				files: ['modal.less', 'tests/*.less'],
-				tasks: 'sass:dev'
+				tasks: 'less:dev'
 			},
 
 			hint: {
 				files: [
 					'modal.js',
-					'site/js/main.js',
 					'tests/spec/modal.js'
 				],
 				tasks: 'jshint'

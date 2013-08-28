@@ -1,6 +1,6 @@
 {
 	"name": "css-modal-less",
-	"version": "1.0.2dev",
+	"version": "1.0.4",
 	"main": [
 		"modal.less",
 		"modal.js"

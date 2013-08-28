@@ -1,5 +1,10 @@
 /**
+ * CSS Modal
  * Modal as reusable module
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ * @version 1.0.4
  *
  * Usage:
  *    selector {
@@ -85,25 +90,27 @@ html {
 		top: 50px;
 		left: 50%;
 		z-index: 20;
-		margin-left: (@modal-max-width / 2) * -1;
+		margin-left: ((@modal-max-width / 2) * -1);
 
 		width: @modal-max-width;
 		overflow-x: hidden;
+
+		-webkit-overflow-scrolling: touch; // Native style momentum scrolling
 
 		border-radius: 2px;
 		background: #fff;
 		-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.6);
 		        box-shadow: 0 0 30px rgba(0,0,0,0.6);
 
-		& > img,
-		& > video,
-		& > iframe {
+		> img,
+		> video,
+		> iframe {
 			width: 100%;
 			height: auto;
 			min-height: 300px;
 		}
 
-		& > img {
+		> img {
 			width: auto;
 			max-width: 100%;
 		}
@@ -114,7 +121,7 @@ html {
 		border-bottom: 1px solid @modal-border-color;
 		padding: 0 1.2em;
 
-		& > h2 {
+		> h2 {
 			margin: 0.5em 0;
 		}
 	}
@@ -129,7 +136,7 @@ html {
 		overflow-x: hidden;
 		overflow-y: auto;
 
-		& > * {
+		> * {
 			max-width: 100%;
 		}
 	}
@@ -166,7 +173,7 @@ html {
 
 		// Actual close button on modal
 		&:after {
-			content: '×';
+			content: '\00d7';
 			position: absolute;
 			top: 25px;
 			left: 50%;
@@ -277,7 +284,7 @@ html {
 			}
 
 			&:after {
-				content: 'Close';
+				content: attr(data-close);
 				top: 0.4em;
 				left: 1em;
 				z-index: 40;
