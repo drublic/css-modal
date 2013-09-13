@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Update background transparency image (#67)
 * Bugfix: Prevent body jump in Chrome Canary
 * Add better function documentation in JavaScript
 * Rewrite trigger method to use `new CustomEvent` (#56)
