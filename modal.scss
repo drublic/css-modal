@@ -24,10 +24,6 @@ $modal-mobile-header: #27aae2;
 // Prevent overflow on HTML element
 html {
 	overflow-y: scroll;
-
-	> body {
-		overflow-y: scroll;
-	}
 }
 
 .has-overlay {
@@ -35,6 +31,7 @@ html {
 
 	> body {
 		height: 100%;
+		overflow-y: scroll;
 	}
 
 	@media screen and (max-width: 30em) {
