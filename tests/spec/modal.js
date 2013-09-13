@@ -125,7 +125,9 @@
 
 				CSSModal.trigger('newEvent', { 'id': 1 });
 
-				expect(eventCalled).toBeTruthy();
+				setTimeout(function () {
+					expect(eventCalled).toBeTruthy();
+				}, 0);
 			});
 
 			// Is the data set as expected
@@ -138,8 +140,10 @@
 
 				CSSModal.trigger('newEvent', { 'id': 1 });
 
-				expect(typeof eventData.modal).toBe('object');
-				expect(eventData.modal.id).toBe(1);
+				setTimeout(function () {
+					expect(typeof eventData.modal).toBe('object');
+					expect(eventData.modal.id).toBe(1);
+				}, 0);
 			});
 
 			it('fires event when modal is shown', function () {
