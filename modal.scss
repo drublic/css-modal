@@ -65,6 +65,10 @@ html {
 	bottom: 0;
 	z-index: $modal-layer;
 
+	width: 0;
+	height: 0;
+	overflow: hidden;
+
 	opacity: 0;
 
 	color: $modal-color;
@@ -78,6 +82,9 @@ html {
 		     -o-transform: translate(0, 0);
 		    -ms-transform: translate(0, 0);
 		        transform: translate(0, 0);
+
+		width: auto;
+		height: auto;
 
 		opacity: 1;
 	}
@@ -239,7 +246,6 @@ html {
 		        transition:         transform .25s ease-in-out, opacity 1ms .25s;
 
 		display: block;
-		height: 100%;
 		bottom: auto;
 
 		&:target,
@@ -249,6 +255,8 @@ html {
 			     -o-transition:      -o-transform .25s ease-in-out;
 			    -ms-transition:     -ms-transform .25s ease-in-out;
 			        transition:         transform .25s ease-in-out;
+
+			height: 100%;
 		}
 
 		&:before {
@@ -396,11 +404,6 @@ html {
 %modal--transition-zoomIn {
 	@extend %modal;
 
-	// Hide the modal
-	width: 0;
-	height: 0;
-	overflow: hidden;
-
 	// Scale to 0
 	.modal-inner {
 		-webkit-transform: scale(0);
@@ -443,9 +446,6 @@ html {
 	// Show modal when requested
 	&:target,
 	&.is-active {
-		width: auto;
-		height: auto;
-
 		.modal-inner {
 			-webkit-transform: scale(1);
 			   -moz-transform: scale(1);
@@ -516,11 +516,6 @@ html {
 %modal--transition-zoomOut {
 	@extend %modal;
 
-	// Hide the modal
-	width: 0;
-	height: 0;
-	overflow: hidden;
-
 	// Scale to 0
 	.modal-inner {
 		-webkit-transform: scale(2);
@@ -563,9 +558,6 @@ html {
 	// Show modal when requested
 	&:target,
 	&.is-active {
-		width: auto;
-		height: auto;
-
 		.modal-inner {
 			-webkit-transform: scale(1);
 			   -moz-transform: scale(1);
@@ -596,11 +588,6 @@ html {
 // Slide in from the top
 %modal--transition-slideFromTop {
 	@extend %modal;
-
-	// Hide the modal
-	width: 0;
-	height: 0;
-	overflow: hidden;
 
 	// Scale to 0
 	.modal-inner {
@@ -644,8 +631,6 @@ html {
 	// Show modal when requested
 	&:target,
 	&.is-active {
-		width: auto;
-		height: auto;
 
 		.modal-inner {
 			-webkit-transform: translateY(0);
@@ -757,11 +742,6 @@ html {
 %modal--transition-bounceFromTop {
 	@extend %modal;
 
-	// Hide the modal
-	width: 0;
-	height: 0;
-	overflow: hidden;
-
 	.modal-close:before {
 		-webkit-transition: all 0.4s;
 		     -o-transition: all 0.4s;
@@ -787,8 +767,6 @@ html {
 	// Show modal when requested
 	&:target,
 	&.is-active {
-		width: auto;
-		height: auto;
 
 		.modal-inner {
 			-webkit-animation-name: bounce;
@@ -828,11 +806,6 @@ html {
 %modal--transition-bounceFromTopShaky {
 	@extend %modal;
 
-	// Hide the modal
-	width: 0;
-	height: 0;
-	overflow: hidden;
-
 	.modal-close:before {
 		-webkit-transition: all 0.4s;
 		     -o-transition: all 0.4s;
@@ -859,8 +832,6 @@ html {
 	// Show modal when requested
 	&:target,
 	&.is-active {
-		width: auto;
-		height: auto;
 
 		.modal-inner {
 			-webkit-animation-name: shaky;
