@@ -18,7 +18,7 @@
 * Rename function `_dispatchEvent` to `trigger`
 * Rename function `_addEventListener` to `on`
 * Move set and unset of modal in own function
-* Add convinience functions to add and remove classes on elements
+* Add convenience functions to add and remove classes on elements
 * Add native style momentum scrolling to content area
 
 ## 1.0.4 - 27.06.2013
