@@ -389,6 +389,7 @@ html {
 %modal--transition-fade {
 	@media screen and (min-width: 30em) {
 		-webkit-transition: opacity 0.4s;
+		    -ms-transition: opacity 0.4s;
 		     -o-transition: opacity 0.4s;
 		        transition: opacity 0.4s;
 	}
@@ -411,12 +412,14 @@ html {
 		        opacity: 0;
 
 		-webkit-transition: all 0.4s;
+		    -ms-transition: all 0.4s;
 		     -o-transition: all 0.4s;
 		        transition: all 0.4s;
 	}
 
 	.modal-close:before {
 		-webkit-transition: all 0.4s;
+		    -ms-transition: all 0.4s;
 		     -o-transition: all 0.4s;
 		        transition: all 0.4s;
 
@@ -482,6 +485,7 @@ html {
 
 	.modal-close:before {
 		-webkit-transition: all 0.4s;
+		    -ms-transition: all 0.4s;
 		     -o-transition: all 0.4s;
 		        transition: all 0.4s;
 
@@ -524,12 +528,14 @@ html {
 
 		-webkit-transition: all 0.4s;
 		     -o-transition: all 0.4s;
+		    -ms-transition: all 0.4s;
 		        transition: all 0.4s;
 	}
 
 	.modal-close:before {
 		-webkit-transition: all 0.4s;
 		     -o-transition: all 0.4s;
+		    -ms-transition: all 0.4s;
 		        transition: all 0.4s;
 
 		opacity: 0;
@@ -542,6 +548,7 @@ html {
 		    -ms-transform: scale(2);
 		        transform: scale(2);
 		-webkit-transition: all 0.4s;
+		    -ms-transition: all 0.4s;
 		     -o-transition: all 0.4s;
 		        transition: all 0.4s;
 
@@ -595,12 +602,14 @@ html {
 		        transform: translateY(-100%);
 
 		-webkit-transition: all 0.4s;
+		    -ms-transition: all 0.4s;
 		     -o-transition: all 0.4s;
 		        transition: all 0.4s;
 	}
 
 	.modal-close:before {
 		-webkit-transition: all 0.4s;
+		    -ms-transition: all 0.4s;
 		     -o-transition: all 0.4s;
 		        transition: all 0.4s;
 
@@ -615,6 +624,7 @@ html {
 		        transform: translateY(-100%);
 
 		-webkit-transition: all 0.4s;
+		    -ms-transition: all 0.4s;
 		     -o-transition: all 0.4s;
 		        transition: all 0.4s;
 
@@ -741,6 +751,7 @@ html {
 
 	.modal-close:before {
 		-webkit-transition: all 0.4s;
+		    -ms-transition: all 0.4s;
 		     -o-transition: all 0.4s;
 		        transition: all 0.4s;
 
@@ -749,9 +760,11 @@ html {
 
 	.modal-close:after {
 		-webkit-transition: all 0.4s;
+		    -ms-transition: all 0.4s;
 		     -o-transition: all 0.4s;
 		        transition: all 0.4s;
 		-webkit-transition-delay: 0.4s;
+		    -ms-transition-delay: 0.4s;
 		     -o-transition-delay: 0.4s;
 		        transition-delay: 0.4s;
 		opacity: 0;
@@ -805,6 +818,7 @@ html {
 
 	.modal-close:before {
 		-webkit-transition: all 0.4s;
+		    -ms-transition: all 0.4s;
 		     -o-transition: all 0.4s;
 		        transition: all 0.4s;
 
@@ -813,9 +827,11 @@ html {
 
 	.modal-close:after {
 		-webkit-transition: all 0.4s;
+		    -ms-transition: all 0.4s;
 		     -o-transition: all 0.4s;
 		        transition: all 0.4s;
 		-webkit-transition-delay: 0.6s;
+		    -ms-transition-delay: 0.6s;
 		     -o-transition-delay: 0.6s;
 		        transition-delay: 0.6s;
 
