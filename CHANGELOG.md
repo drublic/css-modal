@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Add -ms- prefixed transitions for IE10
 * Update background transparency image (#67)
 * Bugfix: Prevent body jump in Chrome Canary
 * Add better function documentation in JavaScript
