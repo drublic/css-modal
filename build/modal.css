@@ -5,8 +5,12 @@
  * @author Hans Christian Reinl - @drublic
  * @version 1.1.0alpha
  */
-/*
- * Configuration
+/**
+ * CSS Modal Configuration
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ * @Since 1.1.0alpha
  */
 html {
   overflow-y: scroll;
@@ -47,8 +51,6 @@ html {
   height: 0;
   overflow: hidden;
   opacity: 0;
-  color: #222222;
-  line-height: 1.3;
   display: none\9;
 }
 .modal--show:target, .is-active.modal--show {
@@ -76,10 +78,6 @@ html {
   width: 650px;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  border-radius: 2px;
-  background: white;
-  -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
 }
 .modal--show .modal-inner > img,
 .modal--show .modal-inner > video,
@@ -92,18 +90,9 @@ html {
   width: auto;
   max-width: 100%;
 }
-.modal--show header {
-  border-bottom: 1px solid #dddddd;
-  padding: 0 1.2em;
-}
-.modal--show header > h2 {
-  margin: 0.5em 0;
-}
 .modal--show .modal-content {
   max-height: 400px;
   max-height: 70vh;
-  border-bottom: 1px solid #dddddd;
-  padding: 15px 1.2em;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -121,7 +110,6 @@ html {
   height: 1px;
   clip: rect(0 0 0 0);
   margin: -1px;
-  text-indent: -100px;
   overflow: hidden;
 }
 .modal--show .modal-close:before {
@@ -132,7 +120,6 @@ html {
   right: 0;
   bottom: 0;
   z-index: 10;
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAEUlEQVQoz2NgeEYAjioYSQoAzOTmAXhPhyoAAAAASUVORK5CYII=");
 }
 .modal--show .modal-close:after {
   content: '\00d7';
@@ -141,12 +128,6 @@ html {
   left: 50%;
   z-index: 20;
   margin-left: 285px;
-  background: white;
-  border-radius: 2px;
-  padding: 2px 8px;
-  font-size: 1.2em;
-  text-decoration: none;
-  text-indent: 0;
 }
 @media screen and (max-width: 690px) {
   .modal--show .modal-inner {
@@ -186,21 +167,12 @@ html {
     height: 100%;
   }
   .modal--show:before {
-    background-color: #27aae2;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#27aae2), to(#1c9cd3));
-    background-image: -webkit-linear-gradient(top, #27aae2, #1c9cd3);
-    background-image: -moz-linear-gradient(top, #27aae2, #1c9cd3);
-    background-image: -o-linear-gradient(top, #27aae2, #1c9cd3);
-    background-image: linear-gradient(to bottom, #27aae2, #1c9cd3);
     content: '';
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 30;
-    height: 3em;
-    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
   }
   .modal--show .modal-inner {
     -webkit-box-sizing: border-box;
@@ -209,30 +181,23 @@ html {
     top: 0;
     left: 0;
     right: 0;
-    padding-top: 3em;
     height: 100%;
     overflow: auto;
-    -webkit-box-shadow: none;
-    box-shadow: none;
   }
   .modal--show .modal-content {
     max-height: none;
   }
   .modal--show .modal-close {
     right: auto;
-    text-decoration: none;
   }
   .modal--show .modal-close:before {
     display: none;
   }
   .modal--show .modal-close:after {
-    content: attr(data-close);
     top: 0.4em;
     left: 1em;
     z-index: 40;
     margin-left: 0;
-    font-size: 1em;
-    padding: 0.5em 1em;
   }
 }
 @media screen and (max-height: 46em) and (min-width: 30em) {
@@ -385,5 +350,81 @@ html {
 
   85% {
     transform: translateY(0%);
+  }
+}
+
+/**
+ * CSS Modal Themes
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ * @Since 1.1.0alpha
+ */
+.modal--show {
+  color: #222222;
+  line-height: 1.3;
+}
+.modal--show .modal-inner {
+  border-radius: 2px;
+  background: white;
+  -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+}
+.modal--show header {
+  border-bottom: 1px solid #dddddd;
+  padding: 0 1.2em;
+}
+.modal--show header > h2 {
+  margin: 0.5em 0;
+}
+.modal--show .modal-content {
+  border-bottom: 1px solid #dddddd;
+  padding: 15px 1.2em;
+}
+.modal--show footer {
+  border-top: 1px solid white;
+  padding: 0 1.2em 18px;
+  background: #f0f0f0;
+  border-radius: 2px;
+}
+.modal--show .modal-close {
+  text-indent: -100px;
+}
+.modal--show .modal-close:before {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAEUlEQVQoz2NgeEYAjioYSQoAzOTmAXhPhyoAAAAASUVORK5CYII=");
+}
+.modal--show .modal-close:after {
+  content: '\00d7';
+  background: white;
+  border-radius: 2px;
+  padding: 2px 8px;
+  font-size: 1.2em;
+  text-decoration: none;
+  text-indent: 0;
+}
+@media screen and (max-width: 30em) {
+  .modal--show:before {
+    background-color: #27aae2;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#27aae2), to(#1c9cd3));
+    background-image: -webkit-linear-gradient(top, #27aae2, #1c9cd3);
+    background-image: -moz-linear-gradient(top, #27aae2, #1c9cd3);
+    background-image: -o-linear-gradient(top, #27aae2, #1c9cd3);
+    background-image: linear-gradient(to bottom, #27aae2, #1c9cd3);
+    height: 3em;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  }
+  .modal--show .modal-inner {
+    padding-top: 3em;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .modal--show .modal-close {
+    text-decoration: none;
+  }
+  .modal--show .modal-close:after {
+    content: attr(data-close);
+    font-size: 1em;
+    padding: 0.5em 1em;
   }
 }
