@@ -25,8 +25,12 @@ While working on CSS-Modal you need to run `grunt watch` on your command line.
 This will compile the CSS files you need, check on your JS syntax with JSHint
 and runs all the Jasmine tests when working on `modal.js`.
 
+Before that make sure to run `npm install` to install all necessary Node
+modules.
+
 If you are working on JS, please write a test in `tests/spec/` before starting
 with the development.
 
 When changing the styles please test what you did in `index.html`.
 
+We are currently using Sass 3.2 for developing this project.
