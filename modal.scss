@@ -6,6 +6,12 @@
  * @version 1.1.0alpha
  */
 
-@import "modalConfig"; 	// variables
-@import "modalCore"; 	// core operations
-@import "modalTheme"; 	// theme styles
+
+// Configuration variables
+@import 'modal-config';
+
+// Core operations
+@import 'modal-core';
+
+// Theme styles
+@import 'modal-theme';
