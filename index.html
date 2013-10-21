@@ -24,6 +24,16 @@
 
 		<!-- Page-Header -->
 		<header class="site-header">
+
+			<nav class="site-nav" role="navigation">
+				<ul>
+					<li><a href="./">Overview</a></li>
+					<li><a href="#examples">Examples</a></li>
+					<li><a href="#howto">How to use</a></li>
+					<li><a href="#browser-support">Browser Support</a></li>
+				</ul>
+			</nav>
+
 			<div class="site-logo" role="banner">
 				<h1>CSS Modal</h1>
 			</div>
@@ -31,12 +41,12 @@
 			<p>Modals built out of pure CSS</p>
 
 			<p>
-				<a href="https://github.com/drublic/css-modal/zipball/v1.0.4"
-						class="download">Download v1.0.4</a><br>
+				<a href="https://github.com/drublic/css-modal/zipball/v1.1.0"
+						class="download">Download v1.1.0</a><br>
 				<a href="https://github.com/drublic/css-modal/blob/master/CHANGELOG.md"
 						class="changelog">View Changelog</a>
 			</p>
-			<p>
+			<p class="twitter">
 				<a href="https://twitter.com/share"
 					class="twitter-share-button" data-via="drublic"
 					data-related="drublic" data-count="none"
@@ -75,31 +85,20 @@
 			</section>
 
 			<section class="selling">
-				<p>A few other advantages: accessible, cross-browser, media-adaptive, small and fast!</p>
+				<p>A few other advantages: accessible, cross-browser, media-adaptive, stackable, small and fast!</p>
 			</section>
 
-			<section class="demo">
+			<section class="demo" id="examples">
 				<h2>Examples</h2>
 
 				<p>Check out the following examples of the CSS Modal. Please view the <a href="https://github.com/drublic/css-modal">source on GitHub</a> and the <a href="#howto" title="Read the documentation">documentation below</a>.</p>
 
 				<!-- Call the modal by clicking this link -->
-				<a href="#modal-text" class="call-modal" title="Clicking this link shows the modal">Read more in this demo</a>
-				<a href="#modal-pictures" class="call-modal" title="Clicking this link shows the modal">A demo with some pictures</a>
-				<a href="#modal-embed" class="call-modal" title="Clicking this link shows the modal">View a video demo</a>
+				<a href="#modal-text" class="call-modal" title="Clicking this link shows the modal">Text</a>
+				<a href="#modal-pictures" class="call-modal" title="Clicking this link shows the modal">Photo Gallery</a>
+				<a href="#modal-embed" class="call-modal" title="Clicking this link shows the modal">Video / iframe</a>
+				<a href="#modal-stackable" class="call-modal" title="Clicking this link shows the modal">Stackable Modal</a>
 			</section>
-
-			<section class="pages">
-				<h2>Pages Using CSS Modal</h2>
-				<p>Check out these pages, that use CSS Modal already.</p>
-
-				<ul>
-					<li><a href="http://sapdatacenter.com/" title="SAP Data Center"><img src="site/img/sap-datacenter.png" alt=""></a></li>
-					<li><a href="http://drublic.de/" title="drublic.de"><img src="site/img/drublic.png" alt=""></a></li>
-					<li><a href="http://www.umantis.com/en/" title="umantis Talent Management"><img src="site/img/umantis.png" alt=""></a></li>
-				</ul>
-			</section>
-
 
 			<!-- Usage -->
 			<section id="howto">
@@ -177,12 +176,24 @@
 
 
 			<!-- Browser Support -->
-			<section>
+			<section id="browser-support">
 				<h2>Browser Support</h2>
 
 				<p>This modal is designed to work on all modern browsers. Unfortunately this does not include Internet Explorer 7 or lower. But we deal with IE 8 &ndash; well,&hellip; at least it works.</p>
 				<p>On mobile Safari for iOS and Android 2.3, 4+ it is tested pretty well, while Android 2.3 has some problems (biggest issue <a href="https://github.com/drublic/css-modal/issues/4">is scrolling</a>) – but it works. It's also working on Windows Phone 8.</p>
-				<p>In numbers: Chrome, Firefox, Safari 6, Opera 12, IE8 (functional), IE9+. And iOS 6, Android 2.3+.</p>
+				<p>In numbers:</p>
+				<ul>
+					<li>Chrome</li>
+					<li>Firefox</li>
+					<li>Safari 6.x</li>
+					<li>Opera 12+</li>
+					<li>Internet Explorer 8 (functional)</li>
+					<li>Internet Explorer 9+</li>
+					<li>iOS 6</li>
+					<li>Android 2.3 (functional)</li>
+					<li>Android 4.x</li>
+					<li>Windows Phone 8</li>
+				</ul>
 			</section>
 
 
@@ -197,20 +208,32 @@
 				<p>Please use the <code>.editorconfig</code>-file in order to set the right usage of tabs/spaces aso. in your editor. Visit <a href="http://editorconfig.org/">editorconfig.org</a> for more information.</p>
 			</section>
 
+			<!-- References -->
+			<section class="pages">
+				<h2>Pages Using CSS Modal</h2>
+				<p>Check out these pages, that use CSS Modal already.</p>
+
+				<ul>
+					<li><a href="http://sapdatacenter.com/" title="SAP Data Center"><img src="site/img/sap-datacenter.png" alt=""></a></li>
+					<li><a href="http://drublic.de/" title="drublic.de"><img src="site/img/drublic.png" alt=""></a></li>
+					<li><a href="http://www.umantis.com/en/" title="umantis Talent Management"><img src="site/img/umantis.png" alt=""></a></li>
+				</ul>
+			</section>
+
 
 			<!-- Licensing -->
 			<section id="license">
 				<h2>License</h2>
 
-				<p>This project is under the MIT license. You can do pretty much everything you want with it.</p>
+				<p>This project is under the Open Source <a href="https://github.com/drublic/css-modal/blob/master/LICENSE.md">MIT license</a>. You can do pretty much everything you want with it.</p>
 			</section>
 
 
 			<!-- Thanks -->
 			<section>
-				<h2>Contributors</h2>
+				<h2>Authors &amp; Contributors</h2>
 				<p>This is a project by <a href="http://drublic.de/">Hans Christian Reinl</a>.</p>
-				<p>A special thanks goes out to <a href="https://twitter.com/helloanselm">@helloanselm</a> and <a href="https://twitter.com/derSchepp">@derSchepp</a> for providing feedback and contributions in general.</p>
+				<p>A special thanks goes out to co-author <a href="https://twitter.com/helloanselm">Anselm Hannemann</a>, to <a href="https://twitter.com/derSchepp">Christian Schäfer</a> for providing feedback and contributions in general and <a href="https://github.com/drublic/css-modal/graphs/contributors">all other contributors</a>.</p>
 			</section>
 
 			<!-- A modal with its content -->
@@ -300,6 +323,40 @@
 				<!-- Use Hash-Bang to maintain scroll position when closing modal -->
 				<a href="#!" class="modal-close"
 						title="Close this modal" data-close="Close">&times;</a>
+			</section>
+
+			<!-- A modal with its content -->
+			<section class="semantic-content" id="modal-stackable"
+					tabindex="-1" role="dialog" aria-labelledby="stackable-label"
+					aria-hidden="true">
+
+				<div class="modal-inner">
+					<header>
+						<h2 id="stackable-label">A stackable Modal</h2>
+					</header>
+
+					<div class="modal-content">
+						<p>There are a lot of possibilities to include content in the modal. Actually it is possible to add every bit of HTML to your source-code that you want to. Some examples could be normal text, images, videos (see the other example), iframes which embed services like a contact form and so.</p>
+						<p>Modals consist of an optional header and footer and a main content area. The main content area is scrollable if the modal's content is higher than the screen has space for.</p>
+						<p>You can easily deep link to a modal by including the element's id as a hash in the URL.</p>
+						<p>On <a href="http://drublic.de/">drublic.de</a> you can see the modals in action for normal text content and using it with third party services.</p>
+					</div>
+
+					<footer>
+						<p>
+							<a href="#modal-embed" class="open-modal"
+									title="Open another modal"
+									role="button">Open a new modal</a>
+							<a href="#!" class="close-action"
+									title="Close this modal"
+									data-dismiss="modal">Close</a>
+						</p>
+					</footer>
+				</div>
+
+				<!-- Use Hash-Bang to maintain scroll position when closing modal -->
+				<a href="#!" class="modal-close" title="Close this modal"
+						data-dismiss="modal" data-close="Close">&times;</a>
 			</section>
 
 

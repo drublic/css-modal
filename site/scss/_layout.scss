@@ -57,7 +57,7 @@ code {
 
 // Buttons
 %button {
-	@include x-transition(0.2s);
+	@include x-transition(0.1s);
 
 	display: inline-block;
 	background: #111;
@@ -65,8 +65,8 @@ code {
 
 	color: #fff;
 
-	border-radius: 2px;
-	padding: 0.5em 1em;
+	border-radius: 4px;
+	padding: 0.6em 1em;
 
 	&:visited {
 		color: #fff;
@@ -111,6 +111,33 @@ code {
 	}
 }
 
+.site-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 4em;
+	background: #fff;
+	background: rgba(255, 255, 255, 0.9);
+
+	ul {
+		max-width: 50em;
+		margin: 0 auto;
+		padding: 0;
+	}
+
+	li {
+		list-style: none;
+		display: inline-block;
+	}
+
+	a {
+		display: inline-block;
+		padding: 1.2em 0.25em;
+		color: #000;
+	}
+}
+
 
 
 // Download button
@@ -138,6 +165,10 @@ code {
 	}
 }
 
+.twitter {
+	margin-bottom: 0;
+}
+
 // The artwork above the content
 .artwork {
 	max-width: 100%;
@@ -153,6 +184,11 @@ code {
 	margin: 0 auto;
 	padding: 0 1.5em;
 	text-align: left;
+}
+
+.main > section {
+	margin-top: -3em;
+	padding-top: 3em;
 }
 
 
