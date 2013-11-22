@@ -1,7 +1,6 @@
 {
 	"node": true,
 	"browser": true,
-	"es5": true,
 	"esnext": true,
 	"bitwise": true,
 	"camelcase": true,
@@ -19,6 +18,8 @@
 	"smarttabs": true,
 
 	"globals": {
-		"jQuery": true
+		"jQuery": true,
+		"define": true,
+		"module": true
 	}
 }

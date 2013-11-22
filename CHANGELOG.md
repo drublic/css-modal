@@ -2,6 +2,23 @@
 
 ## HEAD
 
+* Update background transparency image (#67)
+* Bugfix: Prevent body jump in Chrome Canary
+* Add better function documentation in JavaScript
+* Rewrite trigger method to use `new CustomEvent` (#56)
+* Update npm dependencies
+* Add different modal animation styles (#51)
+* Bugfix: UTF-8 problem in Ruby 1.9.3 (#61)
+* Bugfix: open modal on pageload (#46)
+* Register CSSModal as module for AMD (#57)
+* Prevent body from scrolling when scrolling in modal on iOS and Android (#31)
+* Add function to keep focus in modal when tabbing through (#26)
+* Allow multiple, stackable modals (#20)
+* Apply all functions directly on the modal-object
+* Rename function `_dispatchEvent` to `trigger`
+* Rename function `_addEventListener` to `on`
+* Move set and unset of modal in own function
+* Add convenience functions to add and remove classes on elements
 * Add native style momentum scrolling to content area
 
 ## 1.0.4 - 27.06.2013

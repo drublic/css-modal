@@ -1,25 +1,24 @@
 /**
  * CSS Modal
- * Modal as reusable module
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @version 1.0.4
- *
- * Usage:
- *    selector {
- *        @extend %modal;
- *    }
+ * @version 1.1.0alpha
  */
-
 
 /*
  * Configuration
  */
-$modal-border-color: #ddd;
 $modal-max-width: 650px;
+
+// Set high z-index to appear above all other content
+$modal-layer: 999;
+
+// Color configuration
+$modal-border-color: #ddd;
+$modal-inner-background: #fff;
+$modal-color: #222;
 $modal-mobile-header: #27aae2;
-$modal-layer: 999; // Set high z-index to appear above all other content
 
 
 // Prevent overflow on HTML element
@@ -33,6 +32,15 @@ html {
 	> body {
 		height: 100%;
 		overflow-y: scroll;
+	}
+
+	@media screen and (max-width: 30em) {
+		height: 100%;
+
+		> body {
+			overflow: hidden;
+			height: 100%;
+		}
 	}
 }
 
@@ -54,19 +62,26 @@ html {
 	bottom: 0;
 	z-index: $modal-layer;
 
+	width: 0;
+	height: 0;
+	overflow: hidden;
+
 	opacity: 0;
 
-	color: #222;
+	color: $modal-color;
 	line-height: 1.3;
 
 	// Show modal when requested
-	&:target {
+	&:target,
+	&.is-active {
+		-webkit-transform: translate(0, 0);
+		   -moz-transform: translate(0, 0);
+		     -o-transform: translate(0, 0);
+		    -ms-transform: translate(0, 0);
+		        transform: translate(0, 0);
 
-	-webkit-transform: translate(0, 0);
-	   -moz-transform: translate(0, 0);
-	     -o-transform: translate(0, 0);
-	    -ms-transform: translate(0, 0);
-	        transform: translate(0, 0);
+		width: auto;
+		height: auto;
 
 		opacity: 1;
 	}
@@ -79,10 +94,10 @@ html {
 	}
 
 	// Overwrite IE8 hack for IE9 and IE10
-	&:target {
+	&:target,
+	&.is-active {
 		display: block\9;
 	}
-
 
 	// Content Area
 	.modal-inner {
@@ -98,7 +113,7 @@ html {
 		-webkit-overflow-scrolling: touch; // Native style momentum scrolling
 
 		border-radius: 2px;
-		background: #fff;
+		background: $modal-inner-background;
 		-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.6);
 		        box-shadow: 0 0 30px rgba(0,0,0,0.6);
 
@@ -154,6 +169,9 @@ html {
 	// A close button
 	.modal-close {
 		display: block;
+		height: 1px; // Prevent close element to appear
+		clip: rect(0 0 0 0);
+		margin: -1px;
 		text-indent: -100px;
 		overflow: hidden;
 
@@ -167,8 +185,8 @@ html {
 			bottom: 0;
 			z-index: 10;
 
-			// Background for overlay – Data URI because of IE8 not supporting rgba
-			background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42gEFAPr/AAAAAMwA0QDNTiUx4gAAAABJRU5ErkJggg==');
+			// Background for overlay: Data URI because of IE8 not supporting rgba
+			background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAEUlEQVQoz2NgeEYAjioYSQoAzOTmAXhPhyoAAAAASUVORK5CYII=');
 		}
 
 		// Actual close button on modal
@@ -180,7 +198,7 @@ html {
 			z-index: 20;
 			margin-left: ($modal-max-width / 2) - 40;
 
-			background: #fff;
+			background: $modal-inner-background;
 
 			border-radius: 2px;
 			padding: 2px 8px;
@@ -225,15 +243,17 @@ html {
 		        transition:         transform .25s ease-in-out, opacity 1ms .25s;
 
 		display: block;
-		height: 100%;
 		bottom: auto;
 
-		&:target {
+		&:target,
+		&.is-active {
 			-webkit-transition: -webkit-transform .25s ease-in-out;
 			   -moz-transition:    -moz-transform .25s ease-in-out;
 			     -o-transition:      -o-transform .25s ease-in-out;
 			    -ms-transition:     -ms-transform .25s ease-in-out;
 			        transition:         transform .25s ease-in-out;
+
+			height: 100%;
 		}
 
 		&:before {
@@ -265,7 +285,7 @@ html {
 			right: 0;
 			padding-top: 3em;
 			height: 100%;
-			overflow: scroll;
+			overflow: auto;
 			-webkit-box-shadow: none;
 			        box-shadow: none;
 		}
@@ -308,11 +328,65 @@ html {
 			max-height: 40vh;
 		}
 	}
+
+
+
+
+	// Stackable Modals
+	&.is-stacked {
+		-webkit-transform: translate(0, 0) scale(1, 1);
+		   -moz-transform: translate(0, 0) scale(1, 1);
+		     -o-transform: translate(0, 0) scale(1, 1);
+		    -ms-transform: translate(0, 0) scale(1, 1);
+		        transform: translate(0, 0) scale(1, 1);
+
+		opacity: 1;
+
+		.modal-inner {
+			-webkit-animation: scaleDown .7s ease both;
+			   -moz-animation: scaleDown .7s ease both;
+			        animation: scaleDown .7s ease both;
+		}
+
+		// Hide overlay and close button
+		.modal-close {
+			opacity: 0;
+		}
+
+		// On small screens
+		@media screen and (max-width: 30em) {
+			-webkit-animation: scaleDown .7s ease both;
+			   -moz-animation: scaleDown .7s ease both;
+			        animation: scaleDown .7s ease both;
+
+			.modal-inner {
+				-webkit-animation: none;
+				   -moz-animation: none;
+				        animation: none;
+			}
+
+			.modal-close {
+				opacity: 1;
+			}
+		}
+	}
+
+}
+
+// Keyframes for scale down of stacked modal on small screens
+@-webkit-keyframes scaleDown {
+	to { opacity: 0; -webkit-transform: scale(.8); }
+}
+@-moz-keyframes scaleDown {
+	to { opacity: 0; -moz-transform: scale(.8); }
+}
+@keyframes scaleDown {
+	to { opacity: 0; transform: scale(.8); }
 }
 
 
 // Fade in the modal
-%modal-fade {
+%modal--transition-fade {
 	@media screen and (min-width: 30em) {
 		-webkit-transition: opacity 0.4s;
 		     -o-transition: opacity 0.4s;
@@ -323,6 +397,478 @@ html {
 	@extend %modal;
 }
 
-.semantic-content {
-	@extend %modal-fade;
+// Fade in and zoomIn the modal
+%modal--transition-zoomIn {
+	@extend %modal;
+
+	// Scale to 0
+	.modal-inner {
+		-webkit-transform: scale(0);
+		   -moz-transform: scale(0);
+		     -o-transform: scale(0);
+		    -ms-transform: scale(0);
+		        transform: scale(0);
+		        opacity: 0;
+
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+	}
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+	}
+
+	.modal-close:after {
+		-webkit-transform: scale(0);
+		   -moz-transform: scale(0);
+		     -o-transform: scale(0);
+		    -ms-transform: scale(0);
+		        transform: scale(0);
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+		// Needs to be moved into the center
+		// of the modal initially
+		top: 250px;
+		left: 20%;
+	}
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+		.modal-inner {
+			-webkit-transform: scale(1);
+			   -moz-transform: scale(1);
+			     -o-transform: scale(1);
+			    -ms-transform: scale(1);
+			        transform: scale(1);
+			opacity: 1;
+		}
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+		.modal-close:after {
+			-webkit-transform: scale(1);
+			   -moz-transform: scale(1);
+			     -o-transform: scale(1);
+			    -ms-transform: scale(1);
+			        transform: scale(1);
+			opacity: 1;
+			// Move back to proper position
+			top: 25px;
+			left: 50%;
+		}
+	}
+}
+
+// Fade in, zoomIn and hide backgrund in the modal
+%modal--transition-plainScreen {
+	@extend %modal;
+	@extend %modal--transition-zoomIn;
+
+	.modal-inner {
+		-webkit-box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.25);
+		        box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.25);
+	}
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		background: $modal-inner-background;
+		opacity: 0;
+	}
+
+	.modal-close:after {
+		-webkit-box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.2);
+		        box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.2);
+	}
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+		.modal-close:after {
+			top: 21px;
+		}
+	}
+}
+
+
+// Fade in and downsample the modal
+%modal--transition-zoomOut {
+	@extend %modal;
+
+	// Scale to 0
+	.modal-inner {
+		-webkit-transform: scale(2);
+		   -moz-transform: scale(2);
+		     -o-transform: scale(2);
+		    -ms-transform: scale(2);
+		        transform: scale(2);
+		        opacity: 0;
+
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+	}
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+	}
+
+	.modal-close:after {
+		-webkit-transform: scale(2);
+		   -moz-transform: scale(2);
+		     -o-transform: scale(2);
+		    -ms-transform: scale(2);
+		        transform: scale(2);
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+		// Needs to be moved into the center
+		// of the modal initially
+		top: -125px;
+		left: 75%;
+	}
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+		.modal-inner {
+			-webkit-transform: scale(1);
+			   -moz-transform: scale(1);
+			     -o-transform: scale(1);
+			    -ms-transform: scale(1);
+			        transform: scale(1);
+			opacity: 1;
+		}
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+		.modal-close:after {
+			-webkit-transform: scale(1);
+			   -moz-transform: scale(1);
+			     -o-transform: scale(1);
+			    -ms-transform: scale(1);
+			        transform: scale(1);
+			opacity: 1;
+			// Move back to proper position
+			top: 25px;
+			left: 50%;
+		}
+	}
+}
+
+// Slide in from the top
+%modal--transition-slideFromTop {
+	@extend %modal;
+
+	// Scale to 0
+	.modal-inner {
+		-webkit-transform: translateY(-100%);
+		   -moz-transform: translateY(-100%);
+		     -o-transform: translateY(-100%);
+		    -ms-transform: translateY(-100%);
+		        transform: translateY(-100%);
+
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+	}
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+	}
+
+	.modal-close:after {
+		-webkit-transform: translateY(-100%);
+		   -moz-transform: translateY(-100%);
+		     -o-transform: translateY(-100%);
+		    -ms-transform: translateY(-100%);
+		        transform: translateY(-100%);
+
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+		// Needs to be moved into the center
+		// of the modal initially
+		top: -125px;
+		left: 50%;
+	}
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+
+		.modal-inner {
+			-webkit-transform: translateY(0);
+			   -moz-transform: translateY(0);
+			     -o-transform: translateY(0);
+			    -ms-transform: translateY(0);
+			        transform: translateY(0);
+
+			opacity: 1;
+		}
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+		.modal-close:after {
+			-webkit-transform: translateY(0);
+			   -moz-transform: translateY(0);
+			     -o-transform: translateY(0);
+			    -ms-transform: translateY(0);
+			        transform: translateY(0);
+
+			opacity: 1;
+			// Move back to proper position
+			top: 25px;
+		}
+	}
+}
+
+// Bounce in animation definition from top
+// shaking the window at the end
+@-webkit-keyframes shaky {
+	0% {
+		-webkit-transform: translateY(-100%);
+	}
+	60% {
+		-webkit-transform: translateX(5%) translateY(5%) rotate(-2deg);
+	}
+	80% {
+		-webkit-transform: translateX(5%) translateY(5%) rotate(2deg);
+	}
+	50%, 70%, 90% {
+		-webkit-transform: translateX(0%) translateY(0%);
+	}
+}
+
+// Bounce in animation definition from top
+@-webkit-keyframes bounce {
+	0% {
+		-webkit-transform: translateY(-100%);
+	}
+	60% {
+		-webkit-transform: translateY(5%);
+	}
+	85% {
+		-webkit-transform: translateY(0%);
+	}
+}
+
+@-moz-keyframes bounce {
+	0% {
+		-moz-transform: translateY(-100%);
+	}
+	60% {
+		-moz-transform: translateY(5%);
+	}
+	85% {
+		-moz-transform: translateY(0%);
+	}
+}
+
+@-o-keyframes bounce {
+	0% {
+		-o-transform: translateY(-100%);
+	}
+	60% {
+		-o-transform: translateY(5%);
+	}
+	85% {
+		-o-transform: translateY(0%);
+	}
+}
+
+@-ms-keyframes bounce {
+	0% {
+		-ms-transform: translateY(-100%);
+	}
+	60% {
+		-ms-transform: translateY(5%);
+	}
+	85% {
+		-ms-transform: translateY(0%);
+	}
+}
+
+@keyframes bounce {
+	0% {
+		transform: translateY(-100%);
+	}
+	60% {
+		transform: translateY(5%);
+	}
+	85% {
+		transform: translateY(0%);
+	}
+}
+
+// Bounce in from top
+%modal--transition-bounceFromTop {
+	@extend %modal;
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+	}
+
+	.modal-close:after {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+		-webkit-transition-delay: 0.4s;
+		     -o-transition-delay: 0.4s;
+		        transition-delay: 0.4s;
+		opacity: 0;
+		// Needs to be moved into the center
+		// of the modal initially
+		top: 25px;
+		left: 50%;
+	}
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+
+		.modal-inner {
+			-webkit-animation-name: bounce;
+			   -moz-animation-name: bounce;
+			     -o-animation-name: bounce;
+			    -ms-animation-name: bounce;
+			        animation-name: bounce;
+
+			-webkit-animation-duration: 0.4s;
+			   -moz-animation-duration: 0.4s;
+			     -o-animation-duration: 0.4s;
+			    -ms-animation-duration: 0.4s;
+			        animation-duration: 0.4s;
+
+			-webkit-animation-fill-mode: both;
+			   -moz-animation-fill-mode: both;
+			     -o-animation-fill-mode: both;
+			    -ms-animation-fill-mode: both;
+			        animation-fill-mode: both;
+
+			opacity: 1;
+		}
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+		.modal-close:after {
+			opacity: 1;
+			// Move back to proper position
+			top: 25px;
+		}
+	}
+}
+
+// Bounce in from top
+%modal--transition-bounceFromTopShaky {
+	@extend %modal;
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+	}
+
+	.modal-close:after {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+		-webkit-transition-delay: 0.6s;
+		     -o-transition-delay: 0.6s;
+		        transition-delay: 0.6s;
+
+		opacity: 0;
+		// Needs to be moved into the center
+		// of the modal initially
+		top: 25px;
+		left: 50%;
+	}
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+
+		.modal-inner {
+			-webkit-animation-name: shaky;
+			   -moz-animation-name: shaky;
+			     -o-animation-name: shaky;
+			    -ms-animation-name: shaky;
+			        animation-name: shaky;
+
+			-webkit-animation-duration: 0.6s;
+			   -moz-animation-duration: 0.6s;
+			     -o-animation-duration: 0.6s;
+			    -ms-animation-duration: 0.6s;
+			        animation-duration: 0.6s;
+
+			-webkit-animation-fill-mode: both;
+			   -moz-animation-fill-mode: both;
+			     -o-animation-fill-mode: both;
+			    -ms-animation-fill-mode: both;
+			        animation-fill-mode: both;
+
+			opacity: 1;
+		}
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+		.modal-close:after {
+			opacity: 1;
+			// Move back to proper position
+			top: 25px;
+		}
+	}
+}
+
+// -------------------------------------
+// Apply the desired modal behavior to
+// your container selector
+// -------------------------------------
+
+.modal--show {
+	@extend %modal;
 }

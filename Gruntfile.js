@@ -40,7 +40,7 @@ module.exports = function (grunt) {
 					style: 'expanded'
 				},
 				files: {
-					'download/modal.css': 'modal.scss'
+					'build/modal.css': 'modal.scss'
 				}
 			}
 		},
@@ -71,7 +71,7 @@ module.exports = function (grunt) {
 		watch: {
 			scss: {
 				files: ['modal.scss', 'tests/*.scss'],
-				tasks: 'sass:dev'
+				tasks: 'sass'
 			},
 
 			hint: {
