@@ -59,3 +59,7 @@ on the website.
 
 This is a project by [Hans Christian Reinl](http://drublic.de). Thanks goes out
 to [all other contributors](https://github.com/drublic/css-modal/contributors).
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/drublic/css-modal/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
