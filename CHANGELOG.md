@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Modularize config, core and theme into separate files (#73)
 * Update background transparency image (#67)
 * Bugfix: Prevent body jump in Chrome Canary
 * Add better function documentation in JavaScript
