@@ -13,7 +13,7 @@ html {
 	}
 
 
-	@media screen and (max-width: 30em) {
+	@media screen and (max-width: $modal-small-breakpoint) {
 		height: 100%;
 
 		> body {
@@ -194,7 +194,7 @@ html {
 
 
 	// For small screens adjust the modal
-	@media screen and (max-width: 30em) {
+	@media screen and (max-width: $modal-small-breakpoint) {
 		-webkit-transform: translate(0, 400px); // Use px to work around Android 2.3 bug
 		-webkit-transform: translate3d(0, 100%, 0); // And overwrite px if 3D transforms are supported
 		        transform: translate3d(0, 100%, 0);
@@ -266,7 +266,7 @@ html {
 
 
 	// For small heights
-	@media screen and (max-height: 46em) and (min-width: 30em) {
+	@media screen and (max-height: 46em) and (min-width: $modal-small-breakpoint) {
 		.modal-content {
 			max-height: 340px;
 			max-height: 50vh;
@@ -274,7 +274,7 @@ html {
 	}
 
 
-	@media screen and (max-height: 36em) and (min-width: 30em) {
+	@media screen and (max-height: 36em) and (min-width: $modal-small-breakpoint) {
 		.modal-content {
 			max-height: 265px;
 			max-height: 40vh;
@@ -307,7 +307,7 @@ html {
 
 
 		// On small screens
-		@media screen and (max-width: 30em) {
+		@media screen and (max-width: $modal-small-breakpoint) {
 			-webkit-animation: scaleDown .7s ease both;
 			   -moz-animation: scaleDown .7s ease both;
 			        animation: scaleDown .7s ease both;
@@ -342,7 +342,7 @@ html {
 
 // Fade in the modal
 %modal--transition-fade {
-	@media screen and (min-width: 30em) {
+	@media screen and (min-width: $modal-small-breakpoint) {
 		-webkit-transition: opacity 0.4s;
 		     -o-transition: opacity 0.4s;
 		        transition: opacity 0.4s;

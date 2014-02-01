@@ -70,7 +70,7 @@ module.exports = function (grunt) {
 		// Watch that stuff
 		watch: {
 			scss: {
-				files: ['modal.scss', 'tests/*.scss'],
+				files: ['*.scss', 'tests/*.scss'],
 				tasks: 'sass'
 			},
 

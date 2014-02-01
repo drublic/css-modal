@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Add option to configure mobile-layout breakpoint
 * Add folder plugins for extendable modules
 * Modularize config, core and theme into separate files (#73)
 * Update background transparency image (#67)
