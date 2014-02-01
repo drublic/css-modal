@@ -9,7 +9,7 @@
 	"ignore": [
 		"download",
 		"node_modules",
-		"tests",
+		"test",
 		".editorconfig",
 		".gitignore",
 		".jshintrc",

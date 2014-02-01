@@ -15,7 +15,7 @@ module.exports = function (grunt) {
 			all: [
 				'Gruntfile.js',
 				'modal.js',
-				'tests/spec/modal.js'
+				'test/spec/modal.js'
 			],
 			options: {
 				jshintrc: '.jshintrc'
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
 					style: 'expanded'
 				},
 				files: {
-					'tests/modal.css': 'tests/modal.scss'
+					'test/modal.css': 'test/modal.scss'
 				}
 			},
 
@@ -62,22 +62,22 @@ module.exports = function (grunt) {
 		jasmine: {
 			src: 'modal.js',
 			options: {
-				outfile: 'tests/_SpecRunner.html',
-				template: 'tests/index.html'
+				outfile: 'test/_SpecRunner.html',
+				template: 'test/index.html'
 			}
 		},
 
 		// Watch that stuff
 		watch: {
 			scss: {
-				files: ['*.scss', 'tests/*.scss'],
+				files: ['*.scss', 'test/*.scss'],
 				tasks: 'sass'
 			},
 
 			hint: {
 				files: [
 					'modal.js',
-					'tests/spec/modal.js'
+					'test/spec/modal.js'
 				],
 				tasks: 'jshint'
 			},
