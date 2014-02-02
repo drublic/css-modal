@@ -205,8 +205,9 @@ html {
     display: none;
   }
   .modal--show .modal-close:after {
-    top: 0.4em;
-    left: 1em;
+    top: 5px;
+    right: 5px;
+    left: auto;
     z-index: 40;
     margin-left: 0;
   }
