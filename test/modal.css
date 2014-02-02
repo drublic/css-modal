@@ -232,8 +232,9 @@ html {
     display: none;
   }
   .modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after, ._modal .modal-close:after {
-    top: 0.4em;
-    left: 1em;
+    top: 5px;
+    right: 5px;
+    left: auto;
     z-index: 40;
     margin-left: 0;
   }
@@ -362,6 +363,13 @@ html {
   top: 25px;
   left: 50%;
 }
+@media screen and (max-width: 30em) {
+  .modal--plainscreen:target .modal-close:after, .modal--zoomin:target .modal-close:after, .is-active.modal--plainscreen .modal-close:after, .is-active.modal--zoomin .modal-close:after {
+    top: 5px;
+    right: 5px;
+    left: auto;
+  }
+}
 
 .modal--plainscreen .modal-inner {
   -webkit-box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.25);
@@ -383,6 +391,11 @@ html {
 }
 .modal--plainscreen:target .modal-close:after, .is-active.modal--plainscreen .modal-close:after {
   top: 23px;
+}
+@media screen and (max-width: 30em) {
+  .modal--plainscreen:target .modal-close:after, .is-active.modal--plainscreen .modal-close:after {
+    top: 5px;
+  }
 }
 
 .modal--zoomout .modal-inner {
@@ -436,6 +449,13 @@ html {
   top: 25px;
   left: 50%;
 }
+@media screen and (max-width: 30em) {
+  .modal--zoomout:target .modal-close:after, .is-active.modal--zoomout .modal-close:after {
+    top: 5px;
+    right: 5px;
+    left: auto;
+  }
+}
 
 .modal--slidefromtop .modal-inner {
   -webkit-transform: translateY(-100%);
@@ -485,6 +505,13 @@ html {
   transform: translateY(0);
   opacity: 1;
   top: 25px;
+}
+@media screen and (max-width: 30em) {
+  .modal--slidefromtop:target .modal-close:after, .is-active.modal--slidefromtop .modal-close:after {
+    top: 5px;
+    right: 5px;
+    left: auto;
+  }
 }
 
 @-webkit-keyframes shaky {
@@ -617,6 +644,13 @@ html {
   opacity: 1;
   top: 25px;
 }
+@media screen and (max-width: 30em) {
+  .modal--bouncefromtop:target .modal-close:after, .is-active.modal--bouncefromtop .modal-close:after {
+    top: 5px;
+    right: 5px;
+    left: auto;
+  }
+}
 
 .modal--bouncefromtopshaky .modal-close:before {
   -webkit-transition: all 0.4s;
@@ -659,6 +693,13 @@ html {
 .modal--bouncefromtopshaky:target .modal-close:after, .is-active.modal--bouncefromtopshaky .modal-close:after {
   opacity: 1;
   top: 25px;
+}
+@media screen and (max-width: 30em) {
+  .modal--bouncefromtopshaky:target .modal-close:after, .is-active.modal--bouncefromtopshaky .modal-close:after {
+    top: 5px;
+    right: 5px;
+    left: auto;
+  }
 }
 
 /**

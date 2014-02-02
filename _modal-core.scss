@@ -263,8 +263,9 @@ html {
 			}
 
 			&:after {
-				top: 0.4em;
-				left: 1em;
+				top: 5px;
+				right: 5px;
+				left: auto;
 				z-index: 40;
 				margin-left: 0;
 			}
@@ -435,6 +436,12 @@ html {
 			// Move back to proper position
 			top: 25px;
 			left: 50%;
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
 		}
 	}
 }
@@ -478,9 +485,12 @@ html {
 			opacity: 1;
 		}
 
-
 		.modal-close:after {
 			top: 23px;
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+			}
 		}
 	}
 }
@@ -561,6 +571,12 @@ html {
 			// Move back to proper position
 			top: 25px;
 			left: 50%;
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
 		}
 	}
 }
@@ -643,6 +659,12 @@ html {
 			opacity: 1;
 			// Move back to proper position
 			top: 25px;
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
 		}
 	}
 }
@@ -797,6 +819,12 @@ html {
 			opacity: 1;
 			// Move back to proper position
 			top: 25px;
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
 		}
 	}
 }
@@ -868,6 +896,12 @@ html {
 			opacity: 1;
 			// Move back to proper position
 			top: 25px;
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
 		}
 	}
 }
