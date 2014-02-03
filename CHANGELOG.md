@@ -2,6 +2,11 @@
 
 ## HEAD
 
+* Unify close btn on mobile
+* Prevent overflow in mobile modals
+* Add error handling to `on` method to prevent wrong function calls
+* Improve plainScreen layout
+* Rename tests directory to test
 * Add option to configure mobile-layout breakpoint
 * Add folder plugins for extendable modules
 * Modularize config, core and theme into separate files (#73)
