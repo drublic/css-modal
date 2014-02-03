@@ -32,6 +32,14 @@
 		 * @param callback {function} gets fired if event is triggered
 		 */
 		on: function (event, element, callback) {
+			if (typeof event !== 'string') {
+				throw new Error('Type error: `error` has to be a string');
+			}
+
+			if (typeof callback !== 'function') {
+				throw new Error('Type error: `callback` has to be a function');
+			}
+
 			if (element.addEventListener) {
 				element.addEventListener(event, callback, false);
 			} else {
