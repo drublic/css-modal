@@ -1,29 +1,41 @@
 /*
  * CSS Modal Plugin for HTML5 Video (play/pause)
  * Author: Anselm Hannemann
- * Date: 2014-02-02
+ * Date: 2014-02-04
  */
 
 (function (global) {
 
 	'use strict';
 
-	if (CSSModal.activeElement.querySelector('video')) {
-		var activeVideo = CSSModal.activeElement.querySelector('video');
+	var CSSModal = global.CSSModal;
 
-		// Stops video when closing modal
-		CSSModal.on('cssmodal:hide', CSSModal, function (element) {
-			if (activeVideo) {
-				activeVideo.play();
-			}
-		});
-
-		// Enables Auto-Play when calling modal
-		CSSModal.on('cssmodal:show', CSSModal, function (element) {
-			if (activeVideo) {
-				activeVideo.play();
-			}
-		});
+	// If CSS Modal is still undefined, throw an error
+	if (!CSSModal) {
+		throw new Error('Error: CSSModal is not loaded.');
 	}
+
+	var videos;
+
+	// Enables Auto-Play when calling modal
+	CSSModal.on('cssmodal:show', document, function (event) {
+		// Fetch all video elements in active modal
+		videos = CSSModal.activeElement.querySelectorAll('video');
+
+		if (videos) {
+			// Play first video in modal
+			videos[0].play();
+		}
+	});
+
+	// If modal is closed, pause all videos
+	CSSModal.on('cssmodal:hide', document, function (event) {
+		if (videos) {
+			// Pause all videos in active modal
+			for (var i = 0; i < videos.length; i++) {
+				videos[i].pause();
+			}
+		}
+	});
 
 }(window));
