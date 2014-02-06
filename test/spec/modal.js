@@ -50,6 +50,29 @@
 			}, 0);
 		});
 
+		// aria-hidden values tests
+		describe('aria-hidden', function () {
+			it('has aria-hidden true when is hidden', function () {
+				setTimeout(function () {
+					expect($modal.attr('aria-hidden')).toBe('true');
+				}, 0);
+			});
+
+			it('has aria-hidden false when is visible when hash is set', function () {
+				window.location.hash = '#modal';
+
+				setTimeout(function () {
+					expect($modal.attr('aria-hidden')).toBe('false');
+				}, 0);
+			});
+
+			it('has aria-hidden true when is hidden when hash is #!', function () {
+				window.location.hash = '#!';
+				setTimeout(function () {
+					expect($modal.attr('aria-hidden')).toBe('true');
+				}, 0);
+			});
+		});
 
 		// Class helper functions
 		describe('classes', function () {
