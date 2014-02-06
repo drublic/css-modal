@@ -159,6 +159,9 @@
 			modal.addClass(element, 'is-active');
 			modal.activeElement = element;
 
+			// Update aria-hidden
+			modal.activeElement.setAttribute('aria-hidden', 'false');
+
 			// Set the focus to the modal
 			modal.setFocus(element.id);
 
@@ -176,6 +179,9 @@
 
 				// Fire an event
 				modal.trigger('cssmodal:hide', modal.activeElement);
+
+				// Update aria-hidden
+				modal.activeElement.setAttribute('aria-hidden', 'true');
 
 				// Unfocus
 				modal.removeFocus();
