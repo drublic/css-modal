@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Correct handling of aria-hidden with JavaScript
 * Unify close btn on mobile
 * Prevent overflow in mobile modals
 * Add error handling to `on` method to prevent wrong function calls
