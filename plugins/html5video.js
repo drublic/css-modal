@@ -22,7 +22,7 @@
 		// Fetch all video elements in active modal
 		videos = CSSModal.activeElement.querySelectorAll('video');
 
-		if (videos) {
+		if (videos.length > 0) {
 			// Play first video in modal
 			videos[0].play();
 		}
@@ -30,7 +30,7 @@
 
 	// If modal is closed, pause all videos
 	CSSModal.on('cssmodal:hide', document, function (event) {
-		if (videos) {
+		if (videos.length > 0) {
 			// Pause all videos in active modal
 			for (var i = 0; i < videos.length; i++) {
 				videos[i].pause();
