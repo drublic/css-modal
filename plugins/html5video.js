@@ -32,7 +32,9 @@
 	CSSModal.on('cssmodal:hide', document, function (event) {
 		if (videos.length > 0) {
 			// Pause all videos in active modal
-			for (var i = 0; i < videos.length; i++) {
+			var i = 0;
+
+			for (; i < videos.length; i++) {
 				videos[i].pause();
 			}
 		}
