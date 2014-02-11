@@ -16,6 +16,7 @@
 	}
 
 	var videos;
+	var i = 0;
 
 	// Enables Auto-Play when calling modal
 	CSSModal.on('cssmodal:show', document, function (event) {
@@ -32,8 +33,6 @@
 	CSSModal.on('cssmodal:hide', document, function (event) {
 		if (videos.length > 0) {
 			// Pause all videos in active modal
-			var i = 0;
-
 			for (; i < videos.length; i++) {
 				videos[i].pause();
 			}
