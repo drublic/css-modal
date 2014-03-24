@@ -73,7 +73,7 @@
 
 	var resizeModal = function (e) {
 		// Only apply dynamic resize if modal is not in mobile view
-		if (window.matchMedia('(max-width: 43em)').matches) {
+		if (window.matchMedia('(max-width: 30em)').matches) {
 			return;
 		}
 
@@ -106,7 +106,7 @@
 	};
 
 	// Function to call the resizing throttled
-	var resizeModalThrottled = throttle(resizeModal, 500);
+	var resizeModalThrottled = throttle(resizeModal, 5);
 
 	CSSModal.on('cssmodal:show', document, function (event) {
 		fixCloseBtn();
