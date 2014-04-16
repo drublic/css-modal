@@ -180,14 +180,11 @@ html {
 			margin-left: 0;
 		}
 
-
 		.modal-close {
-			left: auto;
-			right: 33px;
-			margin-left: 0;
-
 			&:after {
-				margin-left: 40%;
+				right: 32px;
+				left: auto;
+				margin-left: 0;
 			}
 		}
 	}
