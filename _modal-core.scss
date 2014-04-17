@@ -164,9 +164,9 @@ html {
 			content: '\00d7';
 			position: absolute;
 			top: 25px;
-			left: 50%;
+			right: 50%;
 			z-index: 20;
-			margin-left: ($modal-max-width / 2) - 40;
+			margin-right: -(($modal-max-width / 2) - 40);
 		}
 	}
 
@@ -181,11 +181,10 @@ html {
 		}
 
 		.modal-close {
-			&:after {
-				right: 32px;
-				left: auto;
-				margin-left: 0;
-			}
+		    &:after {
+		        margin-right: 0;
+		        right: 60px;
+		    }
 		}
 	}
 
