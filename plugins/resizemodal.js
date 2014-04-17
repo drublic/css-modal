@@ -133,6 +133,8 @@ var resizeModalDynamically = function (CSSModal) {
 	var imgWidth = parseInt(window.getComputedStyle($modalContent.querySelector('img')).getPropertyValue('width'), 10);
 	var imgHeight = parseInt(window.getComputedStyle($modalContent.querySelector('img')).getPropertyValue('height'), 10);
 
+	var ratio = (imgWidth / imgHeight);
+
 	if (windowWidth < windowHeight) { // If width smaller than height
 		var newWidth;
 		var newMarginLeft;
@@ -157,16 +159,19 @@ var resizeModalDynamically = function (CSSModal) {
 		$modalInner.style.marginLeft = newMarginLeft + 'px';
 	} else if (windowWidth > windowHeight) { // If width wider than height
 		var newWidth;
+		var newMarginLeft;
 		var newHeight = (windowHeight - (2 * margin) - contentPaddingVertical);
 
 		if (!$modalInner.style.width) {
-			newWidth = imgWidth;
+			newWidth = ratio * (newHeight - (2 * margin) - contentPaddingVertical);
 		}
+		newMarginLeft = (newWidth / 2)*-1;
 
 		// Resize modal and images/video/iframe accordingly respecting aspect-ratio
 		$modalContent.style.maxHeight = '100%';
 		$modalInner.style.maxHeight = newHeight + 'px';
 		$modalInner.style.width = newWidth + 'px';
+		$modalInner.style.marginLeft = newMarginLeft + 'px';
 	}
 	// @TODO: .modal-close:after pseudo-element position margin-left (http://stackoverflow.com/questions/7330355/javascript-set-css-after-styles/7330454#7330454)
 };
@@ -177,16 +182,18 @@ var resizeModalDynamically = function (CSSModal) {
  */
 
 var resetModal = function (CSSModal) {
-	var $modalInner = $modalInner;
+	var $modalInner = CSSModal.activeElement.querySelector('.modal-inner');
 	var $modalContent = CSSModal.activeElement.querySelector('.modal-content');
 	var $modalContentImg = $modalContent.querySelector('img');
 
-	$modalInner.style.maxHeight = '';
-	$modalInner.style.width = '';
-	$modalInner.style.left = '';
-	$modalInner.style.marginLeft = '';
-	$modalContent.style.maxHeight = '';
-	$modalContentImg.style.maxHeight = '';
+	if ($modalInner.style) {
+		$modalInner.style.maxHeight = '';
+		$modalInner.style.width = '';
+		$modalInner.style.left = '';
+		$modalInner.style.marginLeft = '';
+		$modalContent.style.maxHeight = '';
+		$modalContentImg.style.maxHeight = '';
+	}
 };
 
 /*
