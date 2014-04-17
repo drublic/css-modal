@@ -397,10 +397,6 @@ html {
 		        transition: all 0.4s;
 
 		opacity: 0;
-		// Needs to be moved into the center
-		// of the modal initially
-		top: 250px;
-		left: 20%;
 	}
 
 
@@ -431,7 +427,6 @@ html {
 			opacity: 1;
 			// Move back to proper position
 			top: 25px;
-			left: 50%;
 
 			@media screen and (max-width: $modal-small-breakpoint) {
 				top: 5px;
@@ -535,7 +530,6 @@ html {
 		// Needs to be moved into the center
 		// of the modal initially
 		top: -125px;
-		left: 75%;
 	}
 
 
@@ -566,7 +560,6 @@ html {
 			opacity: 1;
 			// Move back to proper position
 			top: 25px;
-			left: 50%;
 
 			@media screen and (max-width: $modal-small-breakpoint) {
 				top: 5px;
@@ -621,7 +614,6 @@ html {
 		// Needs to be moved into the center
 		// of the modal initially
 		top: -125px;
-		left: 50%;
 	}
 
 
@@ -775,7 +767,6 @@ html {
 		// Needs to be moved into the center
 		// of the modal initially
 		top: 25px;
-		left: 50%;
 	}
 
 
@@ -852,7 +843,6 @@ html {
 		// Needs to be moved into the center
 		// of the modal initially
 		top: 25px;
-		left: 50%;
 	}
 
 
