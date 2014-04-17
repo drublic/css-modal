@@ -170,8 +170,13 @@ var resizeModalDynamically = function (CSSModal) {
 		// Resize modal and images/video/iframe accordingly respecting aspect-ratio
 		$modalContent.style.maxHeight = '100%';
 		$modalInner.style.maxHeight = newHeight + 'px';
-		$modalInner.style.width = newWidth + 'px';
-		$modalInner.style.marginLeft = newMarginLeft + 'px';
+		if (windowWidth > newWidth) {
+			$modalInner.style.width = newWidth + 'px';
+			$modalInner.style.marginLeft = newMarginLeft + 'px';
+		} else {
+			$modalInner.style.width = (windowWidth - contentPaddingHorizontal - (2 * margin)) + 'px';
+			$modalInner.style.marginLeft = '';
+		}
 	}
 	// @TODO: .modal-close:after pseudo-element position margin-left (http://stackoverflow.com/questions/7330355/javascript-set-css-after-styles/7330454#7330454)
 };
