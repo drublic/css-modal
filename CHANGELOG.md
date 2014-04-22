@@ -2,6 +2,9 @@
 
 ## HEAD
 
+* Fix modal modifier close button positions
+* Separate close button position from its theme styling
+* Fix close button position
 * Correct handling of aria-hidden with JavaScript
 * Unify close btn on mobile
 * Prevent overflow in mobile modals
