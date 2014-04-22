@@ -33,6 +33,7 @@
 			<li><a href="#modal-bouncefromtop" title="Clicking this link shows the modal">Demo bounceFromTop</a></li>
 			<li><a href="#modal-bouncefromtopshaky" title="Clicking this link shows the modal">Demo bounceFromTopShaky</a></li>
 			<li><a href="#modal-html5video" title="Clicking this link shows a modal with HTML5 Video content">Demo HTML5Video</a></li>
+			<li><a href="#modal-image" title="Clicking this link shows a modal with image content">Demo Image</a></li>
 		</ul>
 
 		<!-- A modal with its content -->
@@ -169,6 +170,36 @@
 					<video preload="auto" controls>
 						<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
 					</video>
+					<video preload="auto" controls>
+						<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+					</video>
+					<video preload="auto" controls>
+						<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+					</video>
+				</div>
+			</div>
+
+			<a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+				data-dismiss="modal">×</a>
+		</section>
+
+		<section class="modal--show" id="modal-image" tabindex="-1"
+		role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+			<div class="modal-inner">
+				<div class="modal-content">
+					<img src="http://farm7.staticflickr.com/6163/6202508462_bf8d1b2a78_b.jpg">
+				</div>
+			</div>
+
+			<a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+				data-dismiss="modal">×</a>
+		</section>
+
+		<section class="modal--show" id="modal-image2" tabindex="-1"
+		role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+			<div class="modal-inner">
+				<div class="modal-content">
+					<img src="image.jpg">
 				</div>
 			</div>
 
@@ -186,6 +217,11 @@
 		</div>
 
 		<script src="modal.js"></script><!-- JS for Modal -->
+<<<<<<< HEAD
 		<script src="plugins/html5video.js"></script>
+=======
+		<script src="plugins/resizemodal.js"></script><!-- JS for Modal -->
+		<!-- <script src="plugins/html5video-playback.js"></script> -->
+>>>>>>> 5a81fe51e19551531585e0c37cdf71e570dc6c58
 	</body>
 </html>

@@ -50,7 +50,7 @@
 		/*
 		 * Convenience function to trigger event
 		 * @param event {string} event type
-		 * @param modal {string} id of modal that the event is triggerd on
+		 * @param modal {string} id of modal that the event is triggered on
 		 */
 		trigger: function (event, modal) {
 			var eventTrigger;
