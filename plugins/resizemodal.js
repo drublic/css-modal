@@ -158,18 +158,14 @@ var resizeModalDynamically = function (CSSModal) {
 		$modalInner.style.width = newWidth + 'px';
 		$modalInner.style.marginLeft = newMarginLeft + 'px';
 	} else if (windowWidth > windowHeight) { // If width wider than height
-		var newWidth;
-		var newMarginLeft;
-		var newHeight = (windowHeight - (2 * margin) - contentPaddingVertical);
-
-		if (!$modalInner.style.width) {
-			newWidth = ratio * (newHeight - (2 * margin) - contentPaddingVertical);
-		}
-		newMarginLeft = (newWidth / 2)*-1;
+		var newHeight = (windowHeight - (2 * margin) + contentPaddingVertical);
+		var newWidth = ratio * (newHeight - (2 * margin) - contentPaddingVertical);
+		var newMarginLeft = (newWidth / 2)*-1;
 
 		// Resize modal and images/video/iframe accordingly respecting aspect-ratio
 		$modalContent.style.maxHeight = '100%';
 		$modalInner.style.maxHeight = newHeight + 'px';
+
 		if (windowWidth > newWidth) {
 			$modalInner.style.width = newWidth + 'px';
 			$modalInner.style.marginLeft = newMarginLeft + 'px';
