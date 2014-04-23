@@ -471,11 +471,13 @@ code {
 }
 
 .site-nav {
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   position: fixed;
+  z-index: 20;
   top: 0;
   left: 0;
   width: 100%;
-  height: 4em;
   background: #fff;
   background: rgba(255, 255, 255, 0.9);
 }
@@ -490,7 +492,7 @@ code {
 }
 .site-nav a {
   display: inline-block;
-  padding: 1.2em 0.25em;
+  padding: 1.2em 0.5em;
   color: #000;
 }
 
@@ -953,21 +955,18 @@ html {
     -webkit-transform: scale(0.8);
   }
 }
-
 @-moz-keyframes scaleDown {
   to {
     opacity: 0;
     -moz-transform: scale(0.8);
   }
 }
-
 @keyframes scaleDown {
   to {
     opacity: 0;
     transform: scale(0.8);
   }
 }
-
 @media screen and (min-width: 30em) {
   .semantic-content {
     -webkit-transition: opacity 0.4s;
@@ -993,7 +992,6 @@ html {
     -webkit-transform: translateX(0%) translateY(0%);
   }
 }
-
 @-webkit-keyframes bounce {
   0% {
     -webkit-transform: translateY(-100%);
@@ -1007,7 +1005,6 @@ html {
     -webkit-transform: translateY(0%);
   }
 }
-
 @-moz-keyframes bounce {
   0% {
     -moz-transform: translateY(-100%);
@@ -1021,7 +1018,6 @@ html {
     -moz-transform: translateY(0%);
   }
 }
-
 @-o-keyframes bounce {
   0% {
     -o-transform: translateY(-100%);
@@ -1035,7 +1031,6 @@ html {
     -o-transform: translateY(0%);
   }
 }
-
 @-ms-keyframes bounce {
   0% {
     -ms-transform: translateY(-100%);
@@ -1049,7 +1044,6 @@ html {
     -ms-transform: translateY(0%);
   }
 }
-
 @keyframes bounce {
   0% {
     transform: translateY(-100%);
@@ -1063,7 +1057,6 @@ html {
     transform: translateY(0%);
   }
 }
-
 /**
  * CSS Modal Themes
  * http://drublic.github.com/css-modal
