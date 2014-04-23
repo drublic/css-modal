@@ -7,6 +7,34 @@
 'use strict';
 
 /*
+ * Helper function to write CSS dynamically to modify pseudo-element styles
+ * @param styles {object} (requried)
+ */
+
+var _addCSSRule = (function (styles) {
+	var sheet = document.head.appendChild(styles).sheet;
+	var i = 0;
+
+	return function (selector, css) {
+		var propText = Object.keys(css).map(function (property) {
+			return property + ': ' + css[property] + ';';
+		});
+
+		if (sheet.insertRule) {
+			for (; i < propText.length; i++) {
+				// 	console.log('true');
+				sheet.insertRule(selector + ' { \n	' + propText[i] + '\n}', 0);
+			}
+		} else if (sheet.addRule) {
+			// Internet Explorer <9
+			for (; i < propText.length; i++) {
+				sheet.addRule(selector, propText, 0);
+			}
+		}
+	}
+})(document.createElement('style'));
+
+/*
  * Basic helper function to evaluate width media queries
  * @param breakpoint {int} number representing the media query breakpoint
  * @param condition {string} media query condition, `max-width` or `min-width`
@@ -239,7 +267,20 @@ var resizeModalDynamically = function (CSSModal) {
 			}
 		}
 	}
-	// @TODO: .modal-close:after pseudo-element position margin-left (http://stackoverflow.com/questions/7330355/javascript-set-css-after-styles/7330454#7330454)
+
+	// Move close button to proper position
+	var $closeButton = '.modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after, ._modal .modal-close:after';
+	var closeButtonMarginLeft = 0;
+	var closeButtonWidth = parseInt(window.getComputedStyle(CSSModal.activeElement.querySelector('.modal-close'), '::after').getPropertyValue('width'), 10);
+
+	closeButtonMarginLeft = Math.abs((newWidth / 2) - closeButtonWidth - contentPaddingHorizontal);
+
+	// Append unit
+	closeButtonMarginLeft += 'px';
+
+	_addCSSRule($closeButton, {
+		'margin-left': closeButtonMarginLeft
+	});
 };
 
 /*
