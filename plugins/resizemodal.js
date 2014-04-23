@@ -93,7 +93,36 @@ var _mediaQueryHelper = function (breakpoint, condition, unit) {
 			window.innerWidth = document.body.clientWidth;
 		}
 	}
-}
+};
+
+/*
+ * Get natural dimensions of an image
+ * (can only handle 1 image)
+ * @param selector {QuerySelector} (required)
+ */
+
+var getNaturalImageDimensions = function (selector) {
+	if (!selector) {
+		throw new Error('No selector provided.');
+	}
+	selector = CSSModal.activeElement.querySelector(selector);
+
+	if (typeof selector.naturalWidth === 'undefined') {
+		// Polyfill IE 6/7/8
+		var image = new Image();
+		image.src = selector.src;
+
+		return {
+			width: image.width,
+			height: image.height
+		}
+	} else {
+		return {
+			width: selector.naturalWidth,
+			height: selector.naturalHeight
+		}
+	}
+};
 
 /*
  * Resize modal dynamically
@@ -129,23 +158,28 @@ var resizeModalDynamically = function (CSSModal) {
 	// Set img to max-height: 100%;
 	$modalContent.querySelector('img').style.maxHeight = '100%';
 
-	// Wait for img[max-height:100%] to be applied to calc imgSizes
-	var imgWidth = parseInt(window.getComputedStyle($modalContent.querySelector('img')).getPropertyValue('width'), 10);
-	var imgHeight = parseInt(window.getComputedStyle($modalContent.querySelector('img')).getPropertyValue('height'), 10);
-
-	var ratio = (imgWidth / imgHeight);
+	var $imgSelector = $modalContent.querySelector('img');
+	var naturalImageWidth = getNaturalImageDimensions('img').width;
+	var naturalImageHeight = getNaturalImageDimensions('img').height;
+	var ratio = (naturalImageWidth / naturalImageHeight);
 
 	if (windowWidth < windowHeight) { // If width smaller than height
 		var newWidth;
 		var newMarginLeft;
 
-		if (imgWidth < windowWidth) {
+		if (naturalImageWidth < windowWidth) {
 			if (!$modalInner.style.width) {
-				newWidth = imgWidth;
+				newWidth = naturalImageWidth;
 			}
 		} else {
 			//maybe obsolete due to CSS max-height: 100%;
-			newWidth = (windowWidth - (2 * margin) + contentPaddingHorizontal);
+			newWidth = (windowWidth - (2 * margin) - contentPaddingHorizontal);
+		}
+
+		if (naturalImageWidth < newWidth) {
+			newWidth = naturalImageWidth;
+		} else if (naturalImageHeight < newHeight) {
+			newHeight = naturalImageHeight;
 		}
 
 		newMarginLeft = (newWidth / 2)*-1;
@@ -157,9 +191,16 @@ var resizeModalDynamically = function (CSSModal) {
 
 		$modalInner.style.width = newWidth + 'px';
 		$modalInner.style.marginLeft = newMarginLeft + 'px';
-	} else if (windowWidth > windowHeight) { // If width wider than height
+	} else { // If width wider than height
 		var newHeight = (windowHeight - (2 * margin) + contentPaddingVertical);
 		var newWidth = ratio * (newHeight - (2 * margin) - contentPaddingVertical);
+
+		if (naturalImageWidth < newWidth) {
+			newWidth = naturalImageWidth - (2 * margin) - contentPaddingHorizontal;
+		} else if (naturalImageHeight < newHeight) {
+			newHeight = naturalImageHeight - (2 * margin) - contentPaddingVertical;
+		}
+
 		var newMarginLeft = (newWidth / 2)*-1;
 
 		// Resize modal and images/video/iframe accordingly respecting aspect-ratio
@@ -174,8 +215,15 @@ var resizeModalDynamically = function (CSSModal) {
 			$modalInner.style.width = newWidth + 'px';
 			$modalInner.style.marginLeft = newMarginLeft + 'px';
 		} else {
-			$modalInner.style.width = (windowWidth - contentPaddingHorizontal - (2 * margin)) + 'px';
+			newWidth = windowWidth - (2 * margin) - contentPaddingHorizontal;
+			newMarginLeft = (newWidth / 2)*-1;
+
+			$modalInner.style.width = newWidth + 'px';
 			$modalInner.style.marginLeft = '';
+
+			if (_mediaQueryHelper('30', 'min-width')) {
+				$modalInner.style.marginLeft = newMarginLeft + 'px';
+			}
 		}
 	}
 	// @TODO: .modal-close:after pseudo-element position margin-left (http://stackoverflow.com/questions/7330355/javascript-set-css-after-styles/7330454#7330454)
