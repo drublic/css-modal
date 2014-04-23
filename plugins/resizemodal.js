@@ -7,35 +7,6 @@
 'use strict';
 
 /*
- * Basic helper function to throttle execution of events
- * @param func {string} specifiying the function to throttle
- * @param wait {int} time to wait between execution
- * @param immediate {bool}
- */
-
-var _throttle = function (func, wait, immediate) {
-	var timeout;
-
-	return function() {
-		var later = function () {
-			timeout = null;
-
-			if (!immediate) {
-				func.apply(this, arguments);
-			}
-		};
-
-		var callNow = immediate && !timeout;
-		clearTimeout(timeout);
-		timeout = setTimeout(later, wait);
-
-		if (callNow) {
-			func.apply(this, arguments);
-		}
-	};
-};
-
-/*
  * Basic helper function to evaluate width media queries
  * @param breakpoint {int} number representing the media query breakpoint
  * @param condition {string} media query condition, `max-width` or `min-width`
@@ -161,25 +132,37 @@ var resizeModalDynamically = function (CSSModal) {
 	var $imgSelector = $modalContent.querySelector('img');
 	var naturalImageWidth = getNaturalImageDimensions('img').width;
 	var naturalImageHeight = getNaturalImageDimensions('img').height;
-	var ratio = (naturalImageWidth / naturalImageHeight);
+	var ratioWH = (naturalImageWidth / naturalImageHeight);
+	var ratioHW = (naturalImageHeight / naturalImageWidth);
 
 	if (windowWidth < windowHeight) { // If width smaller than height
-		var newWidth;
-		var newMarginLeft;
+		var newMarginLeft = 0;
+		var newHeight = 0;
 
 		if (naturalImageWidth < windowWidth) {
-			if (!$modalInner.style.width) {
-				newWidth = naturalImageWidth;
-			}
-		} else {
-			//maybe obsolete due to CSS max-height: 100%;
-			newWidth = (windowWidth - (2 * margin) - contentPaddingHorizontal);
-		}
-
-		if (naturalImageWidth < newWidth) {
 			newWidth = naturalImageWidth;
-		} else if (naturalImageHeight < newHeight) {
-			newHeight = naturalImageHeight;
+			newHeight = ratioWH * newWidth;
+		} else {
+			if ((naturalImageHeight > naturalImageWidth)) {
+				// Portrait image
+				newHeight = windowHeight - (2 * margin) - contentPaddingVertical;
+
+				if (naturalImageHeight < newHeight) {
+					newHeight = naturalImageHeight;
+				}
+
+				newWidth = ratioWH * newHeight + margin;
+			}
+
+			if ((naturalImageHeight < naturalImageWidth)) {
+				// Landscape image
+				newWidth = windowWidth - (2 * margin) - contentPaddingHorizontal;
+				newHeight = 'auto';
+
+				if (naturalImageWidth < newWidth) {
+					newWidth = naturalImageWidth;
+				}
+			}
 		}
 
 		newMarginLeft = (newWidth / 2)*-1;
@@ -190,18 +173,48 @@ var resizeModalDynamically = function (CSSModal) {
 		}
 
 		$modalInner.style.width = newWidth + 'px';
+		$modalContent.style.maxHeight = '100%';
+
+		if (newHeight === 'auto') {
+			$modalInner.style.height = newHeight;
+		} else {
+			$modalInner.style.height = newHeight + 'px';
+		}
+
 		$modalInner.style.marginLeft = newMarginLeft + 'px';
 	} else { // If width wider than height
 		var newHeight = (windowHeight - (2 * margin) + contentPaddingVertical);
-		var newWidth = ratio * (newHeight - (2 * margin) - contentPaddingVertical);
+		var newWidth = ratioWH * (newHeight - (2 * margin) - contentPaddingVertical);
+		var newMarginLeft;
 
-		if (naturalImageWidth < newWidth) {
-			newWidth = naturalImageWidth - (2 * margin) - contentPaddingHorizontal;
-		} else if (naturalImageHeight < newHeight) {
-			newHeight = naturalImageHeight - (2 * margin) - contentPaddingVertical;
+		// Reset height attribute (otherwise causes issues onresize)
+		$modalInner.style.height = '';
+
+		if ((naturalImageHeight < naturalImageWidth)) {
+			// Landscape image
+			if (naturalImageWidth < newWidth) {
+				newWidth = naturalImageWidth - (2 * margin) - contentPaddingHorizontal;
+			} else if (naturalImageHeight < newHeight) {
+				newHeight = naturalImageHeight - (2 * margin) - contentPaddingVertical;
+			}
 		}
 
-		var newMarginLeft = (newWidth / 2)*-1;
+		if ((naturalImageHeight > naturalImageWidth)) {
+			// Portrait image
+			if ((newHeight + (2 * margin) + contentPaddingVertical) > windowHeight) {
+				newHeight = windowHeight - (2 * margin) + contentPaddingVertical;
+				newWidth = ratioWH * (newHeight - (2 * margin) - contentPaddingVertical);
+			}
+		}
+
+		// Don’t build bigger box than the image itself is
+		if (naturalImageWidth < newWidth) {
+			newWidth = naturalImageWidth;
+		} else if (naturalImageHeight < newHeight) {
+			newHeight = naturalImageHeight;
+		}
+
+		newMarginLeft = (newWidth / 2)*-1;
 
 		// Resize modal and images/video/iframe accordingly respecting aspect-ratio
 		$modalContent.style.maxHeight = '100%';
@@ -241,6 +254,7 @@ var resetModal = function (CSSModal) {
 
 	if ($modalInner.style) {
 		$modalInner.style.maxHeight = '';
+		$modalInner.style.height = '';
 		$modalInner.style.width = '';
 		$modalInner.style.left = '';
 		$modalInner.style.marginLeft = '';
