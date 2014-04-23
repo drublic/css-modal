@@ -166,6 +166,10 @@ var resizeModalDynamically = function (CSSModal) {
 		$modalContent.style.maxHeight = '100%';
 		$modalInner.style.maxHeight = newHeight + 'px';
 
+		if (_mediaQueryHelper('30', 'min-width')) {
+			$modalInner.style.left = '50%'; // Force 50% to center
+		}
+
 		if (windowWidth > newWidth) {
 			$modalInner.style.width = newWidth + 'px';
 			$modalInner.style.marginLeft = newMarginLeft + 'px';
