@@ -3,7 +3,7 @@
 Modals built out of pure CSS
 
 Please [visit the website](http://drublic.github.io/css-modal) to read more
-about this project.
+about this project and refer to the [FAQ](FAQ.md) in case of a question.
 
 ## What is it
 
