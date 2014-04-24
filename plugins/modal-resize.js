@@ -3,7 +3,7 @@
  * Author: Anselm Hannemann
  * Date: 2014-04-15
  */
-(function () {
+(function (global) {
 	'use strict';
 
 	/**
@@ -11,83 +11,66 @@
 	 */
 	var CSSModal;
 
-	/*
-	 * Helper function to write CSS dynamically to modify pseudo-element styles
-	 * @param styles {object} (requried)
+	/**
+	 * Include styles into the DOM
+	 * @param  {string} rule Styles to inject into the DOM
 	 */
-	var _addCSSRule = (function (styles) {
-		var sheet = document.head.appendChild(styles).sheet;
-		var i = 0;
+	var _injectStyles = function (rule) {
+		var element = document.createElement('style');
 
-		return function (selector, css) {
-			var propText = Object.keys(css).map(function (property) {
-				return property + ': ' + css[property] + ';';
-			});
+		element.innerHTML = '<style>' + rule + '</style>';
 
-			if (sheet.insertRule) {
-				for (; i < propText.length; i++) {
-					// 	console.log('true');
-					sheet.insertRule(selector + ' { \n	' + propText[i] + '\n}', 0);
-				}
-			} else if (sheet.addRule) {
-				// Internet Explorer <9
-				for (; i < propText.length; i++) {
-					sheet.addRule(selector, propText, 0);
-				}
-			}
-		};
-	})(document.createElement('style'));
-
-	/*
-	 * Basic helper function to evaluate width media queries
-	 * @param breakpoint {int} number representing the media query breakpoint
-	 * @param condition {string} media query condition, `max-width` or `min-width`
-	 * @param unit {string} like `em` (default) or `px` to specify a unit
-	 */
-	var _mediaQueryHelper = function (breakpoint, condition, unit) {
-		if (!breakpoint) {
-			throw new Error('Error: No breakpoint provided');
-		}
-
-		if (!condition) {
-			throw new Error('Error: No condition provided');
-		}
-
-		var calculatedBreakpoint = breakpoint;
-		var baseFontSize = parseInt(window.getComputedStyle(document.body).getPropertyValue('font-size'), 10);
-
-		if (!unit) {
-			unit = 'em';
-
-			calculatedBreakpoint = breakpoint * baseFontSize;
-		} else {
-			if (unit === 'em') {
-				calculatedBreakpoint = breakpoint * baseFontSize;
-			} else if (unit === 'px') {
-				calculatedBreakpoint = breakpoint;
-			}
-		}
-
-		if (window.matchMedia) {
-			return window.matchMedia('(' + condition + ': ' + breakpoint + unit + ')').matches;
-
-		// Basic Polyfill for window.matchMedia
-		} else {
-			if (window.innerWidth) {
-
-				if (condition === 'max-width') {
-					return window.innerWidth < calculatedBreakpoint;
-				} else if (condition === 'min-width') {
-					return window.innerWidth > calculatedBreakpoint;
-				}
-
-			// Polyfill window.innerWidth|innerHeight to fix IE8/9 Quirks Mode
-			} else {
-				window.innerHeight = document.body.clientHeight;
-				window.innerWidth = document.body.clientWidth;
-			}
-		}
+		document.head.appendChild(element);
 	};
+
+	/*!
+	 * matchMedia() polyfill - Test a CSS media type/query in JS.
+	 * Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight.
+	 * Dual MIT/BSD license
+	 */
+	global.matchMedia = global.matchMedia || (function() {
+
+		// For browsers that support matchMedium api such as IE 9 and webkit
+		var styleMedia = (global.styleMedia || global.media);
+
+		// For those that don't support matchMedium
+		if (!styleMedia) {
+			var style = document.createElement('style');
+			var script = document.getElementsByTagName('script')[0];
+			var info = null;
+
+			style.type = 'text/css';
+			style.id = 'matchmediajs-test';
+
+			script.parentNode.insertBefore(style, script);
+
+			// 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
+			info = ('getComputedStyle' in global) && global.getComputedStyle(style, null) || style.currentStyle;
+
+			styleMedia = {
+				matchMedium: function(media) {
+					var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }';
+
+					// 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
+					if (style.styleSheet) {
+						style.styleSheet.cssText = text;
+					} else {
+						style.textContent = text;
+					}
+
+					// Test if media query is true or false
+					return info.width === '1px';
+				}
+			};
+		}
+
+		return function (media) {
+			return {
+				matches: styleMedia.matchMedium(media || 'all'),
+				media: media || 'all'
+			};
+		};
+	}());
 
 	/*
 	 * Get natural dimensions of an image
@@ -134,14 +117,16 @@
 		var $modalContent = CSSModal.activeElement.querySelector('.modal-content');
 		var $modalInner = CSSModal.activeElement.querySelector('.modal-inner');
 
+		var computedStyle = window.getComputedStyle($modalContent);
+
 		var contentPadding = {
-			top: parseInt(window.getComputedStyle($modalContent).getPropertyValue('padding-top'), 10),
-			left: parseInt(window.getComputedStyle($modalContent).getPropertyValue('padding-left'), 10),
-			right: parseInt(window.getComputedStyle($modalContent).getPropertyValue('padding-right'), 10),
-			bottom: parseInt(window.getComputedStyle($modalContent).getPropertyValue('padding-bottom'), 10)
+			top: parseInt(computedStyle.getPropertyValue('padding-top'), 10),
+			left: parseInt(computedStyle.getPropertyValue('padding-left'), 10),
+			right: parseInt(computedStyle.getPropertyValue('padding-right'), 10),
+			bottom: parseInt(computedStyle.getPropertyValue('padding-bottom'), 10)
 		};
 
-		// Calculate concatenated vertical and horizontal paddings
+		// Calculate commulated vertical and horizontal paddings
 		var contentPaddingHorizontal = contentPadding.left + contentPadding.right;
 		var contentPaddingVertical = contentPadding.top + contentPadding.bottom;
 
@@ -247,7 +232,7 @@
 			$modalContent.style.maxHeight = '100%';
 			$modalInner.style.maxHeight = newHeight + 'px';
 
-			if (_mediaQueryHelper('30', 'min-width')) {
+			if (window.matchMedia('(min-width: 30em)').matches) {
 				$modalInner.style.left = '50%'; // Force 50% to center
 			}
 
@@ -261,14 +246,14 @@
 				$modalInner.style.width = newWidth + 'px';
 				$modalInner.style.marginLeft = '';
 
-				if (_mediaQueryHelper('30', 'min-width')) {
+				if (window.matchMedia('(min-width: 30em)').matches) {
 					$modalInner.style.marginLeft = newMarginLeft + 'px';
 				}
 			}
 		}
 
 		// Move close button to proper position
-		var $closeButton = '.modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after, ._modal .modal-close:after';
+		var closeButton = '.modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after, ._modal .modal-close:after';
 		var closeButtonMarginLeft = 0;
 		var closeButtonWidth = parseInt(window.getComputedStyle(CSSModal.activeElement.querySelector('.modal-close'), '::after').getPropertyValue('width'), 10);
 
@@ -277,16 +262,13 @@
 		// Append unit
 		closeButtonMarginLeft += 'px';
 
-		_addCSSRule($closeButton, {
-			'margin-left': closeButtonMarginLeft
-		});
+		_injectStyles(closeButton + '{ margin-left: ' + closeButtonMarginLeft + '}');
 	};
 
 	/*
 	 * Reset modal from being dynamically resized and prepare for e.g. mobile view
 	 * @param CSSModal {CSSModal} (required)
 	 */
-
 	var resetModal = function (CSSModal) {
 		var $modalInner = CSSModal.activeElement.querySelector('.modal-inner');
 		var $modalContent = CSSModal.activeElement.querySelector('.modal-content');
@@ -308,7 +290,7 @@
 	 * @param modal {object} CSSModal object
 	 */
 	var resizeModal = function () {
-		if (_mediaQueryHelper('30', 'min-width')) {
+		if (window.matchMedia('(min-width: 30em)').matches) {
 			resizeModalDynamically(CSSModal);
 		} else {
 			resetModal(CSSModal);
@@ -350,7 +332,6 @@
 
 	// Export CSSModal into global space
 	} else if (typeof global === 'object' && typeof global.document === 'object') {
-		init(window.CSSModal);
+		init(global.CSSModal);
 	}
-
-})();
+}(window));
