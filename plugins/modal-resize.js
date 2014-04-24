@@ -11,18 +11,6 @@
 	 */
 	var CSSModal;
 
-	/**
-	 * Include styles into the DOM
-	 * @param  {string} rule Styles to inject into the DOM
-	 */
-	var _injectStyles = function (rule) {
-		var element = document.createElement('style');
-
-		element.innerHTML = '<style>' + rule + '</style>';
-
-		document.head.appendChild(element);
-	};
-
 	/*!
 	 * matchMedia() polyfill - Test a CSS media type/query in JS.
 	 * Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight.
@@ -72,17 +60,35 @@
 		};
 	}());
 
-	/*
-	 * Get natural dimensions of an image
-	 * (can only handle 1 image)
-	 * @param selector {QuerySelector} (required)
+	/**
+	 * Include styles into the DOM
+	 * @param {string} rule Styles to inject into the DOM
+	 * @param {string} id   Unique ID for styles
 	 */
-	var getNaturalImageDimensions = function (selector) {
-		if (!selector) {
-			throw new Error('getNaturalImageDimensions: Missing argument `selector`.');
+	var _injectStyles = function (rule, id) {
+		var element = document.createElement('div');
+
+		id = 'modal__rule' + (id || '');
+
+		// Remove all current rules
+		if (document.getElementById(id)) {
+			document.getElementById(id).parentNode.removeChild(document.getElementById(id));
 		}
 
-		var element = CSSModal.activeElement.querySelector(selector);
+		element.id = 'modal__rule' + id;
+		element.innerHTML = '<style>' + rule + '</style>';
+
+		// Append a new rule
+		document.body.appendChild(element);
+	};
+
+	/*
+	 * Get natural dimensions of an image
+	 */
+	var getNaturalImageDimensions = function (element) {
+		if (!element) {
+			return;
+		}
 
 		// Polyfill IE 6/7/8
 		if (typeof element.naturalWidth === 'undefined') {
@@ -94,12 +100,23 @@
 				width: image.width,
 				height: image.height
 			};
-		} else {
-			return {
-				width: element.naturalWidth,
-				height: element.naturalHeight
-			};
 		}
+
+		return {
+			width: element.naturalWidth,
+			height: element.naturalHeight
+		};
+	};
+
+	var getDimentions = function (element) {
+		if (!element || element.length === 0) {
+			return;
+		}
+
+		return {
+			width: element.offsetWidth,
+			height: element.offsetHeight
+		};
 	};
 
 	/*
@@ -110,159 +127,24 @@
 			throw new Error('Error: No active modal.');
 		}
 
-		var windowHeight = window.innerHeight;
-		var windowWidth = window.innerWidth;
-		var margin = 20;
+		var element = CSSModal.activeElement.querySelector('.modal-inner');
+		var elementContent = CSSModal.activeElement.querySelector('.modal-content');
 
-		var $modalContent = CSSModal.activeElement.querySelector('.modal-content');
-		var $modalInner = CSSModal.activeElement.querySelector('.modal-inner');
+		var imageDimentions = getNaturalImageDimensions(CSSModal.activeElement.querySelector('img'));
+		var containerDimentions = getDimentions(element);
 
-		var computedStyle = window.getComputedStyle($modalContent);
+		element.style.width = 'auto';
+		elementContent.style.maxHeight = 'none';
 
-		var contentPadding = {
-			top: parseInt(computedStyle.getPropertyValue('padding-top'), 10),
-			left: parseInt(computedStyle.getPropertyValue('padding-left'), 10),
-			right: parseInt(computedStyle.getPropertyValue('padding-right'), 10),
-			bottom: parseInt(computedStyle.getPropertyValue('padding-bottom'), 10)
-		};
+		console.log(containerDimentions);
 
-		// Calculate commulated vertical and horizontal paddings
-		var contentPaddingHorizontal = contentPadding.left + contentPadding.right;
-		var contentPaddingVertical = contentPadding.top + contentPadding.bottom;
-
-		// Set img to max-height: 100%;
-		if ($modalContent.querySelector('img') === null) {
-			return;
+		if (containerDimentions.width > global.innerWidth) {
+			console.log('zu breit');
 		}
 
-		$modalContent.querySelector('img').style.maxHeight = '100%';
-
-		var naturalImageWidth = getNaturalImageDimensions('img').width;
-		var naturalImageHeight = getNaturalImageDimensions('img').height;
-		var ratioWH = (naturalImageWidth / naturalImageHeight);
-
-		var newMarginLeft;
-		var newWidth;
-		var newHeight;
-
-		if (windowWidth < windowHeight) { // If width smaller than height
-			newMarginLeft = 0;
-			newHeight = 0;
-
-			if (naturalImageWidth < windowWidth) {
-				newWidth = naturalImageWidth;
-				newHeight = ratioWH * newWidth;
-			} else {
-
-				// Portrait image
-				if (naturalImageHeight > naturalImageWidth) {
-					newHeight = windowHeight - (2 * margin) - contentPaddingVertical;
-
-					if (naturalImageHeight < newHeight) {
-						newHeight = naturalImageHeight;
-					}
-
-					newWidth = ratioWH * newHeight + margin;
-				}
-
-				// Landscape image
-				if (naturalImageHeight < naturalImageWidth) {
-					newWidth = windowWidth - (2 * margin) - contentPaddingHorizontal;
-					newHeight = 'auto';
-
-					if (naturalImageWidth < newWidth) {
-						newWidth = naturalImageWidth;
-					}
-				}
-			}
-
-			newMarginLeft = (newWidth / 2)*-1;
-
-			// Resize modal and images/video/iframe accordingly respecting aspect-ratio
-			if (newWidth) {
-				$modalInner.style.left = '50%'; // Force 50% to center
-			}
-
-			$modalInner.style.width = newWidth + 'px';
-			$modalContent.style.maxHeight = '100%';
-
-			if (newHeight === 'auto') {
-				$modalInner.style.height = newHeight;
-			} else {
-				$modalInner.style.height = newHeight + 'px';
-			}
-
-			$modalInner.style.marginLeft = newMarginLeft + 'px';
-
-		// If width wider than height
-		} else {
-			newHeight = (windowHeight - (2 * margin) + contentPaddingVertical);
-			newWidth = ratioWH * (newHeight - (2 * margin) - contentPaddingVertical);
-
-			// Reset height attribute (otherwise causes issues onresize)
-			$modalInner.style.height = '';
-
-			if ((naturalImageHeight < naturalImageWidth)) {
-				// Landscape image
-				if (naturalImageWidth < newWidth) {
-					newWidth = naturalImageWidth - (2 * margin) - contentPaddingHorizontal;
-				} else if (naturalImageHeight < newHeight) {
-					newHeight = naturalImageHeight - (2 * margin) - contentPaddingVertical;
-				}
-			}
-
-			// Portrait image
-			if (naturalImageHeight > naturalImageWidth) {
-				if ((newHeight + (2 * margin) + contentPaddingVertical) > windowHeight) {
-					newHeight = windowHeight - (2 * margin) + contentPaddingVertical;
-					newWidth = ratioWH * (newHeight - (2 * margin) - contentPaddingVertical);
-				}
-			}
-
-			// Don’t build bigger box than the image itself is
-			if (naturalImageWidth < newWidth) {
-				newWidth = naturalImageWidth;
-			} else if (naturalImageHeight < newHeight) {
-				newHeight = naturalImageHeight;
-			}
-
-			newMarginLeft = (newWidth / 2)*-1;
-
-			// Resize modal and images/video/iframe accordingly respecting aspect-ratio
-			$modalContent.style.maxHeight = '100%';
-			$modalInner.style.maxHeight = newHeight + 'px';
-
-			if (window.matchMedia('(min-width: 30em)').matches) {
-				$modalInner.style.left = '50%'; // Force 50% to center
-			}
-
-			if (windowWidth > newWidth) {
-				$modalInner.style.width = newWidth + 'px';
-				$modalInner.style.marginLeft = newMarginLeft + 'px';
-			} else {
-				newWidth = windowWidth - (2 * margin) - contentPaddingHorizontal;
-				newMarginLeft = (newWidth / 2)*-1;
-
-				$modalInner.style.width = newWidth + 'px';
-				$modalInner.style.marginLeft = '';
-
-				if (window.matchMedia('(min-width: 30em)').matches) {
-					$modalInner.style.marginLeft = newMarginLeft + 'px';
-				}
-			}
+		if (containerDimentions.height > global.innerHeight) {
+			console.log('zu hoch');
 		}
-
-		// Move close button to proper position
-		var closeButton = '.modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after, ._modal .modal-close:after';
-		var closeButtonMarginLeft = 0;
-		var closeButtonWidth = parseInt(window.getComputedStyle(CSSModal.activeElement.querySelector('.modal-close'), '::after').getPropertyValue('width'), 10);
-
-		closeButtonMarginLeft = Math.abs((newWidth / 2) - closeButtonWidth - contentPaddingHorizontal);
-
-		// Append unit
-		closeButtonMarginLeft += 'px';
-
-		_injectStyles(closeButton + '{ margin-left: ' + closeButtonMarginLeft + '}');
 	};
 
 	/*
@@ -271,17 +153,10 @@
 	 */
 	var resetModal = function (CSSModal) {
 		var $modalInner = CSSModal.activeElement.querySelector('.modal-inner');
-		var $modalContent = CSSModal.activeElement.querySelector('.modal-content');
-		var $modalContentImg = $modalContent.querySelector('img');
 
 		if ($modalInner.style) {
-			$modalInner.style.maxHeight = '';
-			$modalInner.style.height = '';
-			$modalInner.style.width = '';
+			$modalInner.style.top = '';
 			$modalInner.style.left = '';
-			$modalInner.style.marginLeft = '';
-			$modalContent.style.maxHeight = '';
-			$modalContentImg.style.maxHeight = '';
 		}
 	};
 
@@ -297,6 +172,42 @@
 		}
 	};
 
+	var getHorizontalOffset = function () {
+		var element = CSSModal.activeElement.querySelector('.modal-inner');
+		var elementWidth = parseInt(global.getComputedStyle(element).getPropertyValue('width'), 10);
+		var offset = (global.innerWidth - elementWidth) / 2;
+
+		return offset;
+	};
+
+	var getVerticalOffset = function () {
+		var element = CSSModal.activeElement.querySelector('.modal-inner');
+		var elementHeight = parseInt(global.getComputedStyle(element).getPropertyValue('height'), 10);
+		var offset = (global.innerHeight - elementHeight) / 2;
+
+		return offset;
+	};
+
+	var positionModal = function () {
+		var offset = {
+			top: getVerticalOffset(),
+			left: getHorizontalOffset()
+		};
+
+		var element = CSSModal.activeElement.querySelector('.modal-inner');
+		var elementWidth = parseInt(global.getComputedStyle(element).getPropertyValue('width'), 10);
+
+		element.style.top = offset.top + 'px';
+		element.style.left = offset.left + 'px';
+		element.style.marginLeft = 0;
+
+		// Close button
+		_injectStyles('.modal-close:after {' +
+			'top: ' + (offset.top - 28) + 'px !important;' +
+			'margin-right: -' + elementWidth / 2 + 'px !important;' +
+		'}', element.id);
+	};
+
 
 	/**
 	 * Initial call
@@ -309,10 +220,12 @@
 		 */
 		CSSModal.on('resize', window, function () {
 			resizeModal();
+			positionModal();
 		});
 
 		CSSModal.on('cssmodal:show', document, function () {
 			resizeModal();
+			positionModal();
 		});
 
 	};

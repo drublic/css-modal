@@ -166,7 +166,7 @@ html {
 			top: 25px;
 			right: 50%;
 			z-index: 20;
-			margin-right: -(($modal-max-width / 2) - 40);
+			margin-right: -($modal-max-width / 2);
 		}
 	}
 
@@ -181,10 +181,10 @@ html {
 		}
 
 		.modal-close {
-		    &:after {
-		        margin-right: 0;
-		        right: 60px;
-		    }
+			&:after {
+				margin-right: 0;
+				right: 20px;
+			}
 		}
 	}
 
