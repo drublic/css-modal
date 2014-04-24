@@ -7,7 +7,6 @@
   ],
   "author": "Hans Christian Reinl",
   "ignore": [
-    "download",
     "node_modules",
     "test",
     ".editorconfig",
