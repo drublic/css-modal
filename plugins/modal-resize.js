@@ -61,6 +61,32 @@
 	}());
 
 	/**
+	 * Polyfill for getComputedStyle
+	 */
+	global.getComputedStyle = global.getComputedStyle || function (element, pseudo) {
+		this.element = element;
+		this.pseudo = pseudo;
+
+		this.getPropertyValue = function (property) {
+			var re = /(\-([a-z]){1})/g;
+
+			if (property === 'float') {
+				property = 'styleFloat';
+			}
+
+			if (re.test(property)) {
+				property = property.replace(re, function () {
+					return arguments[2].toUpperCase();
+				});
+			}
+
+			return element.currentStyle[property] ? element.currentStyle[property] : null;
+		};
+
+		return this;
+	};
+
+	/**
 	 * Include styles into the DOM
 	 * @param {string} rule Styles to inject into the DOM
 	 * @param {string} id   Unique ID for styles
@@ -82,32 +108,11 @@
 		document.body.appendChild(element);
 	};
 
-	/*
-	 * Get natural dimensions of an image
+	/**
+	 * Get dimentions of a given element
+	 * @param  {node}   element Element to find dimentions of
+	 * @return {object}         Dimentions of object
 	 */
-	var getNaturalImageDimensions = function (element) {
-		if (!element) {
-			return;
-		}
-
-		// Polyfill IE 6/7/8
-		if (typeof element.naturalWidth === 'undefined') {
-			var image = new Image();
-
-			image.src = selector.src;
-
-			return {
-				width: image.width,
-				height: image.height
-			};
-		}
-
-		return {
-			width: element.naturalWidth,
-			height: element.naturalHeight
-		};
-	};
-
 	var getDimentions = function (element) {
 		if (!element || element.length === 0) {
 			return;
@@ -127,23 +132,24 @@
 			throw new Error('Error: No active modal.');
 		}
 
+
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementContent = CSSModal.activeElement.querySelector('.modal-content');
-
-		var imageDimentions = getNaturalImageDimensions(CSSModal.activeElement.querySelector('img'));
-		var containerDimentions = getDimentions(element);
+		var containerDimentions;
 
 		element.style.width = 'auto';
 		elementContent.style.maxHeight = 'none';
 
-		console.log(containerDimentions);
+		containerDimentions = getDimentions(element);
 
-		if (containerDimentions.width > global.innerWidth) {
-			console.log('zu breit');
+		if (containerDimentions.width > global.innerWidth - 120) {
+			CSSModal.activeElement.querySelector('img').style.maxWidth = (global.innerWidth - 120) + 'px';
+			CSSModal.activeElement.querySelector('img').style.maxHeight = '100%';
 		}
 
-		if (containerDimentions.height > global.innerHeight) {
-			console.log('zu hoch');
+		if (containerDimentions.height > global.innerHeight - 120) {
+			CSSModal.activeElement.querySelector('img').style.maxWidth = '100%';
+			CSSModal.activeElement.querySelector('img').style.maxHeight = (global.innerHeight - 120) + 'px';
 		}
 	};
 
@@ -152,11 +158,14 @@
 	 * @param CSSModal {CSSModal} (required)
 	 */
 	var resetModal = function (CSSModal) {
-		var $modalInner = CSSModal.activeElement.querySelector('.modal-inner');
+		var modalInner = CSSModal.activeElement.querySelector('.modal-inner');
+		var modalImage = CSSModal.activeElement.querySelector('img');
 
-		if ($modalInner.style) {
-			$modalInner.style.top = '';
-			$modalInner.style.left = '';
+		if (modalInner.style) {
+			modalInner.style.top = '0';
+			modalInner.style.left = '0';
+			modalImage.style.maxWidth = '100%';
+			modalImage.style.maxHeight = '100%';
 		}
 	};
 
@@ -165,10 +174,10 @@
 	 * @param modal {object} CSSModal object
 	 */
 	var resizeModal = function () {
+		resetModal(CSSModal);
+
 		if (window.matchMedia('(min-width: 30em)').matches) {
 			resizeModalDynamically(CSSModal);
-		} else {
-			resetModal(CSSModal);
 		}
 	};
 
@@ -203,31 +212,28 @@
 
 		// Close button
 		_injectStyles('.modal-close:after {' +
-			'top: ' + (offset.top - 28) + 'px !important;' +
+			'top: ' + (offset.top - 25) + 'px !important;' +
 			'margin-right: -' + elementWidth / 2 + 'px !important;' +
 		'}', element.id);
 	};
 
+	var _scale = function () {
+		resizeModal();
+		positionModal();
+	};
+
+var init = function (modal) {
 
 	/**
 	 * Initial call
 	 */
-	var init = function (modal) {
 		CSSModal = modal;
 
 		/*
 		 * Assign basic event handlers
 		 */
-		CSSModal.on('resize', window, function () {
-			resizeModal();
-			positionModal();
-		});
-
-		CSSModal.on('cssmodal:show', document, function () {
-			resizeModal();
-			positionModal();
-		});
-
+		CSSModal.on('resize', window, _scale);
+		CSSModal.on('cssmodal:show', document, _scale);
 	};
 
 	/*
@@ -247,4 +253,5 @@
 	} else if (typeof global === 'object' && typeof global.document === 'object') {
 		init(global.CSSModal);
 	}
+
 }(window));

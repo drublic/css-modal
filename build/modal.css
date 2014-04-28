@@ -136,9 +136,9 @@ html {
   content: '\00d7';
   position: absolute;
   top: 25px;
-  left: 50%;
+  right: 50%;
   z-index: 20;
-  margin-left: 285px;
+  margin-right: -325px;
 }
 @media screen and (max-width: 690px) {
   .modal--show .modal-inner {
@@ -147,13 +147,9 @@ html {
     right: 20px;
     margin-left: 0;
   }
-  .modal--show .modal-close {
-    left: auto;
-    right: 33px;
-    margin-left: 0;
-  }
   .modal--show .modal-close:after {
-    margin-left: 40%;
+    margin-right: 0;
+    right: 20px;
   }
 }
 @media screen and (max-width: 30em) {
