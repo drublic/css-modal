@@ -218,15 +218,18 @@
 	};
 
 	var _scale = function () {
-		resizeModal();
-		positionModal();
-	};
+		var resize = CSSModal.activeElement.getAttribute('data-cssmodal-resize');
 
-var init = function (modal) {
+		if (resize === 'true' || resize === '') {
+			resizeModal();
+			positionModal();
+		}
+	};
 
 	/**
 	 * Initial call
 	 */
+	var init = function (modal) {
 		CSSModal = modal;
 
 		/*
