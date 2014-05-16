@@ -108,8 +108,8 @@
 	 * navigation
 	 * @return {void}
 	 */
-	var _initNavigation = function () {
-		_$activeElement = CSSModal.activeElement;
+	var _initNavigation = function (event) {
+		_$activeElement = event.detail.modal;
 
 		if (!_$activeElement._galleryEventsBound) {
 			_bindEvents(_$activeElement);
@@ -194,7 +194,9 @@
 	/**
 	 * Initial call
 	 */
-	var init = function () {
+	var init = function (modal) {
+        CSSModal = modal;
+
 		// If CSS Modal is still undefined, throw an error
 		if (!CSSModal) {
 			throw new Error('Error: CSSModal is not loaded.');
