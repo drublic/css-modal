@@ -33,6 +33,8 @@
 			<li><a href="#modal-bouncefromtop" title="Clicking this link shows the modal">Demo bounceFromTop</a></li>
 			<li><a href="#modal-bouncefromtopshaky" title="Clicking this link shows the modal">Demo bounceFromTopShaky</a></li>
 			<li><a href="#modal-html5video" title="Clicking this link shows a modal with HTML5 Video content">Demo HTML5Video</a></li>
+			<li><a href="#modal-gallery" title="Clicking this link shows a modal with a gallery">Demo Gallery (with KITTENS!)</a></li>
+			<li><a href="#modal-gallery-boring" title="Clicking this link shows a modal with a gallery">Demo Gallery</a></li>
 		</ul>
 
 		<!-- A modal with its content -->
@@ -188,6 +190,55 @@
 				data-dismiss="modal">×</a>
 		</section>
 
+		<!-- A modal with some images -->
+		<section class="modal modal--gallery" id="modal-gallery" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+			<div class="modal-inner">
+				<div class="modal-content gallery">
+					<div class="big-image"><img src="http://placekitten.com/400/300" alt=""></div>
+
+					<div class="small-images">
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/400/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/410/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/440/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/460/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/390/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/380/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/370/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/360/300" alt=""></a>
+					</div>
+				</div>
+
+				<a title="Previous" class="modal-nav modal-prev" href="#"></a>
+				<a title="Next" class="modal-nav modal-next" href="#"></a>
+			</div>
+
+			<!-- Use Hash-Bang to maintain scroll position when closing modal -->
+			<a href="#!" class="modal-close" title="Close this modal" data-close="Close">&times;</a>
+		</section>
+
+		<!-- A modal with some images -->
+		<section class="modal modal--gallery" id="modal-gallery-boring" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true" data-options="{&quot;endless&quot;:false}">
+			<div class="modal-inner">
+				<div class="modal-content gallery">
+					<div class="big-image"><img src="http://dummyimage.com/400x300&amp;text=1+-+6-lorem+ipsum" alt=""></div>
+
+					<div class="small-images">
+						<a href="#!"><img src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=1+-+6-lorem+ipsum" alt=""></a>
+						<a href="#!"><img src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=2+-+6-dolor+sit+amet" alt=""></a>
+						<a href="#!"><img src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=3+-+6-consectetur" alt=""></a>
+						<a href="#!"><img src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=4+-+6-in+reprehenderit" alt=""></a>
+						<a href="#!"><img src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=5+-+6-deserunt+mollit" alt=""></a>
+						<a href="#!"><img src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=6+-+6-cillum+dolore" alt=""></a>
+					</div>
+				</div>
+				<a title="Previous" class="modal-nav modal-prev" href="#"></a>
+				<a title="Next" class="modal-nav modal-next" href="#"></a>
+			</div>
+
+			<!-- Use Hash-Bang to maintain scroll position when closing modal -->
+			<a href="#!" class="modal-close" title="Close this modal" data-close="Close">&times;</a>
+		</section>
+
 
 		<div class="content">
 			<p>Disrupt brunch keffiyeh chillwave Williamsburg. Excepteur food truck thundercats voluptate ethical, whatever in craft beer leggings proident Vice pour-over polaroid. Terry Richardson hoodie Truffaut Wes Anderson kale chips, synth nostrud elit sint id cillum bespoke. Semiotics synth Cosby sweater brunch beard, lo-fi esse Godard Echo Park sapiente mollit wayfarers. Cillum lomo cliche, YOLO Cosby sweater fixie tumblr eu umami Schlitz assumenda culpa. Chillwave church-key plaid, labore nulla flannel kogi Tonx single-origin coffee cred ex sustainable. Mlkshk ennui polaroid post-ironic sunt, keytar semiotics sriracha fashion axe labore church-key art party.</p>
@@ -199,5 +250,6 @@
 
 		<script src="modal.js"></script><!-- JS for Modal -->
 		<script src="plugins/html5video.js"></script>
+		<script src="plugins/gallery.js"></script>
 	</body>
 </html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Jasmine Spec Runner</title>
+
+		<link rel="stylesheet" href="../test/lib/jasmine-1.3.1/jasmine.css">
+		<link rel="stylesheet" href="../test/modal.css">
+
+		<script src="../test/lib/jquery.js"></script>
+		<script src="../test/lib/jasmine-1.3.1/jasmine.js"></script>
+		<script src="../test/lib/jasmine-1.3.1/jasmine-html.js"></script>
+	</head>
+
+	<body>
+
+		<ul>
+			<li><a href="#modal-gallery" title="Clicking this link shows a modal with a gallery">Demo Gallery (with KITTENS!)</a></li>
+			<li><a href="#modal-gallery-boring" title="Clicking this link shows a modal with a gallery">Demo Gallery</a></li>
+		</ul>
+
+
+		<!-- A modal with some images -->
+		<section class="modal modal--gallery" id="modal-gallery" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+			<div class="modal-inner">
+				<div class="modal-content gallery">
+					<div class="big-image"><img src="http://placekitten.com/400/300" alt=""></div>
+
+					<div class="small-images">
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/400/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/410/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/440/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/460/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/390/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/380/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/370/300" alt=""></a>
+						<a href="#!"><img src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/360/300" alt=""></a>
+					</div>
+				</div>
+
+				<a title="Previous" class="modal-nav modal-prev" href="#"></a>
+				<a title="Next" class="modal-nav modal-next" href="#"></a>
+			</div>
+
+			<!-- Use Hash-Bang to maintain scroll position when closing modal -->
+			<a href="#!" class="modal-close" title="Close this modal" data-close="Close">&times;</a>
+		</section>
+
+		<!-- A modal with some images -->
+		<section class="modal modal--gallery" id="modal-gallery-boring" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+			<div class="modal-inner">
+				<div class="modal-content gallery">
+					<div class="big-image"><img src="http://dummyimage.com/400x300&amp;text=1+-+6-lorem+ipsum" alt=""></div>
+
+					<div class="small-images">
+						<a href="#!"><img src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=1+-+6-lorem+ipsum" alt=""></a>
+						<a href="#!"><img src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=2+-+6-dolor+sit+amet" alt=""></a>
+						<a href="#!"><img src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=3+-+6-consectetur" alt=""></a>
+						<a href="#!"><img src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=4+-+6-in+reprehenderit" alt=""></a>
+						<a href="#!"><img src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=5+-+6-deserunt+mollit" alt=""></a>
+						<a href="#!"><img src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=6+-+6-cillum+dolore" alt=""></a>
+					</div>
+				</div>
+				<a title="Previous" class="modal-nav modal-prev" href="#"></a>
+				<a title="Next" class="modal-nav modal-next" href="#"></a>
+			</div>
+
+			<!-- Use Hash-Bang to maintain scroll position when closing modal -->
+			<a href="#!" class="modal-close" title="Close this modal" data-close="Close">&times;</a>
+		</section>
+
+		<!-- Source -->
+		<script src="../modal.js"></script>
+		<script src="gallery.js"></script>
+
+		<!-- Specs -->
+		<script src="gallery-spec.js"></script>
+
+		<script src="../test/lib/reporter.js"></script>
+
+		<script>
+			(function() {
+				var jasmineEnv = jasmine.getEnv();
+				jasmineEnv.updateInterval = 1000;
+
+				var htmlReporter = new jasmine.HtmlReporter();
+
+				jasmineEnv.addReporter(htmlReporter);
+
+				jasmineEnv.specFilter = function(spec) {
+					return htmlReporter.specFilter(spec);
+				};
+
+				var currentWindowOnload = window.onload;
+
+				window.onload = function() {
+					if (currentWindowOnload) {
+						currentWindowOnload();
+					}
+					execJasmine();
+				};
+
+				function execJasmine() {
+					jasmineEnv.execute();
+				}
+
+			}());
+		</script>
+
+	</body>
+</html>

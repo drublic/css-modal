@@ -1,0 +1,59 @@
+/*
+ * CSS Modal Plugin for displaying an image gallery
+ * Author: Jonathan Weiß
+ * Date: 2014-05-16
+ */
+
+@mixin arrow-position {
+	&:after {
+		position: absolute;
+		top: 50%;
+		height: 32px;
+
+		margin-top: -24px;
+		line-height: 32px;
+		padding: 0 8px;
+		font-size: 64px;
+		opacity: 0;
+	}
+
+	&:hover {
+		&:after {
+			opacity: 1;
+		}
+	}
+}
+
+.modal--gallery {
+	@extend %modal--transition-fade;
+
+	.modal-nav {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 50%;
+		font-family: arial, sans-serif;
+
+		&.modal-prev {
+			@include arrow-position;
+
+			left: 0;
+
+			&:after {
+				left: 0;
+				content: '‹';
+			}
+		}
+
+		&.modal-next {
+			@include arrow-position;
+
+			right: 0;
+
+			&:after {
+				right: 0;
+				content: '›';
+			}
+		}
+	}
+}
