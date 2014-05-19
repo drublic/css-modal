@@ -31,7 +31,7 @@
 				element.dispatchEvent(event);
 
 				window.setTimeout(function () {
-					var src = $('#modal-gallery-boring .big-image img').attr('src');
+					var src = $('#modal-gallery-boring .modal-detail img').attr('src');
 					expect(src).toEqual('http://dummyimage.com/400x300&text=3+-+6-consectetur');
 				}, 0);
 			});
@@ -46,7 +46,7 @@
 				element.dispatchEvent(event);
 
 				window.setTimeout(function () {
-					var src = $('#modal-gallery-boring .big-image img').attr('src');
+					var src = $('#modal-gallery-boring .modal-detail img').attr('src');
 					expect(src).toEqual('http://dummyimage.com/400x300&text=2+-+6-dolor+sit+amet');
 				}, 0);
 			});
@@ -75,7 +75,7 @@
 
 				setTimeout(function () {
 					expect($('#modal-gallery').css('opacity')).toBe('1');
-					var src = $('#modal-gallery .big-image img').attr('src');
+					var src = $('#modal-gallery .modal-detail img').attr('src');
 					expect(src).toMatch('http://placekitten.com/400/300');
 				}, 500);
 			});
@@ -100,7 +100,7 @@
 					var event = new Event('click', {'cancelable': true});
 					element.dispatchEvent(event);
 
-					var src = $('#modal-gallery-boring .big-image img').attr('src');
+					var src = $('#modal-gallery-boring .modal-detail img').attr('src');
 					expect(src).toEqual('http://dummyimage.com/400x300&text=2+-+6-dolor+sit+amet');
 				}, 40);
 			});
@@ -109,7 +109,7 @@
 		});
 
 		// Hide the last open gallery
-		window.setTimeout(function(){
+		window.setTimeout(function () {
 			window.location.hash = '';
 		}, 4000);
 

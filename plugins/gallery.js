@@ -68,10 +68,8 @@
 	 * @return {Object} The detail image
 	 */
 	var _getDetailView = function ($element) {
-		var $container = $element.getElementsByClassName('big-image')[0];
-		var $img = $container.getElementsByTagName('img')[0];
-
-		return $img;
+		var $container = $element.getElementsByClassName('modal-detail')[0];
+		return $container;
 	};
 
 	/**
@@ -121,6 +119,8 @@
 		_$detailView = _getDetailView(_$activeElement);
 		_currentItem = _$activeElement._currentItem;
 		_items = _readContent(_$activeElement);
+
+		setActiveItem(0);
 	};
 
 	/**
@@ -159,9 +159,9 @@
 		// Setup keyboard events
 		CSSModal.on('keydown', window, _onKeyPress);
 
-        // Setup swipe events
-        CSSModal.on('touch:swipe-left', $element, showPrevious);
-        CSSModal.on('touch:swipe-right', $element, showNext);
+		// Setup swipe events
+		CSSModal.on('touch:swipe-left', $element, showPrevious);
+		CSSModal.on('touch:swipe-right', $element, showNext);
 	};
 
 	/**
@@ -170,9 +170,8 @@
 	 * @return {void}
 	 */
 	var _readContent = function ($element) {
-		var contentList = $element.getElementsByClassName('small-images')[0];
-
-		return contentList.getElementsByTagName('a');
+		var contentList = $element.getElementsByClassName('modal-content-list')[0];
+		return contentList.getElementsByTagName('li');
 	};
 
 	/**
@@ -180,12 +179,15 @@
 	 * @param {Number} index The index of the item to show
 	 */
 	var setActiveItem = function (index) {
-		var img = _items[index].getElementsByTagName('img')[0];
-		var fullImageSrc = img.getAttribute('data-src-fullsize');
-		var fullImageAltText = img.getAttribute('alt');
+		var content = _items[index].innerHTML;
+		var $img = null;
+		_$detailView.innerHTML = content;
 
-		_$detailView.src = fullImageSrc;
-		_$detailView.alt = fullImageAltText;
+		// Load the original image, if we are in a gallery
+		if (_$activeElement.getAttribute('class').indexOf('modal--gallery') !== -1) {
+			$img = _$detailView.getElementsByTagName('img')[0];
+			$img.src = $img.getAttribute('data-src-fullsize');
+		}
 	};
 
 	/**
@@ -201,7 +203,7 @@
 	 * Initial call
 	 */
 	var init = function (modal) {
-        CSSModal = modal;
+		CSSModal = modal;
 
 		// If CSS Modal is still undefined, throw an error
 		if (!CSSModal) {
@@ -216,7 +218,8 @@
 
 	_api = {
 		showNext: showNext,
-		showPrevious: showPrevious
+		showPrevious: showPrevious,
+		setActiveItem: setActiveItem
 	};
 
 	/*

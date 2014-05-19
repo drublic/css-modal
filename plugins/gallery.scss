@@ -27,6 +27,10 @@
 .modal--gallery {
 	@extend %modal--transition-fade;
 
+	.modal-content-list {
+		display: none;
+	}
+
 	.modal-nav {
 		position: absolute;
 		top: 0;
