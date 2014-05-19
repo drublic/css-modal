@@ -148,7 +148,7 @@ html {
     margin-left: 0;
   }
   .modal--show .modal-close:after {
-    margin-right: 0;
+    margin-right: 0 !important;
     right: 20px;
   }
 }
@@ -206,7 +206,7 @@ html {
     display: none;
   }
   .modal--show .modal-close:after {
-    top: 5px;
+    top: 5px !important;
     right: 5px;
     left: auto;
     z-index: 40;

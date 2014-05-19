@@ -15,6 +15,12 @@
 		-webkit-transition: none;
 		        transition: none;
 	}
+
+	@media screen and (max-width: 690px) {
+		.modal-inner img {
+			max-width: 100% !important;
+		}
+	}
 }
 
 .modal-content img {
