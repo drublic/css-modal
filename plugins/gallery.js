@@ -158,6 +158,10 @@
 
 		// Setup keyboard events
 		CSSModal.on('keydown', window, _onKeyPress);
+
+        // Setup swipe events
+        CSSModal.on('touch:swipe-left', $element, showPrevious);
+        CSSModal.on('touch:swipe-right', $element, showNext);
 	};
 
 	/**
@@ -197,7 +201,7 @@
 	 * Initial call
 	 */
 	var init = function (modal) {
-		CSSModal = modal;
+        CSSModal = modal;
 
 		// If CSS Modal is still undefined, throw an error
 		if (!CSSModal) {
