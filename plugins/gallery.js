@@ -177,9 +177,11 @@
 	 */
 	var setActiveItem = function (index) {
 		var img = _items[index].getElementsByTagName('img')[0];
-		var fullImage = img.getAttribute('data-src-fullsize');
+		var fullImageSrc = img.getAttribute('data-src-fullsize');
+		var fullImageAltText = img.getAttribute('alt');
 
-		_$detailView.src = fullImage;
+		_$detailView.src = fullImageSrc;
+		_$detailView.alt = fullImageAltText;
 	};
 
 	/**
@@ -195,7 +197,7 @@
 	 * Initial call
 	 */
 	var init = function (modal) {
-        CSSModal = modal;
+		CSSModal = modal;
 
 		// If CSS Modal is still undefined, throw an error
 		if (!CSSModal) {
