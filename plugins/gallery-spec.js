@@ -1,5 +1,5 @@
-/*global describe, it, expect, Event, CSSModal, afterEach */
-(function ($, CSSModal) {
+/*global describe, it, expect, Event*/
+(function ($) {
 
 	'use strict';
 

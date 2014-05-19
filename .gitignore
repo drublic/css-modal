@@ -5,3 +5,6 @@
 
 node_modules
 download
+
+/test/modal.css
+/build/modal.css
