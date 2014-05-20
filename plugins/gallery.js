@@ -164,7 +164,8 @@
 	 */
 	var setActiveItem = function (index) {
 		var content = _items[index].innerHTML;
-		var img = null;
+		var img = new Image();
+		var referenceImage;
 
 		_detailView.innerHTML = content;
 
@@ -174,14 +175,17 @@
 
 		// Load the original image, if we are in a gallery
 		if (_activeElement.getAttribute('class').indexOf('modal--gallery') !== -1) {
-			img = _detailView.getElementsByTagName('img')[0];
-			img.src = img.getAttribute('data-src-fullsize');
+			referenceImage = _detailView.getElementsByTagName('img')[0];
+			img.src = referenceImage.getAttribute('data-src-fullsize');
 
 			// Reposition and show
-			img.addEventListener('load', function () {
-				CSSModal.trigger('cssmodal:resize', _activeElement);
+			CSSModal.on('load', img, function () {
 				CSSModal.addClass(_detailView, 'is-active');
-			}, false);
+				CSSModal.trigger('cssmodal:resize', _activeElement);
+			});
+
+			referenceImage.parentNode.insertBefore(img, referenceImage);
+			referenceImage.parentNode.removeChild(referenceImage);
 		}
 	};
 

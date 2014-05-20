@@ -55,10 +55,11 @@ $spinner--width: 5%;
 
 %spinner {
 	position: absolute;
-	top: ($spinner--size / 2);
+	top: 50%;
 	left: 50%;
 	width: $spinner--size;
 	height: $spinner--size;
+	margin-top: -($spinner--size / 2);
 	margin-left: -($spinner--size / 2);
 
 	.spinner__outer,

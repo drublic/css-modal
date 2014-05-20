@@ -29,10 +29,19 @@ $gallery--min-size: 98px;
 	position: relative;
 	min-width: $gallery--min-size;
 	min-height: $gallery--min-size;
-	visibility: hidden;
+
+	opacity: 0;
+	width: 0;
+	height: 0;
+	-webkit-transition: opacity 0s;
+	        transition: opacity 0s;
 
 	&.is-active {
-		visibility: visible;
+		opacity: 1;
+		width: auto;
+		height: auto;
+		-webkit-transition: opacity 0.2s ease-out;
+		        transition: opacity 0.2s ease-out;
 	}
 }
 

@@ -819,10 +819,18 @@ html {
   position: relative;
   min-width: 98px;
   min-height: 98px;
-  visibility: hidden;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  -webkit-transition: opacity 0s;
+  transition: opacity 0s;
 }
 .modal-detail.is-active {
-  visibility: visible;
+  opacity: 1;
+  width: auto;
+  height: auto;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
 }
 
 .modal--gallery .modal-content-list {
@@ -936,10 +944,11 @@ html {
 }
 .spinner {
   position: absolute;
-  top: 32px;
+  top: 50%;
   left: 50%;
   width: 64px;
   height: 64px;
+  margin-top: -32px;
   margin-left: -32px;
 }
 .spinner .spinner__outer,
