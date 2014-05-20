@@ -14,20 +14,20 @@
 	 * Polyfill CustomEvent
 	 */
 	var CustomEvent = function (event, params) {
+		var evt = document.createEvent('CustomEvent');
+
 		params = params || {
 			bubbles: false,
 			cancelable: false,
 			detail: undefined
 		};
 
-		var evt = document.createEvent('CustomEvent');
-
-		evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+		evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
 
 		return evt;
 	};
 
-	if (!CustomEvent in window) {
+	if (!window.CustomEvent) {
 		CustomEvent.prototype = window.Event.prototype;
 		window.CustomEvent = CustomEvent;
 	}
