@@ -238,6 +238,7 @@
 		 */
 		CSSModal.on('resize', window, _scale);
 		CSSModal.on('cssmodal:show', document, _scale);
+		CSSModal.on('cssmodal:resize', document, _scale);
 	};
 
 	/*
