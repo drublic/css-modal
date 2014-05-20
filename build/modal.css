@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /**
  * CSS Modal
  * http://drublic.github.com/css-modal
@@ -34,7 +33,7 @@ html {
   }
 }
 
-.modal--gallery, .modal--show {
+.modal--show {
   -webkit-transform: translate(0, 100%);
   -moz-transform: translate(0, 100%);
   -o-transform: translate(0, 100%);
@@ -54,7 +53,7 @@ html {
   opacity: 0;
   display: none\9;
 }
-.modal--gallery:target, .modal--show:target, .is-active.modal--gallery, .is-active.modal--show {
+.modal--show:target, .is-active.modal--show {
   -webkit-transform: translate(0, 0);
   -moz-transform: translate(0, 0);
   -o-transform: translate(0, 0);
@@ -64,13 +63,13 @@ html {
   height: auto;
   opacity: 1;
 }
-.is-active.modal--gallery, .is-active.modal--show {
+.is-active.modal--show {
   display: block\9;
 }
-.modal--gallery:target, .modal--show:target, .is-active.modal--gallery, .is-active.modal--show {
+.modal--show:target, .is-active.modal--show {
   display: block\9;
 }
-.modal--gallery .modal-inner, .modal--show .modal-inner {
+.modal--show .modal-inner {
   position: absolute;
   top: 50px;
   left: 50%;
@@ -81,52 +80,50 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 @media \0screen\,screen\9 {
-  .modal--gallery .modal-inner, .modal--show .modal-inner {
+  .modal--show .modal-inner {
     background: transparent;
     height: 100%;
   }
 }
-.modal--gallery .modal-inner > img, .modal--show .modal-inner > img,
-.modal--gallery .modal-inner > video,
+.modal--show .modal-inner > img,
 .modal--show .modal-inner > video,
-.modal--gallery .modal-inner > iframe,
 .modal--show .modal-inner > iframe {
   width: 100%;
   height: auto;
   min-height: 300px;
 }
-.modal--gallery .modal-inner > img, .modal--show .modal-inner > img {
+.modal--show .modal-inner > img {
   width: auto;
   max-width: 100%;
 }
-.modal--gallery .modal-content, .modal--show .modal-content {
+.modal--show .modal-content {
   max-height: 400px;
   max-height: 90vh;
   overflow-x: hidden;
   overflow-y: auto;
 }
 @media \0screen\,screen\9 {
-  .modal--gallery .modal-content, .modal--show .modal-content {
+  .modal--show .modal-content {
     overflow: visible;
   }
 }
-.modal--gallery .modal-content > *, .modal--show .modal-content > * {
+.modal--show .modal-content > * {
   max-width: 100%;
 }
-.modal--gallery footer, .modal--show footer {
+.modal--show footer {
   border-top: 1px solid white;
   padding: 0 1.2em 18px;
   background: #f0f0f0;
   border-radius: 2px;
 }
-.modal--gallery .modal-close, .modal--show .modal-close {
+.modal--show .modal-close {
   display: block;
   height: 1px;
   clip: rect(0 0 0 0);
   margin: -1px;
   overflow: hidden;
 }
-.modal--gallery .modal-close:before, .modal--show .modal-close:before {
+.modal--show .modal-close:before {
   content: '';
   position: absolute;
   top: 0;
@@ -135,7 +132,7 @@ html {
   bottom: 0;
   z-index: 10;
 }
-.modal--gallery .modal-close:after, .modal--show .modal-close:after {
+.modal--show .modal-close:after {
   content: '\00d7';
   position: absolute;
   top: 25px;
@@ -144,19 +141,19 @@ html {
   margin-right: -325px;
 }
 @media screen and (max-width: 690px) {
-  .modal--gallery .modal-inner, .modal--show .modal-inner {
+  .modal--show .modal-inner {
     width: auto;
     left: 20px;
     right: 20px;
     margin-left: 0;
   }
-  .modal--gallery .modal-close:after, .modal--show .modal-close:after {
+  .modal--show .modal-close:after {
     margin-right: 0 !important;
     right: 20px;
   }
 }
 @media screen and (max-width: 30em) {
-  .modal--gallery, .modal--show {
+  .modal--show {
     -webkit-transform: translate(0, 400px);
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
@@ -168,7 +165,7 @@ html {
     display: block;
     bottom: auto;
   }
-  .modal--gallery:target, .modal--show:target, .is-active.modal--gallery, .is-active.modal--show {
+  .modal--show:target, .is-active.modal--show {
     -webkit-transition: -webkit-transform .25s ease-in-out;
     -moz-transition: -moz-transform .25s ease-in-out;
     -o-transition: -o-transform .25s ease-in-out;
@@ -176,7 +173,7 @@ html {
     transition: transform .25s ease-in-out;
     height: 100%;
   }
-  .modal--gallery:before, .modal--show:before {
+  .modal--show:before {
     content: '';
     position: fixed;
     top: 0;
@@ -184,7 +181,7 @@ html {
     right: 0;
     z-index: 30;
   }
-  .modal--gallery .modal-inner, .modal--show .modal-inner {
+  .modal--show .modal-inner {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -194,7 +191,7 @@ html {
     height: 100%;
     overflow: auto;
   }
-  .modal--gallery .modal-content, .modal--show .modal-content {
+  .modal--show .modal-content {
     max-height: none;
     -ms-word-break: break-all;
     word-break: break-word;
@@ -202,13 +199,13 @@ html {
     -moz-hyphens: auto;
     hyphens: auto;
   }
-  .modal--gallery .modal-close, .modal--show .modal-close {
+  .modal--show .modal-close {
     right: auto;
   }
-  .modal--gallery .modal-close:before, .modal--show .modal-close:before {
+  .modal--show .modal-close:before {
     display: none;
   }
-  .modal--gallery .modal-close:after, .modal--show .modal-close:after {
+  .modal--show .modal-close:after {
     top: 5px !important;
     right: 5px;
     left: auto;
@@ -217,18 +214,18 @@ html {
   }
 }
 @media screen and (max-height: 46em) and (min-width: 30em) {
-  .modal--gallery .modal-content, .modal--show .modal-content {
+  .modal--show .modal-content {
     max-height: 340px;
     max-height: 50vh;
   }
 }
 @media screen and (max-height: 36em) and (min-width: 30em) {
-  .modal--gallery .modal-content, .modal--show .modal-content {
+  .modal--show .modal-content {
     max-height: 265px;
     max-height: 40vh;
   }
 }
-.is-stacked.modal--gallery, .is-stacked.modal--show {
+.is-stacked.modal--show {
   -webkit-transform: translate(0, 0) scale(1, 1);
   -moz-transform: translate(0, 0) scale(1, 1);
   -o-transform: translate(0, 0) scale(1, 1);
@@ -236,26 +233,26 @@ html {
   transform: translate(0, 0) scale(1, 1);
   opacity: 1;
 }
-.is-stacked.modal--gallery .modal-inner, .is-stacked.modal--show .modal-inner {
+.is-stacked.modal--show .modal-inner {
   -webkit-animation: scaleDown .7s ease both;
   -moz-animation: scaleDown .7s ease both;
   animation: scaleDown .7s ease both;
 }
-.is-stacked.modal--gallery .modal-close, .is-stacked.modal--show .modal-close {
+.is-stacked.modal--show .modal-close {
   opacity: 0;
 }
 @media screen and (max-width: 30em) {
-  .is-stacked.modal--gallery, .is-stacked.modal--show {
+  .is-stacked.modal--show {
     -webkit-animation: scaleDown .7s ease both;
     -moz-animation: scaleDown .7s ease both;
     animation: scaleDown .7s ease both;
   }
-  .is-stacked.modal--gallery .modal-inner, .is-stacked.modal--show .modal-inner {
+  .is-stacked.modal--show .modal-inner {
     -webkit-animation: none;
     -moz-animation: none;
     animation: none;
   }
-  .is-stacked.modal--gallery .modal-close, .is-stacked.modal--show .modal-close {
+  .is-stacked.modal--show .modal-close {
     opacity: 1;
   }
 }
@@ -278,14 +275,6 @@ html {
     transform: scale(0.8);
   }
 }
-@media screen and (min-width: 30em) {
-  .modal--gallery {
-    -webkit-transition: opacity 0.4s;
-    -o-transition: opacity 0.4s;
-    transition: opacity 0.4s;
-  }
-}
-
 @-webkit-keyframes shaky {
   0% {
     -webkit-transform: translateY(-100%);
@@ -375,11 +364,11 @@ html {
  * @author Hans Christian Reinl - @drublic
  * @Since 1.1.0alpha
  */
-.modal--gallery, .modal--show {
+.modal--show {
   color: #222222;
   line-height: 1.3;
 }
-.modal--gallery .modal-inner, .modal--show .modal-inner {
+.modal--show .modal-inner {
   border-radius: 2px;
   background: white;
   -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
@@ -388,30 +377,30 @@ html {
   -webkit-transition: max-width 0.25s linear, margin-left 0.125s linear;
   transition: max-width 0.25s linear, margin-left 0.125s linear;
 }
-.modal--gallery header, .modal--show header {
+.modal--show header {
   border-bottom: 1px solid #dddddd;
   padding: 0 1.2em;
 }
-.modal--gallery header > h2, .modal--show header > h2 {
+.modal--show header > h2 {
   margin: 0.5em 0;
 }
-.modal--gallery .modal-content, .modal--show .modal-content {
+.modal--show .modal-content {
   border-bottom: 1px solid #dddddd;
   padding: 15px 1.2em;
 }
-.modal--gallery footer, .modal--show footer {
+.modal--show footer {
   border-top: 1px solid white;
   padding: 0 1.2em 18px;
   background: #f0f0f0;
   border-radius: 2px;
 }
-.modal--gallery .modal-close, .modal--show .modal-close {
+.modal--show .modal-close {
   text-indent: -100px;
 }
-.modal--gallery .modal-close:before, .modal--show .modal-close:before {
+.modal--show .modal-close:before {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAEUlEQVQoz2NgeEYAjioYSQoAzOTmAXhPhyoAAAAASUVORK5CYII=");
 }
-.modal--gallery .modal-close:after, .modal--show .modal-close:after {
+.modal--show .modal-close:after {
   content: '\00d7';
   background: white;
   border-radius: 2px;
@@ -421,7 +410,7 @@ html {
   text-indent: 0;
 }
 @media screen and (max-width: 30em) {
-  .modal--gallery:before, .modal--show:before {
+  .modal--show:before {
     background-color: #27aae2;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#27aae2), to(#1c9cd3));
     background-image: -webkit-linear-gradient(top, #27aae2, #1c9cd3);
@@ -432,89 +421,17 @@ html {
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
   }
-  .modal--gallery .modal-inner, .modal--show .modal-inner {
+  .modal--show .modal-inner {
     padding-top: 3em;
     -webkit-box-shadow: none;
     box-shadow: none;
   }
-  .modal--gallery .modal-close, .modal--show .modal-close {
+  .modal--show .modal-close {
     text-decoration: none;
   }
-  .modal--gallery .modal-close:after, .modal--show .modal-close:after {
+  .modal--show .modal-close:after {
     content: attr(data-close);
     font-size: 1em;
     padding: 0.5em 1em;
   }
-}
-
-/*
- * CSS Modal Plugin for displaying an image gallery
- * Author: Jonathan Weiß
- * Date: 2014-05-16
- */
-.modal-detail {
-  position: relative;
-  min-width: 98px;
-  min-height: 98px;
-}
-
-.modal--gallery .modal-content-list {
-  display: none;
-}
-
-.modal--gallery-navigation {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.modal--gallery-navigation a {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  font-family: arial, sans-serif;
-  text-indent: -99em;
-  overflow: hidden;
-}
-.modal--gallery-navigation .modal--gallery-navigation-prev {
-  left: 0;
-}
-.modal--gallery-navigation .modal--gallery-navigation-prev:after {
-  position: absolute;
-  top: 50%;
-  height: 32px;
-  margin-top: -24px;
-  line-height: 32px;
-  padding: 0 8px;
-  font-size: 64px;
-  opacity: 0;
-}
-.modal--gallery-navigation .modal--gallery-navigation-prev:hover:after {
-  opacity: 1;
-}
-.modal--gallery-navigation .modal--gallery-navigation-prev:after {
-  content: '‹';
-  left: 0;
-  text-indent: 0;
-}
-.modal--gallery-navigation .modal--gallery-navigation-next {
-  right: 0;
-}
-.modal--gallery-navigation .modal--gallery-navigation-next:after {
-  position: absolute;
-  top: 50%;
-  height: 32px;
-  margin-top: -24px;
-  line-height: 32px;
-  padding: 0 8px;
-  font-size: 64px;
-  opacity: 0;
-}
-.modal--gallery-navigation .modal--gallery-navigation-next:hover:after {
-  opacity: 1;
-}
-.modal--gallery-navigation .modal--gallery-navigation-next:after {
-  content: '›';
-  right: 0;
-  text-indent: 0;
 }

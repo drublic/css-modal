@@ -18,10 +18,6 @@
 	var _items = [];
 	var _currentItem = 0;
 	var _api = {};
-	var _options = {};
-	var _defaultOptions = {
-		endless: true
-	};
 
 	/**
 	 * Decreases the counter for the active item regarding the "endless"
@@ -30,11 +26,7 @@
 	 */
 	var _setPreviousItem = function () {
 		if (_currentItem === 0) {
-			if (_options.endless) {
-				_currentItem = (_items.length - 1);
-			} else {
-				_currentItem = 0;
-			}
+			_currentItem = (_items.length - 1);
 		} else {
 			_currentItem--;
 		}
@@ -61,9 +53,7 @@
 	 */
 	var _setNextItem = function () {
 		if (_currentItem === (_items.length - 1)) {
-			if (_options.endless) {
-				_currentItem = 0;
-			}
+			_currentItem = 0;
 		} else {
 			_currentItem++;
 		}
@@ -97,35 +87,6 @@
 	};
 
 	/**
-	 * Overrides the options based on the data-attribute on the CSSModal
-	 * instance
-	 * @return {void}
-	 */
-	var _readOptions = function () {
-		var optionsString = _activeElement.getAttribute('data-options');
-		var options = {};
-		var entry;
-
-		if (optionsString && optionsString.length > 0) {
-			if (window.JSON) {
-				try {
-					options = JSON.parse(optionsString);
-				} catch (ex) { }
-			}
-			for (entry in options) {
-				if (_options[entry]) {
-					_options[entry] = options[entry];
-				}
-			}
-		} else {
-			_options = {};
-			for (entry in _defaultOptions) {
-				_options[entry] = _defaultOptions[entry];
-			}
-		}
-	};
-
-	/**
 	 * Registers the listerns on the previous / next buttons to enable gallery
 	 * navigation
 	 * @return {void}
@@ -139,7 +100,6 @@
 			_activeElement._currentItem = 0;
 		}
 
-		_readOptions();
 		_detailView = _getDetailView(_activeElement);
 		_currentItem = _activeElement._currentItem;
 		_items = _readContent(_activeElement);
@@ -205,12 +165,23 @@
 	var setActiveItem = function (index) {
 		var content = _items[index].innerHTML;
 		var img = null;
+
 		_detailView.innerHTML = content;
+
+		// Position for loading indicator and hide content
+		CSSModal.trigger('cssmodal:resize', _activeElement);
+		CSSModal.removeClass(_detailView, 'is-active');
 
 		// Load the original image, if we are in a gallery
 		if (_activeElement.getAttribute('class').indexOf('modal--gallery') !== -1) {
 			img = _detailView.getElementsByTagName('img')[0];
 			img.src = img.getAttribute('data-src-fullsize');
+
+			// Reposition and show
+			img.addEventListener('load', function () {
+				CSSModal.trigger('cssmodal:resize', _activeElement);
+				CSSModal.addClass(_detailView, 'is-active');
+			}, false);
 		}
 	};
 

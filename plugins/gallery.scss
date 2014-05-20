@@ -29,6 +29,11 @@ $gallery--min-size: 98px;
 	position: relative;
 	min-width: $gallery--min-size;
 	min-height: $gallery--min-size;
+	visibility: hidden;
+
+	&.is-active {
+		visibility: visible;
+	}
 }
 
 .modal--gallery {

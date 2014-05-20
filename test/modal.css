@@ -775,78 +775,6 @@ html {
   box-shadow: 0px -4px 8px -1px rgba(0, 0, 0, 0.25);
 }
 
-/*
- * CSS Modal Plugin for displaying an image gallery
- * Author: Jonathan Weiß
- * Date: 2014-05-16
- */
-.modal-detail {
-  position: relative;
-  min-width: 98px;
-  min-height: 98px;
-}
-
-.modal--gallery .modal-content-list {
-  display: none;
-}
-
-.modal--gallery-navigation {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.modal--gallery-navigation a {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  font-family: arial, sans-serif;
-  text-indent: -99em;
-  overflow: hidden;
-}
-.modal--gallery-navigation .modal--gallery-navigation-prev {
-  left: 0;
-}
-.modal--gallery-navigation .modal--gallery-navigation-prev:after {
-  position: absolute;
-  top: 50%;
-  height: 32px;
-  margin-top: -24px;
-  line-height: 32px;
-  padding: 0 8px;
-  font-size: 64px;
-  opacity: 0;
-}
-.modal--gallery-navigation .modal--gallery-navigation-prev:hover:after {
-  opacity: 1;
-}
-.modal--gallery-navigation .modal--gallery-navigation-prev:after {
-  content: '‹';
-  left: 0;
-  text-indent: 0;
-}
-.modal--gallery-navigation .modal--gallery-navigation-next {
-  right: 0;
-}
-.modal--gallery-navigation .modal--gallery-navigation-next:after {
-  position: absolute;
-  top: 50%;
-  height: 32px;
-  margin-top: -24px;
-  line-height: 32px;
-  padding: 0 8px;
-  font-size: 64px;
-  opacity: 0;
-}
-.modal--gallery-navigation .modal--gallery-navigation-next:hover:after {
-  opacity: 1;
-}
-.modal--gallery-navigation .modal--gallery-navigation-next:after {
-  content: '›';
-  right: 0;
-  text-indent: 0;
-}
-
 /**
  * CSS Modal Theme 'Resize'
  * http://drublic.github.com/css-modal
@@ -891,6 +819,10 @@ html {
   position: relative;
   min-width: 98px;
   min-height: 98px;
+  visibility: hidden;
+}
+.modal-detail.is-active {
+  visibility: visible;
 }
 
 .modal--gallery .modal-content-list {
