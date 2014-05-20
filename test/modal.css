@@ -780,20 +780,34 @@ html {
  * Author: Jonathan Weiß
  * Date: 2014-05-16
  */
+.modal-detail {
+  position: relative;
+  min-width: 98px;
+  min-height: 98px;
+}
+
 .modal--gallery .modal-content-list {
   display: none;
 }
-.modal--gallery .modal-nav {
+
+.modal--gallery-navigation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.modal--gallery-navigation a {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 50%;
   font-family: arial, sans-serif;
+  text-indent: -99em;
+  overflow: hidden;
 }
-.modal--gallery .modal-nav.modal-prev {
+.modal--gallery-navigation .modal--gallery-navigation-prev {
   left: 0;
 }
-.modal--gallery .modal-nav.modal-prev:after {
+.modal--gallery-navigation .modal--gallery-navigation-prev:after {
   position: absolute;
   top: 50%;
   height: 32px;
@@ -803,17 +817,18 @@ html {
   font-size: 64px;
   opacity: 0;
 }
-.modal--gallery .modal-nav.modal-prev:hover:after {
+.modal--gallery-navigation .modal--gallery-navigation-prev:hover:after {
   opacity: 1;
 }
-.modal--gallery .modal-nav.modal-prev:after {
-  left: 0;
+.modal--gallery-navigation .modal--gallery-navigation-prev:after {
   content: '‹';
+  left: 0;
+  text-indent: 0;
 }
-.modal--gallery .modal-nav.modal-next {
+.modal--gallery-navigation .modal--gallery-navigation-next {
   right: 0;
 }
-.modal--gallery .modal-nav.modal-next:after {
+.modal--gallery-navigation .modal--gallery-navigation-next:after {
   position: absolute;
   top: 50%;
   height: 32px;
@@ -823,12 +838,13 @@ html {
   font-size: 64px;
   opacity: 0;
 }
-.modal--gallery .modal-nav.modal-next:hover:after {
+.modal--gallery-navigation .modal--gallery-navigation-next:hover:after {
   opacity: 1;
 }
-.modal--gallery .modal-nav.modal-next:after {
-  right: 0;
+.modal--gallery-navigation .modal--gallery-navigation-next:after {
   content: '›';
+  right: 0;
+  text-indent: 0;
 }
 
 /**
@@ -864,4 +880,204 @@ html {
 
 .modal-content img {
   display: block;
+}
+
+/*
+ * CSS Modal Plugin for displaying an image gallery
+ * Author: Jonathan Weiß
+ * Date: 2014-05-16
+ */
+.modal-detail {
+  position: relative;
+  min-width: 98px;
+  min-height: 98px;
+}
+
+.modal--gallery .modal-content-list {
+  display: none;
+}
+
+.modal--gallery-navigation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.modal--gallery-navigation a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  font-family: arial, sans-serif;
+  text-indent: -99em;
+  overflow: hidden;
+}
+.modal--gallery-navigation .modal--gallery-navigation-prev {
+  left: 0;
+}
+.modal--gallery-navigation .modal--gallery-navigation-prev:after {
+  position: absolute;
+  top: 50%;
+  height: 32px;
+  margin-top: -24px;
+  line-height: 32px;
+  padding: 0 8px;
+  font-size: 64px;
+  opacity: 0;
+}
+.modal--gallery-navigation .modal--gallery-navigation-prev:hover:after {
+  opacity: 1;
+}
+.modal--gallery-navigation .modal--gallery-navigation-prev:after {
+  content: '‹';
+  left: 0;
+  text-indent: 0;
+}
+.modal--gallery-navigation .modal--gallery-navigation-next {
+  right: 0;
+}
+.modal--gallery-navigation .modal--gallery-navigation-next:after {
+  position: absolute;
+  top: 50%;
+  height: 32px;
+  margin-top: -24px;
+  line-height: 32px;
+  padding: 0 8px;
+  font-size: 64px;
+  opacity: 0;
+}
+.modal--gallery-navigation .modal--gallery-navigation-next:hover:after {
+  opacity: 1;
+}
+.modal--gallery-navigation .modal--gallery-navigation-next:after {
+  content: '›';
+  right: 0;
+  text-indent: 0;
+}
+
+/**
+ * A loading spinner
+ * http://stackoverflow.com/questions/16250260/android-holo-loading-spinner-in-css
+ */
+@keyframes rotate-outer {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(1080deg);
+    -ms-transform: rotate(1080deg);
+    transform: rotate(1080deg);
+  }
+}
+@-webkit-keyframes rotate-outer {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(1080deg);
+  }
+}
+@keyframes rotate-inner {
+  0% {
+    -webkit-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    transform: rotate(720deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes rotate-inner {
+  0% {
+    -webkit-transform: rotate(720deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+.spinner {
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  margin-left: -32px;
+}
+.spinner .spinner__outer,
+.spinner .spinner__inner, .spinner:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.spinner:after {
+  content: '';
+  margin: 5%;
+  border-radius: 100%;
+  background: white;
+}
+.spinner .spinner__outer,
+.spinner .spinner__inner {
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+.spinner .spinner__outer:before, .spinner .spinner__outer:after,
+.spinner .spinner__inner:before,
+.spinner .spinner__inner:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+.spinner .spinner__outer:before,
+.spinner .spinner__inner:before {
+  left: 0;
+  right: 50%;
+  border-radius: 64px 0 0 64px;
+}
+.spinner .spinner__outer:after,
+.spinner .spinner__inner:after {
+  left: 50%;
+  right: 0;
+  border-radius: 0 64px 64px 0;
+}
+.spinner .spinner__outer {
+  -webkit-animation-name: rotate-outer;
+  animation-name: rotate-outer;
+}
+.spinner .spinner__inner {
+  -webkit-animation-name: rotate-inner;
+  animation-name: rotate-inner;
+}
+.spinner .spinner__outer:before {
+  background-image: -webkit-linear-gradient(top, rgba(150, 150, 150, 0), rgba(150, 150, 150, 0.5));
+  background-image: -moz-linear-gradient(top, rgba(150, 150, 150, 0), rgba(150, 150, 150, 0.5));
+  background-image: linear-gradient(to bottom, rgba(150, 150, 150, 0), rgba(150, 150, 150, 0.5));
+}
+.spinner .spinner__outer:after {
+  background-image: -webkit-linear-gradient(top, #969696, rgba(150, 150, 150, 0.5));
+  background-image: -moz-linear-gradient(top, #969696, rgba(150, 150, 150, 0.5));
+  background-image: linear-gradient(to bottom, #969696, rgba(150, 150, 150, 0.5));
+}
+.spinner .spinner__inner:before {
+  background-image: -webkit-linear-gradient(top, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5));
+  background-image: -moz-linear-gradient(top, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5));
+  background-image: linear-gradient(to bottom, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5));
+}
+.spinner .spinner__inner:after {
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
 }

@@ -3,6 +3,7 @@
  * Author: Jonathan Weiß
  * Date: 2014-05-16
  */
+$gallery--min-size: 98px;
 
 @mixin arrow-position {
 	&:after {
@@ -24,40 +25,57 @@
 	}
 }
 
+.modal-detail {
+	position: relative;
+	min-width: $gallery--min-size;
+	min-height: $gallery--min-size;
+}
+
 .modal--gallery {
 	@extend %modal--transition-fade;
 
 	.modal-content-list {
 		display: none;
 	}
+}
 
-	.modal-nav {
+.modal--gallery-navigation {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	a {
 		position: absolute;
 		top: 0;
 		bottom: 0;
 		width: 50%;
 		font-family: arial, sans-serif;
 
-		&.modal-prev {
-			@include arrow-position;
+		text-indent: -99em;
+		overflow: hidden;
+	}
 
+	.modal--gallery-navigation-prev {
+		@include arrow-position;
+
+		left: 0;
+
+		&:after {
+			content: '‹';
 			left: 0;
-
-			&:after {
-				left: 0;
-				content: '‹';
-			}
+			text-indent: 0;
 		}
+	}
 
-		&.modal-next {
-			@include arrow-position;
+	.modal--gallery-navigation-next {
+		@include arrow-position;
 
+		right: 0;
+
+		&:after {
+			content: '›';
 			right: 0;
-
-			&:after {
-				right: 0;
-				content: '›';
-			}
+			text-indent: 0;
 		}
 	}
 }

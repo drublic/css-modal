@@ -452,20 +452,34 @@ html {
  * Author: Jonathan Weiß
  * Date: 2014-05-16
  */
+.modal-detail {
+  position: relative;
+  min-width: 98px;
+  min-height: 98px;
+}
+
 .modal--gallery .modal-content-list {
   display: none;
 }
-.modal--gallery .modal-nav {
+
+.modal--gallery-navigation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.modal--gallery-navigation a {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 50%;
   font-family: arial, sans-serif;
+  text-indent: -99em;
+  overflow: hidden;
 }
-.modal--gallery .modal-nav.modal-prev {
+.modal--gallery-navigation .modal--gallery-navigation-prev {
   left: 0;
 }
-.modal--gallery .modal-nav.modal-prev:after {
+.modal--gallery-navigation .modal--gallery-navigation-prev:after {
   position: absolute;
   top: 50%;
   height: 32px;
@@ -475,17 +489,18 @@ html {
   font-size: 64px;
   opacity: 0;
 }
-.modal--gallery .modal-nav.modal-prev:hover:after {
+.modal--gallery-navigation .modal--gallery-navigation-prev:hover:after {
   opacity: 1;
 }
-.modal--gallery .modal-nav.modal-prev:after {
-  left: 0;
+.modal--gallery-navigation .modal--gallery-navigation-prev:after {
   content: '‹';
+  left: 0;
+  text-indent: 0;
 }
-.modal--gallery .modal-nav.modal-next {
+.modal--gallery-navigation .modal--gallery-navigation-next {
   right: 0;
 }
-.modal--gallery .modal-nav.modal-next:after {
+.modal--gallery-navigation .modal--gallery-navigation-next:after {
   position: absolute;
   top: 50%;
   height: 32px;
@@ -495,10 +510,11 @@ html {
   font-size: 64px;
   opacity: 0;
 }
-.modal--gallery .modal-nav.modal-next:hover:after {
+.modal--gallery-navigation .modal--gallery-navigation-next:hover:after {
   opacity: 1;
 }
-.modal--gallery .modal-nav.modal-next:after {
-  right: 0;
+.modal--gallery-navigation .modal--gallery-navigation-next:after {
   content: '›';
+  right: 0;
+  text-indent: 0;
 }

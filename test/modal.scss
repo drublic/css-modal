@@ -8,6 +8,8 @@
 // Include Modal
 @import "../modal";
 @import "../plugins/modal-resize";
+@import "../plugins/gallery";
+@import "../plugins/spinner";
 
 // Apply the modal with all its possible parts
 ._modal {
@@ -44,5 +46,9 @@
 
 [data-cssmodal-resize] {
 	@extend %modal--resize;
+}
+
+.spinner {
+	@extend %spinner;
 }
 

@@ -172,8 +172,8 @@
 		var i = 0;
 
 		// Setup touch / click events
-		_prev = element.getElementsByClassName('modal-prev')[0];
-		_next = element.getElementsByClassName('modal-next')[0];
+		_prev = element.getElementsByClassName('modal--gallery-navigation-prev')[0];
+		_next = element.getElementsByClassName('modal--gallery-navigation-next')[0];
 
 		for (; i < events.length; i++) {
 			CSSModal.on(events[i], _prev, showPrevious);
