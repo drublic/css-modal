@@ -850,6 +850,7 @@ html {
   font-family: arial, sans-serif;
   text-indent: -99em;
   overflow: hidden;
+  text-decoration: none;
 }
 .modal--gallery-navigation .modal--gallery-navigation-prev {
   left: 0;
