@@ -120,7 +120,7 @@ html {
 }
 .modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content, ._modal .modal-content {
   max-height: 400px;
-  max-height: 70vh;
+  max-height: 90vh;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -158,9 +158,9 @@ html {
   content: '\00d7';
   position: absolute;
   top: 25px;
-  left: 50%;
+  right: 50%;
   z-index: 20;
-  margin-left: 285px;
+  margin-right: -325px;
 }
 @media screen and (max-width: 690px) {
   .modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner, ._modal .modal-inner {
@@ -169,13 +169,9 @@ html {
     right: 20px;
     margin-left: 0;
   }
-  .modal--fade .modal-close, .modal--plainscreen .modal-close, .modal--zoomin .modal-close, .modal--zoomout .modal-close, .modal--slidefromtop .modal-close, .modal--bouncefromtop .modal-close, .modal--bouncefromtopshaky .modal-close, .modal--show .modal-close, ._modal .modal-close {
-    left: auto;
-    right: 33px;
-    margin-left: 0;
-  }
   .modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after, ._modal .modal-close:after {
-    margin-left: 40%;
+    margin-right: 0 !important;
+    right: 20px;
   }
 }
 @media screen and (max-width: 30em) {
@@ -232,7 +228,7 @@ html {
     display: none;
   }
   .modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after, ._modal .modal-close:after {
-    top: 5px;
+    top: 5px !important;
     right: 5px;
     left: auto;
     z-index: 40;
@@ -289,21 +285,18 @@ html {
     -webkit-transform: scale(0.8);
   }
 }
-
 @-moz-keyframes scaleDown {
   to {
     opacity: 0;
     -moz-transform: scale(0.8);
   }
 }
-
 @keyframes scaleDown {
   to {
     opacity: 0;
     transform: scale(0.8);
   }
 }
-
 @media screen and (min-width: 30em) {
   .modal--fade {
     -webkit-transition: opacity 0.4s;
@@ -339,8 +332,6 @@ html {
   -o-transition: all 0.4s;
   transition: all 0.4s;
   opacity: 0;
-  top: 250px;
-  left: 20%;
 }
 .modal--plainscreen:target .modal-inner, .modal--zoomin:target .modal-inner, .is-active.modal--plainscreen .modal-inner, .is-active.modal--zoomin .modal-inner {
   -webkit-transform: scale(1);
@@ -361,7 +352,6 @@ html {
   transform: scale(1);
   opacity: 1;
   top: 25px;
-  left: 50%;
 }
 @media screen and (max-width: 30em) {
   .modal--plainscreen:target .modal-close:after, .modal--zoomin:target .modal-close:after, .is-active.modal--plainscreen .modal-close:after, .is-active.modal--zoomin .modal-close:after {
@@ -426,7 +416,6 @@ html {
   transition: all 0.4s;
   opacity: 0;
   top: -125px;
-  left: 75%;
 }
 .modal--zoomout:target .modal-inner, .is-active.modal--zoomout .modal-inner {
   -webkit-transform: scale(1);
@@ -447,7 +436,6 @@ html {
   transform: scale(1);
   opacity: 1;
   top: 25px;
-  left: 50%;
 }
 @media screen and (max-width: 30em) {
   .modal--zoomout:target .modal-close:after, .is-active.modal--zoomout .modal-close:after {
@@ -484,7 +472,6 @@ html {
   transition: all 0.4s;
   opacity: 0;
   top: -125px;
-  left: 50%;
 }
 .modal--slidefromtop:target .modal-inner, .is-active.modal--slidefromtop .modal-inner {
   -webkit-transform: translateY(0);
@@ -531,7 +518,6 @@ html {
     -webkit-transform: translateX(0%) translateY(0%);
   }
 }
-
 @-webkit-keyframes bounce {
   0% {
     -webkit-transform: translateY(-100%);
@@ -545,7 +531,6 @@ html {
     -webkit-transform: translateY(0%);
   }
 }
-
 @-moz-keyframes bounce {
   0% {
     -moz-transform: translateY(-100%);
@@ -559,7 +544,6 @@ html {
     -moz-transform: translateY(0%);
   }
 }
-
 @-o-keyframes bounce {
   0% {
     -o-transform: translateY(-100%);
@@ -573,7 +557,6 @@ html {
     -o-transform: translateY(0%);
   }
 }
-
 @-ms-keyframes bounce {
   0% {
     -ms-transform: translateY(-100%);
@@ -587,7 +570,6 @@ html {
     -ms-transform: translateY(0%);
   }
 }
-
 @keyframes bounce {
   0% {
     transform: translateY(-100%);
@@ -601,7 +583,6 @@ html {
     transform: translateY(0%);
   }
 }
-
 .modal--bouncefromtop .modal-close:before {
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -617,7 +598,6 @@ html {
   transition-delay: 0.4s;
   opacity: 0;
   top: 25px;
-  left: 50%;
 }
 .modal--bouncefromtop:target .modal-inner, .is-active.modal--bouncefromtop .modal-inner {
   -webkit-animation-name: bounce;
@@ -667,7 +647,6 @@ html {
   transition-delay: 0.6s;
   opacity: 0;
   top: 25px;
-  left: 50%;
 }
 .modal--bouncefromtopshaky:target .modal-inner, .is-active.modal--bouncefromtopshaky .modal-inner {
   -webkit-animation-name: shaky;
@@ -718,6 +697,9 @@ html {
   background: white;
   -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  max-width: 100%;
+  -webkit-transition: max-width 0.25s linear, margin-left 0.125s linear;
+  transition: max-width 0.25s linear, margin-left 0.125s linear;
 }
 .modal--fade header, .modal--plainscreen header, .modal--zoomin header, .modal--zoomout header, .modal--slidefromtop header, .modal--bouncefromtop header, .modal--bouncefromtopshaky header, .modal--show header {
   border-bottom: 1px solid #dddddd;
@@ -788,4 +770,39 @@ html {
 .modal--plainscreen .modal-close:after {
   -webkit-box-shadow: 0px -4px 8px -1px rgba(0, 0, 0, 0.25);
   box-shadow: 0px -4px 8px -1px rgba(0, 0, 0, 0.25);
+}
+
+/**
+ * CSS Modal Theme 'Resize'
+ * http://drublic.github.com/css-modal
+ *
+ * @author Anselm Hannemann - @helloanselm
+ * @Since 1.1.0alpha
+ */
+[data-cssmodal-resize] .modal-inner {
+  -webkit-transition: none;
+  transition: none;
+}
+@media screen and (max-width: 690px) {
+  [data-cssmodal-resize] .modal-inner {
+    left: auto !important;
+    right: auto !important;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+  [data-cssmodal-resize] .modal-inner img {
+    max-width: 100% !important;
+  }
+}
+@media screen and (max-width: 30em) {
+  [data-cssmodal-resize] .modal-inner {
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+.modal-content img {
+  display: block;
 }

@@ -98,7 +98,7 @@ html {
 }
 .modal--show .modal-content {
   max-height: 400px;
-  max-height: 70vh;
+  max-height: 90vh;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -136,9 +136,9 @@ html {
   content: '\00d7';
   position: absolute;
   top: 25px;
-  left: 50%;
+  right: 50%;
   z-index: 20;
-  margin-left: 285px;
+  margin-right: -325px;
 }
 @media screen and (max-width: 690px) {
   .modal--show .modal-inner {
@@ -147,13 +147,9 @@ html {
     right: 20px;
     margin-left: 0;
   }
-  .modal--show .modal-close {
-    left: auto;
-    right: 33px;
-    margin-left: 0;
-  }
   .modal--show .modal-close:after {
-    margin-left: 40%;
+    margin-right: 0 !important;
+    right: 20px;
   }
 }
 @media screen and (max-width: 30em) {
@@ -210,7 +206,7 @@ html {
     display: none;
   }
   .modal--show .modal-close:after {
-    top: 5px;
+    top: 5px !important;
     right: 5px;
     left: auto;
     z-index: 40;
@@ -267,21 +263,18 @@ html {
     -webkit-transform: scale(0.8);
   }
 }
-
 @-moz-keyframes scaleDown {
   to {
     opacity: 0;
     -moz-transform: scale(0.8);
   }
 }
-
 @keyframes scaleDown {
   to {
     opacity: 0;
     transform: scale(0.8);
   }
 }
-
 @-webkit-keyframes shaky {
   0% {
     -webkit-transform: translateY(-100%);
@@ -299,7 +292,6 @@ html {
     -webkit-transform: translateX(0%) translateY(0%);
   }
 }
-
 @-webkit-keyframes bounce {
   0% {
     -webkit-transform: translateY(-100%);
@@ -313,7 +305,6 @@ html {
     -webkit-transform: translateY(0%);
   }
 }
-
 @-moz-keyframes bounce {
   0% {
     -moz-transform: translateY(-100%);
@@ -327,7 +318,6 @@ html {
     -moz-transform: translateY(0%);
   }
 }
-
 @-o-keyframes bounce {
   0% {
     -o-transform: translateY(-100%);
@@ -341,7 +331,6 @@ html {
     -o-transform: translateY(0%);
   }
 }
-
 @-ms-keyframes bounce {
   0% {
     -ms-transform: translateY(-100%);
@@ -355,7 +344,6 @@ html {
     -ms-transform: translateY(0%);
   }
 }
-
 @keyframes bounce {
   0% {
     transform: translateY(-100%);
@@ -369,7 +357,6 @@ html {
     transform: translateY(0%);
   }
 }
-
 /**
  * CSS Modal Themes
  * http://drublic.github.com/css-modal
@@ -386,6 +373,9 @@ html {
   background: white;
   -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  max-width: 100%;
+  -webkit-transition: max-width 0.25s linear, margin-left 0.125s linear;
+  transition: max-width 0.25s linear, margin-left 0.125s linear;
 }
 .modal--show header {
   border-bottom: 1px solid #dddddd;
