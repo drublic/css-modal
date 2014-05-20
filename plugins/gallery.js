@@ -11,13 +11,33 @@
 	 * Main modal object
 	 */
 	var CSSModal = global.CSSModal;
-	var _$prev, _$next, _$detailView, _$activeElement;
+	var _prev;
+	var _next;
+	var _detailView;
+	var _activeElement;
 	var _items = [];
 	var _currentItem = 0;
 	var _api = {};
 	var _options = {};
 	var _defaultOptions = {
 		endless: true
+	};
+
+	/**
+	 * Decreases the counter for the active item regarding the "endless"
+	 * setting.
+	 * @return {void}
+	 */
+	var _setPreviousItem = function () {
+		if (_currentItem === 0) {
+			if (_options.endless) {
+				_currentItem = (_items.length - 1);
+			} else {
+				_currentItem = 0;
+			}
+		} else {
+			_currentItem--;
+		}
 	};
 
 	/**
@@ -29,17 +49,24 @@
 		event.preventDefault();
 		event.stopPropagation();
 
-		if (_currentItem === 0) {
-			if(_options.endless) {
-				_currentItem = (_items.length - 1);
-			} else {
+		_setPreviousItem();
+
+		setActiveItem(_currentItem);
+	};
+
+	/**
+	 * Increases the counter for the active item regarding the "endless"
+	 * setting.
+	 * @return {void}
+	 */
+	var _setNextItem = function () {
+		if (_currentItem === (_items.length - 1)) {
+			if (_options.endless) {
 				_currentItem = 0;
 			}
 		} else {
-			_currentItem--;
+			_currentItem++;
 		}
-
-		setActiveItem(_currentItem);
 	};
 
 	/**
@@ -51,25 +78,22 @@
 		event.preventDefault();
 		event.stopPropagation();
 
-		if (_currentItem === (_items.length - 1)) {
-			if(_options.endless) {
-				_currentItem = 0;
-			}
-		} else {
-			_currentItem++;
-		}
+		_setNextItem();
 
 		setActiveItem(_currentItem);
 	};
 
 	/**
 	 * Returns the detail image element
-	 * @param  {Object} $element The current CSS Modal instance
+	 * @param  {Object} element The current CSS Modal instance
 	 * @return {Object} The detail image
 	 */
-	var _getDetailView = function ($element) {
-		var $container = $element.getElementsByClassName('modal-detail')[0];
-		return $container;
+	var _getDetailView = function (element) {
+		var container = element.getElementsByClassName('modal-detail')[0];
+		if (!container) {
+			throw new Error('".modal-detail" not found!');
+		}
+		return container;
 	};
 
 	/**
@@ -78,7 +102,7 @@
 	 * @return {void}
 	 */
 	var _readOptions = function () {
-		var optionsString = _$activeElement.getAttribute('data-options');
+		var optionsString = _activeElement.getAttribute('data-options');
 		var options = {};
 		var entry;
 
@@ -107,18 +131,18 @@
 	 * @return {void}
 	 */
 	var _initNavigation = function (event) {
-		_$activeElement = event.detail.modal;
+		_activeElement = event.detail.modal;
 
-		if (!_$activeElement._galleryEventsBound) {
-			_bindEvents(_$activeElement);
-			_$activeElement._galleryEventsBound = true;
-			_$activeElement._currentItem = 0;
+		if (!_activeElement._galleryEventsBound) {
+			_bindEvents(_activeElement);
+			_activeElement._galleryEventsBound = true;
+			_activeElement._currentItem = 0;
 		}
 
 		_readOptions();
-		_$detailView = _getDetailView(_$activeElement);
-		_currentItem = _$activeElement._currentItem;
-		_items = _readContent(_$activeElement);
+		_detailView = _getDetailView(_activeElement);
+		_currentItem = _activeElement._currentItem;
+		_items = _readContent(_activeElement);
 
 		setActiveItem(0);
 	};
@@ -140,37 +164,37 @@
 	/**
 	 * Wires the previous / next button to the function to navigation through
 	 * the gallery
-	 * @param  {Object} $element The CSSModal to set up
+	 * @param  {Object} element The CSSModal to set up
 	 * @return {void}
 	 */
-	var _bindEvents = function ($element) {
+	var _bindEvents = function (element) {
 		var events = ['click', 'touch'];
 		var i = 0;
 
 		// Setup touch / click events
-		_$prev = $element.getElementsByClassName('modal-prev')[0];
-		_$next = $element.getElementsByClassName('modal-next')[0];
+		_prev = element.getElementsByClassName('modal-prev')[0];
+		_next = element.getElementsByClassName('modal-next')[0];
 
 		for (; i < events.length; i++) {
-			CSSModal.on(events[i], _$prev, showPrevious);
-			CSSModal.on(events[i], _$next, showNext);
+			CSSModal.on(events[i], _prev, showPrevious);
+			CSSModal.on(events[i], _next, showNext);
 		}
 
 		// Setup keyboard events
 		CSSModal.on('keydown', window, _onKeyPress);
 
 		// Setup swipe events
-		CSSModal.on('touch:swipe-left', $element, showPrevious);
-		CSSModal.on('touch:swipe-right', $element, showNext);
+		CSSModal.on('touch:swipe-left', element, showPrevious);
+		CSSModal.on('touch:swipe-right', element, showNext);
 	};
 
 	/**
 	 * Gathers information about the gallery content and stores it.
-	 * @param  {Object} $element The CSSModal to receive the content from
+	 * @param  {Object} element The CSSModal to receive the content from
 	 * @return {void}
 	 */
-	var _readContent = function ($element) {
-		var contentList = $element.getElementsByClassName('modal-content-list')[0];
+	var _readContent = function (element) {
+		var contentList = element.getElementsByClassName('modal-content-list')[0];
 		return contentList.getElementsByTagName('li');
 	};
 
@@ -180,13 +204,13 @@
 	 */
 	var setActiveItem = function (index) {
 		var content = _items[index].innerHTML;
-		var $img = null;
-		_$detailView.innerHTML = content;
+		var img = null;
+		_detailView.innerHTML = content;
 
 		// Load the original image, if we are in a gallery
-		if (_$activeElement.getAttribute('class').indexOf('modal--gallery') !== -1) {
-			$img = _$detailView.getElementsByTagName('img')[0];
-			$img.src = $img.getAttribute('data-src-fullsize');
+		if (_activeElement.getAttribute('class').indexOf('modal--gallery') !== -1) {
+			img = _detailView.getElementsByTagName('img')[0];
+			img.src = img.getAttribute('data-src-fullsize');
 		}
 	};
 
@@ -196,7 +220,7 @@
 	 * @return {void}
 	 */
 	var _storeActiveItem = function () {
-		_$activeElement._currentItem = _currentItem;
+		_activeElement._currentItem = _currentItem;
 	};
 
 	/**
