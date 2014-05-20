@@ -779,13 +779,27 @@ html {
  * @author Anselm Hannemann - @helloanselm
  * @Since 1.1.0alpha
  */
-.modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner {
+[data-cssmodal-resize] .modal-inner {
   -webkit-transition: none;
   transition: none;
 }
 @media screen and (max-width: 690px) {
-  .modal--fade .modal-inner img, .modal--plainscreen .modal-inner img, .modal--zoomin .modal-inner img, .modal--zoomout .modal-inner img, .modal--slidefromtop .modal-inner img, .modal--bouncefromtop .modal-inner img, .modal--bouncefromtopshaky .modal-inner img, .modal--show .modal-inner img {
+  [data-cssmodal-resize] .modal-inner {
+    left: auto !important;
+    right: auto !important;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+  [data-cssmodal-resize] .modal-inner img {
     max-width: 100% !important;
+  }
+}
+@media screen and (max-width: 30em) {
+  [data-cssmodal-resize] .modal-inner {
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
 

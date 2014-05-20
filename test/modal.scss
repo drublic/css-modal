@@ -41,3 +41,8 @@
 .modal--bouncefromtopshaky {
 	@extend %modal--transition-bounceFromTopShaky;
 }
+
+[data-cssmodal-resize] {
+	@extend %modal--resize;
+}
+

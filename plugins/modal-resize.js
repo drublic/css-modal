@@ -101,7 +101,7 @@
 			document.getElementById(id).parentNode.removeChild(document.getElementById(id));
 		}
 
-		element.id = 'modal__rule' + id;
+		element.id = id;
 		element.innerHTML = '<style>' + rule + '</style>';
 
 		// Append a new rule
@@ -209,6 +209,7 @@
 		element.style.top = offset.top + 'px';
 		element.style.left = offset.left + 'px';
 		element.style.marginLeft = 0;
+		element.style.marginRight = 0;
 
 		// Close button
 		_injectStyles('.modal-close:after {' +
