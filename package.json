@@ -20,7 +20,7 @@
     "test": "grunt travis --verbose"
   },
   "engines": {
-    "node": ">=0.6"
+    "node": ">=0.10"
   },
   "dependencies": {},
   "devDependencies": {
