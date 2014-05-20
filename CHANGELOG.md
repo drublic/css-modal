@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Add polyfill for CustomEvents
 * Fix modal modifier close button positions
 * Separate close button position from its theme styling
 * Fix close button position
