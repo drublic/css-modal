@@ -114,7 +114,7 @@ html {
 	// Content
 	.modal-content {
 		max-height: 400px;
-		max-height: 70vh;
+		max-height: 90vh;
 		overflow-x: hidden;
 		overflow-y: auto;
 
@@ -166,7 +166,7 @@ html {
 			top: 25px;
 			right: 50%;
 			z-index: 20;
-			margin-right: -(($modal-max-width / 2) - 40);
+			margin-right: -($modal-max-width / 2);
 		}
 	}
 
@@ -181,10 +181,10 @@ html {
 		}
 
 		.modal-close {
-		    &:after {
-		        margin-right: 0;
-		        right: 60px;
-		    }
+			&:after {
+				margin-right: 0 !important;
+				right: 20px;
+			}
 		}
 	}
 
@@ -259,7 +259,7 @@ html {
 			}
 
 			&:after {
-				top: 5px;
+				top: 5px !important;
 				right: 5px;
 				left: auto;
 				z-index: 40;

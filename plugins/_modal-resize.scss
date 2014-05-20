@@ -1,0 +1,45 @@
+/**
+ * CSS Modal Theme 'Resize'
+ * http://drublic.github.com/css-modal
+ *
+ * @author Anselm Hannemann - @helloanselm
+ * @Since 1.1.0alpha
+ */
+
+// ==================================================
+// Resize Theme Styles
+// ==================================================
+
+%modal--resize {
+	.modal-inner {
+		-webkit-transition: none;
+		        transition: none;
+	}
+
+	// When screen isn't as wide as the modal anymore
+	@media screen and (max-width: $modal-max-width + 40) {
+		.modal-inner {
+			left: auto !important;
+			right: auto !important;
+			margin-left: 20px !important;
+			margin-right: 20px !important;
+
+			img {
+				max-width: 100% !important;
+			}
+		}
+	}
+
+	@media screen and (max-width: $modal-small-breakpoint) {
+		.modal-inner {
+			left: 0 !important;
+			right: 0 !important;
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+		}
+	}
+}
+
+.modal-content img {
+	display: block;
+}

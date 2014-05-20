@@ -7,7 +7,7 @@
 
 // Include Modal
 @import "../modal";
-
+@import "../plugins/modal-resize";
 
 // Apply the modal with all its possible parts
 ._modal {
@@ -41,3 +41,8 @@
 .modal--bouncefromtopshaky {
 	@extend %modal--transition-bounceFromTopShaky;
 }
+
+[data-cssmodal-resize] {
+	@extend %modal--resize;
+}
+

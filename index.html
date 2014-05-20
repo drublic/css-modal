@@ -33,6 +33,8 @@
 			<li><a href="#modal-bouncefromtop" title="Clicking this link shows the modal">Demo bounceFromTop</a></li>
 			<li><a href="#modal-bouncefromtopshaky" title="Clicking this link shows the modal">Demo bounceFromTopShaky</a></li>
 			<li><a href="#modal-html5video" title="Clicking this link shows a modal with HTML5 Video content">Demo HTML5Video</a></li>
+			<li><a href="#modal-image" title="Clicking this link shows a modal with image content">Demo Image</a></li>
+			<li><a href="#modal-image2" title="Clicking this link shows a modal with image content">Demo Image 2</a></li>
 			<li><a href="#modal-gallery" title="Clicking this link shows a modal with a gallery">Demo Gallery (with KITTENS!)</a></li>
 			<li><a href="#modal-gallery-boring" title="Clicking this link shows a modal with a gallery">Demo Gallery</a></li>
 		</ul>
@@ -176,13 +178,44 @@
 		</section>
 
 		<section class="modal--show" id="modal-html5video" tabindex="-1"
-		role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+				role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 
 			<div class="modal-inner">
 				<div class="modal-content">
 					<video preload="auto" controls>
 						<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
 					</video>
+					<video preload="auto" controls>
+						<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+					</video>
+					<video preload="auto" controls>
+						<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+					</video>
+				</div>
+			</div>
+
+			<a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+				data-dismiss="modal">×</a>
+		</section>
+
+		<!-- Images -->
+		<section class="modal--show" id="modal-image" tabindex="-1" data-cssmodal-resize
+				role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+			<div class="modal-inner">
+				<div class="modal-content">
+					<img src="http://farm7.staticflickr.com/6163/6202508462_bf8d1b2a78_b.jpg">
+				</div>
+			</div>
+
+			<a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+				data-dismiss="modal">×</a>
+		</section>
+
+		<section class="modal--show" id="modal-image2" tabindex="-1" data-cssmodal-resize="true"
+				role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+			<div class="modal-inner">
+				<div class="modal-content">
+					<img src="img/image.jpg">
 				</div>
 			</div>
 
@@ -246,6 +279,7 @@
 
 		<script src="modal.js"></script><!-- JS for Modal -->
 		<script src="plugins/html5video.js"></script>
+		<script src="plugins/modal-resize.js"></script>
 		<script src="plugins/gallery.js"></script>
 	</body>
 </html>
