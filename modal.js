@@ -249,8 +249,27 @@
 		 */
 		mainHandler: function () {
 			var hash = window.location.hash.replace('#', '');
+			var index = 0;
+			var tmp = [];
 			var modalElement = document.getElementById(hash);
 			var modalChild;
+
+			// Check if the hash contains an index
+			if (hash.indexOf('/') !== -1) {
+				tmp = hash.split('/');
+				index = tmp.pop();
+
+				if (parseInt(index, 10) > 0) {
+					hash = tmp.join('/');
+
+					// Remove the index from the hash...
+					modalElement = document.getElementById(hash);
+
+					// ... and store the index as a number on the element to
+					// make it accessible for plugins
+					modalElement.index = (1 * index);
+				}
+			}
 
 			// If the hash element exists
 			if (modalElement) {

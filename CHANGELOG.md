@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Add support to have a specific element visible when the gallery is opened
 * Add polyfill for CustomEvents
 * Fix modal modifier close button positions
 * Separate close button position from its theme styling

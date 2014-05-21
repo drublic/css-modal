@@ -18,7 +18,6 @@
 			});
 
 			waits(750);
-
 		});
 
 		it('can navigate forwards by clicking', function () {
@@ -76,7 +75,7 @@
 				setTimeout(function () {
 					expect($('#modal-gallery').css('opacity')).toBe('1');
 					var src = $('#modal-gallery .modal-detail img').attr('src');
-					expect(src).toMatch('http://placekitten.com/400/300');
+					expect(src).toMatch('http://placekitten.com/440/300');
 				}, 500);
 			});
 
