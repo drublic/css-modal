@@ -18,7 +18,9 @@ $gallery--min-size: 98px;
 		opacity: 0;
 	}
 
-	&:hover {
+	&:hover,
+	&:focus,
+	&:active {
 		&:after {
 			opacity: 1;
 		}

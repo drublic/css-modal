@@ -146,6 +146,10 @@ html {
 		margin: -1px;
 		overflow: hidden;
 
+		&:focus:after {
+			outline: 1px dotted;
+			outline: -webkit-focus-ring-color auto 5px;
+		}
 
 		// Background as close
 		&:before {

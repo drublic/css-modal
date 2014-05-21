@@ -123,6 +123,10 @@ html {
   margin: -1px;
   overflow: hidden;
 }
+.modal--show .modal-close:focus:after {
+  outline: 1px dotted;
+  outline: -webkit-focus-ring-color auto 5px;
+}
 .modal--show .modal-close:before {
   content: '';
   position: absolute;

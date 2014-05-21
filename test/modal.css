@@ -148,6 +148,10 @@ html {
   margin: -1px;
   overflow: hidden;
 }
+.modal--gallery .modal-close:focus:after, .modal--fade .modal-close:focus:after, .modal--plainscreen .modal-close:focus:after, .modal--zoomin .modal-close:focus:after, .modal--zoomout .modal-close:focus:after, .modal--slidefromtop .modal-close:focus:after, .modal--bouncefromtop .modal-close:focus:after, .modal--bouncefromtopshaky .modal-close:focus:after, .modal--show .modal-close:focus:after, ._modal .modal-close:focus:after {
+  outline: 1px dotted;
+  outline: -webkit-focus-ring-color auto 5px;
+}
 .modal--gallery .modal-close:before, .modal--fade .modal-close:before, .modal--plainscreen .modal-close:before, .modal--zoomin .modal-close:before, .modal--zoomout .modal-close:before, .modal--slidefromtop .modal-close:before, .modal--bouncefromtop .modal-close:before, .modal--bouncefromtopshaky .modal-close:before, .modal--show .modal-close:before, ._modal .modal-close:before {
   content: '';
   position: absolute;
@@ -865,7 +869,7 @@ html {
   font-size: 64px;
   opacity: 0;
 }
-.modal--gallery-navigation .modal--gallery-navigation-prev:hover:after {
+.modal--gallery-navigation .modal--gallery-navigation-prev:hover:after, .modal--gallery-navigation .modal--gallery-navigation-prev:focus:after, .modal--gallery-navigation .modal--gallery-navigation-prev:active:after {
   opacity: 1;
 }
 .modal--gallery-navigation .modal--gallery-navigation-prev:after {
@@ -886,7 +890,7 @@ html {
   font-size: 64px;
   opacity: 0;
 }
-.modal--gallery-navigation .modal--gallery-navigation-next:hover:after {
+.modal--gallery-navigation .modal--gallery-navigation-next:hover:after, .modal--gallery-navigation .modal--gallery-navigation-next:focus:after, .modal--gallery-navigation .modal--gallery-navigation-next:active:after {
   opacity: 1;
 }
 .modal--gallery-navigation .modal--gallery-navigation-next:after {
