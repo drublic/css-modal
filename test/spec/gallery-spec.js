@@ -1,4 +1,4 @@
-/*global describe, it, expect, Event, waits, runs*/
+/*global describe, it, expect, Event, waits, runs, CSSModal*/
 (function ($) {
 
 	'use strict';
@@ -18,7 +18,6 @@
 			});
 
 			waits(750);
-
 		});
 
 		it('can navigate forwards by clicking', function () {
@@ -76,7 +75,7 @@
 				setTimeout(function () {
 					expect($('#modal-gallery').css('opacity')).toBe('1');
 					var src = $('#modal-gallery .modal-detail img').attr('src');
-					expect(src).toMatch('http://placekitten.com/400/300');
+					expect(src).toMatch('http://placekitten.com/440/300');
 				}, 500);
 			});
 
@@ -106,6 +105,15 @@
 			});
 
 			waits(100);
+		});
+
+		it('throws an error if a modal with the given ID does not exist', function () {
+			try {
+				document.location.href = '#modal-gallery-error/2';
+				expect(CSSModal.mainHandler()).toThrow();
+			} catch (exception) {
+				// we want this exception to be thrown
+			}
 		});
 
 		// Hide the last open gallery

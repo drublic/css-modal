@@ -98,14 +98,14 @@
 		if (!_activeElement._galleryEventsBound) {
 			_bindEvents(_activeElement);
 			_activeElement._galleryEventsBound = true;
-			_activeElement._currentItem = 0;
+			_activeElement._currentItem = _activeElement.index || 0;
 		}
 
 		_detailView = _getDetailView(_activeElement);
 		_currentItem = _activeElement._currentItem;
 		_items = _readContent(_activeElement);
 
-		setActiveItem(0);
+		setActiveItem(_currentItem);
 	};
 
 	/**
@@ -164,6 +164,10 @@
 	 * @param {Number} index The index of the item to show
 	 */
 	var setActiveItem = function (index) {
+		if (!_items[index]) {
+			throw new Error('Invalid index "' + index + '"!');
+		}
+
 		var content = _items[index].innerHTML;
 		var img = new Image();
 		var referenceImage;
