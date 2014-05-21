@@ -225,6 +225,12 @@
 	};
 
 	var _scale = function () {
+
+		// Eject if no active element is set
+		if (!CSSModal.activeElement) {
+			return;
+		}
+
 		var resize = CSSModal.activeElement.getAttribute('data-cssmodal-resize');
 
 		if (resize === 'true' || resize === '') {
