@@ -267,6 +267,10 @@
 
 					// ... and store the index as a number on the element to
 					// make it accessible for plugins
+					if (!modalElement) {
+						throw new Error('ReferenceError: element "' + hash + '" does not exist!');
+					}
+
 					modalElement.index = (1 * index);
 				}
 			}
