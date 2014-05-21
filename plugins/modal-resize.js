@@ -1,7 +1,9 @@
 /*
  * CSS Modal Plugin for dynamic modal resizing
- * Author: Anselm Hannemann
- * Date: 2014-04-15
+ *
+ * @author Anselm Hannemann
+ * @author Hans Christian Reinl
+ * @date 2014-05-21
  */
 (function (global) {
 	'use strict';

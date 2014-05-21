@@ -1,9 +1,9 @@
 /*
  * CSS Modal Plugin for HTML5 Video (play/pause)
- * Author: Anselm Hannemann
- * Date: 2014-02-04
+ *
+ * @author Anselm Hannemann
+ * @date 2014-02-04
  */
-
 (function (global) {
 
 	'use strict';
@@ -39,5 +39,4 @@
 			}
 		}
 	});
-
 }(window));

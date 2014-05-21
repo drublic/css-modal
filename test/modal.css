@@ -783,8 +783,7 @@ html {
  * CSS Modal Theme 'Resize'
  * http://drublic.github.com/css-modal
  *
- * @author Anselm Hannemann - @helloanselm
- * @Since 1.1.0alpha
+ * @since 1.1.0alpha
  */
 [data-cssmodal-resize] .modal-inner {
   -webkit-transition: none;
@@ -816,8 +815,9 @@ html {
 
 /*
  * CSS Modal Plugin for displaying an image gallery
- * Author: Jonathan Weiß
- * Date: 2014-05-16
+ *
+ * @author Jonathan Weiß
+ * @date 2014-05-16
  */
 .modal-detail {
   position: relative;

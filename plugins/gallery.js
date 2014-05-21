@@ -1,7 +1,8 @@
 /*
  * CSS Modal Plugin for displaying an image gallery
- * Author: Jonathan Weiß
- * Date: 2014-05-15
+ *
+ * @author Jonathan Weiß
+ * @date 2014-05-15
  */
 
 (function (global) {
