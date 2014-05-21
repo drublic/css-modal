@@ -9,7 +9,7 @@
 		it('can open a modal', function () {
 			runs(function () {
 				var element = $('ul > li').eq(1).find('a').get(0);
-				var event = new Event('click', {'cancelable': true});
+				var event = new MouseEvent('click', {'cancelable': true});
 				element.dispatchEvent(event);
 
 				setTimeout(function () {
@@ -23,7 +23,7 @@
 		it('can navigate forwards by clicking', function () {
 			runs(function () {
 				var element = $('#modal-gallery-boring .modal--gallery-navigation-next').get(0);
-				var event = new Event('click', {'cancelable': true});
+				var event = new MouseEvent('click', {'cancelable': true});
 				element.dispatchEvent(event);
 
 				event = new Event('click', {'cancelable': true});
@@ -41,7 +41,7 @@
 		it('can navigate backwards by clicking', function () {
 			runs(function () {
 				var element = $('#modal-gallery-boring .modal--gallery-navigation-prev').get(0);
-				var event = new Event('click', {'cancelable': true});
+				var event = new MouseEvent('click', {'cancelable': true});
 				element.dispatchEvent(event);
 
 				window.setTimeout(function () {
@@ -56,7 +56,7 @@
 		it('can close the gallery', function () {
 			runs(function () {
 				var element = $('#modal-gallery-boring .modal-close').get(0);
-				var event = new Event('click', {'cancelable': true});
+				var event = new MouseEvent('click', {'cancelable': true});
 				element.dispatchEvent(event);
 				setTimeout(function () {
 					expect($('#modal-gallery-boring').css('opacity')).toBe('0');
@@ -69,7 +69,7 @@
 		it('can open a diffent gallery', function () {
 			runs(function () {
 				var element = $('ul > li').eq(0).find('a').get(0);
-				var event = new Event('click', {'cancelable': true});
+				var event = new MouseEvent('click', {'cancelable': true});
 				element.dispatchEvent(event);
 
 				setTimeout(function () {
@@ -86,7 +86,7 @@
 			runs(function () {
 				window.setTimeout(function () {
 					var element = $('#modal-gallery .modal--gallery-navigation-next').get(0);
-					var event = new Event('click', {'cancelable': true});
+					var event = new MouseEvent('click', {'cancelable': true});
 					element.dispatchEvent(event);
 
 					element = $('#modal-gallery .modal-close').get(0);
@@ -96,7 +96,7 @@
 
 				window.setTimeout(function () {
 					var element = $('ul > li').eq(1).find('a').get(0);
-					var event = new Event('click', {'cancelable': true});
+					var event = new MouseEvent('click', {'cancelable': true});
 					element.dispatchEvent(event);
 
 					var src = $('#modal-gallery-boring .modal-detail img').attr('src');
