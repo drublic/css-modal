@@ -13,6 +13,36 @@
 	 */
 	var CSSModal;
 
+	var videos;
+
+	/**
+	 * Show modal
+	 */
+	var _show = function () {
+
+		// Fetch all video elements in active modal
+		videos = CSSModal.activeElement.querySelectorAll('video');
+
+		// Play first video in modal
+		if (videos.length > 0) {
+			videos[0].play();
+		}
+	};
+
+	/**
+	 * Hide modal
+	 */
+	var _hide = function () {
+		var i = 0;
+
+		// Pause all videos in active modal
+		if (videos.length > 0) {
+			for (; i < videos.length; i++) {
+				videos[i].pause();
+			}
+		}
+	};
+
 	/**
 	 * Initial call
 	 */
@@ -24,31 +54,11 @@
 			throw new Error('Error: CSSModal is not loaded.');
 		}
 
-		var videos;
-
 		// Enables Auto-Play when calling modal
-		CSSModal.on('cssmodal:show', document, function () {
-
-			// Fetch all video elements in active modal
-			videos = CSSModal.activeElement.querySelectorAll('video');
-
-			// Play first video in modal
-			if (videos.length > 0) {
-				videos[0].play();
-			}
-		});
+		CSSModal.on('cssmodal:show', document, _show);
 
 		// If modal is closed, pause all videos
-		CSSModal.on('cssmodal:hide', document, function () {
-			var i = 0;
-
-			// Pause all videos in active modal
-			if (videos.length > 0) {
-				for (; i < videos.length; i++) {
-					videos[i].pause();
-				}
-			}
-		});
+		CSSModal.on('cssmodal:hide', document, _hide);
 
 		return {};
 	};
