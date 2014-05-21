@@ -97,6 +97,7 @@ html {
   max-width: 100%;
 }
 .modal--show .modal-content {
+  position: relative;
   max-height: 400px;
   max-height: 90vh;
   overflow-x: hidden;

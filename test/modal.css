@@ -122,6 +122,7 @@ html {
   max-width: 100%;
 }
 .modal--gallery .modal-content, .modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content, ._modal .modal-content {
+  position: relative;
   max-height: 400px;
   max-height: 90vh;
   overflow-x: hidden;
