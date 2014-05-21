@@ -252,7 +252,7 @@
 	// Register as an AMD module
 	} else if (typeof define === 'function' && define.amd) {
 
-		define(['../modal.js'], init);
+		define(['CSSModal'], init);
 
 	// Export CSSModal into global space
 	} else if (typeof global === 'object' && typeof global.document === 'object') {
