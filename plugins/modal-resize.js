@@ -4,6 +4,10 @@
  * @author Anselm Hannemann
  * @author Hans Christian Reinl
  * @date 2014-05-21
+ *
+ * Integration:
+ * - Add modal-resize.js to your JS (via AMD you can easily require it)
+ * - Add `data-cssmodal-resize` to the modal which should be resized
  */
 (function (global) {
 	'use strict';
