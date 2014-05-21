@@ -95,10 +95,16 @@
 	var _initNavigation = function (event) {
 		_activeElement = event.detail.modal;
 
+		// Bind events on the current modal element and set the currentItem to 0
 		if (!_activeElement._galleryEventsBound) {
 			_bindEvents(_activeElement);
 			_activeElement._galleryEventsBound = true;
-			_activeElement._currentItem = _activeElement.index || 0;
+			_activeElement._currentItem = 0;
+		}
+
+		// If we have an incoming index, override the current item
+		if ('index' in _activeElement) {
+			_activeElement._currentItem = _activeElement.index;
 		}
 
 		_detailView = _getDetailView(_activeElement);
