@@ -121,6 +121,15 @@ There events are not fired in IE8. Please be aware of that and use jQuery or
 something else to create custom events.
 
 
+## Plugins
+
+We have a couple for the modal to enhance it:
+
+* Resize - Resizes modal to size of input elements
+* Gallery - A lightbox plugin (in connection with resize)
+* HTML5 Video - Load videos within the modal
+
+
 ## Bug reports and feature requests
 
 If you got something that's worth including into the project please
