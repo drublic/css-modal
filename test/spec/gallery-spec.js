@@ -23,7 +23,7 @@
 
 		it('can navigate forwards by clicking', function () {
 			runs(function () {
-				var element = $('#modal-gallery-boring a.modal-next').get(0);
+				var element = $('#modal-gallery-boring .modal--gallery-navigation-next').get(0);
 				var event = new Event('click', {'cancelable': true});
 				element.dispatchEvent(event);
 
@@ -41,7 +41,7 @@
 
 		it('can navigate backwards by clicking', function () {
 			runs(function () {
-				var element = $('#modal-gallery-boring a.modal-prev').get(0);
+				var element = $('#modal-gallery-boring .modal--gallery-navigation-prev').get(0);
 				var event = new Event('click', {'cancelable': true});
 				element.dispatchEvent(event);
 
@@ -86,7 +86,7 @@
 		it('restores the first gallery correctly, after it had been closed', function () {
 			runs(function () {
 				window.setTimeout(function () {
-					var element = $('#modal-gallery a.modal-next').get(0);
+					var element = $('#modal-gallery .modal--gallery-navigation-next').get(0);
 					var event = new Event('click', {'cancelable': true});
 					element.dispatchEvent(event);
 
