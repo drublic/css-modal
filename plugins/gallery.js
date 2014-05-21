@@ -177,6 +177,7 @@
 		if (_activeElement.getAttribute('class').indexOf('modal--gallery') !== -1) {
 			referenceImage = _detailView.getElementsByTagName('img')[0];
 			img.src = referenceImage.getAttribute('data-src-fullsize');
+			img.alt = referenceImage.getAttribute('alt');
 
 			// Reposition and show
 			CSSModal.on('load', img, function () {
