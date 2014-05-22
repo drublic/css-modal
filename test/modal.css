@@ -10,14 +10,12 @@
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @version 1.1.0alpha
  */
 /**
  * CSS Modal Configuration
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @Since 1.1.0alpha
  */
 html {
   overflow-y: scroll;
@@ -124,7 +122,7 @@ html {
 .modal--gallery .modal-content, .modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content, ._modal .modal-content {
   position: relative;
   max-height: 400px;
-  max-height: 90vh;
+  max-height: 80vh;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -694,7 +692,9 @@ html {
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @Since 1.1.0alpha
+ */
+/*
+ * Global Theme Styles
  */
 .modal--gallery, .modal--fade, .modal--plainscreen, .modal--zoomin, .modal--zoomout, .modal--slidefromtop, .modal--bouncefromtop, .modal--bouncefromtopshaky, .modal--show {
   color: #222222;
@@ -768,6 +768,9 @@ html {
   }
 }
 
+/*
+ * Plain Screen Theme Styles
+ */
 .modal--plainscreen .modal-inner {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -856,6 +859,7 @@ html {
   text-indent: -99em;
   overflow: hidden;
   text-decoration: none;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 .modal--gallery-navigation .modal--gallery-navigation-prev {
   left: 0;

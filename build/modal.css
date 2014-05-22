@@ -3,14 +3,12 @@
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @version 1.1.0alpha
  */
 /**
  * CSS Modal Configuration
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @Since 1.1.0alpha
  */
 html {
   overflow-y: scroll;
@@ -99,7 +97,7 @@ html {
 .modal--show .modal-content {
   position: relative;
   max-height: 400px;
-  max-height: 90vh;
+  max-height: 80vh;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -367,7 +365,9 @@ html {
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @Since 1.1.0alpha
+ */
+/*
+ * Global Theme Styles
  */
 .modal--show {
   color: #222222;
@@ -440,3 +440,7 @@ html {
     padding: 0.5em 1em;
   }
 }
+
+/*
+ * Plain Screen Theme Styles
+ */

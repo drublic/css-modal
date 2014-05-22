@@ -3,12 +3,11 @@
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @Since 1.1.0alpha
  */
 
-// ==================================================
-// Global Theme Styles
-// ==================================================
+/*
+ * Global Theme Styles
+ */
 
 %modal-theme {
 	color: $modal-color;
@@ -118,15 +117,15 @@
 }
 
 
-// ==================================================
-// Plain Screen Theme Styles
-// ==================================================
+/*
+ * Plain Screen Theme Styles
+ */
 
 %modal-theme-plainScreen {
 
 	.modal-inner {
 		-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-	      		box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+		        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 	}
 
 	// A close button
@@ -138,7 +137,7 @@
 
 		&:after {
 			-webkit-box-shadow: 0px -4px 8px -1px rgba(0, 0, 0, 0.25);
-        			box-shadow: 0px -4px 8px -1px rgba(0, 0, 0, 0.25);
+			        box-shadow: 0px -4px 8px -1px rgba(0, 0, 0, 0.25);
 		}
 	}
 }
