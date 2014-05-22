@@ -261,21 +261,18 @@
 			if (hash.indexOf('/') !== -1) {
 				tmp = hash.split('/');
 				index = tmp.pop();
+				hash = tmp.join('/');
 
-				if (parseInt(index, 10) > 0) {
-					hash = tmp.join('/');
+				// Remove the index from the hash...
+				modalElement = document.getElementById(hash);
 
-					// Remove the index from the hash...
-					modalElement = document.getElementById(hash);
-
-					// ... and store the index as a number on the element to
-					// make it accessible for plugins
-					if (!modalElement) {
-						throw new Error('ReferenceError: element "' + hash + '" does not exist!');
-					}
-
-					modalElement.index = (1 * index);
+				// ... and store the index as a number on the element to
+				// make it accessible for plugins
+				if (!modalElement) {
+					throw new Error('ReferenceError: element "' + hash + '" does not exist!');
 				}
+
+				modalElement.index = (1 * index);
 			}
 
 			// If the hash element exists
