@@ -2,6 +2,27 @@
 
 ## HEAD
 
+* Fix max height of modal content
+* Add gallery plugin
+* Add a spinner
+* Add resize plugin
+* Add HTML5 video plugin
+
+* Use methods for show and hide modal in HTML5 Video plugin
+* Update plugin HTML5 Video to work with AMD definition
+
+* Use a name for the main component: CSSModal
+* Add focus state for close button
+* Add HTML5 Shiv for IE8 in visual tests
+* Add polyfill for CustomEvents
+* Update node version to v0.10 when working with Travis
+* Improve ARIA support
+* Add FAQ for questions we get from time to time.
+* Update documentation in README file
+* Remove scrollbars for lt IE9 (#67)
+* Separated Sass Partials. Config, Core and Theme
+* Update body scrolling behavior: Prevent double scroll bar in FF and Co
+
 * Add support to have a specific element visible when the gallery is opened
 * Add polyfill for CustomEvents
 * Fix modal modifier close button positions
