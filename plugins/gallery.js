@@ -81,9 +81,11 @@
 	 */
 	var _getDetailView = function (element) {
 		var container = element.getElementsByClassName('modal-detail')[0];
+
 		if (!container) {
 			throw new Error('".modal-detail" not found!');
 		}
+
 		return container;
 	};
 
@@ -94,6 +96,10 @@
 	 */
 	var _initNavigation = function (event) {
 		_activeElement = event.detail.modal;
+
+		if (_activeElement.querySelectorAll('.modal-detail').length === 0) {
+			return;
+		}
 
 		// Bind events on the current modal element and set the currentItem to 0
 		if (!_activeElement._galleryEventsBound) {
