@@ -2,6 +2,8 @@
 
 ## HEAD
 
+* Allow the content with id 0 to be selected
+
 * Fix max height of modal content
 * Add gallery plugin
 * Add a spinner
