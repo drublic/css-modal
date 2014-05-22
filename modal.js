@@ -62,6 +62,10 @@
 				throw new Error('Type error: `callback` has to be a function');
 			}
 
+			if (!element) {
+				return;
+			}
+
 			if (element.addEventListener) {
 				element.addEventListener(event, callback, false);
 			} else {

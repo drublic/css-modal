@@ -138,7 +138,6 @@
 			throw new Error('Error: No active modal.');
 		}
 
-
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementContent = CSSModal.activeElement.querySelector('.modal-content');
 		var containerDimentions;
