@@ -10,10 +10,8 @@
 	'use strict';
 
 	// We use bean if the browser doesn't support CustomEvents
-	if (window.CustomEvent) {
-		if (!window.bean) {
-			throw new Error('This browser doesn\'t support CustomEvent - please include bean: https://github.com/fat/bean');
-		}
+	if (!global.CustomEvent && !global.bean) {
+		throw new Error('This browser doesn\'t support CustomEvent - please include bean: https://github.com/fat/bean');
 	}
 
 	/*
@@ -51,7 +49,7 @@
 				return;
 			}
 
-			if (window.bean) {
+			if (global.bean) {
 				bean.on(element, event, callback);
 			} else {
 				element.addEventListener(event, callback, false);
@@ -65,20 +63,19 @@
 		 */
 		trigger: function (event, modal) {
 			var eventTrigger;
+			var eventParams = {
+				detail: {
+					'modal': modal
+				}
+			};
 
-			if (window.bean) {
-				eventTrigger = {
-					detail: {
-						'modal': modal
-					}
-				};
-				bean.fire(document, event, eventTrigger);
+			// Use the bean library to fire the event if it is included
+			if (global.bean) {
+				bean.fire(document, event, eventParams);
+
+			// Use CustomEvents if supported
 			} else {
-				eventTrigger = new CustomEvent(event,{
-					detail: {
-						'modal': modal
-					}
-				});
+				eventTrigger = new CustomEvent(event, eventParams);
 
 				document.dispatchEvent(eventTrigger);
 			}

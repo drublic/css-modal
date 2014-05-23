@@ -187,7 +187,7 @@
 	};
 
 	var getHorizontalOffset = function () {
-        var innerWidth = global.innerWidth ? global.innerWidth : document.body.clientWidth;
+		var innerWidth = global.innerWidth || document.body.clientWidth;
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementWidth = parseInt(global.getComputedStyle(element).getPropertyValue('width'), 10);
 		var offset = (innerWidth - elementWidth) / 2;
@@ -196,7 +196,7 @@
 	};
 
 	var getVerticalOffset = function () {
-        var innerHeight = global.innerHeight ? global.innerWidth : document.body.clientHeight;
+		var innerHeight = global.innerHeight || document.body.clientHeight;
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementHeight = parseInt(global.getComputedStyle(element).getPropertyValue('height'), 10);
 		var offset = (innerHeight - elementHeight) / 2;
