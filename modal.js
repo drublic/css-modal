@@ -107,6 +107,16 @@
 			element.className = element.className.replace(className, '').replace('  ', ' ');
 		},
 
+		/**
+		 * Convenience function to check if an element has a class
+		 * @param  {Node}    element   Element to check classname on
+		 * @param  {string}  className Class name to check for
+		 * @return {Boolean}           true, if class is available on modal
+		 */
+		hasClass: function (element, className) {
+			return !!element.className.match(className);
+		},
+
 		/*
 		 * Focus modal
 		 */
@@ -287,8 +297,8 @@
 					// Set an html class to prevent scrolling
 					modal.addClass(document.documentElement, 'has-overlay');
 
-					// Make previous element stackable
-					modal.unsetActive(true);
+					// Make previous element stackable if it is not the same modal
+					modal.unsetActive( !modal.hasClass(modalElement, 'is-active') );
 
 					// Mark the active element
 					modal.setActive(modalElement);
