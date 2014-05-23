@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Add compatiblity for IE8 (use "bean" library for event handling)
 * Allow the content with id 0 to be selected
 
 * Fix max height of modal content
