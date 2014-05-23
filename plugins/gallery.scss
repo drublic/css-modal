@@ -60,6 +60,24 @@ $gallery--min-size: 98px;
 
 	.modal-content-list {
 		display: none;
+
+		list-style: none;
+		margin: 0.2em -0.2em -0.2em;
+		padding: 0;
+		overflow: hidden;
+
+		&.is-active {
+			display: block;
+		}
+
+		> li {
+			float: left;
+			padding: 0.2em;
+
+			img {
+				display: block;
+			}
+		}
 	}
 }
 

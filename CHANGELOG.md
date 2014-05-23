@@ -1,7 +1,7 @@
 # Changelog
 
 ## HEAD
-
+* Add gallery thumbnail images to gallery footer
 * Always show gallery arrows on mobile
 
 * Allow the content with id 0 to be selected

@@ -843,6 +843,20 @@ html {
 
 .modal--gallery .modal-content-list {
   display: none;
+  list-style: none;
+  margin: 0.2em -0.2em -0.2em;
+  padding: 0;
+  overflow: hidden;
+}
+.modal--gallery .modal-content-list.is-active {
+  display: block;
+}
+.modal--gallery .modal-content-list > li {
+  float: left;
+  padding: 0.2em;
+}
+.modal--gallery .modal-content-list > li img {
+  display: block;
 }
 
 .modal--gallery-navigation {
