@@ -2,6 +2,8 @@
 
 ## HEAD
 
+* Always show gallery arrows on mobile
+
 * Allow the content with id 0 to be selected
 
 * Fix max height of modal content

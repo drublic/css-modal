@@ -26,6 +26,13 @@ $gallery--min-size: 98px;
 			opacity: 1;
 		}
 	}
+
+	// Show on mobile
+	@media screen and (max-width: $modal-small-breakpoint) {
+		&:after {
+			opacity: 1;
+		}
+	}
 }
 
 .modal-detail {
