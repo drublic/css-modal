@@ -9,26 +9,9 @@
 
 	'use strict';
 
-	/*
-	 * Polyfill CustomEvent
-	 */
-	var CustomEvent = function (event, params) {
-		var evt = document.createEvent('CustomEvent');
-
-		params = params || {
-			bubbles: false,
-			cancelable: false,
-			detail: undefined
-		};
-
-		evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-
-		return evt;
-	};
-
-	if (!window.CustomEvent) {
-		CustomEvent.prototype = window.Event.prototype;
-		window.CustomEvent = CustomEvent;
+	// We use bean if the browser doesn't support CustomEvents
+	if (!global.CustomEvent && !global.bean) {
+		throw new Error('This browser doesn\'t support CustomEvent - please include bean: https://github.com/fat/bean');
 	}
 
 	/*
@@ -53,6 +36,7 @@
 		 * @param callback {function} gets fired if event is triggered
 		 */
 		on: function (event, element, callback) {
+
 			if (typeof event !== 'string') {
 				throw new Error('Type error: `error` has to be a string');
 			}
@@ -65,10 +49,10 @@
 				return;
 			}
 
-			if (element.addEventListener) {
-				element.addEventListener(event, callback, false);
+			if (global.bean) {
+				bean.on(element, event, callback);
 			} else {
-				element.attachEvent('on' + event, callback);
+				element.addEventListener(event, callback, false);
 			}
 		},
 
@@ -78,13 +62,23 @@
 		 * @param modal {string} id of modal that the event is triggered on
 		 */
 		trigger: function (event, modal) {
-			var eventTrigger = new CustomEvent(event,{
+			var eventTrigger;
+			var eventParams = {
 				detail: {
 					'modal': modal
 				}
-			});
+			};
 
-			document.dispatchEvent(eventTrigger);
+			// Use the bean library to fire the event if it is included
+			if (global.bean) {
+				bean.fire(document, event, eventParams);
+
+			// Use CustomEvents if supported
+			} else {
+				eventTrigger = new CustomEvent(event, eventParams);
+
+				document.dispatchEvent(eventTrigger);
+			}
 		},
 
 		/*
@@ -148,7 +142,16 @@
 		 * @param element {node} element to keep focus in
 		 */
 		keepFocus: function (element) {
-			var allTabbableElements = element.querySelectorAll(modal.tabbableElements);
+			var allTabbableElements = [];
+
+			// Don't keep the focus if the browser is unable to support
+			// CSS3 selectors
+			try {
+				allTabbableElements = element.querySelectorAll(modal.tabbableElements);
+			} catch (ex) {
+				return;
+			}
+
 			var firstTabbableElement = allTabbableElements[0];
 			var lastTabbableElement = allTabbableElements[allTabbableElements.length - 1];
 

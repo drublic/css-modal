@@ -80,7 +80,7 @@
 	 * @return {Object} The detail image
 	 */
 	var _getDetailView = function (element) {
-		var container = element.getElementsByClassName('modal-detail')[0];
+		var container = element.querySelectorAll('.modal-detail')[0];
 
 		if (!container) {
 			throw new Error('".modal-detail" not found!');
@@ -145,8 +145,8 @@
 		var i = 0;
 
 		// Setup touch / click events
-		_prev = element.getElementsByClassName('modal--gallery-navigation-prev')[0];
-		_next = element.getElementsByClassName('modal--gallery-navigation-next')[0];
+		_prev = element.querySelectorAll('.modal--gallery-navigation-prev')[0];
+		_next = element.querySelectorAll('.modal--gallery-navigation-next')[0];
 
 		for (; i < events.length; i++) {
 			CSSModal.on(events[i], _prev, showPrevious);
@@ -167,7 +167,7 @@
 	 * @return {void}
 	 */
 	var _readContent = function (element) {
-		var contentList = element.getElementsByClassName('modal-content-list')[0];
+		var contentList = element.querySelectorAll('.modal-content-list')[0];
 		return contentList.getElementsByTagName('li');
 	};
 
