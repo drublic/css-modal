@@ -70,6 +70,8 @@ html {
 }
 .is-active.modal--gallery, .is-active.modal--fade, .is-active.modal--plainscreen, .is-active.modal--zoomin, .is-active.modal--zoomout, .is-active.modal--slidefromtop, .is-active.modal--bouncefromtop, .is-active.modal--bouncefromtopshaky, .is-active.modal--show, .is-active._modal {
   display: block\9;
+  height: 100% \9;
+  width: 100% \9;
 }
 .modal--gallery:target, .modal--fade:target, .modal--plainscreen:target, .modal--zoomin:target, .modal--zoomout:target, .modal--slidefromtop:target, .modal--bouncefromtop:target, .modal--bouncefromtopshaky:target, .modal--show:target, ._modal:target, .is-active.modal--gallery, .is-active.modal--fade, .is-active.modal--plainscreen, .is-active.modal--zoomin, .is-active.modal--zoomout, .is-active.modal--slidefromtop, .is-active.modal--bouncefromtop, .is-active.modal--bouncefromtopshaky, .is-active.modal--show, .is-active._modal {
   display: block\9;

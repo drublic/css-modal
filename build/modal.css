@@ -63,6 +63,8 @@ html {
 }
 .is-active.modal--show {
   display: block\9;
+  height: 100% \9;
+  width: 100% \9;
 }
 .modal--show:target, .is-active.modal--show {
   display: block\9;
