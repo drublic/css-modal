@@ -73,10 +73,11 @@ $gallery--min-size: 98px;
 		> li {
 			float: left;
 			padding: 0.2em;
+		}
 
-			img {
-				display: block;
-			}
+		img {
+			display: block;
+			border: 0;
 		}
 	}
 }

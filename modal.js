@@ -49,10 +49,17 @@
 				return;
 			}
 
-			if (global.bean) {
-				bean.on(element, event, callback);
-			} else {
+			// Default way to support events
+			if ('addEventListener' in element) {
 				element.addEventListener(event, callback, false);
+
+			// If the event is a hashchange
+			} else if (event === 'hashchange' && element.attachEvent) {
+				element.attachEvent('on' + event, callback);
+
+			// If the event is not a haschange and bean is supported
+			} else {
+				bean.on(element, event, callback);
 			}
 		},
 
