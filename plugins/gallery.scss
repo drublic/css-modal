@@ -5,6 +5,7 @@
  * @date 2014-05-16
  */
 $gallery--min-size: 98px;
+$gallery--thumb-size: 98px;
 
 @mixin arrow-position {
 	&:after {
@@ -97,6 +98,11 @@ $gallery--min-size: 98px;
 		overflow: hidden;
 		text-decoration: none;
 		text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+	}
+
+	img {
+		max-width: $gallery--thumb-size;
+		max-height: $gallery--thumb-size;
 	}
 
 	.modal--gallery-navigation-prev {

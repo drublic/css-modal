@@ -875,6 +875,10 @@ html {
   text-decoration: none;
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
+.modal--gallery-navigation img {
+  max-width: 98px;
+  max-height: 98px;
+}
 .modal--gallery-navigation .modal--gallery-navigation-prev {
   left: 0;
 }
