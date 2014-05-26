@@ -73,8 +73,15 @@
 		this.element = element;
 		this.pseudo = pseudo;
 
+		// IE sometimes returns strings like "auto" for width and/or height
+		this.specialProperties = {
+			width: 'clientWidth',
+			height: 'clientHeight'
+		};
+
 		this.getPropertyValue = function (property) {
 			var re = /(\-([a-z]){1})/g;
+			var value;
 
 			if (property === 'float') {
 				property = 'styleFloat';
@@ -86,7 +93,14 @@
 				});
 			}
 
-			return element.currentStyle[property] ? element.currentStyle[property] : null;
+			// Use the calculated value on the DOM node instead of the property
+			if (this.specialProperties[property]) {
+				value = element[this.specialProperties[property]];
+			} else {
+				value = element.currentStyle[property] ? element.currentStyle[property] : null;
+			}
+
+			return value;
 		};
 
 		return this;
@@ -210,7 +224,7 @@
 	};
 
 	var getHorizontalOffset = function () {
-		var innerWidth = global.innerWidth || document.body.clientWidth;
+		var innerWidth = global.innerWidth || document.documentElement.clientWidth;
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementWidth = parseInt(global.getComputedStyle(element).getPropertyValue('width'), 10);
 		var offset = (innerWidth - elementWidth) / 2;
@@ -219,7 +233,7 @@
 	};
 
 	var getVerticalOffset = function () {
-		var innerHeight = global.innerHeight || document.body.clientHeight;
+		var innerHeight = global.innerHeight || document.documentElement.clientHeight;
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementHeight = parseInt(global.getComputedStyle(element).getPropertyValue('height'), 10);
 		var offset = (innerHeight - elementHeight) / 2;

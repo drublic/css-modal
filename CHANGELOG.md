@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Correct resizing and positioning in IE8
 * Add gallery thumbnail images to gallery footer
 * Always show gallery arrows on mobile
 
