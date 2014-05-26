@@ -204,6 +204,9 @@
 
 			referenceImage.parentNode.insertBefore(img, referenceImage);
 			referenceImage.parentNode.removeChild(referenceImage);
+
+			_detailView.style.width = 'auto';
+			_detailView.style.height = 'auto';
 		}
 	};
 

@@ -81,7 +81,6 @@
 
 		this.getPropertyValue = function (property) {
 			var re = /(\-([a-z]){1})/g;
-			var value;
 
 			if (property === 'float') {
 				property = 'styleFloat';
@@ -95,12 +94,10 @@
 
 			// Use the calculated value on the DOM node instead of the property
 			if (this.specialProperties[property]) {
-				value = element[this.specialProperties[property]];
-			} else {
-				value = element.currentStyle[property] ? element.currentStyle[property] : null;
+				return element[this.specialProperties[property]];
 			}
 
-			return value;
+			return element.currentStyle[property] ? element.currentStyle[property] : null;
 		};
 
 		return this;

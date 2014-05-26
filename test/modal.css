@@ -89,7 +89,6 @@ html {
 @media \0screen\,screen\9 {
   .modal--gallery .modal-inner, .modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner, ._modal .modal-inner {
     background: transparent;
-    height: 100%;
   }
 }
 .modal--gallery .modal-inner > img, .modal--fade .modal-inner > img, .modal--plainscreen .modal-inner > img, .modal--zoomin .modal-inner > img, .modal--zoomout .modal-inner > img, .modal--slidefromtop .modal-inner > img, .modal--bouncefromtop .modal-inner > img, .modal--bouncefromtopshaky .modal-inner > img, .modal--show .modal-inner > img, ._modal .modal-inner > img,
