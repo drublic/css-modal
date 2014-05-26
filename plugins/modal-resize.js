@@ -124,9 +124,27 @@
 			return;
 		}
 
+		var computedStyles = global.getComputedStyle(element);
+
+		var margin = {
+			top: parseInt(computedStyles.getPropertyValue('margin-top'), 10),
+			left: parseInt(computedStyles.getPropertyValue('margin-left'), 10),
+			right: parseInt(computedStyles.getPropertyValue('margin-right'), 10),
+			bottom: parseInt(computedStyles.getPropertyValue('margin-bottom'), 10)
+		};
+
+		var padding = {
+			top: parseInt(computedStyles.getPropertyValue('padding-top'), 10),
+			left: parseInt(computedStyles.getPropertyValue('padding-left'), 10),
+			right: parseInt(computedStyles.getPropertyValue('padding-right'), 10),
+			bottom: parseInt(computedStyles.getPropertyValue('padding-bottom'), 10)
+		};
+
 		return {
 			width: element.offsetWidth,
-			height: element.offsetHeight
+			height: element.offsetHeight,
+			margin: margin,
+			padding: padding
 		};
 	};
 
@@ -141,18 +159,23 @@
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementContent = CSSModal.activeElement.querySelector('.modal-content');
 		var containerDimentions;
+		var fullWidth = 0;
+		var fullHeight = 0;
 
 		element.style.width = 'auto';
 		elementContent.style.maxHeight = 'none';
 
 		containerDimentions = getDimentions(element);
 
-		if (containerDimentions.width > global.innerWidth - 120) {
+		fullWidth = containerDimentions.width + containerDimentions.margin.left + containerDimentions.margin.right + containerDimentions.padding.left + containerDimentions.padding.right;
+		fullHeight = containerDimentions.width + containerDimentions.margin.top + containerDimentions.margin.bottom + containerDimentions.padding.top + containerDimentions.padding.bottom;
+
+		if (fullWidth > global.innerWidth) {
 			CSSModal.activeElement.querySelector('img').style.maxWidth = (global.innerWidth - 120) + 'px';
 			CSSModal.activeElement.querySelector('img').style.maxHeight = '100%';
 		}
 
-		if (containerDimentions.height > global.innerHeight - 120) {
+		if (fullHeight > global.innerHeight) {
 			CSSModal.activeElement.querySelector('img').style.maxWidth = '100%';
 			CSSModal.activeElement.querySelector('img').style.maxHeight = (global.innerHeight - 120) + 'px';
 		}
