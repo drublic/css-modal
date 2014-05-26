@@ -936,6 +936,16 @@ html {
 }
 
 /**
+ * Caption
+ */
+.modal--gallery-caption {
+  border-bottom: 1px solid #dddddd;
+}
+.modal--gallery-caption p {
+  margin: 1em 15px;
+}
+
+/**
  * A loading spinner
  * http://stackoverflow.com/questions/16250260/android-holo-loading-spinner-in-css
  */

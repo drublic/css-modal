@@ -168,7 +168,26 @@
 	 */
 	var _readContent = function (element) {
 		var contentList = element.querySelectorAll('.modal-content-list')[0];
+
 		return contentList.getElementsByTagName('li');
+	};
+
+	/**
+	 * Set a caption for a given modal
+	 * @param {String} caption Caption to insert
+	 */
+	var setCaption = function (caption) {
+		var captionElement = _activeElement.querySelectorAll('.modal--gallery-caption')[0];
+
+		if (!captionElement) {
+			return;
+		}
+
+		captionElement.innerHTML = '';
+
+		if (caption) {
+			captionElement.innerHTML = '<p>' + caption + '</p>';
+		}
 	};
 
 	/**
@@ -189,6 +208,9 @@
 		// Position for loading indicator and hide content
 		CSSModal.trigger('cssmodal:resize', _activeElement);
 		CSSModal.removeClass(_detailView, 'is-active');
+
+		// Set a caption for the modal
+		setCaption(_items[index].getAttribute('data-caption'));
 
 		// Load the original image, if we are in a gallery
 		if (_activeElement.getAttribute('class').indexOf('modal--gallery') !== -1) {
@@ -236,7 +258,8 @@
 	_api = {
 		showNext: showNext,
 		showPrevious: showPrevious,
-		setActiveItem: setActiveItem
+		setActiveItem: setActiveItem,
+		setCaption: setCaption
 	};
 
 	/*

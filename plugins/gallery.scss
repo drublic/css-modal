@@ -130,3 +130,14 @@ $gallery--thumb-size: 98px;
 		}
 	}
 }
+
+/**
+ * Caption
+ */
+.modal--gallery-caption {
+	border-bottom: 1px solid $modal-border-color;
+
+	p {
+		margin: 1em 15px;
+	}
+}

@@ -1,10 +1,15 @@
-/*global describe, it, expect, Event, waits, runs, CSSModal*/
+/*global describe, it, expect, Event, waits, runs, afterEach, CSSModal*/
 (function ($) {
 
 	'use strict';
 
 	// Testing if the modal works in general
 	describe('Gallery plugin', function () {
+
+		// Hide the last open gallery
+		afterEach(function () {
+			window.location.hash = '';
+		});
 
 		it('can open a modal', function () {
 			runs(function () {
@@ -116,11 +121,21 @@
 			}
 		});
 
-		// Hide the last open gallery
-		window.setTimeout(function () {
-			window.location.hash = '';
-		}, 4000);
+		it('sets caption on element', function () {
+			runs(function () {
+				window.setTimeout(function () {
+					var $element = $('#modal-gallery-boring');
 
+					window.location.hash = '#modal-gallery-boring';
+
+					CSSModal.setCaption('test');
+
+					expect($element.find('.modal--gallery-caption').text()).toEqual('test');
+				}, 40);
+			});
+
+			waits(100);
+		});
 	});
 
 }(jQuery, window.CSSModal));
