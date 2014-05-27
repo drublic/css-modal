@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Fix vertical resizing for large pictures
 * Fix margins around modal in resize plugin
 
 * Fix position of close button when modal is between mobile and table

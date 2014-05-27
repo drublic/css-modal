@@ -170,25 +170,26 @@
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementContent = CSSModal.activeElement.querySelector('.modal-content');
 		var containerDimentions;
-		var fullWidth = 0;
-		var fullHeight = 0;
+		var offsetWidth = 0;
+		var offsetHeight = 0;
+		var margin = 40;
 
 		element.style.width = 'auto';
 		elementContent.style.maxHeight = 'none';
 
-		containerDimentions = getDimentions(element);
+		containerDimentions = getDimentions(elementContent);
 
-		fullWidth = containerDimentions.width + containerDimentions.margin.left + containerDimentions.margin.right + containerDimentions.padding.left + containerDimentions.padding.right;
-		fullHeight = containerDimentions.width + containerDimentions.margin.top + containerDimentions.margin.bottom + containerDimentions.padding.top + containerDimentions.padding.bottom;
+		offsetWidth = containerDimentions.margin.left + containerDimentions.margin.right + containerDimentions.padding.left + containerDimentions.padding.right;
+		offsetHeight = containerDimentions.margin.top + containerDimentions.margin.bottom + containerDimentions.padding.top + containerDimentions.padding.bottom;
 
-		if (fullWidth > global.innerWidth) {
-			CSSModal.activeElement.querySelector('img').style.maxWidth = (global.innerWidth - 120) + 'px';
+		if (containerDimentions.width > global.innerWidth) {
+			CSSModal.activeElement.querySelector('img').style.maxWidth = (global.innerWidth - offsetWidth - margin) + 'px';
 			CSSModal.activeElement.querySelector('img').style.maxHeight = '100%';
 		}
 
-		if (fullHeight > global.innerHeight) {
+		if (containerDimentions.height > global.innerHeight) {
 			CSSModal.activeElement.querySelector('img').style.maxWidth = '100%';
-			CSSModal.activeElement.querySelector('img').style.maxHeight = (global.innerHeight - 120) + 'px';
+			CSSModal.activeElement.querySelector('img').style.maxHeight = (global.innerHeight - offsetHeight - margin) + 'px';
 		}
 	};
 
