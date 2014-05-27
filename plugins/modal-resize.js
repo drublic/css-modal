@@ -246,11 +246,12 @@
 
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementWidth = parseInt(global.getComputedStyle(element).getPropertyValue('width'), 10);
+		var margin = 20;
 
 		element.style.top = offset.top + 'px';
-		element.style.left = offset.left + 'px';
-		element.style.marginLeft = 0;
-		element.style.marginRight = 0;
+		element.style.left = (offset.left - margin) + 'px';
+		element.style.marginLeft = margin + 'px';
+		element.style.marginRight = margin + 'px';
 
 		// Close button
 		_injectStyles('[data-cssmodal-resize] .modal-close:after {' +
