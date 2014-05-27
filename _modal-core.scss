@@ -210,7 +210,19 @@ html {
 		display: block;
 		bottom: auto;
 
-		&:target,
+		&:target {
+			// NOTE: the class "no-js" is set on the <html> tag!
+			.no-js & {
+				-webkit-transition: -webkit-transform .25s ease-in-out;
+				   -moz-transition:    -moz-transform .25s ease-in-out;
+				     -o-transition:      -o-transform .25s ease-in-out;
+				    -ms-transition:     -ms-transform .25s ease-in-out;
+				        transition:         transform .25s ease-in-out;
+
+				height: 100%;
+			}
+		}
+
 		&.is-active {
 			-webkit-transition: -webkit-transform .25s ease-in-out;
 			   -moz-transition:    -moz-transform .25s ease-in-out;

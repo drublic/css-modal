@@ -23,11 +23,38 @@
 		lastActive: undefined, // Store for last active elemet
 		stackedElements: [], // Store for stacked elements
 
+		scrollPosition: {}, // Store for scrollLeft and scrollTop
+
 		// All elements that can get focus, can be tabbed in a modal
 		tabbableElements: 'a[href], area[href], input:not([disabled]),' +
 			'select:not([disabled]), textarea:not([disabled]),' +
 			'button:not([disabled]), iframe, object, embed, *[tabindex],' +
 			'*[contenteditable]',
+
+		/**
+		 * Saves the current scroll position of the page in order to restore
+		 * it later. This is needed since the modal will jump to the top of
+		 * the page on devices with a very small screen size.
+		 * @return {void}
+		 */
+		saveScrollPosition: function () {
+			modal.scrollPosition.top = 1 * document.body.scrollTop;
+			modal.scrollPosition.left = 1 * document.body.scrollLeft;
+		},
+
+		/**
+		 * Restores the saved scroll position to return the use to the same
+		 * place he was, before opening the modal.
+		 * @return {void}
+		 */
+		restoreScrollPosition: function () {
+			if (modal.scrollPosition.left) {
+				document.body.scrollLeft = modal.scrollPosition.left;
+			}
+			if (modal.scrollPosition.top) {
+				document.body.scrollTop = modal.scrollPosition.top;
+			}
+		},
 
 		/*
 		 * Polyfill addEventListener for IE8 (only very basic)
@@ -304,6 +331,10 @@
 				// When we deal with a modal and body-class `has-overlay` is not set
 				if (modalChild && modalChild.className.match(/modal-inner/)) {
 
+					// Store scroll position since the modal will scroll to the
+					// top of the page on very small screens
+					modal.saveScrollPosition();
+
 					// Set an html class to prevent scrolling
 					modal.addClass(document.documentElement, 'has-overlay');
 
@@ -316,12 +347,17 @@
 			} else {
 				modal.removeClass(document.documentElement, 'has-overlay');
 
+				// Restore the scroll position
+				modal.restoreScrollPosition();
+
 				// If activeElement is already defined, delete it
 				modal.unsetActive();
 			}
 		}
 	};
 
+	// Since we have JS enabled, remove the "no-js" class
+	modal.removeClass(document.querySelectorAll('html')[0], 'no-js');
 
 	/*
 	 * Hide overlay when ESC is pressed
