@@ -790,23 +790,23 @@ html {
  *
  * @since 1.1.0alpha
  */
-[data-cssmodal-resize] .modal-inner {
+[data-cssmodal-resize] .modal-inner, [data-cssmodal-maxwidth] .modal-inner {
   -webkit-transition: none;
   transition: none;
 }
 @media screen and (max-width: 690px) {
-  [data-cssmodal-resize] .modal-inner {
+  [data-cssmodal-resize] .modal-inner, [data-cssmodal-maxwidth] .modal-inner {
     right: auto !important;
   }
-  [data-cssmodal-resize] .modal-inner img {
+  [data-cssmodal-resize] .modal-inner img, [data-cssmodal-maxwidth] .modal-inner img {
     max-width: 100% !important;
   }
-  [data-cssmodal-resize] .modal-close:after {
+  [data-cssmodal-resize] .modal-close:after, [data-cssmodal-maxwidth] .modal-close:after {
     right: 50%;
   }
 }
 @media screen and (max-width: 30em) {
-  [data-cssmodal-resize] .modal-inner {
+  [data-cssmodal-resize] .modal-inner, [data-cssmodal-maxwidth] .modal-inner {
     left: 0 !important;
     right: 0 !important;
     margin-left: 0 !important;
@@ -816,6 +816,23 @@ html {
 
 .modal-content img {
   display: block;
+}
+
+/**
+ * Custom maximum width for a modal
+ *
+ * Usage: Set `data-cssmodal-maxwidth` with a pixel-based max-width as a value.
+ */
+[data-cssmodal-maxwidth] .modal-inner {
+  width: 100%;
+}
+@media screen and (max-width: 690px) {
+  [data-cssmodal-maxwidth] .modal-inner {
+    left: 50%;
+  }
+  [data-cssmodal-maxwidth] .modal-close:after {
+    right: 50% !important;
+  }
 }
 
 /*
