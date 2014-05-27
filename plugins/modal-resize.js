@@ -253,7 +253,7 @@
 		element.style.marginRight = 0;
 
 		// Close button
-		_injectStyles('.modal-close:after {' +
+		_injectStyles('[data-cssmodal-resize] .modal-close:after {' +
 			'top: ' + (offset.top - 25) + 'px !important;' +
 			'margin-right: -' + elementWidth / 2 + 'px !important;' +
 		'}', element.id);

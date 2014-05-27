@@ -796,13 +796,13 @@ html {
 }
 @media screen and (max-width: 690px) {
   [data-cssmodal-resize] .modal-inner {
-    left: auto !important;
     right: auto !important;
-    margin-left: 20px !important;
-    margin-right: 20px !important;
   }
   [data-cssmodal-resize] .modal-inner img {
     max-width: 100% !important;
+  }
+  [data-cssmodal-resize] .modal-close:after {
+    right: 50%;
   }
 }
 @media screen and (max-width: 30em) {

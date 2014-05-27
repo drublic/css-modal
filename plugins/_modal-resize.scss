@@ -13,14 +13,15 @@
 	// When screen isn't as wide as the modal anymore
 	@media screen and (max-width: $modal-max-width + 40) {
 		.modal-inner {
-			left: auto !important;
 			right: auto !important;
-			margin-left: 20px !important;
-			margin-right: 20px !important;
 
 			img {
 				max-width: 100% !important;
 			}
+		}
+
+		.modal-close:after {
+			right: 50%;
 		}
 	}
 
