@@ -1,8 +1,14 @@
 # Changelog
 
 ## HEAD
+
+* Fix position of close button when modal is between mobile and table
+* Avoid incorrect rendering of the detail container
 * Correct resizing and positioning in IE8
+* Better compatiblity for IE8
+* Fix magic numbers in resize script
 * Add gallery thumbnail images to gallery footer
+* Only activate stacked modal if there already is another modal
 * Always show gallery arrows on mobile
 
 * Add compatiblity for IE8 (use "bean" library for event handling)
