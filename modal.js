@@ -269,8 +269,10 @@
 
 		/*
 		 * When displaying modal, prevent background from scrolling
+		 * @param  {Object} event The incoming hashChange event
+		 * @return {void}
 		 */
-		mainHandler: function () {
+		mainHandler: function (event) {
 			var hash = window.location.hash.replace('#', '');
 			var index = 0;
 			var tmp = [];
@@ -298,6 +300,9 @@
 			// If the hash element exists
 			if (modalElement) {
 
+				event.preventDefault();
+				event.stopPropagation();
+
 				// Get first element in selected element
 				modalChild = modalElement.children[0];
 
@@ -319,9 +324,10 @@
 				// If activeElement is already defined, delete it
 				modal.unsetActive();
 			}
+
+			return true;
 		}
 	};
-
 
 	/*
 	 * Hide overlay when ESC is pressed
