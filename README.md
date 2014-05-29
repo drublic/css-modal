@@ -128,6 +128,7 @@ We have a couple for the modal to enhance it:
 * Resize - Resizes modal to size of input elements
 * Gallery - A lightbox plugin (in connection with resize)
 * HTML5 Video - Load videos within the modal
+* Maximum Width - Set a custom maximum width on a per-modal basis
 
 
 ## Bug reports and feature requests

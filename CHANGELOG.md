@@ -3,6 +3,8 @@
 ## HEAD
 * Fix jumping of the page on devices with small screens (#32)
 
+* Implement max width for modal via data attribute
+
 * Fix vertical resizing for large pictures
 * Fix margins around modal in resize plugin
 
