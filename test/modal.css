@@ -29,9 +29,6 @@ html {
   overflow-y: scroll;
 }
 @media screen and (max-width: 30em) {
-  .has-overlay {
-    height: 100%;
-  }
   .has-overlay > body {
     overflow: hidden;
     height: 100%;
@@ -186,20 +183,15 @@ html {
     -webkit-transform: translate(0, 400px);
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
-    -webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
-    -moz-transition: -moz-transform .25s ease-in-out, opacity 1ms .25s;
-    -o-transition: -o-transform .25s ease-in-out, opacity 1ms .25s;
-    -ms-transition: -ms-transform .25s ease-in-out, opacity 1ms .25s;
-    transition: transform .25s ease-in-out, opacity 1ms .25s;
+    -webkit-transition: opacity 1ms .25s;
+    -moz-transition: opacity 1ms .25s;
+    -o-transition: opacity 1ms .25s;
+    -ms-transition: opacity 1ms .25s;
+    transition: opacity 1ms .25s;
     display: block;
     bottom: auto;
   }
   .modal--gallery:target, .modal--fade:target, .modal--plainscreen:target, .modal--zoomin:target, .modal--zoomout:target, .modal--slidefromtop:target, .modal--bouncefromtop:target, .modal--bouncefromtopshaky:target, .modal--show:target, ._modal:target, .is-active.modal--gallery, .is-active.modal--fade, .is-active.modal--plainscreen, .is-active.modal--zoomin, .is-active.modal--zoomout, .is-active.modal--slidefromtop, .is-active.modal--bouncefromtop, .is-active.modal--bouncefromtopshaky, .is-active.modal--show, .is-active._modal {
-    -webkit-transition: -webkit-transform .25s ease-in-out;
-    -moz-transition: -moz-transform .25s ease-in-out;
-    -o-transition: -o-transform .25s ease-in-out;
-    -ms-transition: -ms-transform .25s ease-in-out;
-    transition: transform .25s ease-in-out;
     height: 100%;
   }
   .modal--gallery:before, .modal--fade:before, .modal--plainscreen:before, .modal--zoomin:before, .modal--zoomout:before, .modal--slidefromtop:before, .modal--bouncefromtop:before, .modal--bouncefromtopshaky:before, .modal--show:before, ._modal:before {
@@ -1088,4 +1080,24 @@ html {
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
   background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
+}
+
+/**
+ * CSS Modal Plugin: Stretch height
+ */
+[data-cssmodal-stretch] .modal-inner {
+  top: 10%;
+  min-height: 80%;
+}
+[data-cssmodal-stretch] .modal-close:after {
+  top: 10%;
+  margin-top: -25px;
+}
+@media screen and (max-width: 30em) {
+  [data-cssmodal-stretch] .modal-inner {
+    top: 0;
+  }
+  [data-cssmodal-stretch] .modal-close:after {
+    margin-top: 0;
+  }
 }
