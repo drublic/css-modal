@@ -300,8 +300,12 @@
 			// If the hash element exists
 			if (modalElement) {
 
+				// Polyfill to prevent the default behavior of events
+				event.preventDefault = event.preventDefault || function () {
+					event.returnValue = false;
+				};
+
 				event.preventDefault();
-				event.stopPropagation();
 
 				// Get first element in selected element
 				modalChild = modalElement.children[0];

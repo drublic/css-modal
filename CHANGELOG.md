@@ -1,14 +1,11 @@
 # Changelog
 
 ## HEAD
+* Add polyfill for event.preventDefault to work with IE8
 * Add plugin to strech a modal to 80% of the screen height
-
 * Prevent scrolling of body on small screens
-
 * Fix jumping of the page on devices with small screens (#32)
-
 * Implement max width for modal via data attribute
-
 * Fix vertical resizing for large pictures
 * Fix margins around modal in resize plugin
 
