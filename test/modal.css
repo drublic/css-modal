@@ -29,9 +29,6 @@ html {
   overflow-y: scroll;
 }
 @media screen and (max-width: 30em) {
-  .has-overlay {
-    height: 100%;
-  }
   .has-overlay > body {
     overflow: hidden;
     height: 100%;
@@ -89,7 +86,6 @@ html {
 @media \0screen\,screen\9 {
   .modal--gallery .modal-inner, .modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner, ._modal .modal-inner {
     background: transparent;
-    height: 100%;
   }
 }
 .modal--gallery .modal-inner > img, .modal--fade .modal-inner > img, .modal--plainscreen .modal-inner > img, .modal--zoomin .modal-inner > img, .modal--zoomout .modal-inner > img, .modal--slidefromtop .modal-inner > img, .modal--bouncefromtop .modal-inner > img, .modal--bouncefromtopshaky .modal-inner > img, .modal--show .modal-inner > img, ._modal .modal-inner > img,
@@ -187,20 +183,15 @@ html {
     -webkit-transform: translate(0, 400px);
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
-    -webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
-    -moz-transition: -moz-transform .25s ease-in-out, opacity 1ms .25s;
-    -o-transition: -o-transform .25s ease-in-out, opacity 1ms .25s;
-    -ms-transition: -ms-transform .25s ease-in-out, opacity 1ms .25s;
-    transition: transform .25s ease-in-out, opacity 1ms .25s;
+    -webkit-transition: opacity 1ms .25s;
+    -moz-transition: opacity 1ms .25s;
+    -o-transition: opacity 1ms .25s;
+    -ms-transition: opacity 1ms .25s;
+    transition: opacity 1ms .25s;
     display: block;
     bottom: auto;
   }
   .modal--gallery:target, .modal--fade:target, .modal--plainscreen:target, .modal--zoomin:target, .modal--zoomout:target, .modal--slidefromtop:target, .modal--bouncefromtop:target, .modal--bouncefromtopshaky:target, .modal--show:target, ._modal:target, .is-active.modal--gallery, .is-active.modal--fade, .is-active.modal--plainscreen, .is-active.modal--zoomin, .is-active.modal--zoomout, .is-active.modal--slidefromtop, .is-active.modal--bouncefromtop, .is-active.modal--bouncefromtopshaky, .is-active.modal--show, .is-active._modal {
-    -webkit-transition: -webkit-transform .25s ease-in-out;
-    -moz-transition: -moz-transform .25s ease-in-out;
-    -o-transition: -o-transform .25s ease-in-out;
-    -ms-transition: -ms-transform .25s ease-in-out;
-    transition: transform .25s ease-in-out;
     height: 100%;
   }
   .modal--gallery:before, .modal--fade:before, .modal--plainscreen:before, .modal--zoomin:before, .modal--zoomout:before, .modal--slidefromtop:before, .modal--bouncefromtop:before, .modal--bouncefromtopshaky:before, .modal--show:before, ._modal:before {
@@ -791,23 +782,23 @@ html {
  *
  * @since 1.1.0alpha
  */
-[data-cssmodal-resize] .modal-inner {
+[data-cssmodal-resize] .modal-inner, [data-cssmodal-maxwidth] .modal-inner {
   -webkit-transition: none;
   transition: none;
 }
 @media screen and (max-width: 690px) {
-  [data-cssmodal-resize] .modal-inner {
-    left: auto !important;
+  [data-cssmodal-resize] .modal-inner, [data-cssmodal-maxwidth] .modal-inner {
     right: auto !important;
-    margin-left: 20px !important;
-    margin-right: 20px !important;
   }
-  [data-cssmodal-resize] .modal-inner img {
+  [data-cssmodal-resize] .modal-inner img, [data-cssmodal-maxwidth] .modal-inner img {
     max-width: 100% !important;
+  }
+  [data-cssmodal-resize] .modal-close:after, [data-cssmodal-maxwidth] .modal-close:after {
+    right: 50%;
   }
 }
 @media screen and (max-width: 30em) {
-  [data-cssmodal-resize] .modal-inner {
+  [data-cssmodal-resize] .modal-inner, [data-cssmodal-maxwidth] .modal-inner {
     left: 0 !important;
     right: 0 !important;
     margin-left: 0 !important;
@@ -817,6 +808,23 @@ html {
 
 .modal-content img {
   display: block;
+}
+
+/**
+ * Custom maximum width for a modal
+ *
+ * Usage: Set `data-cssmodal-maxwidth` with a pixel-based max-width as a value.
+ */
+[data-cssmodal-maxwidth] .modal-inner {
+  width: 100%;
+}
+@media screen and (max-width: 690px) {
+  [data-cssmodal-maxwidth] .modal-inner {
+    left: 50%;
+  }
+  [data-cssmodal-maxwidth] .modal-close:after {
+    right: 50% !important;
+  }
 }
 
 /*
@@ -857,8 +865,9 @@ html {
   float: left;
   padding: 0.2em;
 }
-.modal--gallery .modal-content-list > li img {
+.modal--gallery .modal-content-list img {
   display: block;
+  border: 0;
 }
 
 .modal--gallery-navigation {
@@ -876,6 +885,10 @@ html {
   overflow: hidden;
   text-decoration: none;
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+.modal--gallery-navigation img {
+  max-width: 98px;
+  max-height: 98px;
 }
 .modal--gallery-navigation .modal--gallery-navigation-prev {
   left: 0;
@@ -928,6 +941,16 @@ html {
   content: '›';
   right: 0;
   text-indent: 0;
+}
+
+/**
+ * Caption
+ */
+.modal--gallery-caption {
+  border-bottom: 1px solid #dddddd;
+}
+.modal--gallery-caption p {
+  margin: 1em 15px;
 }
 
 /**
@@ -1057,4 +1080,24 @@ html {
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
   background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
+}
+
+/**
+ * CSS Modal Plugin: Stretch height
+ */
+[data-cssmodal-stretch] .modal-inner {
+  top: 10%;
+  min-height: 80%;
+}
+[data-cssmodal-stretch] .modal-close:after {
+  top: 10%;
+  margin-top: -25px;
+}
+@media screen and (max-width: 30em) {
+  [data-cssmodal-stretch] .modal-inner {
+    top: 0;
+  }
+  [data-cssmodal-stretch] .modal-close:after {
+    margin-top: 0;
+  }
 }

@@ -73,6 +73,12 @@
 		this.element = element;
 		this.pseudo = pseudo;
 
+		// IE sometimes returns strings like "auto" for width and/or height
+		this.specialProperties = {
+			width: 'clientWidth',
+			height: 'clientHeight'
+		};
+
 		this.getPropertyValue = function (property) {
 			var re = /(\-([a-z]){1})/g;
 
@@ -84,6 +90,11 @@
 				property = property.replace(re, function () {
 					return arguments[2].toUpperCase();
 				});
+			}
+
+			// Use the calculated value on the DOM node instead of the property
+			if (this.specialProperties[property]) {
+				return element[this.specialProperties[property]];
 			}
 
 			return element.currentStyle[property] ? element.currentStyle[property] : null;
@@ -124,9 +135,27 @@
 			return;
 		}
 
+		var computedStyles = global.getComputedStyle(element);
+
+		var margin = {
+			top: parseInt(computedStyles.getPropertyValue('margin-top'), 10),
+			left: parseInt(computedStyles.getPropertyValue('margin-left'), 10),
+			right: parseInt(computedStyles.getPropertyValue('margin-right'), 10),
+			bottom: parseInt(computedStyles.getPropertyValue('margin-bottom'), 10)
+		};
+
+		var padding = {
+			top: parseInt(computedStyles.getPropertyValue('padding-top'), 10),
+			left: parseInt(computedStyles.getPropertyValue('padding-left'), 10),
+			right: parseInt(computedStyles.getPropertyValue('padding-right'), 10),
+			bottom: parseInt(computedStyles.getPropertyValue('padding-bottom'), 10)
+		};
+
 		return {
 			width: element.offsetWidth,
-			height: element.offsetHeight
+			height: element.offsetHeight,
+			margin: margin,
+			padding: padding
 		};
 	};
 
@@ -141,20 +170,26 @@
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementContent = CSSModal.activeElement.querySelector('.modal-content');
 		var containerDimentions;
+		var offsetWidth = 0;
+		var offsetHeight = 0;
+		var margin = 40;
 
 		element.style.width = 'auto';
 		elementContent.style.maxHeight = 'none';
 
-		containerDimentions = getDimentions(element);
+		containerDimentions = getDimentions(elementContent);
 
-		if (containerDimentions.width > global.innerWidth - 120) {
-			CSSModal.activeElement.querySelector('img').style.maxWidth = (global.innerWidth - 120) + 'px';
+		offsetWidth = containerDimentions.margin.left + containerDimentions.margin.right + containerDimentions.padding.left + containerDimentions.padding.right;
+		offsetHeight = containerDimentions.margin.top + containerDimentions.margin.bottom + containerDimentions.padding.top + containerDimentions.padding.bottom;
+
+		if (containerDimentions.width > global.innerWidth) {
+			CSSModal.activeElement.querySelector('img').style.maxWidth = (global.innerWidth - offsetWidth - margin) + 'px';
 			CSSModal.activeElement.querySelector('img').style.maxHeight = '100%';
 		}
 
-		if (containerDimentions.height > global.innerHeight - 120) {
+		if (containerDimentions.height > global.innerHeight) {
 			CSSModal.activeElement.querySelector('img').style.maxWidth = '100%';
-			CSSModal.activeElement.querySelector('img').style.maxHeight = (global.innerHeight - 120) + 'px';
+			CSSModal.activeElement.querySelector('img').style.maxHeight = (global.innerHeight - offsetHeight - margin) + 'px';
 		}
 	};
 
@@ -187,7 +222,7 @@
 	};
 
 	var getHorizontalOffset = function () {
-		var innerWidth = global.innerWidth || document.body.clientWidth;
+		var innerWidth = global.innerWidth || document.documentElement.clientWidth;
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementWidth = parseInt(global.getComputedStyle(element).getPropertyValue('width'), 10);
 		var offset = (innerWidth - elementWidth) / 2;
@@ -196,7 +231,7 @@
 	};
 
 	var getVerticalOffset = function () {
-		var innerHeight = global.innerHeight || document.body.clientHeight;
+		var innerHeight = global.innerHeight || document.documentElement.clientHeight;
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementHeight = parseInt(global.getComputedStyle(element).getPropertyValue('height'), 10);
 		var offset = (innerHeight - elementHeight) / 2;
@@ -212,14 +247,15 @@
 
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementWidth = parseInt(global.getComputedStyle(element).getPropertyValue('width'), 10);
+		var margin = 20;
 
 		element.style.top = offset.top + 'px';
-		element.style.left = offset.left + 'px';
-		element.style.marginLeft = 0;
-		element.style.marginRight = 0;
+		element.style.left = (offset.left - margin) + 'px';
+		element.style.marginLeft = margin + 'px';
+		element.style.marginRight = margin + 'px';
 
 		// Close button
-		_injectStyles('.modal-close:after {' +
+		_injectStyles('[data-cssmodal-resize] .modal-close:after {' +
 			'top: ' + (offset.top - 25) + 'px !important;' +
 			'margin-right: -' + elementWidth / 2 + 'px !important;' +
 		'}', element.id);

@@ -14,8 +14,6 @@ html {
 
 
 	@media screen and (max-width: $modal-small-breakpoint) {
-		height: 100%;
-
 		> body {
 			overflow: hidden;
 			height: 100%;
@@ -95,7 +93,6 @@ html {
 		// This removes the scrollbar in lt IE9
 		@media \0screen\,screen\9 {
 			background: transparent;
-			height: 100%;
 		}
 
 		> img,
@@ -202,23 +199,17 @@ html {
 		-webkit-transform: translate3d(0, 100%, 0); // And overwrite px if 3D transforms are supported
 		        transform: translate3d(0, 100%, 0);
 
-		-webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
-		   -moz-transition:    -moz-transform .25s ease-in-out, opacity 1ms .25s;
-		     -o-transition:      -o-transform .25s ease-in-out, opacity 1ms .25s;
-		    -ms-transition:     -ms-transform .25s ease-in-out, opacity 1ms .25s;
-		        transition:         transform .25s ease-in-out, opacity 1ms .25s;
+		-webkit-transition: opacity 1ms .25s;
+		   -moz-transition: opacity 1ms .25s;
+		     -o-transition: opacity 1ms .25s;
+		    -ms-transition: opacity 1ms .25s;
+		        transition: opacity 1ms .25s;
 
 		display: block;
 		bottom: auto;
 
 		&:target,
 		&.is-active {
-			-webkit-transition: -webkit-transform .25s ease-in-out;
-			   -moz-transition:    -moz-transform .25s ease-in-out;
-			     -o-transition:      -o-transform .25s ease-in-out;
-			    -ms-transition:     -ms-transform .25s ease-in-out;
-			        transition:         transform .25s ease-in-out;
-
 			height: 100%;
 		}
 

@@ -9,11 +9,6 @@
 
 	'use strict';
 
-	// We use bean if the browser doesn't support CustomEvents
-	if (!global.CustomEvent && !global.bean) {
-		throw new Error('This browser doesn\'t support CustomEvent - please include bean: https://github.com/fat/bean');
-	}
-
 	/*
 	 * Storage for functions and attributes
 	 */
@@ -269,8 +264,10 @@
 
 		/*
 		 * When displaying modal, prevent background from scrolling
+		 * @param  {Object} event The incoming hashChange event
+		 * @return {void}
 		 */
-		mainHandler: function () {
+		mainHandler: function (event) {
 			var hash = window.location.hash.replace('#', '');
 			var index = 0;
 			var tmp = [];
@@ -298,6 +295,13 @@
 			// If the hash element exists
 			if (modalElement) {
 
+				// Polyfill to prevent the default behavior of events
+				event.preventDefault = event.preventDefault || function () {
+					event.returnValue = false;
+				};
+
+				event.preventDefault();
+
 				// Get first element in selected element
 				modalChild = modalElement.children[0];
 
@@ -319,9 +323,10 @@
 				// If activeElement is already defined, delete it
 				modal.unsetActive();
 			}
+
+			return true;
 		}
 	};
-
 
 	/*
 	 * Hide overlay when ESC is pressed
@@ -364,7 +369,15 @@
 
 	// Register as an AMD module
 	} else if (typeof define === 'function' && define.amd) {
-		define('CSSModal', [], function () { return modal; });
+		define('CSSModal', [], function () {
+
+			// We use bean if the browser doesn't support CustomEvents
+			if (!global.CustomEvent && !global.bean) {
+				throw new Error('This browser doesn\'t support CustomEvent - please include bean: https://github.com/fat/bean');
+			}
+
+			return modal;
+		});
 
 	// Export CSSModal into global space
 	} else if (typeof global === 'object' && typeof global.document === 'object') {

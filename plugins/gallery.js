@@ -94,8 +94,12 @@
 	 * navigation
 	 * @return {void}
 	 */
-	var _initNavigation = function (event) {
-		_activeElement = event.detail.modal;
+	var _initNavigation = function (event, eventData) {
+		if (arguments.length === 2) {
+			_activeElement = eventData.detail.modal;
+		} else {
+			_activeElement = event.detail.modal;
+		}
 
 		if (_activeElement.querySelectorAll('.modal-detail').length === 0) {
 			return;
@@ -168,7 +172,26 @@
 	 */
 	var _readContent = function (element) {
 		var contentList = element.querySelectorAll('.modal-content-list')[0];
+
 		return contentList.getElementsByTagName('li');
+	};
+
+	/**
+	 * Set a caption for a given modal
+	 * @param {String} caption Caption to insert
+	 */
+	var setCaption = function (caption) {
+		var captionElement = _activeElement.querySelectorAll('.modal--gallery-caption')[0];
+
+		if (!captionElement) {
+			return;
+		}
+
+		captionElement.innerHTML = '';
+
+		if (caption) {
+			captionElement.innerHTML = '<p>' + caption + '</p>';
+		}
 	};
 
 	/**
@@ -190,6 +213,9 @@
 		CSSModal.trigger('cssmodal:resize', _activeElement);
 		CSSModal.removeClass(_detailView, 'is-active');
 
+		// Set a caption for the modal
+		setCaption(_items[index].getAttribute('data-caption'));
+
 		// Load the original image, if we are in a gallery
 		if (_activeElement.getAttribute('class').indexOf('modal--gallery') !== -1) {
 			referenceImage = _detailView.getElementsByTagName('img')[0];
@@ -204,6 +230,9 @@
 
 			referenceImage.parentNode.insertBefore(img, referenceImage);
 			referenceImage.parentNode.removeChild(referenceImage);
+
+			_detailView.style.width = 'auto';
+			_detailView.style.height = 'auto';
 		}
 	};
 
@@ -236,7 +265,8 @@
 	_api = {
 		showNext: showNext,
 		showPrevious: showPrevious,
-		setActiveItem: setActiveItem
+		setActiveItem: setActiveItem,
+		setCaption: setCaption
 	};
 
 	/*

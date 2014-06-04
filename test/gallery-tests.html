@@ -21,7 +21,9 @@
 		</ul>
 
 		<!-- A modal with some images -->
-		<section class="modal modal--gallery" id="modal-gallery" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+		<section class="modal modal--gallery" id="modal-gallery"
+				style="top: 101%;"
+				tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true" data-cssmodal-resize>
 			<div class="modal-inner">
 				<div class="modal-content">
 					<div class="modal-detail" aria-live="polite" aria-atomic="false"></div>
@@ -36,6 +38,9 @@
 						<li><img alt="Escape is not his plan." src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/360/300" alt=""></li>
 					</ul>
 				</div>
+
+				<div class="modal--gallery-caption"></div>
+
 				<ul class="modal--gallery-navigation">
 					<li><a title="Previous" class="modal--gallery-navigation-prev" href="#">Previous</a></li>
 					<li><a title="Next" class="modal--gallery-navigation-next" href="#">Next</a></li>
@@ -47,7 +52,9 @@
 		</section>
 
 		<!-- A modal with some images -->
-		<section class="modal modal--gallery" id="modal-gallery-boring" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+		<section class="modal modal--gallery" id="modal-gallery-boring"
+				style="top: 101%;"
+				tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true" data-cssmodal-resize>
 			<div class="modal-inner">
 				<div class="modal-content">
 					<div class="modal-detail" aria-live="polite" aria-atomic="false"></div>
@@ -73,6 +80,7 @@
 		<!-- Source -->
 		<script src="../modal.js"></script>
 		<script src="../plugins/gallery.js"></script>
+		<script src="../plugins/modal-resize.js"></script>
 
 		<!-- Specs -->
 		<script src="spec/gallery-spec.js"></script>

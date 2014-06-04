@@ -8,8 +8,10 @@
 // Include Modal
 @import "../modal";
 @import "../plugins/modal-resize";
+@import "../plugins/modal-maxwidth";
 @import "../plugins/gallery";
 @import "../plugins/spinner";
+@import "../plugins/modal-stretch";
 
 // Apply the modal with all its possible parts
 ._modal {
@@ -45,6 +47,10 @@
 }
 
 [data-cssmodal-resize] {
+	@extend %modal--resize;
+}
+
+[data-cssmodal-maxwidth] {
 	@extend %modal--resize;
 }
 
