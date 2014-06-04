@@ -9,11 +9,6 @@
 
 	'use strict';
 
-	// We use bean if the browser doesn't support CustomEvents
-	if (!global.CustomEvent && !global.bean) {
-		throw new Error('This browser doesn\'t support CustomEvent - please include bean: https://github.com/fat/bean');
-	}
-
 	/*
 	 * Storage for functions and attributes
 	 */
@@ -374,7 +369,15 @@
 
 	// Register as an AMD module
 	} else if (typeof define === 'function' && define.amd) {
-		define('CSSModal', [], function () { return modal; });
+		define('CSSModal', [], function () {
+
+			// We use bean if the browser doesn't support CustomEvents
+			if (!global.CustomEvent && !global.bean) {
+				throw new Error('This browser doesn\'t support CustomEvent - please include bean: https://github.com/fat/bean');
+			}
+
+			return modal;
+		});
 
 	// Export CSSModal into global space
 	} else if (typeof global === 'object' && typeof global.document === 'object') {
