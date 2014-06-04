@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* The user can now load/mock Bean during the runtime
 * Add polyfill for event.preventDefault to work with IE8
 * Add plugin to strech a modal to 80% of the screen height
 * Prevent scrolling of body on small screens

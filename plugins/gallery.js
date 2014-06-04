@@ -94,8 +94,12 @@
 	 * navigation
 	 * @return {void}
 	 */
-	var _initNavigation = function (event) {
-		_activeElement = event.detail.modal;
+	var _initNavigation = function (event, eventData) {
+		if (arguments.length === 2) {
+			_activeElement = eventData.detail.modal;
+		} else {
+			_activeElement = event.detail.modal;
+		}
 
 		if (_activeElement.querySelectorAll('.modal-detail').length === 0) {
 			return;
