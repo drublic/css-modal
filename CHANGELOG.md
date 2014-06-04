@@ -1,80 +1,73 @@
 # Changelog
 
 ## HEAD
-* The user can now load/mock Bean during the runtime
-* Add polyfill for event.preventDefault to work with IE8
-* Add plugin to strech a modal to 80% of the screen height
-* Prevent scrolling of body on small screens
-* Fix jumping of the page on devices with small screens (#32)
-* Implement max width for modal via data attribute
-* Fix vertical resizing for large pictures
-* Fix margins around modal in resize plugin
 
-* Fix position of close button when modal is between mobile and table
-* Avoid incorrect rendering of the detail container
-* Correct resizing and positioning in IE8
-* Better compatiblity for IE8
-* Fix magic numbers in resize script
-* Add gallery thumbnail images to gallery footer
-* Only activate stacked modal if there already is another modal
-* Always show gallery arrows on mobile
+## 1.1.0 - 03.06.2014
 
-* Add compatiblity for IE8 (use "bean" library for event handling)
-* Allow the content with id 0 to be selected
+### New features
 
-* Fix max height of modal content
-* Add gallery plugin
-* Add a spinner
-* Add resize plugin
-* Add HTML5 video plugin
-
-* Use methods for show and hide modal in HTML5 Video plugin
-* Update plugin HTML5 Video to work with AMD definition
-
-* Use a name for the main component: CSSModal
-* Add focus state for close button
-* Add HTML5 Shiv for IE8 in visual tests
-* Add polyfill for CustomEvents
-* Update node version to v0.10 when working with Travis
-* Improve ARIA support
-* Add FAQ for questions we get from time to time.
-* Update documentation in README file
-* Remove scrollbars for lt IE9 (#67)
-* Separated Sass Partials. Config, Core and Theme
-* Update body scrolling behavior: Prevent double scroll bar in FF and Co
-
-* Add support to have a specific element visible when the gallery is opened
-* Add polyfill for CustomEvents
-* Fix modal modifier close button positions
-* Separate close button position from its theme styling
-* Fix close button position
-* Correct handling of aria-hidden with JavaScript
-* Unify close btn on mobile
-* Prevent overflow in mobile modals
-* Add error handling to `on` method to prevent wrong function calls
-* Improve plainScreen layout
-* Rename tests directory to test
-* Add option to configure mobile-layout breakpoint
-* Add folder plugins for extendable modules
-* Modularize config, core and theme into separate files (#73)
-* Update background transparency image (#67)
-* Bugfix: Prevent body jump in Chrome Canary
-* Add better function documentation in JavaScript
-* Rewrite trigger method to use `new CustomEvent` (#56)
-* Update npm dependencies
 * Add different modal animation styles (#51)
-* Bugfix: UTF-8 problem in Ruby 1.9.3 (#61)
-* Bugfix: open modal on pageload (#46)
 * Register CSSModal as module for AMD (#57)
-* Prevent body from scrolling when scrolling in modal on iOS and Android (#31)
 * Add function to keep focus in modal when tabbing through (#26)
 * Allow multiple, stackable modals (#20)
+
+### Improvements
+
+* Use a name for the main component: CSSModal
+* Add gallery thumbnail images to gallery footer
+* Add focus state for close button
+* Better compatiblity for IE8
+* Add polyfill for event.preventDefault to work with IE8
+* Add compatiblity for IE8 (use "bean" library for event handling)
+* Only activate stacked modal if there already is another modal
+* Add HTML5 Shiv for IE8 in visual tests
+* Improve ARIA support
+* Unify close btn on mobile
+* Add error handling to `on` method to prevent wrong function calls
+* Add option to configure mobile-layout breakpoint
+* Modularize config, core and theme into separate files (#73)
+* Update background transparency image (#67)
+* Rewrite trigger method to use `new CustomEvent` (#56)
 * Apply all functions directly on the modal-object
 * Rename function `_dispatchEvent` to `trigger`
 * Rename function `_addEventListener` to `on`
 * Move set and unset of modal in own function
 * Add convenience functions to add and remove classes on elements
 * Add native style momentum scrolling to content area
+
+### Plugins
+
+* Add folder plugins for extendable modules
+* Add plugin to stretch a modal to 80% of the screen height
+* Implement max width for modal via data attribute
+* Add gallery plugin
+* Add a spinner
+* Add resize plugin
+* Add HTML5 video plugin
+
+### Bugfixes
+
+* The user can now load/mock Bean during the runtime
+* Fix jumping of the page on devices with small screens (#32)
+* Update body scrolling behavior: Prevent double scroll bar in FF and Co
+* Remove scrollbars for lt IE9 (#67)
+* Fix close button position
+* Correct handling of aria-hidden with JavaScript
+* Prevent overflow in mobile modals
+* Bugfix: Prevent body jump in Chrome Canary
+* Bugfix: UTF-8 problem in Ruby 1.9.3 (#61)
+* Bugfix: open modal on pageload (#46)
+* Prevent body from scrolling when scrolling in modal on iOS and Android (#31)
+
+### Other
+
+* Add FAQ for questions we get from time to time
+* Update documentation
+* Rename tests directory to test
+* Add better function documentation in JavaScript
+* Update node version to v0.10 when working with Travis
+* Update npm dependencies
+
 
 ## 1.0.4 - 27.06.2013
 
