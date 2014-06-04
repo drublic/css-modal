@@ -2,9 +2,8 @@
 
 ## HEAD
 
-* Listen to events in the AMD callback, not during load time
-
 ## 1.1.1 - 03.06.2014
+* Listen to events in the AMD callback, not during load time
 
 ### New features
 
