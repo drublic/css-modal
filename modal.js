@@ -325,39 +325,45 @@
 			}
 
 			return true;
+		},
+
+		/**
+		 * Listen to all relevant events
+		 * @return {void}
+		 */
+		init: function () {
+
+			/*
+			 * Hide overlay when ESC is pressed
+			 */
+			this.on('keyup', document, function (event) {
+				var hash = window.location.hash.replace('#', '');
+
+				// If hash is not set
+				if (hash === '' || hash === '!') {
+					return;
+				}
+
+				// If key ESC is pressed
+				if (event.keyCode === 27) {
+					window.location.hash = '!';
+
+					if (modal.lastActive) {
+						return false;
+					}
+
+					// Unfocus
+					modal.removeFocus();
+				}
+			}, false);
+
+			/*
+			 * Trigger main handler on load and hashchange
+			 */
+			this.on('hashchange', window, modal.mainHandler);
+			this.on('load', window, modal.mainHandler);
 		}
 	};
-
-	/*
-	 * Hide overlay when ESC is pressed
-	 */
-	modal.on('keyup', document, function (event) {
-		var hash = window.location.hash.replace('#', '');
-
-		// If hash is not set
-		if (hash === '' || hash === '!') {
-			return;
-		}
-
-		// If key ESC is pressed
-		if (event.keyCode === 27) {
-			window.location.hash = '!';
-
-			if (modal.lastActive) {
-				return false;
-			}
-
-			// Unfocus
-			modal.removeFocus();
-		}
-	}, false);
-
-
-	/*
-	 * Trigger main handler on load and hashchange
-	 */
-	modal.on('hashchange', window, modal.mainHandler);
-	modal.on('load', window, modal.mainHandler);
 
 	/*
 	 * AMD, module loader, global registration
@@ -366,6 +372,7 @@
 	// Expose modal for loaders that implement the Node module pattern.
 	if (typeof module === 'object' && module && typeof module.exports === 'object') {
 		module.exports = modal;
+		modal.init();
 
 	// Register as an AMD module
 	} else if (typeof define === 'function' && define.amd) {
@@ -375,6 +382,8 @@
 			if (!global.CustomEvent && !global.bean) {
 				throw new Error('This browser doesn\'t support CustomEvent - please include bean: https://github.com/fat/bean');
 			}
+
+			modal.init();
 
 			return modal;
 		});
