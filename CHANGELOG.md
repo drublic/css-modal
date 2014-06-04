@@ -4,7 +4,7 @@
 
 * Listen to events in the AMD callback, not during load time
 
-## 1.1.0 - 03.06.2014
+## 1.1.1 - 03.06.2014
 
 ### New features
 

@@ -780,7 +780,7 @@ html {
  * CSS Modal Theme 'Resize'
  * http://drublic.github.com/css-modal
  *
- * @since 1.1.0alpha
+ * @since 1.1.1alpha
  */
 [data-cssmodal-resize] .modal-inner, [data-cssmodal-maxwidth] .modal-inner {
   -webkit-transition: none;
