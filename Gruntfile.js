@@ -48,11 +48,6 @@ module.exports = function (grunt) {
 					'site/js/main.js'
 				],
 				tasks: 'jshint'
-			},
-
-			test: {
-				files: ['modal.js'],
-				tasks: 'jasmine'
 			}
 		},
 
@@ -75,6 +70,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 
 	// Default task
-	grunt.registerTask('default', ['sass', 'jshint', 'jasmine']);
+	grunt.registerTask('default', ['sass', 'jshint']);
 
 };
