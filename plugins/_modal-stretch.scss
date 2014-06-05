@@ -7,6 +7,10 @@
 		min-height: 80%;
 	}
 
+	.modal-content {
+		max-height: none !important;
+	}
+
 	.modal-close:after {
 		top: 10%;
 		margin-top: -25px;

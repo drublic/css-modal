@@ -2,6 +2,8 @@
 
 ## HEAD
 
+* Modal-Stretch: Don't set height for .modal-content when modal is streched on small devices
+
 ## 1.1.1 - 03.06.2014
 * Listen to events in the AMD callback, not during load time
 

@@ -779,8 +779,6 @@ html {
 /**
  * CSS Modal Theme 'Resize'
  * http://drublic.github.com/css-modal
- *
- * @since 1.1.1alpha
  */
 [data-cssmodal-resize] .modal-inner, [data-cssmodal-maxwidth] .modal-inner {
   -webkit-transition: none;
@@ -1088,6 +1086,9 @@ html {
 [data-cssmodal-stretch] .modal-inner {
   top: 10%;
   min-height: 80%;
+}
+[data-cssmodal-stretch] .modal-content {
+  max-height: none !important;
 }
 [data-cssmodal-stretch] .modal-close:after {
   top: 10%;
