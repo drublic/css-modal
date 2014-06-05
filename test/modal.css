@@ -824,13 +824,15 @@ html {
     right: 50% !important;
   }
 }
-[data-cssmodal-maxwidth] .modal-inner {
-  max-width: 100% !important;
-  margin-left: 0 !important;
-}
-[data-cssmodal-maxwidth] .modal-close:after {
-  margin-right: 0 !important;
-  right: 0 !important;
+@media screen and (max-width: 30em) {
+  [data-cssmodal-maxwidth] .modal-inner {
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  [data-cssmodal-maxwidth] .modal-close:after {
+    margin-right: 0 !important;
+    right: 0 !important;
+  }
 }
 
 /*
