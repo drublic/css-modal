@@ -66,20 +66,21 @@
 	var _scaleLower = function () {
 		var innerWidth = global.innerWidth || document.documentElement.clientWidth;
 		var element = CSSModal.activeElement;
-		var closeButtonMarginRight = '-' + Math.floor(_currentMaxWidth / 2);
+		var closeButtonMarginRight = 10;
 
 		// Skip if there is no max width or the window is wider
 		if (!_currentMaxWidth || innerWidth > _currentMaxWidth) {
 			return;
 		}
 
-		if (innerWidth < MODAL_SMALL_BREAKPOINT) {
-			closeButtonMarginRight = 10;
-		}
 
 		// Window width minus margin left and right
 		_margin = parseInt(element.getAttribute('data-cssmodal-margin'), 10) || _margin;
 		_currentMaxWidth = innerWidth - (_margin * 2);
+
+		if (innerWidth > MODAL_SMALL_BREAKPOINT) {
+			closeButtonMarginRight = '-' + Math.floor(_currentMaxWidth / 2);
+		}
 
 		_injectStyles('[data-cssmodal-maxwidth] .modal-inner {' +
 			'max-width: ' + _currentMaxWidth + 'px;' +
@@ -107,11 +108,15 @@
 		/*
 		 * Assign basic event handlers
 		 */
-		CSSModal.on('cssmodal:show', document, _scale);
-		CSSModal.on('cssmodal:show', document, _scaleLower);
+		CSSModal.on('cssmodal:show', document, function () {
+			_scale();
+			_scaleLower();
+		});
 
-		CSSModal.on('resize', window, _scale);
-		CSSModal.on('resize', window, _scaleLower);
+		CSSModal.on('resize', window, function () {
+			_scale();
+			_scaleLower();
+		});
 
 		// Public API
 		return _api;
