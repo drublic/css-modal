@@ -18,6 +18,8 @@
 	// can be overwritten with `data-cssmodal-margin` attribute
 	var _margin = 20;
 
+	var MODAL_SMALL_BREAKPOINT = 480;
+
 	/**
 	 * Include styles into the DOM
 	 * @param {string} rule Styles to inject into the DOM
@@ -64,10 +66,15 @@
 	var _scaleLower = function () {
 		var innerWidth = global.innerWidth || document.documentElement.clientWidth;
 		var element = CSSModal.activeElement;
+		var closeButtonMarginRight = '-' + Math.floor(_currentMaxWidth / 2);
 
 		// Skip if there is no max width or the window is wider
 		if (!_currentMaxWidth || innerWidth > _currentMaxWidth) {
 			return;
+		}
+
+		if (innerWidth < MODAL_SMALL_BREAKPOINT) {
+			closeButtonMarginRight = 10;
 		}
 
 		// Window width minus margin left and right
@@ -80,7 +87,7 @@
 		'}' +
 
 		'[data-cssmodal-maxwidth] .modal-close:after {' +
-			'margin-right: -' + (_currentMaxWidth / 2) + 'px !important;' +
+			'margin-right: ' + closeButtonMarginRight + 'px !important;' +
 		'}', element.id);
 	};
 
