@@ -372,7 +372,6 @@
 	// Expose modal for loaders that implement the Node module pattern.
 	if (typeof module === 'object' && module && typeof module.exports === 'object') {
 		module.exports = modal;
-		modal.init();
 
 	// Register as an AMD module
 	} else if (typeof define === 'function' && define.amd) {
@@ -391,6 +390,7 @@
 	// Export CSSModal into global space
 	} else if (typeof global === 'object' && typeof global.document === 'object') {
 		global.CSSModal = modal;
+		modal.init();
 	}
 
 }(window));
