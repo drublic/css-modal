@@ -1,6 +1,8 @@
 # Changelog
 
 ## HEAD
+
+## 1.1.5 - 05.06.2014
 * Fix position of close button on small screens
 
 ## 1.1.4 - 05.06.2014
