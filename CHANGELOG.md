@@ -2,6 +2,9 @@
 
 ## HEAD
 
+## 1.1.3 - 05.06.2014
+* Call init() if neither requirejs nor NPM is available
+
 ## 1.1.2 - 05.06.2014
 * Modal-Stretch: Don't set height for .modal-content when modal is streched on small devices
 
