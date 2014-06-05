@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Fix position of close button on small screens
 
 ## 1.1.4 - 05.06.2014
 * Fix max-width plugin to work on all sizes and listen to resize
