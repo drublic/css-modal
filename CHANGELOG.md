@@ -2,6 +2,8 @@
 
 ## HEAD
 
+* Fix max-width plugin to work on all sizes and listen to resize
+
 ## 1.1.3 - 05.06.2014
 * Call init() if neither requirejs nor NPM is available
 

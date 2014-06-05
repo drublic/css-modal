@@ -17,4 +17,14 @@
 			right: 50% !important;
 		}
 	}
+
+	.modal-inner {
+		max-width: 100% !important;
+		margin-left: 0 !important;
+	}
+
+	.modal-close:after {
+		margin-right: 0 !important;
+		right: 0 !important;
+	}
 }

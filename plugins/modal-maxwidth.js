@@ -12,6 +12,11 @@
 	 * Main modal object
 	 */
 	var CSSModal;
+	var _currentMaxWidth;
+
+	// Config: margin for modal when too narrow to show max width
+	// can be overwritten with `data-cssmodal-margin` attribute
+	var _margin = 20;
 
 	/**
 	 * Include styles into the DOM
@@ -21,7 +26,7 @@
 	var _injectStyles = function (rule, id) {
 		var element = document.createElement('div');
 
-		id = 'modal__rule' + (id || '');
+		id = 'modal__rule--' + (id || '');
 
 		// Remove all current rules
 		if (document.getElementById(id)) {
@@ -40,18 +45,43 @@
 	 */
 	var _scale = function () {
 		var element = CSSModal.activeElement;
-		var maxWidth = element.getAttribute('data-cssmodal-maxwidth');
 
-		if (maxWidth) {
+		_currentMaxWidth = element.getAttribute('data-cssmodal-maxwidth');
+		_currentMaxWidth = parseInt(_currentMaxWidth, 10)
+
+		if (_currentMaxWidth) {
 			_injectStyles('[data-cssmodal-maxwidth] .modal-inner {' +
-				'max-width: ' + parseInt(maxWidth, 10) + 'px;' +
-				'margin-left: -' + (parseInt(maxWidth, 10) / 2) + 'px;' +
+				'max-width: ' + _currentMaxWidth + 'px;' +
+				'margin-left: -' + (_currentMaxWidth / 2) + 'px;' +
 			'}' +
 
 			'[data-cssmodal-maxwidth] .modal-close:after {' +
-				'margin-right: -' + (parseInt(maxWidth, 10) / 2) + 'px !important;' +
+				'margin-right: -' + (_currentMaxWidth / 2) + 'px !important;' +
 			'}', element.id);
 		}
+	};
+
+	var _scaleLower = function () {
+		var innerWidth = global.innerWidth || document.documentElement.clientWidth;
+		var element = CSSModal.activeElement;
+
+		// Skip if there is no max width or the window is wider
+		if (!_currentMaxWidth || innerWidth > _currentMaxWidth) {
+			return;
+		}
+
+		// Window width minus margin left and right
+		_margin = parseInt(element.getAttribute('data-cssmodal-margin'), 10) || _margin;
+		_currentMaxWidth = innerWidth - (_margin * 2);
+
+		_injectStyles('[data-cssmodal-maxwidth] .modal-inner {' +
+			'max-width: ' + _currentMaxWidth + 'px;' +
+			'margin-left: -' + (_currentMaxWidth / 2) + 'px;' +
+		'}' +
+
+		'[data-cssmodal-maxwidth] .modal-close:after {' +
+			'margin-right: -' + (_currentMaxWidth / 2) + 'px !important;' +
+		'}', element.id);
 	};
 
 	/**
@@ -71,6 +101,10 @@
 		 * Assign basic event handlers
 		 */
 		CSSModal.on('cssmodal:show', document, _scale);
+		CSSModal.on('cssmodal:show', document, _scaleLower);
+
+		CSSModal.on('resize', window, _scale);
+		CSSModal.on('resize', window, _scaleLower);
 
 		// Public API
 		return _api;
