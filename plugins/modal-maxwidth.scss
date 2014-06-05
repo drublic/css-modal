@@ -18,13 +18,16 @@
 		}
 	}
 
-	.modal-inner {
-		max-width: 100% !important;
-		margin-left: 0 !important;
+	@media screen and (max-width: $modal-small-breakpoint) {
+		.modal-inner {
+			max-width: 100% !important;
+			margin-left: 0 !important;
+		}
+
+		.modal-close:after {
+			margin-right: 0 !important;
+			right: 0 !important;
+		}
 	}
 
-	.modal-close:after {
-		margin-right: 0 !important;
-		right: 0 !important;
-	}
 }

@@ -47,7 +47,7 @@
 		var element = CSSModal.activeElement;
 
 		_currentMaxWidth = element.getAttribute('data-cssmodal-maxwidth');
-		_currentMaxWidth = parseInt(_currentMaxWidth, 10)
+		_currentMaxWidth = parseInt(_currentMaxWidth, 10);
 
 		if (_currentMaxWidth) {
 			_injectStyles('[data-cssmodal-maxwidth] .modal-inner {' +
