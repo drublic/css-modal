@@ -48,6 +48,11 @@
 	var _scale = function () {
 		var element = CSSModal.activeElement;
 
+		// Eject if no active element is set
+		if (!element) {
+			return;
+		}
+
 		_currentMaxWidth = element.getAttribute('data-cssmodal-maxwidth');
 		_currentMaxWidth = parseInt(_currentMaxWidth, 10);
 
@@ -69,10 +74,9 @@
 		var closeButtonMarginRight = 10;
 
 		// Skip if there is no max width or the window is wider
-		if (!_currentMaxWidth || innerWidth > _currentMaxWidth) {
+		if (!element || !_currentMaxWidth || innerWidth > _currentMaxWidth) {
 			return;
 		}
-
 
 		// Window width minus margin left and right
 		_margin = parseInt(element.getAttribute('data-cssmodal-margin'), 10) || _margin;
