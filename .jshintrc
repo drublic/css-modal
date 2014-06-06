@@ -18,6 +18,8 @@
 	"smarttabs": true,
 
 	"globals": {
-		"jQuery": true
+		"jQuery": true,
+		"bean": true,
+		"define": true
 	}
 }

@@ -1,0 +1,903 @@
+// Prevent overflow on HTML element
+html {
+	overflow-y: scroll;
+}
+
+
+.has-overlay {
+	overflow: hidden;
+
+	> body {
+		height: 100%;
+		overflow-y: scroll;
+	}
+
+
+	@media screen and (max-width: $modal-small-breakpoint) {
+		> body {
+			overflow: hidden;
+			height: 100%;
+		}
+	}
+}
+
+
+%modal {
+	// Hide initially
+	-webkit-transform: translate(0, 100%);
+	   -moz-transform: translate(0, 100%);
+	     -o-transform: translate(0, 100%);
+	    -ms-transform: translate(0, 100%);
+	        transform: translate(0, 100%);
+	-webkit-transform: translate3d(0, 100%, 0); // iOS
+	        transform: translate3d(0, 100%, 0);
+
+	// Maintain a fixed position
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: $modal-layer;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	opacity: 0;
+
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+		-webkit-transform: translate(0, 0);
+		   -moz-transform: translate(0, 0);
+		     -o-transform: translate(0, 0);
+		    -ms-transform: translate(0, 0);
+		        transform: translate(0, 0);
+
+		width: auto;
+		height: auto;
+
+		opacity: 1;
+	}
+
+	// Internet Explorer 8
+	display: none\9;
+
+
+	&.is-active {
+		display: block\9;
+		height: 100%\9;
+		width: 100%\9;
+	}
+
+
+	// Overwrite IE8 hack for IE9 and IE10
+	&:target,
+	&.is-active {
+		display: block\9;
+	}
+
+
+	// Content Area
+	.modal-inner {
+		position: absolute;
+		top: 50px;
+		left: 50%;
+		z-index: 20;
+		margin-left: ($modal-max-width / 2) * -1;
+		width: $modal-max-width;
+		overflow-x: hidden;
+
+		-webkit-overflow-scrolling: touch; // Native style momentum scrolling
+
+		// This removes the scrollbar in lt IE9
+		@media \0screen\,screen\9 {
+			background: transparent;
+		}
+
+		> img,
+		> video,
+		> iframe {
+			width: 100%;
+			height: auto;
+			min-height: 300px;
+		}
+
+		> img {
+			width: auto;
+			max-width: 100%;
+		}
+	}
+
+
+	// Content
+	.modal-content {
+		position: relative;
+		max-height: 400px;
+		max-height: 80vh;
+		overflow-x: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+
+		// This removes the scrollbar in lt IE9
+		@media \0screen\,screen\9 {
+			overflow: visible;
+		}
+
+		> * {
+			max-width: 100%;
+		}
+	}
+
+
+	// Footer
+	footer {
+		border-top: 1px solid lighten($modal-border-color, 20);
+		padding: 0 1.2em 18px;
+		background: #f0f0f0;
+		border-radius: 2px;
+	}
+
+
+	// A close button
+	.modal-close {
+		display: block;
+		height: 1px; // Prevent close element to appear
+		clip: rect(0 0 0 0);
+		margin: -1px;
+		overflow: hidden;
+
+		&:focus:after {
+			outline: 1px dotted;
+			outline: -webkit-focus-ring-color auto 5px;
+		}
+
+		// Background as close
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 10;
+		}
+
+
+		// Actual close button on modal
+		&:after {
+			content: '\00d7';
+			position: absolute;
+			top: 25px;
+			right: 50%;
+			z-index: 20;
+			margin-right: -($modal-max-width / 2);
+		}
+	}
+
+
+	// When screen isn't as wide as the modal anymore
+	@media screen and (max-width: $modal-max-width + 40) {
+		.modal-inner {
+			width: auto;
+			left: 20px;
+			right: 20px;
+			margin-left: 0;
+		}
+
+		.modal-close {
+			&:after {
+				margin-right: 0 !important;
+				right: 20px;
+			}
+		}
+	}
+
+
+	// For small screens adjust the modal
+	@media screen and (max-width: $modal-small-breakpoint) {
+		-webkit-transform: translate(0, 400px); // Use px to work around Android 2.3 bug
+		-webkit-transform: translate3d(0, 100%, 0); // And overwrite px if 3D transforms are supported
+		        transform: translate3d(0, 100%, 0);
+
+		-webkit-transition: opacity 1ms .25s;
+		   -moz-transition: opacity 1ms .25s;
+		     -o-transition: opacity 1ms .25s;
+		    -ms-transition: opacity 1ms .25s;
+		        transition: opacity 1ms .25s;
+
+		display: block;
+		bottom: auto;
+
+		&:target,
+		&.is-active {
+			height: 100%;
+		}
+
+
+		&:before {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 30;
+		}
+
+
+		.modal-inner {
+			-webkit-box-sizing: border-box;
+			   -moz-box-sizing: border-box;
+			        box-sizing: border-box;
+
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 100%;
+			overflow: auto;
+		}
+
+
+		.modal-content {
+			max-height: none;
+
+			// Prevent text from breaking modal in mobile view
+			-ms-word-break: break-all;
+			    word-break: break-word;
+			-webkit-hyphens: auto;
+			   -moz-hyphens: auto;
+			        hyphens: auto;
+		}
+
+
+		.modal-close {
+			right: auto;
+
+			&:before {
+				display: none;
+			}
+
+			&:after {
+				top: 5px !important;
+				right: 5px;
+				left: auto;
+				z-index: 40;
+				margin-left: 0;
+			}
+		}
+	}
+
+
+	// For small heights
+	@media screen and (max-height: 46em) and (min-width: $modal-small-breakpoint) {
+		.modal-content {
+			max-height: 340px;
+			max-height: 50vh;
+		}
+	}
+
+
+	@media screen and (max-height: 36em) and (min-width: $modal-small-breakpoint) {
+		.modal-content {
+			max-height: 265px;
+			max-height: 40vh;
+		}
+	}
+
+
+	// Stackable Modals
+	&.is-stacked {
+		-webkit-transform: translate(0, 0) scale(1, 1);
+		   -moz-transform: translate(0, 0) scale(1, 1);
+		     -o-transform: translate(0, 0) scale(1, 1);
+		    -ms-transform: translate(0, 0) scale(1, 1);
+		        transform: translate(0, 0) scale(1, 1);
+
+		opacity: 1;
+
+
+		.modal-inner {
+			-webkit-animation: scaleDown .7s ease both;
+			   -moz-animation: scaleDown .7s ease both;
+			        animation: scaleDown .7s ease both;
+		}
+
+
+		// Hide overlay and close button
+		.modal-close {
+			opacity: 0;
+		}
+
+
+		// On small screens
+		@media screen and (max-width: $modal-small-breakpoint) {
+			-webkit-animation: scaleDown .7s ease both;
+			   -moz-animation: scaleDown .7s ease both;
+			        animation: scaleDown .7s ease both;
+
+
+			.modal-inner {
+				-webkit-animation: none;
+				   -moz-animation: none;
+				        animation: none;
+			}
+
+
+			.modal-close {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+
+// Keyframes for scale down of stacked modal on small screens
+@-webkit-keyframes scaleDown {
+	to { opacity: 0; -webkit-transform: scale(.8); }
+}
+@-moz-keyframes scaleDown {
+	to { opacity: 0; -moz-transform: scale(.8); }
+}
+@keyframes scaleDown {
+	to { opacity: 0; transform: scale(.8); }
+}
+
+
+// Fade in the modal
+%modal--transition-fade {
+	@media screen and (min-width: $modal-small-breakpoint) {
+		-webkit-transition: opacity 0.4s;
+		     -o-transition: opacity 0.4s;
+		        transition: opacity 0.4s;
+	}
+
+	@extend %modal;
+	@extend %modal-theme;
+}
+
+
+// Fade in and zoomIn the modal
+%modal--transition-zoomIn {
+	@extend %modal;
+	@extend %modal-theme;
+
+	// Scale to 0
+	.modal-inner {
+		-webkit-transform: scale(0);
+		   -moz-transform: scale(0);
+		     -o-transform: scale(0);
+		    -ms-transform: scale(0);
+		        transform: scale(0);
+		        opacity: 0;
+
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+	}
+
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+	}
+
+
+	.modal-close:after {
+		-webkit-transform: scale(0);
+		   -moz-transform: scale(0);
+		     -o-transform: scale(0);
+		    -ms-transform: scale(0);
+		        transform: scale(0);
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+	}
+
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+		.modal-inner {
+			-webkit-transform: scale(1);
+			   -moz-transform: scale(1);
+			     -o-transform: scale(1);
+			    -ms-transform: scale(1);
+			        transform: scale(1);
+			opacity: 1;
+		}
+
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+
+		.modal-close:after {
+			-webkit-transform: scale(1);
+			   -moz-transform: scale(1);
+			     -o-transform: scale(1);
+			    -ms-transform: scale(1);
+			        transform: scale(1);
+			opacity: 1;
+			// Move back to proper position
+			top: 25px;
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
+		}
+	}
+}
+
+
+// Fade in, zoomIn and hide backgrund in the modal
+%modal--transition-plainScreen {
+	@extend %modal;
+	@extend %modal-theme;
+	@extend %modal-theme-plainScreen;
+	@extend %modal--transition-zoomIn;
+
+
+	.modal-inner {
+		-webkit-box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.25);
+		        box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.25);
+	}
+
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		background: $modal-inner-background;
+		opacity: 0;
+	}
+
+
+	.modal-close:after {
+		-webkit-box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.2);
+		        box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.2);
+	}
+
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+		.modal-close:after {
+			top: 23px;
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+			}
+		}
+	}
+}
+
+
+// Fade in and downsample the modal
+%modal--transition-zoomOut {
+	@extend %modal;
+	@extend %modal-theme;
+
+	// Scale to 0
+	.modal-inner {
+		-webkit-transform: scale(2);
+		   -moz-transform: scale(2);
+		     -o-transform: scale(2);
+		    -ms-transform: scale(2);
+		        transform: scale(2);
+		        opacity: 0;
+
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+	}
+
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+	}
+
+
+	.modal-close:after {
+		-webkit-transform: scale(2);
+		   -moz-transform: scale(2);
+		     -o-transform: scale(2);
+		    -ms-transform: scale(2);
+		        transform: scale(2);
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+		// Needs to be moved into the center
+		// of the modal initially
+		top: -125px;
+	}
+
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+		.modal-inner {
+			-webkit-transform: scale(1);
+			   -moz-transform: scale(1);
+			     -o-transform: scale(1);
+			    -ms-transform: scale(1);
+			        transform: scale(1);
+			opacity: 1;
+		}
+
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+
+		.modal-close:after {
+			-webkit-transform: scale(1);
+			   -moz-transform: scale(1);
+			     -o-transform: scale(1);
+			    -ms-transform: scale(1);
+			        transform: scale(1);
+			opacity: 1;
+			// Move back to proper position
+			top: 25px;
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
+		}
+	}
+}
+
+
+// Slide in from the top
+%modal--transition-slideFromTop {
+	@extend %modal;
+	@extend %modal-theme;
+
+	// Scale to 0
+	.modal-inner {
+		-webkit-transform: translateY(-100%);
+		   -moz-transform: translateY(-100%);
+		     -o-transform: translateY(-100%);
+		    -ms-transform: translateY(-100%);
+		        transform: translateY(-100%);
+
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+	}
+
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+	}
+
+
+	.modal-close:after {
+		-webkit-transform: translateY(-100%);
+		   -moz-transform: translateY(-100%);
+		     -o-transform: translateY(-100%);
+		    -ms-transform: translateY(-100%);
+		        transform: translateY(-100%);
+
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+		// Needs to be moved into the center
+		// of the modal initially
+		top: -125px;
+	}
+
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+
+		.modal-inner {
+			-webkit-transform: translateY(0);
+			   -moz-transform: translateY(0);
+			     -o-transform: translateY(0);
+			    -ms-transform: translateY(0);
+			        transform: translateY(0);
+
+			opacity: 1;
+		}
+
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+
+		.modal-close:after {
+			-webkit-transform: translateY(0);
+			   -moz-transform: translateY(0);
+			     -o-transform: translateY(0);
+			    -ms-transform: translateY(0);
+			        transform: translateY(0);
+
+			opacity: 1;
+			// Move back to proper position
+			top: 25px;
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
+		}
+	}
+}
+
+
+// Bounce in animation definition from top
+// shaking the window at the end
+@-webkit-keyframes shaky {
+	0% {
+		-webkit-transform: translateY(-100%);
+	}
+	60% {
+		-webkit-transform: translateX(5%) translateY(5%) rotate(-2deg);
+	}
+	80% {
+		-webkit-transform: translateX(5%) translateY(5%) rotate(2deg);
+	}
+	50%, 70%, 90% {
+		-webkit-transform: translateX(0%) translateY(0%);
+	}
+}
+
+
+// Bounce in animation definition from top
+@-webkit-keyframes bounce {
+	0% {
+		-webkit-transform: translateY(-100%);
+	}
+	60% {
+		-webkit-transform: translateY(5%);
+	}
+	85% {
+		-webkit-transform: translateY(0%);
+	}
+}
+
+
+@-moz-keyframes bounce {
+	0% {
+		-moz-transform: translateY(-100%);
+	}
+	60% {
+		-moz-transform: translateY(5%);
+	}
+	85% {
+		-moz-transform: translateY(0%);
+	}
+}
+
+
+@-o-keyframes bounce {
+	0% {
+		-o-transform: translateY(-100%);
+	}
+	60% {
+		-o-transform: translateY(5%);
+	}
+	85% {
+		-o-transform: translateY(0%);
+	}
+}
+
+
+@-ms-keyframes bounce {
+	0% {
+		-ms-transform: translateY(-100%);
+	}
+	60% {
+		-ms-transform: translateY(5%);
+	}
+	85% {
+		-ms-transform: translateY(0%);
+	}
+}
+
+
+@keyframes bounce {
+	0% {
+		transform: translateY(-100%);
+	}
+	60% {
+		transform: translateY(5%);
+	}
+	85% {
+		transform: translateY(0%);
+	}
+}
+
+
+// Bounce in from top
+%modal--transition-bounceFromTop {
+	@extend %modal;
+	@extend %modal-theme;
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+	}
+
+
+	.modal-close:after {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+		-webkit-transition-delay: 0.4s;
+		     -o-transition-delay: 0.4s;
+		        transition-delay: 0.4s;
+		opacity: 0;
+		// Needs to be moved into the center
+		// of the modal initially
+		top: 25px;
+	}
+
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+
+		.modal-inner {
+			-webkit-animation-name: bounce;
+			   -moz-animation-name: bounce;
+			     -o-animation-name: bounce;
+			    -ms-animation-name: bounce;
+			        animation-name: bounce;
+
+			-webkit-animation-duration: 0.4s;
+			   -moz-animation-duration: 0.4s;
+			     -o-animation-duration: 0.4s;
+			    -ms-animation-duration: 0.4s;
+			        animation-duration: 0.4s;
+
+			-webkit-animation-fill-mode: both;
+			   -moz-animation-fill-mode: both;
+			     -o-animation-fill-mode: both;
+			    -ms-animation-fill-mode: both;
+			        animation-fill-mode: both;
+
+			opacity: 1;
+		}
+
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+
+		.modal-close:after {
+			opacity: 1;
+			// Move back to proper position
+			top: 25px;
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
+		}
+	}
+}
+
+
+// Bounce in from top
+%modal--transition-bounceFromTopShaky {
+	@extend %modal;
+	@extend %modal-theme;
+
+	.modal-close:before {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+
+		opacity: 0;
+	}
+
+
+	.modal-close:after {
+		-webkit-transition: all 0.4s;
+		     -o-transition: all 0.4s;
+		        transition: all 0.4s;
+		-webkit-transition-delay: 0.6s;
+		     -o-transition-delay: 0.6s;
+		        transition-delay: 0.6s;
+
+		opacity: 0;
+		// Needs to be moved into the center
+		// of the modal initially
+		top: 25px;
+	}
+
+
+	// Show modal when requested
+	&:target,
+	&.is-active {
+
+		.modal-inner {
+			-webkit-animation-name: shaky;
+			   -moz-animation-name: shaky;
+			     -o-animation-name: shaky;
+			    -ms-animation-name: shaky;
+			        animation-name: shaky;
+
+			-webkit-animation-duration: 0.6s;
+			   -moz-animation-duration: 0.6s;
+			     -o-animation-duration: 0.6s;
+			    -ms-animation-duration: 0.6s;
+			        animation-duration: 0.6s;
+
+			-webkit-animation-fill-mode: both;
+			   -moz-animation-fill-mode: both;
+			     -o-animation-fill-mode: both;
+			    -ms-animation-fill-mode: both;
+			        animation-fill-mode: both;
+
+			opacity: 1;
+		}
+
+
+		.modal-close:before {
+			opacity: 1;
+		}
+
+
+		.modal-close:after {
+			opacity: 1;
+			// Move back to proper position
+			top: 25px;
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
+		}
+	}
+}
+
+
+// ==================================================
+// Apply the desired modal behavior to
+// your container selector
+// ==================================================
+
+.modal--show {
+	@extend %modal;
+	@extend %modal-theme;
+}
