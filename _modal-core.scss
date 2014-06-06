@@ -117,6 +117,7 @@ html {
 		max-height: 80vh;
 		overflow-x: hidden;
 		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
 
 		// This removes the scrollbar in lt IE9
 		@media \0screen\,screen\9 {
