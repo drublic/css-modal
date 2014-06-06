@@ -1,6 +1,8 @@
 # Changelog
 
 ## HEAD
+
+## 1.1.6 - 06.06.2014
 * Fix position of close button on small screens
 * Check if activeElement is available in max-width
 
