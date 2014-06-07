@@ -109,20 +109,29 @@
 	 * @param {string} id   Unique ID for styles
 	 */
 	var _injectStyles = function (rule, id) {
-		var element = document.createElement('div');
+		id = 'modal__rule--' + (id || '');
 
-		id = 'modal__rule' + (id || '');
+		var head = document.querySelector('head');
+		var existingStyleElement = document.getElementById(id);
+		var styleElement = null;
 
-		// Remove all current rules
-		if (document.getElementById(id)) {
-			document.getElementById(id).parentNode.removeChild(document.getElementById(id));
+		if (existingStyleElement) {
+			styleElement = existingStyleElement;
+		} else {
+			styleElement = document.createElement('style');
+			styleElement.id = id;
+
+			// The element must be in the DOM before adding rules in IE8
+			head.appendChild(styleElement);
 		}
 
-		element.id = id;
-		element.innerHTML = '<style>' + rule + '</style>';
-
-		// Append a new rule
-		document.body.appendChild(element);
+		if (styleElement.styleSheet) {
+			// IE8 and other legacy browers
+			styleElement.styleSheet.cssText = rule;
+		} else {
+			// modern browsers
+			styleElement.innerText = rule;
+		}
 	};
 
 	/**

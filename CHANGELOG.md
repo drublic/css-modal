@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Make _injectStyles compatible with legacy browsers
 
 ## 1.1.6 - 06.06.2014
 * Fix position of close button on small screens
