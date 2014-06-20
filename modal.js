@@ -75,6 +75,16 @@
 			if (global.bean) {
 				bean.fire(document, event, eventParams);
 
+			// Use createEvent if supported (that's mostly the case)
+			} else if (document.createEvent) {
+				eventTrigger = document.createEvent('CustomEvent');
+
+				eventTrigger.initCustomEvent(event, false, false, {
+					'modal': modal
+				});
+
+				document.dispatchEvent(eventTrigger);
+
 			// Use CustomEvents if supported
 			} else {
 				eventTrigger = new CustomEvent(event, eventParams);
