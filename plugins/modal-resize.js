@@ -130,7 +130,7 @@
 			styleElement.styleSheet.cssText = rule;
 		} else {
 			// modern browsers
-			styleElement.innerText = rule;
+			styleElement.innerHTML = rule;
 		}
 	};
 

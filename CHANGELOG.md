@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Use innerHTML instead of innerText in order to add styling rule
 
 ## 1.1.7 - 20.06.2014
 * Add document.createEvent for creating events in oldIE
