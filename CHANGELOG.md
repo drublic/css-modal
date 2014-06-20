@@ -1,6 +1,8 @@
 # Changelog
 
 ## HEAD
+
+## 1.1.7 - 20.06.2014
 * Add document.createEvent for creating events in oldIE
 * Make _injectStyles compatible with legacy browsers
 
