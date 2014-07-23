@@ -25,7 +25,7 @@ fast!
 
 ### Markup
 
-You need to include the markup and content for modals in you website. This has
+You need to include the markup and content for modals in your website. This has
 a positive effect on SEO. The example code:
 
 	<section class="semantic-content" id="modal-text" tabindex="-1"
