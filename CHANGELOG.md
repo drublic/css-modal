@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Remove unused height declaration from core
 
 ## 1.1.8 - 20.06.2014
 * Use innerHTML instead of innerText in order to add styling rule
