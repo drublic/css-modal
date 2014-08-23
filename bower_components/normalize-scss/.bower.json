@@ -1,0 +1,27 @@
+{
+  "name": "normalize-scss",
+  "version": "3.0.1",
+  "main": "_normalize.scss",
+  "author": [
+    "Nicolas Gallagher",
+    "Bo-Yi Wu"
+  ],
+  "ignore": [
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "component.json",
+    "package.json",
+    "test.html"
+  ],
+  "homepage": "https://github.com/appleboy/normalize.scss",
+  "_release": "3.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.0.1",
+    "commit": "117090a8fe14c6b492f63eef5439ae14a43b3336"
+  },
+  "_source": "git://github.com/appleboy/normalize.scss.git",
+  "_target": "~3.0.1",
+  "_originalSource": "normalize-scss",
+  "_direct": true
+}

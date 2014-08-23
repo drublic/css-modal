@@ -1,0 +1,14 @@
+{
+	"name": "sass-mixins",
+	"version": "0.10.0",
+	"main": "mixins.scss",
+	"author": "Hans Christian Reinl",
+	"ignore": [
+		"node_modules",
+		"partials",
+		"test",
+		".gitignore",
+		"Gruntfile.js",
+		"package.json"
+	]
+}

@@ -7,10 +7,10 @@
 
 
 // Import styles for the website
-@import "layout";
+@import 'layout';
 
 // Include Modal
-@import "../../modal.scss";
+@import 'bower_components/css-modal/modal.scss';
 
 
 // Apply the modal with all its possible parts

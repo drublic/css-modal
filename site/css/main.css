@@ -7,60 +7,22 @@
 /*
  * Styles for the website
  */
-/*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
-   HTML5 display definitions
+   Normalize.scss settings
    ========================================================================== */
 /**
- * Correct `block` display not defined in IE 8/9.
+ * Includes legacy browser support IE6/7
+ *
+ * Set to false if you want to drop support for IE6 and IE7
  */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section,
-summary {
-  display: block;
-}
-
-/**
- * Correct `inline-block` display not defined in IE 8/9.
- */
-audio,
-canvas,
-video {
-  display: inline-block;
-}
-
-/**
- * Prevent modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-
-/**
- * Address styling not present in IE 8/9.
- */
-[hidden] {
-  display: none;
-}
-
-/* ==========================================================================
-   Base
+/* Base
    ========================================================================== */
 /**
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
+ *  user zoom.
+ * 3. Corrects text resizing oddly in IE 6/7 when body `font-size` is set using
+ *  `em` units.
  */
 html {
   font-family: sans-serif;
@@ -78,45 +40,87 @@ body {
   margin: 0;
 }
 
-/* ==========================================================================
-   Links
+/* HTML5 display definitions
    ========================================================================== */
 /**
- * Address `outline` inconsistency between Chrome and other browsers.
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
  */
-a:focus {
-  outline: thin dotted;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevents modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background: transparent;
 }
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
-a:active,
-a:hover {
+a:active, a:hover {
   outline: 0;
 }
 
-/* ==========================================================================
-   Typography
+/* Text-level semantics
    ========================================================================== */
 /**
- * Address variable `h1` font-size and margin within `section` and `article`
- * contexts in Firefox 4+, Safari 5, and Chrome.
- */
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-/**
- * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
  */
 abbr[title] {
   border-bottom: 1px dotted;
 }
 
 /**
- * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
  */
 b,
 strong {
@@ -124,52 +128,27 @@ strong {
 }
 
 /**
- * Address styling not present in Safari 5 and Chrome.
+ * Address styling not present in Safari and Chrome.
  */
 dfn {
   font-style: italic;
 }
 
 /**
- * Address differences between Firefox and other browsers.
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
  */
-hr {
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
 }
 
 /**
- * Address styling not present in IE 8/9.
+ * Addresses styling not present in IE 8/9.
  */
 mark {
   background: #ff0;
   color: #000;
-}
-
-/**
- * Correct font family set oddly in Safari 5 and Chrome.
- */
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, serif;
-  font-size: 1em;
-}
-
-/**
- * Improve readability of pre-formatted text in all browsers.
- */
-pre {
-  white-space: pre-wrap;
-}
-
-/**
- * Set consistent quote types.
- */
-q {
-  quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
 /**
@@ -198,87 +177,98 @@ sub {
   bottom: -0.25em;
 }
 
-/* ==========================================================================
-   Embedded content
+/* Embedded content
    ========================================================================== */
 /**
- * Remove border when inside `a` element in IE 8/9.
+ * 1. Remove border when inside `a` element in IE 8/9/10.
+ * 2. Improves image quality when scaled in IE 7.
  */
 img {
   border: 0;
 }
 
 /**
- * Correct overflow displayed oddly in IE 9.
+ * Correct overflow not hidden in IE 9/10/11.
  */
 svg:not(:root) {
   overflow: hidden;
 }
 
-/* ==========================================================================
-   Figures
+/* Grouping content
    ========================================================================== */
 /**
- * Address margin not present in IE 8/9 and Safari 5.
+ * Address margin not present in IE 8/9 and Safari.
  */
 figure {
-  margin: 0;
+  margin: 1em 40px;
 }
 
-/* ==========================================================================
-   Forms
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ * Correct font family set oddly in IE 6, Safari 4/5, and Chrome.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
    ========================================================================== */
 /**
- * Define consistent border, margin, and padding.
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
  */
-fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
-}
-
 /**
- * 1. Correct `color` not being inherited in IE 8/9.
- * 2. Remove padding so people aren't caught out if they zero out fieldsets.
- */
-legend {
-  border: 0;
-  /* 1 */
-  padding: 0;
-  /* 2 */
-}
-
-/**
- * 1. Correct font family not being inherited in all browsers.
- * 2. Correct font size not being inherited in all browsers.
- * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ * 1. Correct color not being inherited.
+ *  Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ * 4. Improves appearance and consistency in all browsers.
  */
 button,
 input,
+optgroup,
 select,
 textarea {
-  font-family: inherit;
+  color: inherit;
   /* 1 */
-  font-size: 100%;
+  font: inherit;
   /* 2 */
   margin: 0;
   /* 3 */
 }
 
 /**
- * Address Firefox 4+ setting `line-height` on `input` using `!important` in
- * the UA stylesheet.
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
  */
-button,
-input {
-  line-height: normal;
+button {
+  overflow: visible;
 }
 
 /**
  * Address inconsistent `text-transform` inheritance for `button` and `select`.
  * All other form control elements do not inherit `text-transform` values.
- * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
- * Correct `select` style inheritance in Firefox 4+ and Opera.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
  */
 button,
 select {
@@ -287,10 +277,12 @@ select {
 
 /**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
- *    and `video` controls.
+ *  and `video` controls.
  * 2. Correct inability to style clickable `input` types in iOS.
  * 3. Improve usability and consistency of cursor style between image-type
- *    `input` and others.
+ *  `input` and others.
+ * 4. Removes inner spacing in IE 7 without affecting normal text inputs.
+ *  Known issue: inner spacing remains in IE 6.
  */
 button,
 html input[type="button"],
@@ -311,8 +303,26 @@ html input[disabled] {
 }
 
 /**
- * 1. Address box sizing set to `content-box` in IE 8/9.
- * 2. Remove excess padding in IE 8/9.
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal;
+}
+
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ *  Known issue: excess padding remains in IE 6.
  */
 input[type="checkbox"],
 input[type="radio"] {
@@ -323,9 +333,19 @@ input[type="radio"] {
 }
 
 /**
- * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
- *    (include `-moz` to future-proof).
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *  (include `-moz` to future-proof).
  */
 input[type="search"] {
   -webkit-appearance: textfield;
@@ -337,8 +357,9 @@ input[type="search"] {
 }
 
 /**
- * Remove inner padding and search cancel button in Safari 5 and Chrome
- * on OS X.
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
  */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
@@ -346,27 +367,43 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 /**
- * Remove inner padding and border in Firefox 4+.
+ * Define consistent border, margin, and padding.
  */
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
 }
 
 /**
- * 1. Remove default vertical scrollbar in IE 8/9.
- * 2. Improve readability and alignment in all browsers.
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ * 3. Corrects text not wrapping in Firefox 3.
+ * 4. Corrects alignment displayed oddly in IE 6/7.
  */
-textarea {
-  overflow: auto;
+legend {
+  border: 0;
   /* 1 */
-  vertical-align: top;
+  padding: 0;
   /* 2 */
 }
 
-/* ==========================================================================
-   Tables
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
    ========================================================================== */
 /**
  * Remove most spacing between table cells.
@@ -376,12 +413,569 @@ table {
   border-spacing: 0;
 }
 
+td,
+th {
+  padding: 0;
+}
+
+/* sass-mixins - v0.9.0 - 2014-07-02 */
+                                       /**
+* @description
+* Generates keyframe animations
+*
+* @author drublic
+*
+* @link caniuse http://caniuse.com/#feat=css-animation
+* @link spec http://www.w3.org/TR/css3-animations/
+*
+* @param values
+* @returns
+*   -webkit-animation: <values>;
+*           animation: <values>;
+*
+* @example
+*   .selector {
+*     @include x-animation(jump 1s ease-out);
+*   }
+*/
+/*
+ * @example
+ *    @include x-keyframes(jump) {
+ *      from { top: 0; }
+ *      to { top: -10px; }
+ *   }
+ */
 /**
- * @include x-multiple-backgrounds(
- *	rgba(0, 0, 0, 0.3),
- *	url('../img/someImage.png') no-repeat,
- *	('to bottom', #ddd, #aaa, #ddd)
- * );
+ * @description
+ * Generates `appearance` for a given element
+ *
+ * @author romamatusevich
+ *
+ * @link MDN https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance
+ * @link css-tricks http://css-tricks.com/almanac/properties/a/appearance/
+ * @link spec http://www.w3.org/TR/2004/CR-css3-ui-20040511/#appearance
+ *
+ * @param value
+ * @returns
+ *   -webkit-appearance: <value>;
+ *      -moz-appearance: <value>;
+ *           appearance: <value>;
+ *
+ * @example
+ *   .selector {
+ *     @include x-appearance(button);
+ *   }
+ */
+/**
+ * @description
+ * Generates `background-size` output for a given element.
+ *
+ * @author drublic
+ *
+ * @link caniuse http://caniuse.com/background-img-opts
+ * @link spec http://www.w3.org/TR/css3-background/
+ *
+ * @param value
+ * @returns
+ *   -webkit-background-size: $args;
+ *           background-size: $args;
+ *
+ * @example
+ *   .selector {
+ *     @include x-background-size(100% auto);
+ *   }
+ */
+/**
+ * @description
+ * Generates cross-browser-compatible `border-radius` for a given element
+ *
+ * @author drublic
+ *
+ * @link caniuse http://caniuse.com/border-radius
+ * @link spec http://www.w3.org/TR/css3-background/#corners
+ *
+ * @param values
+ * @returns
+ *   -webkit-border-radius: <values>;
+ *           border-radius: <values>;
+ *
+ * @example
+ *   .selector {
+ *     @include x-border-radius(20px 10px);
+ *   }
+ */
+/**
+ * @description
+ * Generates cross-browser-compatible `box-shadow` for a given element
+ *
+ * @author drublic
+ *
+ * @link caniuse http://caniuse.com/css-boxshadow
+ * @link spec http://www.w3.org/TR/css3-background/#the-box-shadow
+ *
+ * @param values
+ * @returns
+ *   -webkit-box-shadow: <values>;
+ *           box-shadow: <values>;
+ *
+ * @example
+ *   .selector {
+ *     @include x-box-shadow(5px 5px 10px 5px #aaa);
+ *   }
+ */
+/**
+ * @description
+ * Generates cross-browser-compatible `box-sizing` output for a given element.
+ *
+ * @author drublic
+ *
+ * @link caniuse
+ * @link spec
+ *
+ * @param type
+ * @returns
+ *   -webkit-box-sizing: <type>;
+ *      -moz-box-sizing: <type>;
+ *           box-sizing: <type>;
+ *
+ * @example
+ *   .selector {
+ *     @include x-box-sizing;
+ *   }
+ */
+/**
+ * @description
+ * These mixins generates Media Queries
+ *
+ * @author drublic
+ *
+ * @link caniuse http://caniuse.com/#feat=css-mediaqueries
+ * @link spec http://www.w3.org/TR/css3-mediaqueries/
+ *
+ * Note: Please use the CSS unit `em` for device-width in order to stay
+ * responsive.
+ */
+/**
+ * @param device-width {number}
+ * @content
+ * @returns
+ *   @media screen and (min-width: <device-width>) {
+ *      <content>
+ *   }
+ *
+ * @example
+ *   .selector {
+ *     x-at-least(40em) { width: 60%; }
+ *   }
+ */
+/**
+ * @param device-width {number}
+ * @content
+ * @returns
+ *   @media screen and (max-width: <device-width - 0.01>) {
+ *      <content>
+ *   }
+ *
+ * @example
+ *   .selector {
+ *     x-until(40em) { width: 100%; }
+ *   }
+ */
+/**
+ * @author romamatusevich
+ *
+ * @param point{string}, bp-mobile-width{number}, bp-tablet-width{number} 
+ * @content
+ * @returns
+ *   @media (max-width: <bp-mobile-width>) {
+ *      <content>
+ *   }
+ *
+ * @example
+ *   .selector {
+ *     x-breakpoints(mobile,  320px) { width: 100%; }
+ *   }
+ */
+/**
+ * @description
+ * Generates `calc` function which allows mathematical expressions for a given property
+ *
+ * @author romamatusevich
+ *
+ * @link spec http://www.w3.org/TR/css3-values/#calc
+ * @link caniuse http://caniuse.com/calc
+ *
+ * @param property
+ * @param expression
+ *
+ * @returns
+ *    <property>: -webkit-calc(<expression>);
+ *    <property>: calc(<expression>);
+ *
+ * @example
+ *   .selector {
+ *     @include x-calc(width, "600px - 2em");
+ *   }
+ */
+/**
+ * @description
+ * Generates flexbox properties for a given element
+ *
+ * @author romamatusevich
+ *
+ * @link MDN https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes
+ * @link css-tricks http://css-tricks.com/snippets/css/a-guide-to-flexbox/
+ * @link spec http://www.w3.org/TR/css3-flexbox/
+ */
+/**
+ * @returns
+ *   display: -webkit-box;
+ *   display: -moz-box;
+ *   display: -ms-flexbox;
+ *   display: -webkit-flex;
+ *   display: flex;
+ *
+ * @example
+ *   .selector {
+ *     @include x-display-flex;
+ *   }
+ */
+/**
+ * @param values
+ * @returns
+ *   -webkit-box-flex: <values>;
+ *      -moz-box-flex: <values>;
+ *       -webkit-flex: <values>;
+ *           -ms-flex: <values>;
+ *               flex: <values>;
+ *
+ * @example
+ *   .selector {
+ *     @include x-flex(1 1 auto);
+ *   }
+ */
+/**
+ * @param value
+ * @returns
+ *   -webkit-box-ordinal-group: <value>;
+ *      -moz-box-ordinal-group: <value>;
+ *              -ms-flex-order: <value>;
+ *               -webkit-order: <value>;
+ *                       order: <value>;
+ *
+ * @example
+ *   .selector {
+ *     @include x-order(1);
+ *   }
+ */
+/**
+ * @param value
+ * @returns
+ *    -webkit-flex-wrap: <value>;
+ *        -ms-flex-wrap: <value>;
+ *            flex-wrap: <value>;
+ *
+ * @example
+ *   .selector {
+ *     @include x-flex-wrap(wrap);
+ *   }
+ */
+/**
+ * @param value
+ * @returns
+ *   -webkit-align-content: <value>;
+ *      -moz-align-content: <value>;
+ *      -ms-flex-line-pack: <value>;
+ *           align-content: <value>;
+ * @example
+ *   .selector {
+ *     @include x-align-content(center);
+ *   }
+ */
+/**
+ * @param value
+ * @returns
+ *	  -webkit-box-direction: <value>;
+ *		 -moz-box-direction: <value>;
+ *       -webkit-box-orient: <value>;
+ *		    -moz-box-orient: <value>;
+ *   -webkit-flex-direction: <value>;
+ *      -moz-flex-direction: <value>;
+ *       -ms-flex-direction: <value>;
+ *           flex-direction: <value>;
+ * @example
+ *   .selector {
+ *     @include x-flex-direction(row-reverse);
+ *   }
+ */
+/* ToDo: add flex-grow, flex-shrink, flex-basis, flex-flow, align-items, align-self, justify-content mixins */
+/**
+ * @description
+ * Generates a linear gradient for a given element with a fallback color.
+ *
+ * @author drublic
+ *
+ * @link caniuse
+ * @link spec
+ *
+ * @dependency helper-gradient-angle
+ * @param direction {'to bottom'|'to right'|'to top'|'to left'|<degree>}
+ * @param fallback {color}
+ * @param from {color}
+ * @param to {color}
+ * @default 'to bottom', #ccc, #ccc, #aaa
+ *
+ * @returns
+ *   background-color: <fallback>;
+ *   background-image: -webkit-gradient(linear, <direction - old converted>, from(<from>), to(<to>));
+ *   background-image: -webkit-linear-gradient(<direction - converted>, <from>, <to>);
+ *   background-image:         linear-gradient(<direction>, <from>, <to>);
+ *
+ * @example
+ *   .selector {
+ *     @include x-linear-gradient("to bottom", #ccc, #ddd, #bbb);
+ *   }
+ *
+ * Note: By default this linear-gradient-mixin encourages people to use the
+ * latest CSS-syntax for gradients.
+ */
+/**
+ * @description
+ * This mixin generates multiple backgrounds
+ *
+ * @author drublic
+ *
+ * @link caniuse http://caniuse.com/css-gradients
+ * @link spec http://www.w3.org/TR/2011/WD-css3-images-20110217/#linear-gradients
+ */
+/*
+ * A function for prefixing gradients
+ *
+ * @param mode {'webkit-old'|'webkit'|''}
+ * @param gradient
+ * @returns
+ *   -<mode>-linear-gradient(<gradient>);
+ */
+/*
+ * Generates multiple backgrounds
+ *
+ * @param backgrounds {list}
+ *
+ * @example
+ *   .selector {
+ *     @include x-multiple-backgrounds(
+ *       rgba(0, 0, 0, 0.3),
+ *       url('../img/html5_logo.png') top right no-repeat,
+ *       (linear-gradient, to bottom, #aaa, #ddd)
+ *     );
+ *   }
+ */
+/**
+ * @description
+ * This mixin creates (endless) multiple color stops in gradients just with one
+ * call for the mixin.
+ *
+ * @author drublic
+ *
+ * @link caniuse http://caniuse.com/css-gradients
+ * @link spec http://www.w3.org/TR/2011/WD-css3-images-20110217/#linear-gradients
+ *
+ * @param stops {list}
+ * @returns
+ *   background-image: -webkit-linear-gradient(top, <stops[1]>, <stops[2]>, ..., <stops[n]>);
+ *   background-image:         linear-gradient(to bottom, <stops[1]>, <stops[2]>, ..., <stops[n]>);
+ *
+ * @example
+ *   .selector {
+ *     @include x-multiple-colored-gradient((
+ *         "top",
+ *         #f22 0%,
+ *         #f2f 15%,
+ *         #22f 30%,
+ *         #2ff 45%,
+ *         #2f2 60%,
+ *         #2f2 75%,
+ *         #ff2 90%,
+ *         #f22 100%
+ *     ));
+ *   }
+ *
+ * Note: This mixis does not define a fallback-color for your background as it
+ * is likely you want to add an image or something. Please specify one by
+ * yourself.
+ */
+/**
+ * @description
+ * Generates `opacity` output for a given element and adds a filter for old IE.
+ *
+ * @author bartveneman
+ *
+ * @link caniuse http://caniuse.com/css-opacity
+ * @link spec http://www.w3.org/TR/css3-color/#transparency
+ *
+ * @param value
+ * @returns
+ *   opacity: <value>;
+ *    filter: alpha(opacity=<value * 100>);
+ *
+ * @example
+ *   .selector {
+ *     @include x-opacity(0.3);
+ *   }
+ */
+/**
+ * @description
+ * Generates `placeholder` content for a given element
+ *
+ * @author romamatusevich
+ *
+ * @link MDN https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-placeholder
+ * @link css-tricks http://css-tricks.com/snippets/css/style-placeholder-text/
+ *
+ * @returns
+ *    &::-webkit-input-placeholder {
+ *        <content property 1>: <content value 1>;
+ *        ...
+ *        <content property n>: <content value n>;
+ *    }
+ *    &::-moz-placeholder {
+ *        <content property 1>: <content value 1>;
+ *        ...
+ *        <content property n>: <content value n>;
+ *    }
+ *    &:-ms-input-placeholder {
+ *        <content property 1>: <content value 1>;
+ *        ...
+ *        <content property n>: <content value n>;
+ *    }
+ *
+ * @example
+ *   .selector {
+ *     @include x-placeholder {
+ *         color: #bada55;
+ *         font-weight: bold;
+ *     }
+ *   }
+ */
+/**
+ * @description
+ * This mixin enables you to use the CSS3 value `rem`, which lets you define
+ * property sizes based on the root element's font-size.
+ *
+ * @author drublic
+ *
+ * @link caniuse http://caniuse.com/rem
+ * @link spec http://www.w3.org/TR/css3-values/#relative0
+ *
+ * Note: Depending on the font-size of the root-element `rem` calculates a
+ * property of a current element. The fallback solution accepts a
+ * `default-font-size`-argument which is 16px by default.
+ */
+/*
+ * Returns a number without unit. E.g. 30px -> 30
+ * Borrowed from https://github.com/zurb/foundation/blob/master/scss/foundation/_functions.scss
+ * 
+ * @param value {String}
+ * @returns
+ *   <Number>
+ */
+/*
+ * Outputs properties that use rem with a px fallback.
+ * It also takes px values and converts them to rem.
+ *
+ * @param property
+ * @param values
+ * @param default-font-size int optional
+ * @returns
+ *   <property>: <parsed value>px;
+ *   <property>: <parsed value>rem;
+ *
+ * @example
+ *   .selector {
+ *     @include x-rem(font-size, 1.3);
+ *     @include x-rem(padding, 20px);
+ *   }
+ */
+/**
+ * @description
+ * Sass-mixin for CSS property `tab-size`, generates cross-browser-compatible
+ * `tab-size` output.
+ *
+ * @author drublic
+ *
+ * @link caniuse http://caniuse.com/css3-tabsize
+ * @link spec http://dev.w3.org/csswg/css-text/#tab-size1
+ *
+ * @param value int optional
+ * @default 4
+ * @returns
+ *   -moz-tab-size: <value>;
+ *        tab-size: <value>;
+ *
+ * @example
+ *   .selector {
+ *     @include x-tab-size(4);
+ *    }
+ */
+/**
+ * @description
+ * Generates cross-browser-compatible `transform` for a given element
+ *
+ * @author drublic
+ *
+ * @link caniuse http://caniuse.com/transforms2d http://caniuse.com/transforms3d
+ * @link spec
+ *
+ * @param values
+ * @returns
+ *   -webkit-transform: <values>;
+ *       -ms-transform: <values>;
+ *           transform: <values>;
+ *
+ * @example
+ *   .selector {
+ *     @include x-transform(rotate(1deg));
+ *   }
+ */
+/**
+ * @description
+ * Generates cross-browser-compatible `transition` output for a given element.
+ *
+ * @author drublic
+ *
+ * @link caniuse http://caniuse.com/css-transitions
+ * @link spec
+ *
+ * @param values
+ * @returns
+ *   -webkit-transition: <values>;
+ *           transition: <values>;
+ *
+ * @example
+ *   .selector {
+ *     @include x-transition(background 0.3s ease-in);
+ *   }
+ */
+/**
+ * @description
+ * Disables selection of content of a given element
+ *
+ * @author drublic
+ *
+ * @link caniuse http://caniuse.com/user-select-none
+ *
+ * @param value none|auto optional
+ * @default none
+ * @returns
+ *   -webkit-user-select: <value>;
+ *      -moz-user-select: <value>;
+ *       -ms-user-select: <value>;
+ *           user-select: <value>;
+ *
+ * @example
+ *   .selector {
+ *     @include x-user-select;
+ *   }
  */
 body {
   font: 16px/1.4 Helvetica Neue, sans-serif;
@@ -426,7 +1020,6 @@ code {
 .download, .call-modal, .content-tabbed > h3 > a, .semantic-content .close-action,
 .semantic-content .open-modal {
   -webkit-transition: 0.1s;
-  -o-transition: 0.1s;
   transition: 0.1s;
   display: inline-block;
   background: #111;
@@ -471,8 +1064,8 @@ code {
 }
 
 .site-nav {
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   position: fixed;
   z-index: 20;
   top: 0;
@@ -564,7 +1157,7 @@ code {
 
 .features {
   overflow: hidden;
-  margin: 1em -.7em 1.4em;
+  margin: 1em -0.7em 1.4em;
 }
 .features > div {
   -webkit-box-sizing: border-box;
@@ -706,20 +1299,12 @@ code {
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
-<<<<<<< HEAD
- * @version 1.1.0alpha
-=======
->>>>>>> origin/gh-pages
  */
 /**
  * CSS Modal Configuration
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
-<<<<<<< HEAD
- * @Since 1.1.0alpha
-=======
->>>>>>> origin/gh-pages
  */
 html {
   overflow-y: scroll;
@@ -733,12 +1318,6 @@ html {
   overflow-y: scroll;
 }
 @media screen and (max-width: 30em) {
-<<<<<<< HEAD
-  .has-overlay {
-    height: 100%;
-  }
-=======
->>>>>>> origin/gh-pages
   .has-overlay > body {
     overflow: hidden;
     height: 100%;
@@ -777,8 +1356,8 @@ html {
 }
 .is-active.semantic-content, .is-active.modal--show {
   display: block\9;
-  height: 100% \9;
-  width: 100% \9;
+  height: 100%\9;
+  width: 100%\9;
 }
 .semantic-content:target, .modal--show:target, .is-active.semantic-content, .is-active.modal--show {
   display: block\9;
@@ -793,14 +1372,11 @@ html {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
-<<<<<<< HEAD
-=======
 @media \0screen\,screen\9 {
   .semantic-content .modal-inner, .modal--show .modal-inner {
     background: transparent;
   }
 }
->>>>>>> origin/gh-pages
 .semantic-content .modal-inner > img, .modal--show .modal-inner > img,
 .semantic-content .modal-inner > video,
 .modal--show .modal-inner > video,
@@ -815,26 +1391,18 @@ html {
   max-width: 100%;
 }
 .semantic-content .modal-content, .modal--show .modal-content {
-<<<<<<< HEAD
-  max-height: 400px;
-  max-height: 70vh;
-=======
   position: relative;
   max-height: 400px;
   max-height: 80vh;
->>>>>>> origin/gh-pages
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
-<<<<<<< HEAD
-=======
 @media \0screen\,screen\9 {
   .semantic-content .modal-content, .modal--show .modal-content {
     overflow: visible;
   }
 }
->>>>>>> origin/gh-pages
 .semantic-content .modal-content > *, .modal--show .modal-content > * {
   max-width: 100%;
 }
@@ -851,13 +1419,10 @@ html {
   margin: -1px;
   overflow: hidden;
 }
-<<<<<<< HEAD
-=======
 .semantic-content .modal-close:focus:after, .modal--show .modal-close:focus:after {
   outline: 1px dotted;
   outline: -webkit-focus-ring-color auto 5px;
 }
->>>>>>> origin/gh-pages
 .semantic-content .modal-close:before, .modal--show .modal-close:before {
   content: '';
   position: absolute;
@@ -873,11 +1438,7 @@ html {
   top: 25px;
   right: 50%;
   z-index: 20;
-<<<<<<< HEAD
-  margin-left: 285px;
-=======
   margin-right: -325px;
->>>>>>> origin/gh-pages
 }
 @media screen and (max-width: 690px) {
   .semantic-content .modal-inner, .modal--show .modal-inner {
@@ -886,19 +1447,9 @@ html {
     right: 20px;
     margin-left: 0;
   }
-<<<<<<< HEAD
-  .semantic-content .modal-close, .modal--show .modal-close {
-    left: auto;
-    right: 33px;
-    margin-left: 0;
-  }
-  .semantic-content .modal-close:after, .modal--show .modal-close:after {
-    margin-left: 40%;
-=======
   .semantic-content .modal-close:after, .modal--show .modal-close:after {
     margin-right: 0 !important;
     right: 20px;
->>>>>>> origin/gh-pages
   }
 }
 @media screen and (max-width: 30em) {
@@ -915,14 +1466,6 @@ html {
     bottom: auto;
   }
   .semantic-content:target, .modal--show:target, .is-active.semantic-content, .is-active.modal--show {
-<<<<<<< HEAD
-    -webkit-transition: -webkit-transform .25s ease-in-out;
-    -moz-transition: -moz-transform .25s ease-in-out;
-    -o-transition: -o-transform .25s ease-in-out;
-    -ms-transition: -ms-transform .25s ease-in-out;
-    transition: transform .25s ease-in-out;
-=======
->>>>>>> origin/gh-pages
     height: 100%;
   }
   .semantic-content:before, .modal--show:before {
@@ -958,14 +1501,9 @@ html {
     display: none;
   }
   .semantic-content .modal-close:after, .modal--show .modal-close:after {
-<<<<<<< HEAD
-    top: 0.4em;
-    left: 1em;
-=======
     top: 5px !important;
     right: 5px;
     left: auto;
->>>>>>> origin/gh-pages
     z-index: 40;
     margin-left: 0;
   }
@@ -1020,18 +1558,21 @@ html {
     -webkit-transform: scale(0.8);
   }
 }
+
 @-moz-keyframes scaleDown {
   to {
     opacity: 0;
     -moz-transform: scale(0.8);
   }
 }
+
 @keyframes scaleDown {
   to {
     opacity: 0;
     transform: scale(0.8);
   }
 }
+
 @media screen and (min-width: 30em) {
   .semantic-content {
     -webkit-transition: opacity 0.4s;
@@ -1057,6 +1598,7 @@ html {
     -webkit-transform: translateX(0%) translateY(0%);
   }
 }
+
 @-webkit-keyframes bounce {
   0% {
     -webkit-transform: translateY(-100%);
@@ -1070,6 +1612,7 @@ html {
     -webkit-transform: translateY(0%);
   }
 }
+
 @-moz-keyframes bounce {
   0% {
     -moz-transform: translateY(-100%);
@@ -1083,6 +1626,7 @@ html {
     -moz-transform: translateY(0%);
   }
 }
+
 @-o-keyframes bounce {
   0% {
     -o-transform: translateY(-100%);
@@ -1096,6 +1640,7 @@ html {
     -o-transform: translateY(0%);
   }
 }
+
 @-ms-keyframes bounce {
   0% {
     -ms-transform: translateY(-100%);
@@ -1109,6 +1654,7 @@ html {
     -ms-transform: translateY(0%);
   }
 }
+
 @keyframes bounce {
   0% {
     transform: translateY(-100%);
@@ -1122,18 +1668,15 @@ html {
     transform: translateY(0%);
   }
 }
+
 /**
  * CSS Modal Themes
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
-<<<<<<< HEAD
- * @Since 1.1.0alpha
-=======
  */
 /*
  * Global Theme Styles
->>>>>>> origin/gh-pages
  */
 .semantic-content, .modal--show {
   color: #222222;
@@ -1144,12 +1687,9 @@ html {
   background: white;
   -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-<<<<<<< HEAD
-=======
   max-width: 100%;
   -webkit-transition: max-width 0.25s linear, margin-left 0.125s linear;
   transition: max-width 0.25s linear, margin-left 0.125s linear;
->>>>>>> origin/gh-pages
 }
 .semantic-content header, .modal--show header {
   border-bottom: 1px solid #dddddd;
@@ -1210,12 +1750,9 @@ html {
   }
 }
 
-<<<<<<< HEAD
-=======
 /*
  * Plain Screen Theme Styles
  */
->>>>>>> origin/gh-pages
 .semantic-content footer > p {
   margin-bottom: 0;
 }

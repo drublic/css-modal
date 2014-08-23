@@ -3,8 +3,8 @@
  */
 
 // Import helpers
-@import "helpers/normalize";
-@import "helpers/mixins";
+@import 'bower_components/normalize-scss/normalize';
+@import 'bower_components/sass-mixins/mixins';
 
 // Main-Color
 $color: #27aae2;
