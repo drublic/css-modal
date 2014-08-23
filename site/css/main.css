@@ -978,7 +978,7 @@ th {
  *   }
  */
 body {
-  font: 16px/1.4 Helvetica Neue, sans-serif;
+  font: 16px/1.4 sans-serif;
   color: #111;
   text-align: center;
 }
@@ -987,14 +987,24 @@ h2 {
   font-size: 32px;
   font-size: 2rem;
   font-weight: normal;
-  margin: 2em 0 .5em;
+  margin: 2em 0 1em;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5em;
 }
 
 h3 {
-  font-size: 16px;
-  font-size: 1rem;
+  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: normal;
-  margin-bottom: 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5em;
+  margin: 2em 0 1em;
+}
+h3 a {
+  text-decoration: none;
+}
+h3 a, h3 a:visited {
+  color: #111;
 }
 
 a {

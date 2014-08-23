@@ -11,7 +11,7 @@ $color: #27aae2;
 
 // Default styles
 body {
-	font: 16px/1.4 Helvetica Neue, sans-serif;
+	font: 16px/1.4 sans-serif;
 	color: #111;
 	text-align: center;
 }
@@ -20,14 +20,27 @@ h2 {
 	@include x-rem(font-size, 2);
 
 	font-weight: normal;
-	margin: 2em 0 .5em;
+	margin: 2em 0 1em;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 0.5em;
 }
 
 h3 {
-	@include x-rem(font-size, 1);
+	@include x-rem(font-size, 1.25);
 
 	font-weight: normal;
-	margin-bottom: 0;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 0.5em;
+	margin: 2em 0 1em;
+
+	a {
+		text-decoration: none;
+
+		&,
+		&:visited {
+			color: #111;
+		}
+	}
 }
 
 
