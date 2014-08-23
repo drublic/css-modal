@@ -1,0 +1,143 @@
+/**
+ * CSS Modal Themes
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ */
+
+/*
+ * Global Theme Styles
+ */
+
+%modal-theme {
+	color: $modal-color;
+	line-height: 1.3;
+
+
+	// Content Area
+	.modal-inner {
+		border-radius: $modal-border-radius;
+		background: $modal-inner-background;
+		-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.6);
+		        box-shadow: 0 0 30px rgba(0,0,0,0.6);
+
+		max-width: 100%;
+
+		-webkit-transition: max-width 0.25s linear,
+		                    margin-left 0.125s linear;
+		        transition: max-width 0.25s linear,
+		                    margin-left 0.125s linear;
+	}
+
+
+	// Header
+	header {
+		border-bottom: 1px solid $modal-border-color;
+		padding: 0 1.2em;
+
+		> h2 {
+			margin: 0.5em 0;
+		}
+	}
+
+
+	// Content
+	.modal-content {
+		border-bottom: 1px solid $modal-border-color;
+		padding: 15px 1.2em;
+	}
+
+
+	// Footer
+	footer {
+		border-top: 1px solid lighten($modal-border-color, 20);
+		padding: 0 1.2em 18px;
+		background: #f0f0f0;
+		border-radius: $modal-border-radius;
+	}
+
+
+	// A close button
+	.modal-close {
+		text-indent: -100px;
+
+		// Background as close
+		&:before {
+			// Background for overlay: Data URI because of IE8 not supporting rgba
+			background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAEUlEQVQoz2NgeEYAjioYSQoAzOTmAXhPhyoAAAAASUVORK5CYII=');
+		}
+
+		// Actual close button on modal
+		&:after {
+			content: '\00d7';
+
+			background: $modal-inner-background;
+
+			border-radius: $modal-border-radius;
+			padding: 2px 8px;
+
+			font-size: 1.2em;
+			text-decoration: none;
+			text-indent: 0;
+		}
+	}
+
+
+	// For small screens adjust the modal
+	@media screen and (max-width: $modal-small-breakpoint) {
+		&:before {
+			background-color:  $modal-mobile-header;
+			background-image: -webkit-gradient(linear, left top, left bottom, from($modal-mobile-header), to(darken($modal-mobile-header, 5%)));
+			background-image: -webkit-linear-gradient(top, $modal-mobile-header, darken($modal-mobile-header, 5%));
+			background-image:    -moz-linear-gradient(top, $modal-mobile-header, darken($modal-mobile-header, 5%));
+			background-image:      -o-linear-gradient(top, $modal-mobile-header, darken($modal-mobile-header, 5%));
+			background-image:         linear-gradient(to bottom, $modal-mobile-header, darken($modal-mobile-header, 5%));
+
+			height: 3em;
+			-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.6);
+			        box-shadow: 0 0 5px rgba(0,0,0,0.6);
+		}
+
+		.modal-inner {
+			padding-top: 3em;
+			-webkit-box-shadow: none;
+			        box-shadow: none;
+		}
+
+		.modal-close {
+			text-decoration: none;
+
+			&:after {
+				content: attr(data-close);
+				font-size: 1em;
+				padding: 0.5em 1em;
+			}
+		}
+	}
+}
+
+
+/*
+ * Plain Screen Theme Styles
+ */
+
+%modal-theme-plainScreen {
+
+	.modal-inner {
+		-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+		        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+	}
+
+	// A close button
+	.modal-close {
+		// Background as close
+		&:before {
+			background: $modal-plain-screen-overlay;
+		}
+
+		&:after {
+			-webkit-box-shadow: 0px -4px 8px -1px rgba(0, 0, 0, 0.25);
+			        box-shadow: 0px -4px 8px -1px rgba(0, 0, 0, 0.25);
+		}
+	}
+}

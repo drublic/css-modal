@@ -1,0 +1,20 @@
+{
+  "name": "css-modal-site",
+  "version": "1.1.2",
+  "homepage": "https://github.com/drublic/css-modal",
+  "authors": [
+    "Hans Christian Reinl <info@drublic.de>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "~2.1.1",
+    "css-modal": "~1.1.8"
+  }
+}

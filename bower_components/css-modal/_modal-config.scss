@@ -1,0 +1,23 @@
+/**
+ * CSS Modal Configuration
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ */
+
+// Modal General Styles
+$modal-max-width: 650px !default;
+$modal-border-radius: 2px !default;
+$modal-small-breakpoint: 30em !default;
+
+// Modal Plain Screen Styles
+$modal-plain-screen-overlay: #fff !default;
+
+// Set high z-index to appear above all other content
+$modal-layer: 999 !default;
+
+// Color configuration
+$modal-border-color: #ddd !default;
+$modal-inner-background: #fff !default;
+$modal-color: #222 !default;
+$modal-mobile-header: #27aae2 !default;

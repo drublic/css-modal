@@ -1,0 +1,440 @@
+/**
+ * CSS Modal
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ */
+/**
+ * CSS Modal Configuration
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ */
+html {
+  overflow-y: scroll;
+}
+
+.has-overlay {
+  overflow: hidden;
+}
+.has-overlay > body {
+  height: 100%;
+  overflow-y: scroll;
+}
+@media screen and (max-width: 30em) {
+  .has-overlay > body {
+    overflow: hidden;
+    height: 100%;
+  }
+}
+
+.modal--show {
+  -webkit-transform: translate(0, 100%);
+  -moz-transform: translate(0, 100%);
+  -o-transform: translate(0, 100%);
+  -ms-transform: translate(0, 100%);
+  transform: translate(0, 100%);
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  display: none\9;
+}
+.modal--show:target, .is-active.modal--show {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  width: auto;
+  height: auto;
+  opacity: 1;
+}
+.is-active.modal--show {
+  display: block\9;
+  height: 100% \9;
+  width: 100% \9;
+}
+.modal--show:target, .is-active.modal--show {
+  display: block\9;
+}
+.modal--show .modal-inner {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  z-index: 20;
+  margin-left: -325px;
+  width: 650px;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+@media \0screen\,screen\9 {
+  .modal--show .modal-inner {
+    background: transparent;
+  }
+}
+.modal--show .modal-inner > img,
+.modal--show .modal-inner > video,
+.modal--show .modal-inner > iframe {
+  width: 100%;
+  height: auto;
+  min-height: 300px;
+}
+.modal--show .modal-inner > img {
+  width: auto;
+  max-width: 100%;
+}
+.modal--show .modal-content {
+  position: relative;
+  max-height: 400px;
+  max-height: 80vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+@media \0screen\,screen\9 {
+  .modal--show .modal-content {
+    overflow: visible;
+  }
+}
+.modal--show .modal-content > * {
+  max-width: 100%;
+}
+.modal--show footer {
+  border-top: 1px solid white;
+  padding: 0 1.2em 18px;
+  background: #f0f0f0;
+  border-radius: 2px;
+}
+.modal--show .modal-close {
+  display: block;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  overflow: hidden;
+}
+.modal--show .modal-close:focus:after {
+  outline: 1px dotted;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+.modal--show .modal-close:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+.modal--show .modal-close:after {
+  content: '\00d7';
+  position: absolute;
+  top: 25px;
+  right: 50%;
+  z-index: 20;
+  margin-right: -325px;
+}
+@media screen and (max-width: 690px) {
+  .modal--show .modal-inner {
+    width: auto;
+    left: 20px;
+    right: 20px;
+    margin-left: 0;
+  }
+  .modal--show .modal-close:after {
+    margin-right: 0 !important;
+    right: 20px;
+  }
+}
+@media screen and (max-width: 30em) {
+  .modal--show {
+    -webkit-transform: translate(0, 400px);
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    -webkit-transition: opacity 1ms .25s;
+    -moz-transition: opacity 1ms .25s;
+    -o-transition: opacity 1ms .25s;
+    -ms-transition: opacity 1ms .25s;
+    transition: opacity 1ms .25s;
+    display: block;
+    bottom: auto;
+  }
+  .modal--show:target, .is-active.modal--show {
+    height: 100%;
+  }
+  .modal--show:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 30;
+  }
+  .modal--show .modal-inner {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    overflow: auto;
+  }
+  .modal--show .modal-content {
+    max-height: none;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+  }
+  .modal--show .modal-close {
+    right: auto;
+  }
+  .modal--show .modal-close:before {
+    display: none;
+  }
+  .modal--show .modal-close:after {
+    top: 5px !important;
+    right: 5px;
+    left: auto;
+    z-index: 40;
+    margin-left: 0;
+  }
+}
+@media screen and (max-height: 46em) and (min-width: 30em) {
+  .modal--show .modal-content {
+    max-height: 340px;
+    max-height: 50vh;
+  }
+}
+@media screen and (max-height: 36em) and (min-width: 30em) {
+  .modal--show .modal-content {
+    max-height: 265px;
+    max-height: 40vh;
+  }
+}
+.is-stacked.modal--show {
+  -webkit-transform: translate(0, 0) scale(1, 1);
+  -moz-transform: translate(0, 0) scale(1, 1);
+  -o-transform: translate(0, 0) scale(1, 1);
+  -ms-transform: translate(0, 0) scale(1, 1);
+  transform: translate(0, 0) scale(1, 1);
+  opacity: 1;
+}
+.is-stacked.modal--show .modal-inner {
+  -webkit-animation: scaleDown .7s ease both;
+  -moz-animation: scaleDown .7s ease both;
+  animation: scaleDown .7s ease both;
+}
+.is-stacked.modal--show .modal-close {
+  opacity: 0;
+}
+@media screen and (max-width: 30em) {
+  .is-stacked.modal--show {
+    -webkit-animation: scaleDown .7s ease both;
+    -moz-animation: scaleDown .7s ease both;
+    animation: scaleDown .7s ease both;
+  }
+  .is-stacked.modal--show .modal-inner {
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: none;
+  }
+  .is-stacked.modal--show .modal-close {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes scaleDown {
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0.8);
+  }
+}
+@-moz-keyframes scaleDown {
+  to {
+    opacity: 0;
+    -moz-transform: scale(0.8);
+  }
+}
+@keyframes scaleDown {
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+@-webkit-keyframes shaky {
+  0% {
+    -webkit-transform: translateY(-100%);
+  }
+
+  60% {
+    -webkit-transform: translateX(5%) translateY(5%) rotate(-2deg);
+  }
+
+  80% {
+    -webkit-transform: translateX(5%) translateY(5%) rotate(2deg);
+  }
+
+  50%, 70%, 90% {
+    -webkit-transform: translateX(0%) translateY(0%);
+  }
+}
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: translateY(-100%);
+  }
+
+  60% {
+    -webkit-transform: translateY(5%);
+  }
+
+  85% {
+    -webkit-transform: translateY(0%);
+  }
+}
+@-moz-keyframes bounce {
+  0% {
+    -moz-transform: translateY(-100%);
+  }
+
+  60% {
+    -moz-transform: translateY(5%);
+  }
+
+  85% {
+    -moz-transform: translateY(0%);
+  }
+}
+@-o-keyframes bounce {
+  0% {
+    -o-transform: translateY(-100%);
+  }
+
+  60% {
+    -o-transform: translateY(5%);
+  }
+
+  85% {
+    -o-transform: translateY(0%);
+  }
+}
+@-ms-keyframes bounce {
+  0% {
+    -ms-transform: translateY(-100%);
+  }
+
+  60% {
+    -ms-transform: translateY(5%);
+  }
+
+  85% {
+    -ms-transform: translateY(0%);
+  }
+}
+@keyframes bounce {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  60% {
+    transform: translateY(5%);
+  }
+
+  85% {
+    transform: translateY(0%);
+  }
+}
+/**
+ * CSS Modal Themes
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ */
+/*
+ * Global Theme Styles
+ */
+.modal--show {
+  color: #222222;
+  line-height: 1.3;
+}
+.modal--show .modal-inner {
+  border-radius: 2px;
+  background: white;
+  -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  max-width: 100%;
+  -webkit-transition: max-width 0.25s linear, margin-left 0.125s linear;
+  transition: max-width 0.25s linear, margin-left 0.125s linear;
+}
+.modal--show header {
+  border-bottom: 1px solid #dddddd;
+  padding: 0 1.2em;
+}
+.modal--show header > h2 {
+  margin: 0.5em 0;
+}
+.modal--show .modal-content {
+  border-bottom: 1px solid #dddddd;
+  padding: 15px 1.2em;
+}
+.modal--show footer {
+  border-top: 1px solid white;
+  padding: 0 1.2em 18px;
+  background: #f0f0f0;
+  border-radius: 2px;
+}
+.modal--show .modal-close {
+  text-indent: -100px;
+}
+.modal--show .modal-close:before {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAEUlEQVQoz2NgeEYAjioYSQoAzOTmAXhPhyoAAAAASUVORK5CYII=");
+}
+.modal--show .modal-close:after {
+  content: '\00d7';
+  background: white;
+  border-radius: 2px;
+  padding: 2px 8px;
+  font-size: 1.2em;
+  text-decoration: none;
+  text-indent: 0;
+}
+@media screen and (max-width: 30em) {
+  .modal--show:before {
+    background-color: #27aae2;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#27aae2), to(#1c9cd3));
+    background-image: -webkit-linear-gradient(top, #27aae2, #1c9cd3);
+    background-image: -moz-linear-gradient(top, #27aae2, #1c9cd3);
+    background-image: -o-linear-gradient(top, #27aae2, #1c9cd3);
+    background-image: linear-gradient(to bottom, #27aae2, #1c9cd3);
+    height: 3em;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  }
+  .modal--show .modal-inner {
+    padding-top: 3em;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .modal--show .modal-close {
+    text-decoration: none;
+  }
+  .modal--show .modal-close:after {
+    content: attr(data-close);
+    font-size: 1em;
+    padding: 0.5em 1em;
+  }
+}
+
+/*
+ * Plain Screen Theme Styles
+ */
