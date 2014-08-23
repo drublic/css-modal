@@ -3,7 +3,6 @@
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @version 1.1.0alpha
  */
 
 (function (global) {
@@ -32,32 +31,55 @@
 		 * @param callback {function} gets fired if event is triggered
 		 */
 		on: function (event, element, callback) {
-			if (element.addEventListener) {
+			if (typeof event !== 'string') {
+				throw new Error('Type error: `error` has to be a string');
+			}
+
+			if (typeof callback !== 'function') {
+				throw new Error('Type error: `callback` has to be a function');
+			}
+
+			if (!element) {
+				return;
+			}
+
+			// Default way to support events
+			if ('addEventListener' in element) {
 				element.addEventListener(event, callback, false);
-			} else {
+
+			// If the event is a hashchange
+			} else if (event === 'hashchange' && element.attachEvent) {
 				element.attachEvent('on' + event, callback);
+
+			// If the event is not a haschange and bean is supported
+			} else {
+				bean.on(element, event, callback);
 			}
 		},
 
 		/*
 		 * Convenience function to trigger event
 		 * @param event {string} event type
-		 * @param modal {string} id of modal that the event is triggerd on
+		 * @param modal {string} id of modal that the event is triggered on
 		 */
 		trigger: function (event, modal) {
 			var eventTrigger;
-
-			if (!window.CustomEvent) {
-				return;
-			}
-
-			eventTrigger = new CustomEvent(event, {
+			var eventParams = {
 				detail: {
 					'modal': modal
 				}
-			});
+			};
 
-			document.dispatchEvent(eventTrigger);
+			// Use the bean library to fire the event if it is included
+			if (global.bean) {
+				bean.fire(document, event, eventParams);
+
+			// Use CustomEvents if supported
+			} else {
+				eventTrigger = new CustomEvent(event, eventParams);
+
+				document.dispatchEvent(eventTrigger);
+			}
 		},
 
 		/*
@@ -78,6 +100,16 @@
 		 */
 		removeClass: function (element, className) {
 			element.className = element.className.replace(className, '').replace('  ', ' ');
+		},
+
+		/**
+		 * Convenience function to check if an element has a class
+		 * @param  {Node}    element   Element to check classname on
+		 * @param  {string}  className Class name to check for
+		 * @return {Boolean}           true, if class is available on modal
+		 */
+		hasClass: function (element, className) {
+			return !!element.className.match(className);
 		},
 
 		/*
@@ -111,7 +143,16 @@
 		 * @param element {node} element to keep focus in
 		 */
 		keepFocus: function (element) {
-			var allTabbableElements = element.querySelectorAll(modal.tabbableElements);
+			var allTabbableElements = [];
+
+			// Don't keep the focus if the browser is unable to support
+			// CSS3 selectors
+			try {
+				allTabbableElements = element.querySelectorAll(modal.tabbableElements);
+			} catch (ex) {
+				return;
+			}
+
 			var firstTabbableElement = allTabbableElements[0];
 			var lastTabbableElement = allTabbableElements[allTabbableElements.length - 1];
 
@@ -151,6 +192,9 @@
 			modal.addClass(element, 'is-active');
 			modal.activeElement = element;
 
+			// Update aria-hidden
+			modal.activeElement.setAttribute('aria-hidden', 'false');
+
 			// Set the focus to the modal
 			modal.setFocus(element.id);
 
@@ -168,6 +212,9 @@
 
 				// Fire an event
 				modal.trigger('cssmodal:hide', modal.activeElement);
+
+				// Update aria-hidden
+				modal.activeElement.setAttribute('aria-hidden', 'true');
 
 				// Unfocus
 				modal.removeFocus();
@@ -216,14 +263,43 @@
 
 		/*
 		 * When displaying modal, prevent background from scrolling
+		 * @param  {Object} event The incoming hashChange event
+		 * @return {void}
 		 */
-		mainHandler: function () {
+		mainHandler: function (event) {
 			var hash = window.location.hash.replace('#', '');
+			var index = 0;
+			var tmp = [];
 			var modalElement = document.getElementById(hash);
 			var modalChild;
 
+			// Check if the hash contains an index
+			if (hash.indexOf('/') !== -1) {
+				tmp = hash.split('/');
+				index = tmp.pop();
+				hash = tmp.join('/');
+
+				// Remove the index from the hash...
+				modalElement = document.getElementById(hash);
+
+				// ... and store the index as a number on the element to
+				// make it accessible for plugins
+				if (!modalElement) {
+					throw new Error('ReferenceError: element "' + hash + '" does not exist!');
+				}
+
+				modalElement.index = (1 * index);
+			}
+
 			// If the hash element exists
 			if (modalElement) {
+
+				// Polyfill to prevent the default behavior of events
+				event.preventDefault = event.preventDefault || function () {
+					event.returnValue = false;
+				};
+
+				event.preventDefault();
 
 				// Get first element in selected element
 				modalChild = modalElement.children[0];
@@ -234,8 +310,8 @@
 					// Set an html class to prevent scrolling
 					modal.addClass(document.documentElement, 'has-overlay');
 
-					// Make previous element stackable
-					modal.unsetActive(true);
+					// Make previous element stackable if it is not the same modal
+					modal.unsetActive( !modal.hasClass(modalElement, 'is-active') );
 
 					// Mark the active element
 					modal.setActive(modalElement);
@@ -246,12 +322,56 @@
 				// If activeElement is already defined, delete it
 				modal.unsetActive();
 			}
+
+			return true;
+		},
+
+		/**
+		 * Listen to all relevant events
+		 * @return {void}
+		 */
+		init: function () {
+
+			/*
+			 * Hide overlay when ESC is pressed
+			 */
+			this.on('keyup', document, function (event) {
+				var hash = window.location.hash.replace('#', '');
+
+				// If hash is not set
+				if (hash === '' || hash === '!') {
+					return;
+				}
+
+				// If key ESC is pressed
+				if (event.keyCode === 27) {
+					window.location.hash = '!';
+
+					if (modal.lastActive) {
+						return false;
+					}
+
+					// Unfocus
+					modal.removeFocus();
+				}
+			}, false);
+
+			/*
+			 * Trigger main handler on load and hashchange
+			 */
+			this.on('hashchange', window, modal.mainHandler);
+			this.on('load', window, modal.mainHandler);
 		}
 	};
 
+<<<<<<< HEAD
 
 	/*
 	 * Hide overlay when ESC is pressed
+=======
+	/*
+	 * AMD, module loader, global registration
+>>>>>>> origin/gh-pages
 	 */
 	modal.on('keyup', document, function (event) {
 		var hash = window.location.hash.replace('#', '');
@@ -261,6 +381,7 @@
 			return;
 		}
 
+<<<<<<< HEAD
 		// If key ESC is pressed
 		if (event.keyCode === 27) {
 			window.location.hash = '!';
@@ -292,10 +413,33 @@
 	// Register as an AMD module
 	} else if (typeof define === 'function' && define.amd) {
 		define([], function () { return modal; });
+=======
+	// Expose modal for loaders that implement the Node module pattern.
+	if (typeof module === 'object' && module && typeof module.exports === 'object') {
+		module.exports = modal;
+
+	// Register as an AMD module
+	} else if (typeof define === 'function' && define.amd) {
+		define('CSSModal', [], function () {
+
+			// We use bean if the browser doesn't support CustomEvents
+			if (!global.CustomEvent && !global.bean) {
+				throw new Error('This browser doesn\'t support CustomEvent - please include bean: https://github.com/fat/bean');
+			}
+
+			modal.init();
+
+			return modal;
+		});
+>>>>>>> origin/gh-pages
 
 	// Export CSSModal into global space
 	} else if (typeof global === 'object' && typeof global.document === 'object') {
 		global.CSSModal = modal;
+<<<<<<< HEAD
+=======
+		modal.init();
+>>>>>>> origin/gh-pages
 	}
 
 }(window));

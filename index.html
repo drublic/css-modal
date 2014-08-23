@@ -41,8 +41,8 @@
 			<p>Modals built out of pure CSS</p>
 
 			<p>
-				<a href="https://github.com/drublic/css-modal/zipball/v1.1.0"
-						class="download">Download v1.1.0</a><br>
+				<a href="https://github.com/drublic/css-modal/zipball/v1.1.8"
+						class="download">Download v1.1.8</a><br>
 				<a href="https://github.com/drublic/css-modal/blob/master/CHANGELOG.md"
 						class="changelog">View Changelog</a>
 			</p>
@@ -104,6 +104,8 @@
 			<section id="howto">
 				<h2>How to use</h2>
 
+				<h3>Please refer to <a href="https://github.com/drublic/css-modal/blob/master/README.md">the README file on GitHub</a> to get the latest info on how to use.</h3>
+
 				<p>The easiest way to install CSS Modal's files is with <a href="http://bower.io/">Bower</a>.</p>
 				<pre><code class="language-css">bower install --save css-modal</code></pre>
 
@@ -150,7 +152,7 @@
 					<!-- CSS -->
 					<h3 class="tab-content-anchor" id="howto-css"><a href="#howto-css">CSS</a></h3>
 					<div class="tab-content">
-						<p>If you are not into Sass you can still use Vanilla CSS. Include <a href="https://github.com/drublic/css-modal/tree/master/modal.scss">the file</a> in your CSS and don't forget to add it to your <a href="http://gruntjs.com/" title="use grunt.js as build tool for example">build process</a>. Here is the snippet for development:</p>
+						<p>If you are not into Sass you can still use Vanilla CSS. Include <a href="https://github.com/drublic/css-modal/tree/master/build/modal.css">the file</a> in your CSS and don't forget to add it to your <a href="http://gruntjs.com/" title="use grunt.js as build tool for example">build process</a>. Here is the snippet for development:</p>
 						<pre><code class="language-markup">&lt;link rel="stylesheet" href="css/modal.css"&gt;</code></pre>
 
 						<p>You can now add the markup to your website as stated above and apply a class <code>.modal</code> to the element.</p>
@@ -161,7 +163,7 @@
 					<div class="tab-content">
 						<p>As stated above you don't need JavaScript to get a good experience out of CSS Modals. But there are some issues where JavaScript helps:</p>
 						<ul>
-              <li>IE 8 compatibility.</li>
+							<li>IE 8 compatibility.</li>
 							<li>Pressing escape: If you press <code>ESC</code> on your keyboard while the modal is visible it closes itself. This behavior cannot be done with CSS only.</li>
 							<li>Preventing background page from scrolling: If you scroll within the modal and you reach the end you don't want the page in the background to scroll. To prevent this JavaScript pushs a CSS class selector to the body element.</li>
 							<li>Being accessible: To get the browser's focus to the modal and back after closing.</li>

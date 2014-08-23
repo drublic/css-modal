@@ -3,12 +3,20 @@
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
+<<<<<<< HEAD
  * @Since 1.1.0alpha
  */
 
 // ==================================================
 // Global Theme Styles
 // ==================================================
+=======
+ */
+
+/*
+ * Global Theme Styles
+ */
+>>>>>>> origin/gh-pages
 
 %modal-theme {
 	color: $modal-color;
@@ -21,6 +29,16 @@
 		background: $modal-inner-background;
 		-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.6);
 		        box-shadow: 0 0 30px rgba(0,0,0,0.6);
+<<<<<<< HEAD
+=======
+
+		max-width: 100%;
+
+		-webkit-transition: max-width 0.25s linear,
+		                    margin-left 0.125s linear;
+		        transition: max-width 0.25s linear,
+		                    margin-left 0.125s linear;
+>>>>>>> origin/gh-pages
 	}
 
 
@@ -78,7 +96,11 @@
 
 
 	// For small screens adjust the modal
+<<<<<<< HEAD
 	@media screen and (max-width: 30em) {
+=======
+	@media screen and (max-width: $modal-small-breakpoint) {
+>>>>>>> origin/gh-pages
 		&:before {
 			background-color:  $modal-mobile-header;
 			background-image: -webkit-gradient(linear, left top, left bottom, from($modal-mobile-header), to(darken($modal-mobile-header, 5%)));
@@ -111,16 +133,38 @@
 }
 
 
+<<<<<<< HEAD
 // ==================================================
 // Plain Screen Theme Styles
 // ==================================================
 
 %modal-theme-plainScreen {
+=======
+/*
+ * Plain Screen Theme Styles
+ */
+
+%modal-theme-plainScreen {
+
+	.modal-inner {
+		-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+		        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+	}
+
+>>>>>>> origin/gh-pages
 	// A close button
 	.modal-close {
 		// Background as close
 		&:before {
 			background: $modal-plain-screen-overlay;
 		}
+<<<<<<< HEAD
+=======
+
+		&:after {
+			-webkit-box-shadow: 0px -4px 8px -1px rgba(0, 0, 0, 0.25);
+			        box-shadow: 0px -4px 8px -1px rgba(0, 0, 0, 0.25);
+		}
+>>>>>>> origin/gh-pages
 	}
 }

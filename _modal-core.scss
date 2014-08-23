@@ -13,9 +13,13 @@ html {
 	}
 
 
+<<<<<<< HEAD
 	@media screen and (max-width: 30em) {
 		height: 100%;
 
+=======
+	@media screen and (max-width: $modal-small-breakpoint) {
+>>>>>>> origin/gh-pages
 		> body {
 			overflow: hidden;
 			height: 100%;
@@ -68,6 +72,11 @@ html {
 
 	&.is-active {
 		display: block\9;
+<<<<<<< HEAD
+=======
+		height: 100%\9;
+		width: 100%\9;
+>>>>>>> origin/gh-pages
 	}
 
 
@@ -90,6 +99,14 @@ html {
 
 		-webkit-overflow-scrolling: touch; // Native style momentum scrolling
 
+<<<<<<< HEAD
+=======
+		// This removes the scrollbar in lt IE9
+		@media \0screen\,screen\9 {
+			background: transparent;
+		}
+
+>>>>>>> origin/gh-pages
 		> img,
 		> video,
 		> iframe {
@@ -107,10 +124,24 @@ html {
 
 	// Content
 	.modal-content {
+<<<<<<< HEAD
 		max-height: 400px;
 		max-height: 70vh;
 		overflow-x: hidden;
 		overflow-y: auto;
+=======
+		position: relative;
+		max-height: 400px;
+		max-height: 80vh;
+		overflow-x: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+
+		// This removes the scrollbar in lt IE9
+		@media \0screen\,screen\9 {
+			overflow: visible;
+		}
+>>>>>>> origin/gh-pages
 
 		> * {
 			max-width: 100%;
@@ -135,6 +166,13 @@ html {
 		margin: -1px;
 		overflow: hidden;
 
+<<<<<<< HEAD
+=======
+		&:focus:after {
+			outline: 1px dotted;
+			outline: -webkit-focus-ring-color auto 5px;
+		}
+>>>>>>> origin/gh-pages
 
 		// Background as close
 		&:before {
@@ -153,9 +191,15 @@ html {
 			content: '\00d7';
 			position: absolute;
 			top: 25px;
+<<<<<<< HEAD
 			left: 50%;
 			z-index: 20;
 			margin-left: ($modal-max-width / 2) - 40;
+=======
+			right: 50%;
+			z-index: 20;
+			margin-right: -($modal-max-width / 2);
+>>>>>>> origin/gh-pages
 		}
 	}
 
@@ -169,6 +213,7 @@ html {
 			margin-left: 0;
 		}
 
+<<<<<<< HEAD
 
 		.modal-close {
 			left: auto;
@@ -177,34 +222,55 @@ html {
 
 			&:after {
 				margin-left: 40%;
+=======
+		.modal-close {
+			&:after {
+				margin-right: 0 !important;
+				right: 20px;
+>>>>>>> origin/gh-pages
 			}
 		}
 	}
 
 
 	// For small screens adjust the modal
+<<<<<<< HEAD
 	@media screen and (max-width: 30em) {
+=======
+	@media screen and (max-width: $modal-small-breakpoint) {
+>>>>>>> origin/gh-pages
 		-webkit-transform: translate(0, 400px); // Use px to work around Android 2.3 bug
 		-webkit-transform: translate3d(0, 100%, 0); // And overwrite px if 3D transforms are supported
 		        transform: translate3d(0, 100%, 0);
 
+<<<<<<< HEAD
 		-webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
 		   -moz-transition:    -moz-transform .25s ease-in-out, opacity 1ms .25s;
 		     -o-transition:      -o-transform .25s ease-in-out, opacity 1ms .25s;
 		    -ms-transition:     -ms-transform .25s ease-in-out, opacity 1ms .25s;
 		        transition:         transform .25s ease-in-out, opacity 1ms .25s;
+=======
+		-webkit-transition: opacity 1ms .25s;
+		   -moz-transition: opacity 1ms .25s;
+		     -o-transition: opacity 1ms .25s;
+		    -ms-transition: opacity 1ms .25s;
+		        transition: opacity 1ms .25s;
+>>>>>>> origin/gh-pages
 
 		display: block;
 		bottom: auto;
 
 		&:target,
 		&.is-active {
+<<<<<<< HEAD
 			-webkit-transition: -webkit-transform .25s ease-in-out;
 			   -moz-transition:    -moz-transform .25s ease-in-out;
 			     -o-transition:      -o-transform .25s ease-in-out;
 			    -ms-transition:     -ms-transform .25s ease-in-out;
 			        transition:         transform .25s ease-in-out;
 
+=======
+>>>>>>> origin/gh-pages
 			height: 100%;
 		}
 
@@ -234,6 +300,16 @@ html {
 
 		.modal-content {
 			max-height: none;
+<<<<<<< HEAD
+=======
+
+			// Prevent text from breaking modal in mobile view
+			-ms-word-break: break-all;
+			    word-break: break-word;
+			-webkit-hyphens: auto;
+			   -moz-hyphens: auto;
+			        hyphens: auto;
+>>>>>>> origin/gh-pages
 		}
 
 
@@ -245,8 +321,14 @@ html {
 			}
 
 			&:after {
+<<<<<<< HEAD
 				top: 0.4em;
 				left: 1em;
+=======
+				top: 5px !important;
+				right: 5px;
+				left: auto;
+>>>>>>> origin/gh-pages
 				z-index: 40;
 				margin-left: 0;
 			}
@@ -255,7 +337,11 @@ html {
 
 
 	// For small heights
+<<<<<<< HEAD
 	@media screen and (max-height: 46em) and (min-width: 30em) {
+=======
+	@media screen and (max-height: 46em) and (min-width: $modal-small-breakpoint) {
+>>>>>>> origin/gh-pages
 		.modal-content {
 			max-height: 340px;
 			max-height: 50vh;
@@ -263,7 +349,11 @@ html {
 	}
 
 
+<<<<<<< HEAD
 	@media screen and (max-height: 36em) and (min-width: 30em) {
+=======
+	@media screen and (max-height: 36em) and (min-width: $modal-small-breakpoint) {
+>>>>>>> origin/gh-pages
 		.modal-content {
 			max-height: 265px;
 			max-height: 40vh;
@@ -296,7 +386,11 @@ html {
 
 
 		// On small screens
+<<<<<<< HEAD
 		@media screen and (max-width: 30em) {
+=======
+		@media screen and (max-width: $modal-small-breakpoint) {
+>>>>>>> origin/gh-pages
 			-webkit-animation: scaleDown .7s ease both;
 			   -moz-animation: scaleDown .7s ease both;
 			        animation: scaleDown .7s ease both;
@@ -331,7 +425,11 @@ html {
 
 // Fade in the modal
 %modal--transition-fade {
+<<<<<<< HEAD
 	@media screen and (min-width: 30em) {
+=======
+	@media screen and (min-width: $modal-small-breakpoint) {
+>>>>>>> origin/gh-pages
 		-webkit-transition: opacity 0.4s;
 		     -o-transition: opacity 0.4s;
 		        transition: opacity 0.4s;
@@ -382,10 +480,13 @@ html {
 		        transition: all 0.4s;
 
 		opacity: 0;
+<<<<<<< HEAD
 		// Needs to be moved into the center
 		// of the modal initially
 		top: 250px;
 		left: 20%;
+=======
+>>>>>>> origin/gh-pages
 	}
 
 
@@ -416,7 +517,16 @@ html {
 			opacity: 1;
 			// Move back to proper position
 			top: 25px;
+<<<<<<< HEAD
 			left: 50%;
+=======
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
+>>>>>>> origin/gh-pages
 		}
 	}
 }
@@ -460,9 +570,18 @@ html {
 			opacity: 1;
 		}
 
+<<<<<<< HEAD
 
 		.modal-close:after {
 			top: 23px;
+=======
+		.modal-close:after {
+			top: 23px;
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+			}
+>>>>>>> origin/gh-pages
 		}
 	}
 }
@@ -511,7 +630,10 @@ html {
 		// Needs to be moved into the center
 		// of the modal initially
 		top: -125px;
+<<<<<<< HEAD
 		left: 75%;
+=======
+>>>>>>> origin/gh-pages
 	}
 
 
@@ -542,7 +664,16 @@ html {
 			opacity: 1;
 			// Move back to proper position
 			top: 25px;
+<<<<<<< HEAD
 			left: 50%;
+=======
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
+>>>>>>> origin/gh-pages
 		}
 	}
 }
@@ -591,7 +722,10 @@ html {
 		// Needs to be moved into the center
 		// of the modal initially
 		top: -125px;
+<<<<<<< HEAD
 		left: 50%;
+=======
+>>>>>>> origin/gh-pages
 	}
 
 
@@ -625,6 +759,15 @@ html {
 			opacity: 1;
 			// Move back to proper position
 			top: 25px;
+<<<<<<< HEAD
+=======
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
+>>>>>>> origin/gh-pages
 		}
 	}
 }
@@ -739,7 +882,10 @@ html {
 		// Needs to be moved into the center
 		// of the modal initially
 		top: 25px;
+<<<<<<< HEAD
 		left: 50%;
+=======
+>>>>>>> origin/gh-pages
 	}
 
 
@@ -779,6 +925,15 @@ html {
 			opacity: 1;
 			// Move back to proper position
 			top: 25px;
+<<<<<<< HEAD
+=======
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
+>>>>>>> origin/gh-pages
 		}
 	}
 }
@@ -810,7 +965,10 @@ html {
 		// Needs to be moved into the center
 		// of the modal initially
 		top: 25px;
+<<<<<<< HEAD
 		left: 50%;
+=======
+>>>>>>> origin/gh-pages
 	}
 
 
@@ -850,6 +1008,15 @@ html {
 			opacity: 1;
 			// Move back to proper position
 			top: 25px;
+<<<<<<< HEAD
+=======
+
+			@media screen and (max-width: $modal-small-breakpoint) {
+				top: 5px;
+				right: 5px;
+				left: auto;
+			}
+>>>>>>> origin/gh-pages
 		}
 	}
 }

@@ -706,14 +706,20 @@ code {
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
+<<<<<<< HEAD
  * @version 1.1.0alpha
+=======
+>>>>>>> origin/gh-pages
  */
 /**
  * CSS Modal Configuration
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
+<<<<<<< HEAD
  * @Since 1.1.0alpha
+=======
+>>>>>>> origin/gh-pages
  */
 html {
   overflow-y: scroll;
@@ -727,9 +733,12 @@ html {
   overflow-y: scroll;
 }
 @media screen and (max-width: 30em) {
+<<<<<<< HEAD
   .has-overlay {
     height: 100%;
   }
+=======
+>>>>>>> origin/gh-pages
   .has-overlay > body {
     overflow: hidden;
     height: 100%;
@@ -768,6 +777,8 @@ html {
 }
 .is-active.semantic-content, .is-active.modal--show {
   display: block\9;
+  height: 100% \9;
+  width: 100% \9;
 }
 .semantic-content:target, .modal--show:target, .is-active.semantic-content, .is-active.modal--show {
   display: block\9;
@@ -782,6 +793,14 @@ html {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
+<<<<<<< HEAD
+=======
+@media \0screen\,screen\9 {
+  .semantic-content .modal-inner, .modal--show .modal-inner {
+    background: transparent;
+  }
+}
+>>>>>>> origin/gh-pages
 .semantic-content .modal-inner > img, .modal--show .modal-inner > img,
 .semantic-content .modal-inner > video,
 .modal--show .modal-inner > video,
@@ -796,11 +815,26 @@ html {
   max-width: 100%;
 }
 .semantic-content .modal-content, .modal--show .modal-content {
+<<<<<<< HEAD
   max-height: 400px;
   max-height: 70vh;
+=======
+  position: relative;
+  max-height: 400px;
+  max-height: 80vh;
+>>>>>>> origin/gh-pages
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
+<<<<<<< HEAD
+=======
+@media \0screen\,screen\9 {
+  .semantic-content .modal-content, .modal--show .modal-content {
+    overflow: visible;
+  }
+}
+>>>>>>> origin/gh-pages
 .semantic-content .modal-content > *, .modal--show .modal-content > * {
   max-width: 100%;
 }
@@ -817,6 +851,13 @@ html {
   margin: -1px;
   overflow: hidden;
 }
+<<<<<<< HEAD
+=======
+.semantic-content .modal-close:focus:after, .modal--show .modal-close:focus:after {
+  outline: 1px dotted;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+>>>>>>> origin/gh-pages
 .semantic-content .modal-close:before, .modal--show .modal-close:before {
   content: '';
   position: absolute;
@@ -830,9 +871,13 @@ html {
   content: '\00d7';
   position: absolute;
   top: 25px;
-  left: 50%;
+  right: 50%;
   z-index: 20;
+<<<<<<< HEAD
   margin-left: 285px;
+=======
+  margin-right: -325px;
+>>>>>>> origin/gh-pages
 }
 @media screen and (max-width: 690px) {
   .semantic-content .modal-inner, .modal--show .modal-inner {
@@ -841,6 +886,7 @@ html {
     right: 20px;
     margin-left: 0;
   }
+<<<<<<< HEAD
   .semantic-content .modal-close, .modal--show .modal-close {
     left: auto;
     right: 33px;
@@ -848,6 +894,11 @@ html {
   }
   .semantic-content .modal-close:after, .modal--show .modal-close:after {
     margin-left: 40%;
+=======
+  .semantic-content .modal-close:after, .modal--show .modal-close:after {
+    margin-right: 0 !important;
+    right: 20px;
+>>>>>>> origin/gh-pages
   }
 }
 @media screen and (max-width: 30em) {
@@ -855,20 +906,23 @@ html {
     -webkit-transform: translate(0, 400px);
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
-    -webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
-    -moz-transition: -moz-transform .25s ease-in-out, opacity 1ms .25s;
-    -o-transition: -o-transform .25s ease-in-out, opacity 1ms .25s;
-    -ms-transition: -ms-transform .25s ease-in-out, opacity 1ms .25s;
-    transition: transform .25s ease-in-out, opacity 1ms .25s;
+    -webkit-transition: opacity 1ms .25s;
+    -moz-transition: opacity 1ms .25s;
+    -o-transition: opacity 1ms .25s;
+    -ms-transition: opacity 1ms .25s;
+    transition: opacity 1ms .25s;
     display: block;
     bottom: auto;
   }
   .semantic-content:target, .modal--show:target, .is-active.semantic-content, .is-active.modal--show {
+<<<<<<< HEAD
     -webkit-transition: -webkit-transform .25s ease-in-out;
     -moz-transition: -moz-transform .25s ease-in-out;
     -o-transition: -o-transform .25s ease-in-out;
     -ms-transition: -ms-transform .25s ease-in-out;
     transition: transform .25s ease-in-out;
+=======
+>>>>>>> origin/gh-pages
     height: 100%;
   }
   .semantic-content:before, .modal--show:before {
@@ -891,6 +945,11 @@ html {
   }
   .semantic-content .modal-content, .modal--show .modal-content {
     max-height: none;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
   }
   .semantic-content .modal-close, .modal--show .modal-close {
     right: auto;
@@ -899,8 +958,14 @@ html {
     display: none;
   }
   .semantic-content .modal-close:after, .modal--show .modal-close:after {
+<<<<<<< HEAD
     top: 0.4em;
     left: 1em;
+=======
+    top: 5px !important;
+    right: 5px;
+    left: auto;
+>>>>>>> origin/gh-pages
     z-index: 40;
     margin-left: 0;
   }
@@ -1062,7 +1127,13 @@ html {
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
+<<<<<<< HEAD
  * @Since 1.1.0alpha
+=======
+ */
+/*
+ * Global Theme Styles
+>>>>>>> origin/gh-pages
  */
 .semantic-content, .modal--show {
   color: #222222;
@@ -1073,6 +1144,12 @@ html {
   background: white;
   -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+<<<<<<< HEAD
+=======
+  max-width: 100%;
+  -webkit-transition: max-width 0.25s linear, margin-left 0.125s linear;
+  transition: max-width 0.25s linear, margin-left 0.125s linear;
+>>>>>>> origin/gh-pages
 }
 .semantic-content header, .modal--show header {
   border-bottom: 1px solid #dddddd;
@@ -1133,6 +1210,12 @@ html {
   }
 }
 
+<<<<<<< HEAD
+=======
+/*
+ * Plain Screen Theme Styles
+ */
+>>>>>>> origin/gh-pages
 .semantic-content footer > p {
   margin-bottom: 0;
 }
