@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * Tests for CSS Modal
  * by @drublic - http://drublic.de/
@@ -9,14 +10,12 @@
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @version 1.1.0alpha
  */
 /**
  * CSS Modal Configuration
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @Since 1.1.0alpha
  */
 html {
   overflow-y: scroll;
@@ -30,16 +29,13 @@ html {
   overflow-y: scroll;
 }
 @media screen and (max-width: 30em) {
-  .has-overlay {
-    height: 100%;
-  }
   .has-overlay > body {
     overflow: hidden;
     height: 100%;
   }
 }
 
-.modal--fade, .modal--plainscreen, .modal--zoomin, .modal--zoomout, .modal--slidefromtop, .modal--bouncefromtop, .modal--bouncefromtopshaky, .modal--show, ._modal {
+.modal--gallery, .modal--fade, .modal--plainscreen, .modal--zoomin, .modal--zoomout, .modal--slidefromtop, .modal--bouncefromtop, .modal--bouncefromtopshaky, .modal--show, ._modal {
   -webkit-transform: translate(0, 100%);
   -moz-transform: translate(0, 100%);
   -o-transform: translate(0, 100%);
@@ -59,7 +55,7 @@ html {
   opacity: 0;
   display: none\9;
 }
-.modal--fade:target, .modal--plainscreen:target, .modal--zoomin:target, .modal--zoomout:target, .modal--slidefromtop:target, .modal--bouncefromtop:target, .modal--bouncefromtopshaky:target, .modal--show:target, ._modal:target, .is-active.modal--fade, .is-active.modal--plainscreen, .is-active.modal--zoomin, .is-active.modal--zoomout, .is-active.modal--slidefromtop, .is-active.modal--bouncefromtop, .is-active.modal--bouncefromtopshaky, .is-active.modal--show, .is-active._modal {
+.modal--gallery:target, .modal--fade:target, .modal--plainscreen:target, .modal--zoomin:target, .modal--zoomout:target, .modal--slidefromtop:target, .modal--bouncefromtop:target, .modal--bouncefromtopshaky:target, .modal--show:target, ._modal:target, .is-active.modal--gallery, .is-active.modal--fade, .is-active.modal--plainscreen, .is-active.modal--zoomin, .is-active.modal--zoomout, .is-active.modal--slidefromtop, .is-active.modal--bouncefromtop, .is-active.modal--bouncefromtopshaky, .is-active.modal--show, .is-active._modal {
   -webkit-transform: translate(0, 0);
   -moz-transform: translate(0, 0);
   -o-transform: translate(0, 0);
@@ -69,13 +65,15 @@ html {
   height: auto;
   opacity: 1;
 }
-.is-active.modal--fade, .is-active.modal--plainscreen, .is-active.modal--zoomin, .is-active.modal--zoomout, .is-active.modal--slidefromtop, .is-active.modal--bouncefromtop, .is-active.modal--bouncefromtopshaky, .is-active.modal--show, .is-active._modal {
+.is-active.modal--gallery, .is-active.modal--fade, .is-active.modal--plainscreen, .is-active.modal--zoomin, .is-active.modal--zoomout, .is-active.modal--slidefromtop, .is-active.modal--bouncefromtop, .is-active.modal--bouncefromtopshaky, .is-active.modal--show, .is-active._modal {
+  display: block\9;
+  height: 100% \9;
+  width: 100% \9;
+}
+.modal--gallery:target, .modal--fade:target, .modal--plainscreen:target, .modal--zoomin:target, .modal--zoomout:target, .modal--slidefromtop:target, .modal--bouncefromtop:target, .modal--bouncefromtopshaky:target, .modal--show:target, ._modal:target, .is-active.modal--gallery, .is-active.modal--fade, .is-active.modal--plainscreen, .is-active.modal--zoomin, .is-active.modal--zoomout, .is-active.modal--slidefromtop, .is-active.modal--bouncefromtop, .is-active.modal--bouncefromtopshaky, .is-active.modal--show, .is-active._modal {
   display: block\9;
 }
-.modal--fade:target, .modal--plainscreen:target, .modal--zoomin:target, .modal--zoomout:target, .modal--slidefromtop:target, .modal--bouncefromtop:target, .modal--bouncefromtopshaky:target, .modal--show:target, ._modal:target, .is-active.modal--fade, .is-active.modal--plainscreen, .is-active.modal--zoomin, .is-active.modal--zoomout, .is-active.modal--slidefromtop, .is-active.modal--bouncefromtop, .is-active.modal--bouncefromtopshaky, .is-active.modal--show, .is-active._modal {
-  display: block\9;
-}
-.modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner, ._modal .modal-inner {
+.modal--gallery .modal-inner, .modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner, ._modal .modal-inner {
   position: absolute;
   top: 50px;
   left: 50%;
@@ -86,12 +84,12 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 @media \0screen\,screen\9 {
-  .modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner, ._modal .modal-inner {
+  .modal--gallery .modal-inner, .modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner, ._modal .modal-inner {
     background: transparent;
-    height: 100%;
   }
 }
-.modal--fade .modal-inner > img, .modal--plainscreen .modal-inner > img, .modal--zoomin .modal-inner > img, .modal--zoomout .modal-inner > img, .modal--slidefromtop .modal-inner > img, .modal--bouncefromtop .modal-inner > img, .modal--bouncefromtopshaky .modal-inner > img, .modal--show .modal-inner > img, ._modal .modal-inner > img,
+.modal--gallery .modal-inner > img, .modal--fade .modal-inner > img, .modal--plainscreen .modal-inner > img, .modal--zoomin .modal-inner > img, .modal--zoomout .modal-inner > img, .modal--slidefromtop .modal-inner > img, .modal--bouncefromtop .modal-inner > img, .modal--bouncefromtopshaky .modal-inner > img, .modal--show .modal-inner > img, ._modal .modal-inner > img,
+.modal--gallery .modal-inner > video,
 .modal--fade .modal-inner > video,
 .modal--plainscreen .modal-inner > video,
 .modal--zoomin .modal-inner > video,
@@ -101,6 +99,7 @@ html {
 .modal--bouncefromtopshaky .modal-inner > video,
 .modal--show .modal-inner > video,
 ._modal .modal-inner > video,
+.modal--gallery .modal-inner > iframe,
 .modal--fade .modal-inner > iframe,
 .modal--plainscreen .modal-inner > iframe,
 .modal--zoomin .modal-inner > iframe,
@@ -114,38 +113,44 @@ html {
   height: auto;
   min-height: 300px;
 }
-.modal--fade .modal-inner > img, .modal--plainscreen .modal-inner > img, .modal--zoomin .modal-inner > img, .modal--zoomout .modal-inner > img, .modal--slidefromtop .modal-inner > img, .modal--bouncefromtop .modal-inner > img, .modal--bouncefromtopshaky .modal-inner > img, .modal--show .modal-inner > img, ._modal .modal-inner > img {
+.modal--gallery .modal-inner > img, .modal--fade .modal-inner > img, .modal--plainscreen .modal-inner > img, .modal--zoomin .modal-inner > img, .modal--zoomout .modal-inner > img, .modal--slidefromtop .modal-inner > img, .modal--bouncefromtop .modal-inner > img, .modal--bouncefromtopshaky .modal-inner > img, .modal--show .modal-inner > img, ._modal .modal-inner > img {
   width: auto;
   max-width: 100%;
 }
-.modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content, ._modal .modal-content {
+.modal--gallery .modal-content, .modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content, ._modal .modal-content {
+  position: relative;
   max-height: 400px;
-  max-height: 70vh;
+  max-height: 80vh;
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 @media \0screen\,screen\9 {
-  .modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content, ._modal .modal-content {
+  .modal--gallery .modal-content, .modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content, ._modal .modal-content {
     overflow: visible;
   }
 }
-.modal--fade .modal-content > *, .modal--plainscreen .modal-content > *, .modal--zoomin .modal-content > *, .modal--zoomout .modal-content > *, .modal--slidefromtop .modal-content > *, .modal--bouncefromtop .modal-content > *, .modal--bouncefromtopshaky .modal-content > *, .modal--show .modal-content > *, ._modal .modal-content > * {
+.modal--gallery .modal-content > *, .modal--fade .modal-content > *, .modal--plainscreen .modal-content > *, .modal--zoomin .modal-content > *, .modal--zoomout .modal-content > *, .modal--slidefromtop .modal-content > *, .modal--bouncefromtop .modal-content > *, .modal--bouncefromtopshaky .modal-content > *, .modal--show .modal-content > *, ._modal .modal-content > * {
   max-width: 100%;
 }
-.modal--fade footer, .modal--plainscreen footer, .modal--zoomin footer, .modal--zoomout footer, .modal--slidefromtop footer, .modal--bouncefromtop footer, .modal--bouncefromtopshaky footer, .modal--show footer, ._modal footer {
+.modal--gallery footer, .modal--fade footer, .modal--plainscreen footer, .modal--zoomin footer, .modal--zoomout footer, .modal--slidefromtop footer, .modal--bouncefromtop footer, .modal--bouncefromtopshaky footer, .modal--show footer, ._modal footer {
   border-top: 1px solid white;
   padding: 0 1.2em 18px;
   background: #f0f0f0;
   border-radius: 2px;
 }
-.modal--fade .modal-close, .modal--plainscreen .modal-close, .modal--zoomin .modal-close, .modal--zoomout .modal-close, .modal--slidefromtop .modal-close, .modal--bouncefromtop .modal-close, .modal--bouncefromtopshaky .modal-close, .modal--show .modal-close, ._modal .modal-close {
+.modal--gallery .modal-close, .modal--fade .modal-close, .modal--plainscreen .modal-close, .modal--zoomin .modal-close, .modal--zoomout .modal-close, .modal--slidefromtop .modal-close, .modal--bouncefromtop .modal-close, .modal--bouncefromtopshaky .modal-close, .modal--show .modal-close, ._modal .modal-close {
   display: block;
   height: 1px;
   clip: rect(0 0 0 0);
   margin: -1px;
   overflow: hidden;
 }
-.modal--fade .modal-close:before, .modal--plainscreen .modal-close:before, .modal--zoomin .modal-close:before, .modal--zoomout .modal-close:before, .modal--slidefromtop .modal-close:before, .modal--bouncefromtop .modal-close:before, .modal--bouncefromtopshaky .modal-close:before, .modal--show .modal-close:before, ._modal .modal-close:before {
+.modal--gallery .modal-close:focus:after, .modal--fade .modal-close:focus:after, .modal--plainscreen .modal-close:focus:after, .modal--zoomin .modal-close:focus:after, .modal--zoomout .modal-close:focus:after, .modal--slidefromtop .modal-close:focus:after, .modal--bouncefromtop .modal-close:focus:after, .modal--bouncefromtopshaky .modal-close:focus:after, .modal--show .modal-close:focus:after, ._modal .modal-close:focus:after {
+  outline: 1px dotted;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+.modal--gallery .modal-close:before, .modal--fade .modal-close:before, .modal--plainscreen .modal-close:before, .modal--zoomin .modal-close:before, .modal--zoomout .modal-close:before, .modal--slidefromtop .modal-close:before, .modal--bouncefromtop .modal-close:before, .modal--bouncefromtopshaky .modal-close:before, .modal--show .modal-close:before, ._modal .modal-close:before {
   content: '';
   position: absolute;
   top: 0;
@@ -154,52 +159,43 @@ html {
   bottom: 0;
   z-index: 10;
 }
-.modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after, ._modal .modal-close:after {
+.modal--gallery .modal-close:after, .modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after, ._modal .modal-close:after {
   content: '\00d7';
   position: absolute;
   top: 25px;
-  left: 50%;
+  right: 50%;
   z-index: 20;
-  margin-left: 285px;
+  margin-right: -325px;
 }
 @media screen and (max-width: 690px) {
-  .modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner, ._modal .modal-inner {
+  .modal--gallery .modal-inner, .modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner, ._modal .modal-inner {
     width: auto;
     left: 20px;
     right: 20px;
     margin-left: 0;
   }
-  .modal--fade .modal-close, .modal--plainscreen .modal-close, .modal--zoomin .modal-close, .modal--zoomout .modal-close, .modal--slidefromtop .modal-close, .modal--bouncefromtop .modal-close, .modal--bouncefromtopshaky .modal-close, .modal--show .modal-close, ._modal .modal-close {
-    left: auto;
-    right: 33px;
-    margin-left: 0;
-  }
-  .modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after, ._modal .modal-close:after {
-    margin-left: 40%;
+  .modal--gallery .modal-close:after, .modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after, ._modal .modal-close:after {
+    margin-right: 0 !important;
+    right: 20px;
   }
 }
 @media screen and (max-width: 30em) {
-  .modal--fade, .modal--plainscreen, .modal--zoomin, .modal--zoomout, .modal--slidefromtop, .modal--bouncefromtop, .modal--bouncefromtopshaky, .modal--show, ._modal {
+  .modal--gallery, .modal--fade, .modal--plainscreen, .modal--zoomin, .modal--zoomout, .modal--slidefromtop, .modal--bouncefromtop, .modal--bouncefromtopshaky, .modal--show, ._modal {
     -webkit-transform: translate(0, 400px);
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
-    -webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
-    -moz-transition: -moz-transform .25s ease-in-out, opacity 1ms .25s;
-    -o-transition: -o-transform .25s ease-in-out, opacity 1ms .25s;
-    -ms-transition: -ms-transform .25s ease-in-out, opacity 1ms .25s;
-    transition: transform .25s ease-in-out, opacity 1ms .25s;
+    -webkit-transition: opacity 1ms .25s;
+    -moz-transition: opacity 1ms .25s;
+    -o-transition: opacity 1ms .25s;
+    -ms-transition: opacity 1ms .25s;
+    transition: opacity 1ms .25s;
     display: block;
     bottom: auto;
   }
-  .modal--fade:target, .modal--plainscreen:target, .modal--zoomin:target, .modal--zoomout:target, .modal--slidefromtop:target, .modal--bouncefromtop:target, .modal--bouncefromtopshaky:target, .modal--show:target, ._modal:target, .is-active.modal--fade, .is-active.modal--plainscreen, .is-active.modal--zoomin, .is-active.modal--zoomout, .is-active.modal--slidefromtop, .is-active.modal--bouncefromtop, .is-active.modal--bouncefromtopshaky, .is-active.modal--show, .is-active._modal {
-    -webkit-transition: -webkit-transform .25s ease-in-out;
-    -moz-transition: -moz-transform .25s ease-in-out;
-    -o-transition: -o-transform .25s ease-in-out;
-    -ms-transition: -ms-transform .25s ease-in-out;
-    transition: transform .25s ease-in-out;
+  .modal--gallery:target, .modal--fade:target, .modal--plainscreen:target, .modal--zoomin:target, .modal--zoomout:target, .modal--slidefromtop:target, .modal--bouncefromtop:target, .modal--bouncefromtopshaky:target, .modal--show:target, ._modal:target, .is-active.modal--gallery, .is-active.modal--fade, .is-active.modal--plainscreen, .is-active.modal--zoomin, .is-active.modal--zoomout, .is-active.modal--slidefromtop, .is-active.modal--bouncefromtop, .is-active.modal--bouncefromtopshaky, .is-active.modal--show, .is-active._modal {
     height: 100%;
   }
-  .modal--fade:before, .modal--plainscreen:before, .modal--zoomin:before, .modal--zoomout:before, .modal--slidefromtop:before, .modal--bouncefromtop:before, .modal--bouncefromtopshaky:before, .modal--show:before, ._modal:before {
+  .modal--gallery:before, .modal--fade:before, .modal--plainscreen:before, .modal--zoomin:before, .modal--zoomout:before, .modal--slidefromtop:before, .modal--bouncefromtop:before, .modal--bouncefromtopshaky:before, .modal--show:before, ._modal:before {
     content: '';
     position: fixed;
     top: 0;
@@ -207,7 +203,7 @@ html {
     right: 0;
     z-index: 30;
   }
-  .modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner, ._modal .modal-inner {
+  .modal--gallery .modal-inner, .modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner, ._modal .modal-inner {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -217,7 +213,7 @@ html {
     height: 100%;
     overflow: auto;
   }
-  .modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content, ._modal .modal-content {
+  .modal--gallery .modal-content, .modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content, ._modal .modal-content {
     max-height: none;
     -ms-word-break: break-all;
     word-break: break-word;
@@ -225,14 +221,14 @@ html {
     -moz-hyphens: auto;
     hyphens: auto;
   }
-  .modal--fade .modal-close, .modal--plainscreen .modal-close, .modal--zoomin .modal-close, .modal--zoomout .modal-close, .modal--slidefromtop .modal-close, .modal--bouncefromtop .modal-close, .modal--bouncefromtopshaky .modal-close, .modal--show .modal-close, ._modal .modal-close {
+  .modal--gallery .modal-close, .modal--fade .modal-close, .modal--plainscreen .modal-close, .modal--zoomin .modal-close, .modal--zoomout .modal-close, .modal--slidefromtop .modal-close, .modal--bouncefromtop .modal-close, .modal--bouncefromtopshaky .modal-close, .modal--show .modal-close, ._modal .modal-close {
     right: auto;
   }
-  .modal--fade .modal-close:before, .modal--plainscreen .modal-close:before, .modal--zoomin .modal-close:before, .modal--zoomout .modal-close:before, .modal--slidefromtop .modal-close:before, .modal--bouncefromtop .modal-close:before, .modal--bouncefromtopshaky .modal-close:before, .modal--show .modal-close:before, ._modal .modal-close:before {
+  .modal--gallery .modal-close:before, .modal--fade .modal-close:before, .modal--plainscreen .modal-close:before, .modal--zoomin .modal-close:before, .modal--zoomout .modal-close:before, .modal--slidefromtop .modal-close:before, .modal--bouncefromtop .modal-close:before, .modal--bouncefromtopshaky .modal-close:before, .modal--show .modal-close:before, ._modal .modal-close:before {
     display: none;
   }
-  .modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after, ._modal .modal-close:after {
-    top: 5px;
+  .modal--gallery .modal-close:after, .modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after, ._modal .modal-close:after {
+    top: 5px !important;
     right: 5px;
     left: auto;
     z-index: 40;
@@ -240,18 +236,18 @@ html {
   }
 }
 @media screen and (max-height: 46em) and (min-width: 30em) {
-  .modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content, ._modal .modal-content {
+  .modal--gallery .modal-content, .modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content, ._modal .modal-content {
     max-height: 340px;
     max-height: 50vh;
   }
 }
 @media screen and (max-height: 36em) and (min-width: 30em) {
-  .modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content, ._modal .modal-content {
+  .modal--gallery .modal-content, .modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content, ._modal .modal-content {
     max-height: 265px;
     max-height: 40vh;
   }
 }
-.is-stacked.modal--fade, .is-stacked.modal--plainscreen, .is-stacked.modal--zoomin, .is-stacked.modal--zoomout, .is-stacked.modal--slidefromtop, .is-stacked.modal--bouncefromtop, .is-stacked.modal--bouncefromtopshaky, .is-stacked.modal--show, .is-stacked._modal {
+.is-stacked.modal--gallery, .is-stacked.modal--fade, .is-stacked.modal--plainscreen, .is-stacked.modal--zoomin, .is-stacked.modal--zoomout, .is-stacked.modal--slidefromtop, .is-stacked.modal--bouncefromtop, .is-stacked.modal--bouncefromtopshaky, .is-stacked.modal--show, .is-stacked._modal {
   -webkit-transform: translate(0, 0) scale(1, 1);
   -moz-transform: translate(0, 0) scale(1, 1);
   -o-transform: translate(0, 0) scale(1, 1);
@@ -259,26 +255,26 @@ html {
   transform: translate(0, 0) scale(1, 1);
   opacity: 1;
 }
-.is-stacked.modal--fade .modal-inner, .is-stacked.modal--plainscreen .modal-inner, .is-stacked.modal--zoomin .modal-inner, .is-stacked.modal--zoomout .modal-inner, .is-stacked.modal--slidefromtop .modal-inner, .is-stacked.modal--bouncefromtop .modal-inner, .is-stacked.modal--bouncefromtopshaky .modal-inner, .is-stacked.modal--show .modal-inner, .is-stacked._modal .modal-inner {
+.is-stacked.modal--gallery .modal-inner, .is-stacked.modal--fade .modal-inner, .is-stacked.modal--plainscreen .modal-inner, .is-stacked.modal--zoomin .modal-inner, .is-stacked.modal--zoomout .modal-inner, .is-stacked.modal--slidefromtop .modal-inner, .is-stacked.modal--bouncefromtop .modal-inner, .is-stacked.modal--bouncefromtopshaky .modal-inner, .is-stacked.modal--show .modal-inner, .is-stacked._modal .modal-inner {
   -webkit-animation: scaleDown .7s ease both;
   -moz-animation: scaleDown .7s ease both;
   animation: scaleDown .7s ease both;
 }
-.is-stacked.modal--fade .modal-close, .is-stacked.modal--plainscreen .modal-close, .is-stacked.modal--zoomin .modal-close, .is-stacked.modal--zoomout .modal-close, .is-stacked.modal--slidefromtop .modal-close, .is-stacked.modal--bouncefromtop .modal-close, .is-stacked.modal--bouncefromtopshaky .modal-close, .is-stacked.modal--show .modal-close, .is-stacked._modal .modal-close {
+.is-stacked.modal--gallery .modal-close, .is-stacked.modal--fade .modal-close, .is-stacked.modal--plainscreen .modal-close, .is-stacked.modal--zoomin .modal-close, .is-stacked.modal--zoomout .modal-close, .is-stacked.modal--slidefromtop .modal-close, .is-stacked.modal--bouncefromtop .modal-close, .is-stacked.modal--bouncefromtopshaky .modal-close, .is-stacked.modal--show .modal-close, .is-stacked._modal .modal-close {
   opacity: 0;
 }
 @media screen and (max-width: 30em) {
-  .is-stacked.modal--fade, .is-stacked.modal--plainscreen, .is-stacked.modal--zoomin, .is-stacked.modal--zoomout, .is-stacked.modal--slidefromtop, .is-stacked.modal--bouncefromtop, .is-stacked.modal--bouncefromtopshaky, .is-stacked.modal--show, .is-stacked._modal {
+  .is-stacked.modal--gallery, .is-stacked.modal--fade, .is-stacked.modal--plainscreen, .is-stacked.modal--zoomin, .is-stacked.modal--zoomout, .is-stacked.modal--slidefromtop, .is-stacked.modal--bouncefromtop, .is-stacked.modal--bouncefromtopshaky, .is-stacked.modal--show, .is-stacked._modal {
     -webkit-animation: scaleDown .7s ease both;
     -moz-animation: scaleDown .7s ease both;
     animation: scaleDown .7s ease both;
   }
-  .is-stacked.modal--fade .modal-inner, .is-stacked.modal--plainscreen .modal-inner, .is-stacked.modal--zoomin .modal-inner, .is-stacked.modal--zoomout .modal-inner, .is-stacked.modal--slidefromtop .modal-inner, .is-stacked.modal--bouncefromtop .modal-inner, .is-stacked.modal--bouncefromtopshaky .modal-inner, .is-stacked.modal--show .modal-inner, .is-stacked._modal .modal-inner {
+  .is-stacked.modal--gallery .modal-inner, .is-stacked.modal--fade .modal-inner, .is-stacked.modal--plainscreen .modal-inner, .is-stacked.modal--zoomin .modal-inner, .is-stacked.modal--zoomout .modal-inner, .is-stacked.modal--slidefromtop .modal-inner, .is-stacked.modal--bouncefromtop .modal-inner, .is-stacked.modal--bouncefromtopshaky .modal-inner, .is-stacked.modal--show .modal-inner, .is-stacked._modal .modal-inner {
     -webkit-animation: none;
     -moz-animation: none;
     animation: none;
   }
-  .is-stacked.modal--fade .modal-close, .is-stacked.modal--plainscreen .modal-close, .is-stacked.modal--zoomin .modal-close, .is-stacked.modal--zoomout .modal-close, .is-stacked.modal--slidefromtop .modal-close, .is-stacked.modal--bouncefromtop .modal-close, .is-stacked.modal--bouncefromtopshaky .modal-close, .is-stacked.modal--show .modal-close, .is-stacked._modal .modal-close {
+  .is-stacked.modal--gallery .modal-close, .is-stacked.modal--fade .modal-close, .is-stacked.modal--plainscreen .modal-close, .is-stacked.modal--zoomin .modal-close, .is-stacked.modal--zoomout .modal-close, .is-stacked.modal--slidefromtop .modal-close, .is-stacked.modal--bouncefromtop .modal-close, .is-stacked.modal--bouncefromtopshaky .modal-close, .is-stacked.modal--show .modal-close, .is-stacked._modal .modal-close {
     opacity: 1;
   }
 }
@@ -289,23 +285,20 @@ html {
     -webkit-transform: scale(0.8);
   }
 }
-
 @-moz-keyframes scaleDown {
   to {
     opacity: 0;
     -moz-transform: scale(0.8);
   }
 }
-
 @keyframes scaleDown {
   to {
     opacity: 0;
     transform: scale(0.8);
   }
 }
-
 @media screen and (min-width: 30em) {
-  .modal--fade {
+  .modal--gallery, .modal--fade {
     -webkit-transition: opacity 0.4s;
     -o-transition: opacity 0.4s;
     transition: opacity 0.4s;
@@ -339,8 +332,6 @@ html {
   -o-transition: all 0.4s;
   transition: all 0.4s;
   opacity: 0;
-  top: 250px;
-  left: 20%;
 }
 .modal--plainscreen:target .modal-inner, .modal--zoomin:target .modal-inner, .is-active.modal--plainscreen .modal-inner, .is-active.modal--zoomin .modal-inner {
   -webkit-transform: scale(1);
@@ -361,7 +352,6 @@ html {
   transform: scale(1);
   opacity: 1;
   top: 25px;
-  left: 50%;
 }
 @media screen and (max-width: 30em) {
   .modal--plainscreen:target .modal-close:after, .modal--zoomin:target .modal-close:after, .is-active.modal--plainscreen .modal-close:after, .is-active.modal--zoomin .modal-close:after {
@@ -426,7 +416,6 @@ html {
   transition: all 0.4s;
   opacity: 0;
   top: -125px;
-  left: 75%;
 }
 .modal--zoomout:target .modal-inner, .is-active.modal--zoomout .modal-inner {
   -webkit-transform: scale(1);
@@ -447,7 +436,6 @@ html {
   transform: scale(1);
   opacity: 1;
   top: 25px;
-  left: 50%;
 }
 @media screen and (max-width: 30em) {
   .modal--zoomout:target .modal-close:after, .is-active.modal--zoomout .modal-close:after {
@@ -484,7 +472,6 @@ html {
   transition: all 0.4s;
   opacity: 0;
   top: -125px;
-  left: 50%;
 }
 .modal--slidefromtop:target .modal-inner, .is-active.modal--slidefromtop .modal-inner {
   -webkit-transform: translateY(0);
@@ -531,7 +518,6 @@ html {
     -webkit-transform: translateX(0%) translateY(0%);
   }
 }
-
 @-webkit-keyframes bounce {
   0% {
     -webkit-transform: translateY(-100%);
@@ -545,7 +531,6 @@ html {
     -webkit-transform: translateY(0%);
   }
 }
-
 @-moz-keyframes bounce {
   0% {
     -moz-transform: translateY(-100%);
@@ -559,7 +544,6 @@ html {
     -moz-transform: translateY(0%);
   }
 }
-
 @-o-keyframes bounce {
   0% {
     -o-transform: translateY(-100%);
@@ -573,7 +557,6 @@ html {
     -o-transform: translateY(0%);
   }
 }
-
 @-ms-keyframes bounce {
   0% {
     -ms-transform: translateY(-100%);
@@ -587,7 +570,6 @@ html {
     -ms-transform: translateY(0%);
   }
 }
-
 @keyframes bounce {
   0% {
     transform: translateY(-100%);
@@ -601,7 +583,6 @@ html {
     transform: translateY(0%);
   }
 }
-
 .modal--bouncefromtop .modal-close:before {
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -617,7 +598,6 @@ html {
   transition-delay: 0.4s;
   opacity: 0;
   top: 25px;
-  left: 50%;
 }
 .modal--bouncefromtop:target .modal-inner, .is-active.modal--bouncefromtop .modal-inner {
   -webkit-animation-name: bounce;
@@ -667,7 +647,6 @@ html {
   transition-delay: 0.6s;
   opacity: 0;
   top: 25px;
-  left: 50%;
 }
 .modal--bouncefromtopshaky:target .modal-inner, .is-active.modal--bouncefromtopshaky .modal-inner {
   -webkit-animation-name: shaky;
@@ -707,42 +686,47 @@ html {
  * http://drublic.github.com/css-modal
  *
  * @author Hans Christian Reinl - @drublic
- * @Since 1.1.0alpha
  */
-.modal--fade, .modal--plainscreen, .modal--zoomin, .modal--zoomout, .modal--slidefromtop, .modal--bouncefromtop, .modal--bouncefromtopshaky, .modal--show {
+/*
+ * Global Theme Styles
+ */
+.modal--gallery, .modal--fade, .modal--plainscreen, .modal--zoomin, .modal--zoomout, .modal--slidefromtop, .modal--bouncefromtop, .modal--bouncefromtopshaky, .modal--show {
   color: #222222;
   line-height: 1.3;
 }
-.modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner {
+.modal--gallery .modal-inner, .modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner {
   border-radius: 2px;
   background: white;
   -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  max-width: 100%;
+  -webkit-transition: max-width 0.25s linear, margin-left 0.125s linear;
+  transition: max-width 0.25s linear, margin-left 0.125s linear;
 }
-.modal--fade header, .modal--plainscreen header, .modal--zoomin header, .modal--zoomout header, .modal--slidefromtop header, .modal--bouncefromtop header, .modal--bouncefromtopshaky header, .modal--show header {
+.modal--gallery header, .modal--fade header, .modal--plainscreen header, .modal--zoomin header, .modal--zoomout header, .modal--slidefromtop header, .modal--bouncefromtop header, .modal--bouncefromtopshaky header, .modal--show header {
   border-bottom: 1px solid #dddddd;
   padding: 0 1.2em;
 }
-.modal--fade header > h2, .modal--plainscreen header > h2, .modal--zoomin header > h2, .modal--zoomout header > h2, .modal--slidefromtop header > h2, .modal--bouncefromtop header > h2, .modal--bouncefromtopshaky header > h2, .modal--show header > h2 {
+.modal--gallery header > h2, .modal--fade header > h2, .modal--plainscreen header > h2, .modal--zoomin header > h2, .modal--zoomout header > h2, .modal--slidefromtop header > h2, .modal--bouncefromtop header > h2, .modal--bouncefromtopshaky header > h2, .modal--show header > h2 {
   margin: 0.5em 0;
 }
-.modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content {
+.modal--gallery .modal-content, .modal--fade .modal-content, .modal--plainscreen .modal-content, .modal--zoomin .modal-content, .modal--zoomout .modal-content, .modal--slidefromtop .modal-content, .modal--bouncefromtop .modal-content, .modal--bouncefromtopshaky .modal-content, .modal--show .modal-content {
   border-bottom: 1px solid #dddddd;
   padding: 15px 1.2em;
 }
-.modal--fade footer, .modal--plainscreen footer, .modal--zoomin footer, .modal--zoomout footer, .modal--slidefromtop footer, .modal--bouncefromtop footer, .modal--bouncefromtopshaky footer, .modal--show footer {
+.modal--gallery footer, .modal--fade footer, .modal--plainscreen footer, .modal--zoomin footer, .modal--zoomout footer, .modal--slidefromtop footer, .modal--bouncefromtop footer, .modal--bouncefromtopshaky footer, .modal--show footer {
   border-top: 1px solid white;
   padding: 0 1.2em 18px;
   background: #f0f0f0;
   border-radius: 2px;
 }
-.modal--fade .modal-close, .modal--plainscreen .modal-close, .modal--zoomin .modal-close, .modal--zoomout .modal-close, .modal--slidefromtop .modal-close, .modal--bouncefromtop .modal-close, .modal--bouncefromtopshaky .modal-close, .modal--show .modal-close {
+.modal--gallery .modal-close, .modal--fade .modal-close, .modal--plainscreen .modal-close, .modal--zoomin .modal-close, .modal--zoomout .modal-close, .modal--slidefromtop .modal-close, .modal--bouncefromtop .modal-close, .modal--bouncefromtopshaky .modal-close, .modal--show .modal-close {
   text-indent: -100px;
 }
-.modal--fade .modal-close:before, .modal--plainscreen .modal-close:before, .modal--zoomin .modal-close:before, .modal--zoomout .modal-close:before, .modal--slidefromtop .modal-close:before, .modal--bouncefromtop .modal-close:before, .modal--bouncefromtopshaky .modal-close:before, .modal--show .modal-close:before {
+.modal--gallery .modal-close:before, .modal--fade .modal-close:before, .modal--plainscreen .modal-close:before, .modal--zoomin .modal-close:before, .modal--zoomout .modal-close:before, .modal--slidefromtop .modal-close:before, .modal--bouncefromtop .modal-close:before, .modal--bouncefromtopshaky .modal-close:before, .modal--show .modal-close:before {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAEUlEQVQoz2NgeEYAjioYSQoAzOTmAXhPhyoAAAAASUVORK5CYII=");
 }
-.modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after {
+.modal--gallery .modal-close:after, .modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after {
   content: '\00d7';
   background: white;
   border-radius: 2px;
@@ -752,7 +736,7 @@ html {
   text-indent: 0;
 }
 @media screen and (max-width: 30em) {
-  .modal--fade:before, .modal--plainscreen:before, .modal--zoomin:before, .modal--zoomout:before, .modal--slidefromtop:before, .modal--bouncefromtop:before, .modal--bouncefromtopshaky:before, .modal--show:before {
+  .modal--gallery:before, .modal--fade:before, .modal--plainscreen:before, .modal--zoomin:before, .modal--zoomout:before, .modal--slidefromtop:before, .modal--bouncefromtop:before, .modal--bouncefromtopshaky:before, .modal--show:before {
     background-color: #27aae2;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#27aae2), to(#1c9cd3));
     background-image: -webkit-linear-gradient(top, #27aae2, #1c9cd3);
@@ -763,21 +747,24 @@ html {
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
   }
-  .modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner {
+  .modal--gallery .modal-inner, .modal--fade .modal-inner, .modal--plainscreen .modal-inner, .modal--zoomin .modal-inner, .modal--zoomout .modal-inner, .modal--slidefromtop .modal-inner, .modal--bouncefromtop .modal-inner, .modal--bouncefromtopshaky .modal-inner, .modal--show .modal-inner {
     padding-top: 3em;
     -webkit-box-shadow: none;
     box-shadow: none;
   }
-  .modal--fade .modal-close, .modal--plainscreen .modal-close, .modal--zoomin .modal-close, .modal--zoomout .modal-close, .modal--slidefromtop .modal-close, .modal--bouncefromtop .modal-close, .modal--bouncefromtopshaky .modal-close, .modal--show .modal-close {
+  .modal--gallery .modal-close, .modal--fade .modal-close, .modal--plainscreen .modal-close, .modal--zoomin .modal-close, .modal--zoomout .modal-close, .modal--slidefromtop .modal-close, .modal--bouncefromtop .modal-close, .modal--bouncefromtopshaky .modal-close, .modal--show .modal-close {
     text-decoration: none;
   }
-  .modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after {
+  .modal--gallery .modal-close:after, .modal--fade .modal-close:after, .modal--plainscreen .modal-close:after, .modal--zoomin .modal-close:after, .modal--zoomout .modal-close:after, .modal--slidefromtop .modal-close:after, .modal--bouncefromtop .modal-close:after, .modal--bouncefromtopshaky .modal-close:after, .modal--show .modal-close:after {
     content: attr(data-close);
     font-size: 1em;
     padding: 0.5em 1em;
   }
 }
 
+/*
+ * Plain Screen Theme Styles
+ */
 .modal--plainscreen .modal-inner {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -788,4 +775,341 @@ html {
 .modal--plainscreen .modal-close:after {
   -webkit-box-shadow: 0px -4px 8px -1px rgba(0, 0, 0, 0.25);
   box-shadow: 0px -4px 8px -1px rgba(0, 0, 0, 0.25);
+}
+
+/**
+ * CSS Modal Theme 'Resize'
+ * http://drublic.github.com/css-modal
+ */
+[data-cssmodal-resize] .modal-inner, [data-cssmodal-maxwidth] .modal-inner {
+  -webkit-transition: none;
+  transition: none;
+}
+@media screen and (max-width: 690px) {
+  [data-cssmodal-resize] .modal-inner, [data-cssmodal-maxwidth] .modal-inner {
+    right: auto !important;
+  }
+  [data-cssmodal-resize] .modal-inner img, [data-cssmodal-maxwidth] .modal-inner img {
+    max-width: 100% !important;
+  }
+  [data-cssmodal-resize] .modal-close:after, [data-cssmodal-maxwidth] .modal-close:after {
+    right: 50%;
+  }
+}
+@media screen and (max-width: 30em) {
+  [data-cssmodal-resize] .modal-inner, [data-cssmodal-maxwidth] .modal-inner {
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+.modal-content img {
+  display: block;
+}
+
+/**
+ * Custom maximum width for a modal
+ *
+ * Usage: Set `data-cssmodal-maxwidth` with a pixel-based max-width as a value.
+ */
+[data-cssmodal-maxwidth] .modal-inner {
+  width: 100%;
+}
+@media screen and (max-width: 690px) {
+  [data-cssmodal-maxwidth] .modal-inner {
+    left: 50%;
+  }
+  [data-cssmodal-maxwidth] .modal-close:after {
+    right: 50% !important;
+  }
+}
+@media screen and (max-width: 30em) {
+  [data-cssmodal-maxwidth] .modal-inner {
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  [data-cssmodal-maxwidth] .modal-close:after {
+    margin-right: 0 !important;
+    right: 0 !important;
+  }
+}
+
+/*
+ * CSS Modal Plugin for displaying an image gallery
+ *
+ * @author Jonathan Weiß
+ * @date 2014-05-16
+ */
+.modal-detail {
+  position: relative;
+  min-width: 98px;
+  min-height: 98px;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  -webkit-transition: opacity 0s;
+  transition: opacity 0s;
+}
+.modal-detail.is-active {
+  opacity: 1;
+  width: auto;
+  height: auto;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+}
+
+.modal--gallery .modal-content-list {
+  display: none;
+  list-style: none;
+  margin: 0.2em -0.2em -0.2em;
+  padding: 0;
+  overflow: hidden;
+}
+.modal--gallery .modal-content-list.is-active {
+  display: block;
+}
+.modal--gallery .modal-content-list > li {
+  float: left;
+  padding: 0.2em;
+}
+.modal--gallery .modal-content-list img {
+  display: block;
+  border: 0;
+}
+
+.modal--gallery-navigation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.modal--gallery-navigation a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  font-family: arial, sans-serif;
+  text-indent: -99em;
+  overflow: hidden;
+  text-decoration: none;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+.modal--gallery-navigation img {
+  max-width: 98px;
+  max-height: 98px;
+}
+.modal--gallery-navigation .modal--gallery-navigation-prev {
+  left: 0;
+}
+.modal--gallery-navigation .modal--gallery-navigation-prev:after {
+  position: absolute;
+  top: 50%;
+  height: 32px;
+  margin-top: -24px;
+  line-height: 32px;
+  padding: 0 8px;
+  font-size: 64px;
+  opacity: 0;
+}
+.modal--gallery-navigation .modal--gallery-navigation-prev:hover:after, .modal--gallery-navigation .modal--gallery-navigation-prev:focus:after, .modal--gallery-navigation .modal--gallery-navigation-prev:active:after {
+  opacity: 1;
+}
+@media screen and (max-width: 30em) {
+  .modal--gallery-navigation .modal--gallery-navigation-prev:after {
+    opacity: 1;
+  }
+}
+.modal--gallery-navigation .modal--gallery-navigation-prev:after {
+  content: '‹';
+  left: 0;
+  text-indent: 0;
+}
+.modal--gallery-navigation .modal--gallery-navigation-next {
+  right: 0;
+}
+.modal--gallery-navigation .modal--gallery-navigation-next:after {
+  position: absolute;
+  top: 50%;
+  height: 32px;
+  margin-top: -24px;
+  line-height: 32px;
+  padding: 0 8px;
+  font-size: 64px;
+  opacity: 0;
+}
+.modal--gallery-navigation .modal--gallery-navigation-next:hover:after, .modal--gallery-navigation .modal--gallery-navigation-next:focus:after, .modal--gallery-navigation .modal--gallery-navigation-next:active:after {
+  opacity: 1;
+}
+@media screen and (max-width: 30em) {
+  .modal--gallery-navigation .modal--gallery-navigation-next:after {
+    opacity: 1;
+  }
+}
+.modal--gallery-navigation .modal--gallery-navigation-next:after {
+  content: '›';
+  right: 0;
+  text-indent: 0;
+}
+
+/**
+ * Caption
+ */
+.modal--gallery-caption {
+  border-bottom: 1px solid #dddddd;
+}
+.modal--gallery-caption p {
+  margin: 1em 15px;
+}
+
+/**
+ * A loading spinner
+ * http://stackoverflow.com/questions/16250260/android-holo-loading-spinner-in-css
+ */
+@keyframes rotate-outer {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(1080deg);
+    -ms-transform: rotate(1080deg);
+    transform: rotate(1080deg);
+  }
+}
+@-webkit-keyframes rotate-outer {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(1080deg);
+  }
+}
+@keyframes rotate-inner {
+  0% {
+    -webkit-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    transform: rotate(720deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes rotate-inner {
+  0% {
+    -webkit-transform: rotate(720deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  margin-top: -32px;
+  margin-left: -32px;
+}
+.spinner .spinner__outer,
+.spinner .spinner__inner, .spinner:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.spinner:after {
+  content: '';
+  margin: 5%;
+  border-radius: 100%;
+  background: white;
+}
+.spinner .spinner__outer,
+.spinner .spinner__inner {
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+.spinner .spinner__outer:before, .spinner .spinner__outer:after,
+.spinner .spinner__inner:before,
+.spinner .spinner__inner:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+.spinner .spinner__outer:before,
+.spinner .spinner__inner:before {
+  left: 0;
+  right: 50%;
+  border-radius: 64px 0 0 64px;
+}
+.spinner .spinner__outer:after,
+.spinner .spinner__inner:after {
+  left: 50%;
+  right: 0;
+  border-radius: 0 64px 64px 0;
+}
+.spinner .spinner__outer {
+  -webkit-animation-name: rotate-outer;
+  animation-name: rotate-outer;
+}
+.spinner .spinner__inner {
+  -webkit-animation-name: rotate-inner;
+  animation-name: rotate-inner;
+}
+.spinner .spinner__outer:before {
+  background-image: -webkit-linear-gradient(top, rgba(150, 150, 150, 0), rgba(150, 150, 150, 0.5));
+  background-image: -moz-linear-gradient(top, rgba(150, 150, 150, 0), rgba(150, 150, 150, 0.5));
+  background-image: linear-gradient(to bottom, rgba(150, 150, 150, 0), rgba(150, 150, 150, 0.5));
+}
+.spinner .spinner__outer:after {
+  background-image: -webkit-linear-gradient(top, #969696, rgba(150, 150, 150, 0.5));
+  background-image: -moz-linear-gradient(top, #969696, rgba(150, 150, 150, 0.5));
+  background-image: linear-gradient(to bottom, #969696, rgba(150, 150, 150, 0.5));
+}
+.spinner .spinner__inner:before {
+  background-image: -webkit-linear-gradient(top, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5));
+  background-image: -moz-linear-gradient(top, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5));
+  background-image: linear-gradient(to bottom, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5));
+}
+.spinner .spinner__inner:after {
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
+}
+
+/**
+ * CSS Modal Plugin: Stretch height
+ */
+[data-cssmodal-stretch] .modal-inner {
+  top: 10%;
+  min-height: 80%;
+}
+[data-cssmodal-stretch] .modal-content {
+  max-height: none !important;
+}
+[data-cssmodal-stretch] .modal-close:after {
+  top: 10%;
+  margin-top: -25px;
+}
+@media screen and (max-width: 30em) {
+  [data-cssmodal-stretch] .modal-inner {
+    top: 0;
+  }
+  [data-cssmodal-stretch] .modal-close:after {
+    margin-top: 0;
+  }
 }

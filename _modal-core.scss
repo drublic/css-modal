@@ -14,11 +14,8 @@ html {
 
 
 	@media screen and (max-width: $modal-small-breakpoint) {
-		height: 100%;
-
 		> body {
 			overflow: hidden;
-			height: 100%;
 		}
 	}
 }
@@ -68,6 +65,8 @@ html {
 
 	&.is-active {
 		display: block\9;
+		height: 100%\9;
+		width: 100%\9;
 	}
 
 
@@ -93,7 +92,6 @@ html {
 		// This removes the scrollbar in lt IE9
 		@media \0screen\,screen\9 {
 			background: transparent;
-			height: 100%;
 		}
 
 		> img,
@@ -113,10 +111,12 @@ html {
 
 	// Content
 	.modal-content {
+		position: relative;
 		max-height: 400px;
-		max-height: 70vh;
+		max-height: 80vh;
 		overflow-x: hidden;
 		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
 
 		// This removes the scrollbar in lt IE9
 		@media \0screen\,screen\9 {
@@ -146,6 +146,10 @@ html {
 		margin: -1px;
 		overflow: hidden;
 
+		&:focus:after {
+			outline: 1px dotted;
+			outline: -webkit-focus-ring-color auto 5px;
+		}
 
 		// Background as close
 		&:before {
@@ -164,9 +168,9 @@ html {
 			content: '\00d7';
 			position: absolute;
 			top: 25px;
-			left: 50%;
+			right: 50%;
 			z-index: 20;
-			margin-left: ($modal-max-width / 2) - 40;
+			margin-right: -($modal-max-width / 2);
 		}
 	}
 
@@ -180,14 +184,10 @@ html {
 			margin-left: 0;
 		}
 
-
 		.modal-close {
-			left: auto;
-			right: 33px;
-			margin-left: 0;
-
 			&:after {
-				margin-left: 40%;
+				margin-right: 0 !important;
+				right: 20px;
 			}
 		}
 	}
@@ -199,23 +199,17 @@ html {
 		-webkit-transform: translate3d(0, 100%, 0); // And overwrite px if 3D transforms are supported
 		        transform: translate3d(0, 100%, 0);
 
-		-webkit-transition: -webkit-transform .25s ease-in-out, opacity 1ms .25s;
-		   -moz-transition:    -moz-transform .25s ease-in-out, opacity 1ms .25s;
-		     -o-transition:      -o-transform .25s ease-in-out, opacity 1ms .25s;
-		    -ms-transition:     -ms-transform .25s ease-in-out, opacity 1ms .25s;
-		        transition:         transform .25s ease-in-out, opacity 1ms .25s;
+		-webkit-transition: opacity 1ms .25s;
+		   -moz-transition: opacity 1ms .25s;
+		     -o-transition: opacity 1ms .25s;
+		    -ms-transition: opacity 1ms .25s;
+		        transition: opacity 1ms .25s;
 
 		display: block;
 		bottom: auto;
 
 		&:target,
 		&.is-active {
-			-webkit-transition: -webkit-transform .25s ease-in-out;
-			   -moz-transition:    -moz-transform .25s ease-in-out;
-			     -o-transition:      -o-transform .25s ease-in-out;
-			    -ms-transition:     -ms-transform .25s ease-in-out;
-			        transition:         transform .25s ease-in-out;
-
 			height: 100%;
 		}
 
@@ -263,7 +257,7 @@ html {
 			}
 
 			&:after {
-				top: 5px;
+				top: 5px !important;
 				right: 5px;
 				left: auto;
 				z-index: 40;
@@ -401,10 +395,6 @@ html {
 		        transition: all 0.4s;
 
 		opacity: 0;
-		// Needs to be moved into the center
-		// of the modal initially
-		top: 250px;
-		left: 20%;
 	}
 
 
@@ -435,7 +425,6 @@ html {
 			opacity: 1;
 			// Move back to proper position
 			top: 25px;
-			left: 50%;
 
 			@media screen and (max-width: $modal-small-breakpoint) {
 				top: 5px;
@@ -539,7 +528,6 @@ html {
 		// Needs to be moved into the center
 		// of the modal initially
 		top: -125px;
-		left: 75%;
 	}
 
 
@@ -570,7 +558,6 @@ html {
 			opacity: 1;
 			// Move back to proper position
 			top: 25px;
-			left: 50%;
 
 			@media screen and (max-width: $modal-small-breakpoint) {
 				top: 5px;
@@ -625,7 +612,6 @@ html {
 		// Needs to be moved into the center
 		// of the modal initially
 		top: -125px;
-		left: 50%;
 	}
 
 
@@ -779,7 +765,6 @@ html {
 		// Needs to be moved into the center
 		// of the modal initially
 		top: 25px;
-		left: 50%;
 	}
 
 
@@ -856,7 +841,6 @@ html {
 		// Needs to be moved into the center
 		// of the modal initially
 		top: 25px;
-		left: 50%;
 	}
 
 

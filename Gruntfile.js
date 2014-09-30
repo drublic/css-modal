@@ -15,7 +15,8 @@ module.exports = function (grunt) {
 			all: [
 				'Gruntfile.js',
 				'modal.js',
-				'test/spec/modal.js'
+				'test/spec/*.js',
+				'plugins/**/*.js'
 			],
 			options: {
 				jshintrc: '.jshintrc'
@@ -70,14 +71,15 @@ module.exports = function (grunt) {
 		// Watch that stuff
 		watch: {
 			scss: {
-				files: ['*.scss', 'test/*.scss'],
+				files: ['*.scss', 'test/*.scss', 'plugins/*.scss'],
 				tasks: 'sass'
 			},
 
 			hint: {
 				files: [
 					'modal.js',
-					'test/spec/modal.js'
+					'test/spec/*.js',
+					'plugins/**/*.js',
 				],
 				tasks: 'jshint'
 			},

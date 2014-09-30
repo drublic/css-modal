@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Jasmine Spec Runner</title>
+
+		<link rel="stylesheet" href="lib/jasmine-1.3.1/jasmine.css">
+		<link rel="stylesheet" href="modal.css">
+
+		<script src="lib/jquery.js"></script>
+		<script src="lib/jasmine-1.3.1/jasmine.js"></script>
+		<script src="lib/jasmine-1.3.1/jasmine-html.js"></script>
+	</head>
+
+	<body>
+
+		<ul>
+			<li><a href="#modal-gallery/2" title="Clicking this link shows a modal with a gallery">Demo Gallery (with KITTENS!)</a></li>
+			<li><a href="#modal-gallery-boring" title="Clicking this link shows a modal with a gallery">Demo Gallery</a></li>
+			<li><a href="#error-invalid-id/1" title="Clicking this link triggers an error">Trigger error</a></li>
+		</ul>
+
+		<!-- A modal with some images -->
+		<section class="modal modal--gallery" id="modal-gallery"
+				style="top: 101%;"
+				tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true" data-cssmodal-resize>
+			<div class="modal-inner">
+				<div class="modal-content">
+					<div class="modal-detail" aria-live="polite" aria-atomic="false"></div>
+					<ul class="modal-content-list" aria-hidden="true">
+						<li><img alt="The last time I felt it was in the presence of my old master." src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/400/300" alt=""></li>
+						<li><img alt="I'm getting too old for this sort of thing." src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/410/300" alt=""></li>
+						<li><img alt="Don't underestimate the Force." src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/440/300" alt=""></li>
+						<li><img alt="Alderaan is peaceful. We have no weapons." src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/460/300" alt=""></li>
+						<li><img alt="Escape is not his plan." src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/390/300" alt=""></li>
+						<li><img alt="The last time I felt it was in the presence of my old master." src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/380/300" alt=""></li>
+						<li><img alt="I'm getting too old for this sort of thing." src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/370/300" alt=""></li>
+						<li><img alt="Escape is not his plan." src="http://placekitten.com/40/40" data-src-fullsize="http://placekitten.com/360/300" alt=""></li>
+					</ul>
+				</div>
+
+				<div class="modal--gallery-caption"></div>
+
+				<ul class="modal--gallery-navigation">
+					<li><a title="Previous" class="modal--gallery-navigation-prev" href="#">Previous</a></li>
+					<li><a title="Next" class="modal--gallery-navigation-next" href="#">Next</a></li>
+				</ul>
+			</div>
+
+			<!-- Use Hash-Bang to maintain scroll position when closing modal -->
+			<a href="#!" class="modal-close" title="Close this modal" data-close="Close">&times;</a>
+		</section>
+
+		<!-- A modal with some images -->
+		<section class="modal modal--gallery" id="modal-gallery-boring"
+				style="top: 101%;"
+				tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true" data-cssmodal-resize>
+			<div class="modal-inner">
+				<div class="modal-content">
+					<div class="modal-detail" aria-live="polite" aria-atomic="false"></div>
+					<ul class="modal-content-list" aria-hidden="true">
+						<li><img alt="The last time I felt it was in the presence of my old master." src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=1+-+6-lorem+ipsum" alt=""></li>
+						<li><img alt="I'm getting too old for this sort of thing." src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=2+-+6-dolor+sit+amet" alt=""></li>
+						<li><img alt="Don't underestimate the Force." src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=3+-+6-consectetur" alt=""></li>
+						<li><img alt="Alderaan is peaceful. We have no weapons." src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=4+-+6-in+reprehenderit" alt=""></li>
+						<li><img alt="Escape is not his plan." src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=5+-+6-deserunt+mollit" alt=""></li>
+						<li><img alt="The last time I felt it was in the presence of my old master." src="http://dummyimage.com/40/40" data-src-fullsize="http://dummyimage.com/400x300&amp;text=6+-+6-cillum+dolore" alt=""></li>
+					</ul>
+				</div>
+				<ul class="modal--gallery-navigation">
+					<li><a title="Previous" class="modal--gallery-navigation-prev" href="#">Previous</a></li>
+					<li><a title="Next" class="modal--gallery-navigation-next" href="#">Next</a></li>
+				</ul>
+			</div>
+
+			<!-- Use Hash-Bang to maintain scroll position when closing modal -->
+			<a href="#!" class="modal-close" title="Close this modal" data-close="Close">&times;</a>
+		</section>
+
+		<!-- Source -->
+		<script src="../modal.js"></script>
+		<script src="../plugins/gallery.js"></script>
+		<script src="../plugins/modal-resize.js"></script>
+
+		<!-- Specs -->
+		<script src="spec/gallery-spec.js"></script>
+
+		<script src="lib/reporter.js"></script>
+
+		<script>
+			(function() {
+				var jasmineEnv = jasmine.getEnv();
+				jasmineEnv.updateInterval = 1000;
+
+				var htmlReporter = new jasmine.HtmlReporter();
+
+				jasmineEnv.addReporter(htmlReporter);
+
+				jasmineEnv.specFilter = function(spec) {
+					return htmlReporter.specFilter(spec);
+				};
+
+				var currentWindowOnload = window.onload;
+
+				window.onload = function() {
+					if (currentWindowOnload) {
+						currentWindowOnload();
+					}
+					execJasmine();
+				};
+
+				function execJasmine() {
+					jasmineEnv.execute();
+				}
+
+			}());
+		</script>
+
+	</body>
+</html>

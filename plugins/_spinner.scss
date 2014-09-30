@@ -1,0 +1,146 @@
+/**
+ * A loading spinner
+ * http://stackoverflow.com/questions/16250260/android-holo-loading-spinner-in-css
+ */
+$spinner--size: 64px;
+$spinner--background: #fff;
+$spinner--width: 5%;
+
+// Spinning animations
+@keyframes rotate-outer {
+	0% {
+		-webkit-transform: rotate(0deg);
+		    -ms-transform: rotate(0deg);
+		        transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(1080deg);
+		    -ms-transform: rotate(1080deg);
+		        transform: rotate(1080deg);
+	}
+}
+
+@-webkit-keyframes rotate-outer {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(1080deg);
+	}
+}
+
+@keyframes rotate-inner {
+	0% {
+		-webkit-transform: rotate(720deg);
+		    -ms-transform: rotate(720deg);
+		        transform: rotate(720deg);
+	}
+	100% {
+		-webkit-transform: rotate(0deg);
+		    -ms-transform: rotate(0deg);
+		        transform: rotate(0deg);
+	}
+}
+
+@-webkit-keyframes rotate-inner {
+	0% {
+		-webkit-transform: rotate(720deg);
+	}
+
+	100% {
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+%spinner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: $spinner--size;
+	height: $spinner--size;
+	margin-top: -($spinner--size / 2);
+	margin-left: -($spinner--size / 2);
+
+	.spinner__outer,
+	.spinner__inner,
+	&:after {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	// Mask
+	&:after {
+		content: '';
+		margin: $spinner--width;
+		border-radius: 100%;
+		background: $spinner--background;
+	}
+
+	.spinner__outer,
+	.spinner__inner {
+		-webkit-animation-duration: 4s;
+		        animation-duration: 4s;
+		-webkit-animation-iteration-count: infinite;
+		        animation-iteration-count: infinite;
+		-webkit-animation-timing-function: linear;
+		        animation-timing-function: linear;
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+		}
+
+		// left
+		&:before {
+			left: 0;
+			right: 50%;
+			border-radius: $spinner--size 0 0 $spinner--size;
+		}
+
+		// right
+		&:after {
+			left: 50%;
+			right: 0;
+			border-radius: 0 $spinner--size $spinner--size 0;
+		}
+	}
+
+	.spinner__outer {
+		-webkit-animation-name: rotate-outer;
+		        animation-name: rotate-outer;
+	}
+
+	.spinner__inner {
+		-webkit-animation-name: rotate-inner;
+		        animation-name: rotate-inner;
+	}
+
+	// Gradients
+	.spinner__outer:before {
+		background-image: -webkit-linear-gradient(top, rgba(150, 150, 150, 0.0), rgba(150, 150, 150, 0.5));
+		background-image:    -moz-linear-gradient(top, rgba(150, 150, 150, 0.0), rgba(150, 150, 150, 0.5));
+		background-image:         linear-gradient(to bottom, rgba(150, 150, 150, 0.0), rgba(150, 150, 150, 0.5));
+	}
+
+	.spinner__outer:after {
+		background-image: -webkit-linear-gradient(top, rgba(150, 150, 150, 1.0), rgba(150, 150, 150, 0.5));
+		background-image:    -moz-linear-gradient(top, rgba(150, 150, 150, 1.0), rgba(150, 150, 150, 0.5));
+		background-image:         linear-gradient(to bottom, rgba(150, 150, 150, 1.0), rgba(150, 150, 150, 0.5));
+	}
+	.spinner__inner:before {
+		background-image: -webkit-linear-gradient(top, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5));
+		background-image:    -moz-linear-gradient(top, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5));
+		background-image:         linear-gradient(to bottom, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5));
+	}
+	.spinner__inner:after {
+		background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
+		background-image:    -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
+		background-image:         linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
+	}
+}

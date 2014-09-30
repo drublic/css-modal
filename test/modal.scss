@@ -7,7 +7,11 @@
 
 // Include Modal
 @import "../modal";
-
+@import "../plugins/modal-resize";
+@import "../plugins/modal-maxwidth";
+@import "../plugins/gallery";
+@import "../plugins/spinner";
+@import "../plugins/modal-stretch";
 
 // Apply the modal with all its possible parts
 ._modal {
@@ -41,3 +45,16 @@
 .modal--bouncefromtopshaky {
 	@extend %modal--transition-bounceFromTopShaky;
 }
+
+[data-cssmodal-resize] {
+	@extend %modal--resize;
+}
+
+[data-cssmodal-maxwidth] {
+	@extend %modal--resize;
+}
+
+.spinner {
+	@extend %spinner;
+}
+
