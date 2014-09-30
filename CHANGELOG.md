@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Keep focus within modal: avoid non visible focusable elements
 * Plugin resize: Only apply image styles if image is present
 * Remove unused height declaration from core
 
