@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Better keep focus : avoid non visible focusable elements
 * Remove unused height declaration from core
 
 ## 1.1.8 - 20.06.2014

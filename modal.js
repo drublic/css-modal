@@ -164,8 +164,8 @@
 				return;
 			}
 
-			var firstTabbableElement = allTabbableElements[0];
-			var lastTabbableElement = allTabbableElements[allTabbableElements.length - 1];
+			var firstTabbableElement = modal.getFirstElementVisible(allTabbableElements);
+			var lastTabbableElement = modal.getLastElementVisible(allTabbableElements);
 
 			var focusHandler = function (event) {
 				var keyCode = event.which || event.keyCode;
@@ -193,6 +193,69 @@
 			};
 
 			modal.on('keydown', element, focusHandler);
+		},
+
+		/*
+		 * Return the first visible element of a nodeList
+		 *
+		 * @param nodeList The nodelist to parse
+		 * @return {Node|null} Returns a specific node or null if no element found
+		 */
+		getFirstElementVisible: function (nodeList) {
+			var nodeListLength = nodeList.length;
+
+			// If the first item is not visible
+			if (!modal.isElementVisible(nodeList[0])) {
+				for (var i = 1; i < nodeListLength - 1; i++) {
+
+					// Iterate elements in the NodeList, return the first visible
+					if (modal.isElementVisible(nodeList[i])) {
+						return nodeList[i];
+					}
+				}
+			} else {
+				return nodeList[0];
+			}
+
+			return null;
+		},
+
+		/*
+		 * Return the last visible element of a nodeList
+		 *
+		 * @param nodeList The nodelist to parse
+		 * @return {Node|null} Returns a specific node or null if no element found
+		 */
+		getLastElementVisible: function (nodeList) {
+			var nodeListLength = nodeList.length;
+			var lastTabbableElement = nodeList[nodeListLength - 1];
+
+			// If the last item is not visible
+			if (!modal.isElementVisible(lastTabbableElement)) {
+				for (var i = nodeListLength - 1; i >= 0; i--) {
+
+					// Iterate elements in the NodeList, return the first visible
+					if (modal.isElementVisible(nodeList[i])) {
+						return nodeList[i];
+					}
+				}
+			} else {
+				return lastTabbableElement;
+			}
+
+			return null;
+		},
+
+		/*
+		 * Convenience function to check if an element is visible
+		 *
+		 * Test idea taken from jquery 1.3.2 source code
+		 *
+		 * @param element {Node} element to test
+		 * @return {boolean} is the element visible or not
+		 */
+		isElementVisible: function (element) {
+			return !(element.offsetWidth === 0 && element.offsetHeight === 0);
 		},
 
 		/*
