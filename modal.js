@@ -164,8 +164,8 @@
 				return;
 			}
 
-			var firstTabbableElement = modal.getFirstElementVisible(allTabbableElements),
-				lastTabbableElement = modal.getLastElementVisible(allTabbableElements);
+			var firstTabbableElement = modal.getFirstElementVisible(allTabbableElements);
+			var lastTabbableElement = modal.getLastElementVisible(allTabbableElements);
 
 			var focusHandler = function (event) {
 				var keyCode = event.which || event.keyCode;
@@ -199,13 +199,15 @@
 		 * Return the first visible element of a nodeList
 		 *
 		 * @param nodeList The nodelist to parse
-		 * @return {*}
+		 * @return {Node|null} Returns a specific node or null if no element found
 		 */
 		getFirstElementVisible: function (nodeList) {
 			var nodeListLength = nodeList.length;
+
 			// If the first item is not visible
 			if (!modal.isElementVisible(nodeList[0])) {
 				for (var i = 1; i < nodeListLength - 1; i++) {
+
 					// Iterate elements in the NodeList, return the first visible
 					if (modal.isElementVisible(nodeList[i])) {
 						return nodeList[i];
@@ -222,14 +224,16 @@
 		 * Return the last visible element of a nodeList
 		 *
 		 * @param nodeList The nodelist to parse
-		 * @return {*}
+		 * @return {Node|null} Returns a specific node or null if no element found
 		 */
 		getLastElementVisible: function (nodeList) {
-			var nodeListLength = nodeList.length,
-				lastTabbableElement = nodeList[nodeListLength - 1];
+			var nodeListLength = nodeList.length;
+			var lastTabbableElement = nodeList[nodeListLength - 1];
+
 			// If the last item is not visible
 			if (!modal.isElementVisible(lastTabbableElement)) {
 				for (var i = nodeListLength - 1; i >= 0; i--) {
+
 					// Iterate elements in the NodeList, return the first visible
 					if (modal.isElementVisible(nodeList[i])) {
 						return nodeList[i];
