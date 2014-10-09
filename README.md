@@ -5,6 +5,9 @@ Modals built out of pure CSS
 Please [visit the website](http://drublic.github.io/css-modal) to read more
 about this project and refer to the [FAQ](FAQ.md) in case of a question.
 
+### [Gratipay me](https://gratipay.com/drublic) (aka. Gittip) if you enjoy this
+plugin.
+
 ## What is it
 
 __Built with pure CSS:__ CSS Modal is built out of pure CSS. JavaScript is only
@@ -145,7 +148,3 @@ on the website.
 
 This is a project by [Hans Christian Reinl](http://drublic.de). Thanks goes out
 to [all other contributors](https://github.com/drublic/css-modal/contributors).
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/drublic/css-modal/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
