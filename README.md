@@ -31,7 +31,7 @@ fast!
 You need to include the markup and content for modals in your website. This has
 a positive effect on SEO. The example code:
 
-	<section class="semantic-content" id="modal-text" tabindex="-1"
+	<section class="modal--show" id="modal-text" tabindex="-1"
 	        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 
 	    <div class="modal-inner">
