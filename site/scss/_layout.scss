@@ -69,7 +69,7 @@ code {
 }
 
 // Buttons
-%button {
+.button {
 	@include x-transition(0.1s);
 
 	display: inline-block;
@@ -157,7 +157,7 @@ code {
 
 // Download button
 .download {
-	@extend %button;
+	@extend .button;
 
 	margin-top: 0.5em;
 
@@ -302,7 +302,7 @@ code {
 
 // Demo
 .call-modal {
-	@extend %button;
+	@extend .button;
 
 	@media screen and (max-width: 30em) {
 		display: block;
@@ -322,7 +322,7 @@ code {
 		padding-top: 1em;
 
 		> a {
-			@extend %button;
+			@extend .button;
 		}
 
 		&:target > a,

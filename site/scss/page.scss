@@ -23,7 +23,7 @@
 
 	.close-action,
 	.open-modal {
-		@extend %button;
+		@extend .button;
 
 		margin-right: 5px;
 	}

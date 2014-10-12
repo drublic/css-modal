@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * Modals build with pure CSS
  * by @drublic - http://drublic.de/
@@ -418,7 +419,7 @@ th {
   padding: 0;
 }
 
-/* sass-mixins - v0.9.0 - 2014-07-02 */
+/*! sass-mixins - v0.9.0 - 2014-07-02 */
                                        /**
 * @description
 * Generates keyframe animations
@@ -1027,7 +1028,7 @@ code {
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
 }
 
-.download, .call-modal, .content-tabbed > h3 > a, .semantic-content .close-action,
+.button, .download, .call-modal, .content-tabbed > h3 > a, .semantic-content .close-action,
 .semantic-content .open-modal {
   -webkit-transition: 0.1s;
   transition: 0.1s;
@@ -1038,11 +1039,11 @@ code {
   border-radius: 4px;
   padding: 0.6em 1em;
 }
-.download:visited, .call-modal:visited, .content-tabbed > h3 > a:visited, .semantic-content .close-action:visited,
+.button:visited, .download:visited, .call-modal:visited, .content-tabbed > h3 > a:visited, .semantic-content .close-action:visited,
 .semantic-content .open-modal:visited {
   color: #fff;
 }
-.download:hover, .call-modal:hover, .content-tabbed > h3 > a:hover, .semantic-content .close-action:hover,
+.button:hover, .download:hover, .call-modal:hover, .content-tabbed > h3 > a:hover, .semantic-content .close-action:hover,
 .semantic-content .open-modal:hover {
   background: #3db3e5;
 }
@@ -1167,7 +1168,7 @@ code {
 
 .features {
   overflow: hidden;
-  margin: 1em -0.7em 1.4em;
+  margin: 1em -.7em 1.4em;
 }
 .features > div {
   -webkit-box-sizing: border-box;
@@ -1366,8 +1367,8 @@ html {
 }
 .is-active.semantic-content, .is-active.modal--show {
   display: block\9;
-  height: 100%\9;
-  width: 100%\9;
+  height: 100% \9;
+  width: 100% \9;
 }
 .semantic-content:target, .modal--show:target, .is-active.semantic-content, .is-active.modal--show {
   display: block\9;
@@ -1568,21 +1569,18 @@ html {
     -webkit-transform: scale(0.8);
   }
 }
-
 @-moz-keyframes scaleDown {
   to {
     opacity: 0;
     -moz-transform: scale(0.8);
   }
 }
-
 @keyframes scaleDown {
   to {
     opacity: 0;
     transform: scale(0.8);
   }
 }
-
 @media screen and (min-width: 30em) {
   .semantic-content {
     -webkit-transition: opacity 0.4s;
@@ -1608,7 +1606,6 @@ html {
     -webkit-transform: translateX(0%) translateY(0%);
   }
 }
-
 @-webkit-keyframes bounce {
   0% {
     -webkit-transform: translateY(-100%);
@@ -1622,7 +1619,6 @@ html {
     -webkit-transform: translateY(0%);
   }
 }
-
 @-moz-keyframes bounce {
   0% {
     -moz-transform: translateY(-100%);
@@ -1636,7 +1632,6 @@ html {
     -moz-transform: translateY(0%);
   }
 }
-
 @-o-keyframes bounce {
   0% {
     -o-transform: translateY(-100%);
@@ -1650,7 +1645,6 @@ html {
     -o-transform: translateY(0%);
   }
 }
-
 @-ms-keyframes bounce {
   0% {
     -ms-transform: translateY(-100%);
@@ -1664,7 +1658,6 @@ html {
     -ms-transform: translateY(0%);
   }
 }
-
 @keyframes bounce {
   0% {
     transform: translateY(-100%);
@@ -1678,7 +1671,6 @@ html {
     transform: translateY(0%);
   }
 }
-
 /**
  * CSS Modal Themes
  * http://drublic.github.com/css-modal
