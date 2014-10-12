@@ -1,0 +1,7 @@
+/**
+ * Apply the desired modal behavior to your container selector
+ */
+.modal--show {
+	@extend %modal;
+	@extend %modal-theme;
+}
