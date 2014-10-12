@@ -44,6 +44,12 @@ a positive effect on SEO. The example code:
 	        data-dismiss="modal">×</a>
 	</section>
 
+The `id` attribute is the one which identifies the modal. You can link to this
+ID from everywhere.
+
+> Please not that the ID cannot include the `/` character since this one is
+needed for identifying stacked modals.
+
 Using header and footer is optional. Just remove the tags if you don't want them
 in a modal.
 
