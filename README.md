@@ -5,8 +5,8 @@ Modals built out of pure CSS
 Please [visit the website](http://drublic.github.io/css-modal) to read more
 about this project and refer to the [FAQ](FAQ.md) in case of a question.
 
-### [Gratipay me](https://gratipay.com/drublic) (aka. Gittip) if you enjoy this
-plugin.
+### [Gratipay me](https://gratipay.com/drublic)
+(aka. Gittip) if you enjoy this plugin.
 
 ## What is it
 
@@ -82,12 +82,13 @@ Modals. But there are some issues where JavaScript helps:
 * Pressing escape: If you press ESC on your keyboard while the modal is visible
 it closes itself. This behavior cannot be done with CSS only.
 * Preventing background page from scrolling: If you scroll within the modal and
-you reach the end you don't want the page in the background to scroll. To prevent
-this JavaScript pushs a CSS class selector to the body element.
+you reach the end you don't want the page in the background to scroll. To
+prevent this JavaScript pushs a CSS class selector to the body element.
 * Being accessible: To get the browser's focus to the modal and back after
 closing.
-* Fireing events: When a modal opens a custom event is fired called cssmodal:show.
-When the modal is hidden, an event called cssmodal:hide is triggered.
+* Fireing events: When a modal opens a custom event is fired called
+`cssmodal:show`. When the modal is hidden, an event called cssmodal:hide is
+triggered.
 * To add this behavior to your website, please include the JavaScript file
 modal.js right before the closing body-tag:
 
@@ -105,9 +106,18 @@ On mobile Safari for iOS and Android 4+ it is tested pretty well, while Android
 [is scrolling](https://github.com/drublic/css-modal/issues/4)).
 It's also working on Windows Phone 8.
 
-In numbers: Chrome, Firefox, Safari 6, Opera 12, IE8 (functional), IE9+. And
-iOS 6, Android 2.3+.
+In numbers:
 
+* Chrome
+* Firefox
+* Safari 6.x
+* Opera 12+
+* Internet Explorer 8 (functional)
+* Internet Explorer 9+
+* iOS 6
+* Android 2.3 (functional)
+* Android 4.x
+* Windows Phone 8
 
 ## Media
 
@@ -123,7 +133,7 @@ You can use the events by subscribing to them as if they were click events or
 something. Here is an example using jQuery:
 
 	$(document).on('cssmodal:show', function (event) {
-		console.log(event);
+	    console.log(event);
 	});
 
 There events are not fired in IE8. Please be aware of that and use jQuery or
