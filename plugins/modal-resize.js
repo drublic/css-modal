@@ -213,8 +213,11 @@
 		if (modalInner.style) {
 			modalInner.style.top = '0';
 			modalInner.style.left = '0';
-			modalImage.style.maxWidth = '100%';
-			modalImage.style.maxHeight = '100%';
+
+			if (modalImage) {
+				modalImage.style.maxWidth = '100%';
+				modalImage.style.maxHeight = '100%';
+			}
 		}
 	};
 

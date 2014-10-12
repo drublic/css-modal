@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Plugin resize: Only apply image styles if image is present
 * Remove unused height declaration from core
 
 ## 1.1.8 - 20.06.2014
