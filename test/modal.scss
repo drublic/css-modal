@@ -30,22 +30,6 @@
 	@extend %modal--transition-plainScreen;
 }
 
-.modal--zoomout {
-	@extend %modal--transition-zoomOut;
-}
-
-.modal--slidefromtop {
-	@extend %modal--transition-slideFromTop;
-}
-
-.modal--bouncefromtop {
-	@extend %modal--transition-bounceFromTop;
-}
-
-.modal--bouncefromtopshaky {
-	@extend %modal--transition-bounceFromTopShaky;
-}
-
 [data-cssmodal-resize] {
 	@extend %modal--resize;
 }
