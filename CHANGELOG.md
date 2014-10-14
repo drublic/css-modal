@@ -1,8 +1,14 @@
 # Changelog
 
 ## HEAD
+
+## 1.2.0 - 16.10.2014
+* Use * for files to ignore and include in bower.json
+* Sort JSHintRC file alphabetically
+* Move animations into separate SCSS file for better control
 * Keep focus within modal: avoid non visible focusable elements
 * Plugin resize: Only apply image styles if image is present
+* Add note about / in IDs in README
 * Remove unused height declaration from core
 
 ## 1.1.8 - 20.06.2014
