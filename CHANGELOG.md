@@ -1,6 +1,8 @@
 # Changelog
 
 ## HEAD
+* Update core effects and only use necessary prefixes
+* Remove non-core effects of the modal (#161)
 
 ## 1.2.0 - 16.10.2014
 * Use * for files to ignore and include in bower.json
