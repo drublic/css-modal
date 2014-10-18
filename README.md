@@ -31,18 +31,20 @@ fast!
 You need to include the markup and content for modals in your website. This has
 a positive effect on SEO. The example code:
 
-	<section class="modal--show" id="modal-text" tabindex="-1"
-	        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+```html
+<section class="modal--show" id="modal-text" tabindex="-1"
+        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 
-	    <div class="modal-inner">
-	        <header id="modal-label"><!-- Header --></header>
-	        <div class="modal-content"><!-- The modals content --></div>
-	        <footer><!-- Footer --></footer>
-	    </div>
+    <div class="modal-inner">
+        <header id="modal-label"><!-- Header --></header>
+        <div class="modal-content"><!-- The modals content --></div>
+        <footer><!-- Footer --></footer>
+    </div>
 
-	    <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
-	        data-dismiss="modal">×</a>
-	</section>
+    <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+        data-dismiss="modal">?</a>
+</section>
+```
 
 The `id` attribute is the one which identifies the modal. You can link to this
 ID from everywhere.
@@ -64,14 +66,18 @@ Please remember to set a unique ID for the header and change the
 If you use Sass you can use the file [modal.scss](modal.scss) and include it
 into your project. Here is an example:
 
-	@import "modules/modal";
+```scss
+@import "modules/modal";
+```
 
 CSS Modals uses Sass's placeholders. You can use them by calling them via
 @extend in your modal's class name. The snippet looks something like that:
 
-	.my-awesome-class-name {
-	    @extend %modal;
-	}
+```scss
+.my-awesome-class-name {
+    @extend %modal;
+}
+```
 
 ### JavaScript
 
@@ -79,7 +85,7 @@ As stated above you don't need JavaScript to get a good experience out of CSS
 Modals. But there are some issues where JavaScript helps:
 
 * IE 8 compatibility.
-* Pressing escape: If you press ESC on your keyboard while the modal is visible
+* Pressing escape: If you press <kbd>ESC</kbd> on your keyboard while the modal is visible
 it closes itself. This behavior cannot be done with CSS only.
 * Preventing background page from scrolling: If you scroll within the modal and
 you reach the end you don't want the page in the background to scroll. To
@@ -87,12 +93,14 @@ prevent this JavaScript pushs a CSS class selector to the body element.
 * Being accessible: To get the browser's focus to the modal and back after
 closing.
 * Fireing events: When a modal opens a custom event is fired called
-`cssmodal:show`. When the modal is hidden, an event called cssmodal:hide is
+`cssmodal:show`. When the modal is hidden, an event called `cssmodal:hide` is
 triggered.
 * To add this behavior to your website, please include the JavaScript file
 modal.js right before the closing body-tag:
 
-	<script src="js/modal.js"></script>
+```html
+<script src="js/modal.js"></script>
+```
 
 
 ## Browser Support
@@ -132,9 +140,11 @@ shown. Another event `cssmodal:hide` is fired after the modal is hidden.
 You can use the events by subscribing to them as if they were click events or
 something. Here is an example using jQuery:
 
-	$(document).on('cssmodal:show', function (event) {
-	    console.log(event);
-	});
+```js
+$(document).on('cssmodal:show', function (event) {
+    console.log(event);
+});
+```
 
 There events are not fired in IE8. Please be aware of that and use jQuery or
 something else to create custom events.
