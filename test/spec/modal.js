@@ -138,6 +138,10 @@
 		// Testing the event displatcher (triggerer)
 		describe('dispatch event', function () {
 
+			beforeEach(function () {
+				$ = jQuery;
+			});
+
 			// Is it available and working?
 			it('creates event', function () {
 				var eventCalled;
@@ -154,12 +158,29 @@
 			});
 
 			// Is the data set as expected
-			it('has event data', function () {
+			it('has event data (jQuery)', function () {
 				var eventData;
 
-				$(document).on('newEvent', function (e) {
-					eventData = e.originalEvent.detail;
+				$(document).on('newEvent', function (e, data) {
+					eventData = data.detail;
 				});
+
+				CSSModal.trigger('newEvent', { 'id': 1 });
+
+				setTimeout(function () {
+					expect(typeof eventData.modal).toBe('object');
+					expect(eventData.modal.id).toBe(1);
+				}, 0);
+			});
+
+			it('has event data (none jQuery)', function () {
+				var eventData;
+
+				$(document).on('newEvent', function (e, data) {
+					eventData = data.detail;
+				});
+
+				$ = false;
 
 				CSSModal.trigger('newEvent', { 'id': 1 });
 

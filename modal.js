@@ -5,7 +5,7 @@
  * @author Hans Christian Reinl - @drublic
  */
 
-(function (global) {
+(function (global, $) {
 
 	'use strict';
 
@@ -52,9 +52,9 @@
 			} else if (event === 'hashchange' && element.attachEvent) {
 				element.attachEvent('on' + event, callback);
 
-			// If the event is not a haschange and bean is supported
-			} else {
-				bean.on(element, event, callback);
+			// If the event is not a haschange and jQuery is supported
+			} else if ($) {
+				$(document).on(event, element.selector, callback);
 			}
 		},
 
@@ -71,9 +71,9 @@
 				}
 			};
 
-			// Use the bean library to fire the event if it is included
-			if (global.bean) {
-				bean.fire(document, event, eventParams);
+			// Use jQuery to fire the event if it is included
+			if ($) {
+				$(document).trigger(event, eventParams);
 
 			// Use createEvent if supported (that's mostly the case)
 			} else if (document.createEvent) {
@@ -249,7 +249,7 @@
 		/*
 		 * Convenience function to check if an element is visible
 		 *
-		 * Test idea taken from jquery 1.3.2 source code
+		 * Test idea taken from jQuery 1.3.2 source code
 		 *
 		 * @param element {Node} element to test
 		 * @return {boolean} is the element visible or not
@@ -450,9 +450,9 @@
 	} else if (typeof define === 'function' && define.amd) {
 		define('CSSModal', [], function () {
 
-			// We use bean if the browser doesn't support CustomEvents
-			if (!global.CustomEvent && !global.bean) {
-				throw new Error('This browser doesn\'t support CustomEvent - please include bean: https://github.com/fat/bean');
+			// We use jQuery if the browser doesn't support CustomEvents
+			if (!global.CustomEvent && !$) {
+				throw new Error('This browser doesn\'t support CustomEvent - please include jQuery.');
 			}
 
 			modal.init();
@@ -466,4 +466,4 @@
 		modal.init();
 	}
 
-}(window));
+}(window, window.jQuery));

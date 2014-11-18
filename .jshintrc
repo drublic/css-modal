@@ -18,8 +18,9 @@
 	"unused": true,
 
 	"globals": {
-		"bean": true,
 		"define": true,
-		"module": true
+		"module": true,
+		"beforeEach": true,
+		"afterEach": true
 	}
 }

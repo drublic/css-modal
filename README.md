@@ -84,7 +84,7 @@ CSS Modals uses Sass's placeholders. You can use them by calling them via
 As stated above you don't need JavaScript to get a good experience out of CSS
 Modals. But there are some issues where JavaScript helps:
 
-* IE 8 compatibility.
+* IE 8 compatibility (please include jQuery if you need full compatibility).
 * Pressing escape: If you press <kbd>ESC</kbd> on your keyboard while the modal is visible
 it closes itself. This behavior cannot be done with CSS only.
 * Preventing background page from scrolling: If you scroll within the modal and
@@ -120,7 +120,8 @@ In numbers:
 * Firefox
 * Safari 6.x
 * Opera 12+
-* Internet Explorer 8 (functional)
+* Internet Explorer 8 (functional, include jQuery if you want support for
+  events)
 * Internet Explorer 9+
 * iOS 6
 * Android 2.3 (functional)
