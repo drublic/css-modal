@@ -1,6 +1,8 @@
 # Changelog
 
 ## HEAD
+* Fix IE8 error with HTML5 video plugin
+* Add images to test/ folder
 * Update core effects and only use necessary prefixes
 * Remove non-core effects of the modal (#161)
 
