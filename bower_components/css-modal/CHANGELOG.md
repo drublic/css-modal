@@ -2,6 +2,19 @@
 
 ## HEAD
 
+## 1.2.0 - 19.11.2014
+* Fix IE8 error with HTML5 video plugin
+* Add images to test/ folder
+* Update core effects and only use necessary prefixes
+* Remove non-core effects of the modal (#161)
+* Use * for files to ignore and include in bower.json
+* Sort JSHintRC file alphabetically
+* Move animations into separate SCSS file for better control
+* Keep focus within modal: avoid non visible focusable elements
+* Plugin resize: Only apply image styles if image is present
+* Add note about / in IDs in README
+* Remove unused height declaration from core
+
 ## 1.1.8 - 20.06.2014
 * Use innerHTML instead of innerText in order to add styling rule
 

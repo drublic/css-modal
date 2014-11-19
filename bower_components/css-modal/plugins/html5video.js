@@ -21,7 +21,11 @@
 	var _show = function () {
 
 		// Fetch all video elements in active modal
-		videos = CSSModal.activeElement.querySelectorAll('video');
+		try {
+			videos = CSSModal.activeElement.querySelectorAll('video');
+		} catch (ex) {
+			return;
+		}
 
 		// Play first video in modal
 		if (videos.length > 0) {
@@ -36,7 +40,7 @@
 		var i = 0;
 
 		// Pause all videos in active modal
-		if (videos.length > 0) {
+		if (videos.length && videos.length > 0) {
 			for (; i < videos.length; i++) {
 				videos[i].pause();
 			}

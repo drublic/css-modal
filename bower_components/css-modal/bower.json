@@ -1,19 +1,16 @@
 {
   "name": "css-modal",
-  "version": "1.1.8",
+  "version": "1.2.0",
   "main": [
-    "modal.scss",
+    "*.scss",
     "modal.js"
   ],
   "author": "Hans Christian Reinl",
   "ignore": [
-    "node_modules",
-    "test",
-    ".editorconfig",
-    ".gitignore",
-    ".jshintrc",
-    ".travis.yml",
+    ".*",
     "Gruntfile.js",
-    "package.json"
+    "node_modules",
+    "package.json",
+    "test"
   ]
 }
