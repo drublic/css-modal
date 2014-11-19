@@ -1,8 +1,8 @@
 {
   "name": "css-modal",
-  "version": "1.1.8",
+  "version": "1.2.0",
   "main": [
-    "*.scss"
+    "*.scss",
     "modal.js"
   ],
   "author": "Hans Christian Reinl",
