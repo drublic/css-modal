@@ -278,9 +278,10 @@
 
 		/*
 		 * Unset previous active modal
-		 * @param isStacked {boolean} true if element is stacked above another
+		 * @param isStacked          {boolean} `true` if element is stacked above another
+		 * @param shouldNotBeStacked {boolean} `true` if next element should be stacked
 		 */
-		unsetActive: function (isStacked) {
+		unsetActive: function (isStacked, shouldNotBeStacked) {
 			if (modal.activeElement) {
 				modal.removeClass(modal.activeElement, 'is-active');
 
@@ -294,7 +295,7 @@
 				modal.removeFocus();
 
 				// Make modal stacked if needed
-				if (isStacked) {
+				if (isStacked && !shouldNotBeStacked) {
 					modal.stackModal(modal.activeElement);
 				}
 
@@ -385,7 +386,10 @@
 					modal.addClass(document.documentElement, 'has-overlay');
 
 					// Make previous element stackable if it is not the same modal
-					modal.unsetActive( !modal.hasClass(modalElement, 'is-active') );
+					modal.unsetActive(
+						!modal.hasClass(modalElement, 'is-active'),
+						(modalElement.getAttribute('data-stackable') === 'false')
+					);
 
 					// Mark the active element
 					modal.setActive(modalElement);
