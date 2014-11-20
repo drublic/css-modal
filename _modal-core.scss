@@ -89,11 +89,6 @@ html {
 
 		-webkit-overflow-scrolling: touch; // Native style momentum scrolling
 
-		// This removes the scrollbar in lt IE9
-		@media \0screen\,screen\9 {
-			background: transparent;
-		}
-
 		> img,
 		> video,
 		> iframe {
@@ -117,11 +112,6 @@ html {
 		overflow-x: hidden;
 		overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
-
-		// This removes the scrollbar in lt IE9
-		@media \0screen\,screen\9 {
-			overflow: visible;
-		}
 
 		> * {
 			max-width: 100%;

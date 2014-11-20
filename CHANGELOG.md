@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Remove unused lt IE8 hack for scrollbars: fixes respond.js issues
 
 ## 1.2.0 - 19.11.2014
 * Fix IE8 error with HTML5 video plugin
