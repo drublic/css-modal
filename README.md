@@ -26,6 +26,10 @@ fast!
 
 ## How to use
 
+Please be aware that modals get stacked above each other if you open one modal
+from within another. You can add a data-attribute `data-stackable="false"` to
+the modal in order to make it non-stackable.
+
 ### Markup
 
 You need to include the markup and content for modals in your website. This has

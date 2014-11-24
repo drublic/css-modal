@@ -246,6 +246,13 @@
 				}, 0);
 			});
 
+			it('does not stack when defined', function () {
+				window.location.hash = '#modal';
+				window.location.hash = '#non-stackable';
+
+				expect($modal.hasClass('is-stacked')).not.toBe(true);
+			});
+
 
 		});
 	});
