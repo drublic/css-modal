@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Gallery: Add possibility to use iframes in slides
 * Add possibility to make modals non-stackable
 * Remove unused lt IE8 hack for scrollbars: fixes respond.js issues
 
