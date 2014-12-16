@@ -1,0 +1,52 @@
+/**
+ * A loading spinner
+ * http://stackoverflow.com/questions/16250260/android-holo-loading-spinner-in-css
+ */
+/**
+ * CSS Modal Configuration
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ */
+@keyframes rotate-outer {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(1080deg);
+    -ms-transform: rotate(1080deg);
+    transform: rotate(1080deg);
+  }
+}
+@-webkit-keyframes rotate-outer {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(1080deg);
+  }
+}
+@keyframes rotate-inner {
+  0% {
+    -webkit-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    transform: rotate(720deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes rotate-inner {
+  0% {
+    -webkit-transform: rotate(720deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
+/*# sourceMappingURL=modal-spinner.css.map */

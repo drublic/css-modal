@@ -75,11 +75,6 @@ html {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
-@media \0screen\,screen\9 {
-  .modal--show .modal-inner {
-    background: transparent;
-  }
-}
 .modal--show .modal-inner > img,
 .modal--show .modal-inner > video,
 .modal--show .modal-inner > iframe {
@@ -98,11 +93,6 @@ html {
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-}
-@media \0screen\,screen\9 {
-  .modal--show .modal-content {
-    overflow: visible;
-  }
 }
 .modal--show .modal-content > * {
   max-width: 100%;

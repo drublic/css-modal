@@ -1,0 +1,30 @@
+/**
+ * CSS Modal Plugin: Stretch height
+ */
+/**
+ * CSS Modal Configuration
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ */
+[data-cssmodal-stretch] .modal-inner {
+  top: 10%;
+  min-height: 80%;
+}
+[data-cssmodal-stretch] .modal-content {
+  max-height: none !important;
+}
+[data-cssmodal-stretch] .modal-close:after {
+  top: 10%;
+  margin-top: -25px;
+}
+@media screen and (max-width: 30em) {
+  [data-cssmodal-stretch] .modal-inner {
+    top: 0;
+  }
+  [data-cssmodal-stretch] .modal-close:after {
+    margin-top: 0;
+  }
+}
+
+/*# sourceMappingURL=modal-stretch.css.map */
