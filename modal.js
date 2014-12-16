@@ -30,7 +30,8 @@
 		 * @param element {Node} node to fire event on
 		 * @param callback {function} gets fired if event is triggered
 		 */
-		on: function (event, element, callback) {
+		on: function (event, elements, callback) {
+			var i = 0;
 
 			if (typeof event !== 'string') {
 				throw new Error('Type error: `error` has to be a string');
@@ -40,21 +41,25 @@
 				throw new Error('Type error: `callback` has to be a function');
 			}
 
-			if (!element) {
+			if (!elements) {
 				return;
 			}
 
-			// Default way to support events
-			if ('addEventListener' in element) {
-				element.addEventListener(event, callback, false);
+			// Make elements an array and attach event listeners
+			if (!elements.length) {
+				elements = [elements];
+			}
 
-			// If the event is a hashchange
-			} else if (event === 'hashchange' && element.attachEvent) {
-				element.attachEvent('on' + event, callback);
+			for (; i < elements.length; i++) {
 
-			// If the event is not a haschange and jQuery is supported
-			} else if ($) {
-				$(document).on(event, element.selector, callback);
+				// Default way to support events
+				if ('addEventListener' in elements[i]) {
+					elements[i].addEventListener(event, callback, false);
+
+				// If jQuery is supported
+				} else if ($) {
+					$(elements[i]).on(event, callback);
+				}
 			}
 		},
 
@@ -282,6 +287,8 @@
 		 * @param shouldNotBeStacked {boolean} `true` if next element should be stacked
 		 */
 		unsetActive: function (isStacked, shouldNotBeStacked) {
+			modal.removeClass(document.documentElement, 'has-overlay');
+
 			if (modal.activeElement) {
 				modal.removeClass(modal.activeElement, 'is-active');
 
@@ -341,12 +348,19 @@
 		 * @param  {Object} event The incoming hashChange event
 		 * @return {void}
 		 */
-		mainHandler: function (event) {
+		mainHandler: function (event, noHash) {
 			var hash = window.location.hash.replace('#', '');
 			var index = 0;
 			var tmp = [];
-			var modalElement = document.getElementById(hash);
+			var modalElement;
 			var modalChild;
+
+			// JS-only: no hash present
+			if (noHash) {
+				hash = event.target.getAttribute('href').replace('#', '');
+			}
+
+			modalElement = document.getElementById(hash);
 
 			// Check if the hash contains an index
 			if (hash.indexOf('/') !== -1) {
@@ -370,11 +384,11 @@
 			if (modalElement) {
 
 				// Polyfill to prevent the default behavior of events
-				event.preventDefault = event.preventDefault || function () {
+				try {
+					event.preventDefault();
+				} catch (ex) {
 					event.returnValue = false;
-				};
-
-				event.preventDefault();
+				}
 
 				// Get first element in selected element
 				modalChild = modalElement.children[0];
@@ -395,7 +409,6 @@
 					modal.setActive(modalElement);
 				}
 			} else {
-				modal.removeClass(document.documentElement, 'has-overlay');
 
 				// If activeElement is already defined, delete it
 				modal.unsetActive();
@@ -416,14 +429,13 @@
 			this.on('keyup', document, function (event) {
 				var hash = window.location.hash.replace('#', '');
 
-				// If hash is not set
-				if (hash === '' || hash === '!') {
-					return;
-				}
-
 				// If key ESC is pressed
 				if (event.keyCode === 27) {
-					window.location.hash = '!';
+					if (modal.activeElement && hash === modal.activeElement.id) {
+						window.location.hash = '!';
+					} else {
+						modal.unsetActive();
+					}
 
 					if (modal.lastActive) {
 						return false;
@@ -433,6 +445,18 @@
 					modal.removeFocus();
 				}
 			}, false);
+
+			/**
+			 * Trigger main handler on click if hash is deactivated
+			 */
+			this.on('click', document.querySelectorAll('[data-cssmodal-nohash]'), function (event) {
+				modal.mainHandler(event, true);
+			});
+
+			// And unset if close is pressed
+			this.on('click', document.querySelectorAll('.modal-close'), function () {
+				modal.unsetActive();
+			});
 
 			/*
 			 * Trigger main handler on load and hashchange

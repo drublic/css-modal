@@ -65,6 +65,15 @@ to prevent the page from scrolling to top when clicking on it.
 Please remember to set a unique ID for the header and change the
 `aria-labelledby` attribute to the same value.
 
+You link to a modal by simply setting the ID to a link element's href like this:
+
+```html
+<a href="#modal">Modal</a>
+```
+
+If you want to decouple the modal call from the location's hash you need to add
+`data-cssmodal-nohash` to the link.
+
 ### Sass
 
 If you use Sass you can use the file [modal.scss](modal.scss) and include it
