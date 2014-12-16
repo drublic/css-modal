@@ -2,9 +2,5 @@
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 
 *.sass-cache
-
 node_modules
-download
-
-/test/modal.css
-/build/modal.css
+test/modal.css

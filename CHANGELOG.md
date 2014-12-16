@@ -1,6 +1,9 @@
 # Changelog
 
 ## HEAD
+* Update node modules to latest version
+* Remove test CSS build from source control
+* Add new builds for all CSS files
 * Rename plugins to be more consistend and generate builds for each
 * Gallery: Add possibility to use iframes in slides
 * Add possibility to make modals non-stackable
