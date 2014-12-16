@@ -2,6 +2,8 @@
  * A loading spinner
  * http://stackoverflow.com/questions/16250260/android-holo-loading-spinner-in-css
  */
+@import "../modal-config";
+
 $spinner--size: 64px;
 $spinner--background: #fff;
 $spinner--width: 5%;

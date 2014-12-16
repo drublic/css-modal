@@ -1,6 +1,8 @@
 /**
  * CSS Modal Plugin: Stretch height
  */
+@import "../modal-config";
+
 [data-cssmodal-stretch] {
 	.modal-inner {
 		top: 10%;

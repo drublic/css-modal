@@ -28,7 +28,10 @@ module.exports = function (grunt) {
 			dev: {
 				options: {
 					unixNewlines: true,
-					style: 'expanded'
+					style: 'expanded',
+					loadPath: '.',
+					update: true,
+					sourcemap: 'none'
 				},
 				files: {
 					'test/modal.css': 'test/modal.scss'
@@ -38,10 +41,17 @@ module.exports = function (grunt) {
 			dist: {
 				options: {
 					unixNewlines: true,
-					style: 'expanded'
+					loadPath: '.',
+					update: true,
+					sourcemap: 'none'
 				},
 				files: {
-					'build/modal.css': 'modal.scss'
+					'build/modal.css': 'modal.scss',
+					'build/modal-gallery.css': 'plugins/modal-gallery.scss',
+					'build/modal-maxwidth.css': 'plugins/modal-maxwidth.scss',
+					'build/modal-resize.css': 'plugins/modal-resize.scss',
+					'build/modal-stretch.css': 'plugins/modal-stretch.scss',
+					'build/modal-spinner.css': 'plugins/modal-spinner.scss'
 				}
 			}
 		},
