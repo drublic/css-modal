@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Update jQuery to v1.11.1
 * Update node modules to latest version
 * Remove test CSS build from source control
 * Add new builds for all CSS files
