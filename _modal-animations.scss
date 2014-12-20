@@ -15,9 +15,9 @@
  */
 
 // Configuration:
-$transition-duration: 0.4s;
-$transition-size-start: scale(0);
-$transition-size-end: scale(1);
+$transition-duration: 0.4s !default;
+$transition-size-start: scale(0) !default;
+$transition-size-end: scale(1) !default;
 
 // Fade in the modal
 %modal--transition-fade {
