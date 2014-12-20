@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Use !default variables so that they can be easily overridden
 * Add possibility to call modal without hashchange
 * Update jQuery to v1.11.1
 * Update node modules to latest version
