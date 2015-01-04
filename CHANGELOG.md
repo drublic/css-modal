@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Fix issues with close button on iOS
 * Use !default variables so that they can be easily overridden
 * Add possibility to call modal without hashchange
 * Update jQuery to v1.11.1

@@ -43,7 +43,6 @@ html {
 	overflow: hidden;
 	opacity: 0;
 
-
 	// Show modal when requested
 	&:target,
 	&.is-active {
@@ -62,13 +61,11 @@ html {
 	// Internet Explorer 8
 	display: none\9;
 
-
 	&.is-active {
 		display: block\9;
 		height: 100%\9;
 		width: 100%\9;
 	}
-
 
 	// Overwrite IE8 hack for IE9 and IE10
 	&:target,
@@ -76,11 +73,10 @@ html {
 		display: block\9;
 	}
 
-
 	// Content Area
 	.modal-inner {
 		position: absolute;
-		top: 50px;
+		top: 60px;
 		left: 50%;
 		z-index: 20;
 		margin-left: ($modal-max-width / 2) * -1;
@@ -103,12 +99,11 @@ html {
 		}
 	}
 
-
 	// Content
 	.modal-content {
 		position: relative;
 		max-height: 400px;
-		max-height: 80vh;
+		max-height: 60vh;
 		overflow-x: hidden;
 		overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
@@ -118,7 +113,6 @@ html {
 		}
 	}
 
-
 	// Footer
 	footer {
 		border-top: 1px solid lighten($modal-border-color, 20);
@@ -126,7 +120,6 @@ html {
 		background: #f0f0f0;
 		border-radius: 2px;
 	}
-
 
 	// A close button
 	.modal-close {
@@ -152,12 +145,11 @@ html {
 			z-index: 10;
 		}
 
-
 		// Actual close button on modal
 		&:after {
 			content: '\00d7';
 			position: absolute;
-			top: 25px;
+			top: 35px;
 			right: 50%;
 			z-index: 20;
 			margin-right: -($modal-max-width / 2);
@@ -181,7 +173,6 @@ html {
 			}
 		}
 	}
-
 
 	// For small screens adjust the modal
 	@media screen and (max-width: $modal-small-breakpoint) {
