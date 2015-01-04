@@ -13,6 +13,17 @@
 @import "../plugins/modal-spinner";
 @import "../plugins/modal-stretch";
 
+body {
+	margin: 0;
+}
+
+.content {
+	margin: 0 auto;
+	max-width: 30em;
+	font-size: 1.25em;
+	margin-top: 4em;
+}
+
 // Apply the modal with all its possible parts
 ._modal {
 	@extend %modal;

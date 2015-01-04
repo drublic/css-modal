@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Fix styling of visual test and center content
 * Fix issues with close button on iOS
 * Use !default variables so that they can be easily overridden
 * Add possibility to call modal without hashchange
