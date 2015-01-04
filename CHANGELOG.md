@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Set inital scale to 1 in visual tests
 * Use correct error message in on-method, add webkit scroll momentum
 * Fix styling of visual test and center content
 * Fix issues with close button on iOS
