@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Use correct error message in on-method, add webkit scroll momentum
 * Fix styling of visual test and center content
 * Fix issues with close button on iOS
 * Use !default variables so that they can be easily overridden

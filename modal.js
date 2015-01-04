@@ -34,7 +34,7 @@
 			var i = 0;
 
 			if (typeof event !== 'string') {
-				throw new Error('Type error: `error` has to be a string');
+				throw new Error('Type error: `event` has to be a string');
 			}
 
 			if (typeof callback !== 'function') {
@@ -379,7 +379,6 @@
 
 				modalElement.index = (1 * index);
 			}
-
 			// If the hash element exists
 			if (modalElement) {
 
@@ -396,14 +395,14 @@
 				// When we deal with a modal and body-class `has-overlay` is not set
 				if (modalChild && modalChild.className.match(/modal-inner/)) {
 
-					// Set an html class to prevent scrolling
-					modal.addClass(document.documentElement, 'has-overlay');
-
 					// Make previous element stackable if it is not the same modal
 					modal.unsetActive(
 						!modal.hasClass(modalElement, 'is-active'),
 						(modalElement.getAttribute('data-stackable') === 'false')
 					);
+
+					// Set an html class to prevent scrolling
+					modal.addClass(document.documentElement, 'has-overlay');
 
 					// Mark the active element
 					modal.setActive(modalElement);

@@ -11,9 +11,11 @@
  * @author Hans Christian Reinl - @drublic
  */
 html {
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
 
 .has-overlay {
+  height: 100%;
   overflow: hidden; }
   .has-overlay > body {
     height: 100%;
