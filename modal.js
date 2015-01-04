@@ -404,6 +404,10 @@
 					// Set an html class to prevent scrolling
 					modal.addClass(document.documentElement, 'has-overlay');
 
+					// Set scroll position for modal
+					modal._currentScrollPositionY = window.scrollY;
+					modal._currentScrollPositionX = window.scrollX;
+
 					// Mark the active element
 					modal.setActive(modalElement);
 				}
@@ -462,6 +466,16 @@
 			 */
 			this.on('hashchange', window, modal.mainHandler);
 			this.on('load', window, modal.mainHandler);
+
+			/**
+			 * Prevent scrolling when modal is active
+			 * @return {void}
+			 */
+			window.onscroll = window.onmousewheel = function () {
+				if (document.documentElement.className.match(/has-overlay/)) {
+					window.scrollTo(modal._currentScrollPositionX, modal._currentScrollPositionY);
+				}
+			};
 		}
 	};
 

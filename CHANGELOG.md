@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Prevent scrolling of body when modal is open
 * Set inital scale to 1 in visual tests
 * Use correct error message in on-method, add webkit scroll momentum
 * Fix styling of visual test and center content

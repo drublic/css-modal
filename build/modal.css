@@ -15,14 +15,10 @@ html {
   -webkit-overflow-scrolling: touch; }
 
 .has-overlay {
-  height: 100%;
   overflow: hidden; }
   .has-overlay > body {
     height: 100%;
-    overflow-y: scroll; }
-  @media screen and (max-width: 30em) {
-    .has-overlay > body {
-      overflow: hidden; } }
+    overflow: hidden; }
 
 .modal--show {
   -webkit-transform: translate(0, 100%);

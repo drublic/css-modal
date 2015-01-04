@@ -7,21 +7,13 @@ html {
 // To prevent jumping <body> should not have any margin on top or bottom
 
 .has-overlay {
-	height: 100%;
 	overflow: hidden;
 
 	> body {
 		height: 100%;
-		overflow-y: scroll;
-	}
-
-	@media screen and (max-width: $modal-small-breakpoint) {
-		> body {
-			overflow: hidden;
-		}
+		overflow: hidden;
 	}
 }
-
 
 %modal {
 	// Hide initially
