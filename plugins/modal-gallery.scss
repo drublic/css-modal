@@ -132,9 +132,10 @@ $gallery--thumb-size: 98px;
 
 	a {
 		position: absolute;
-		top: 0;
-		bottom: 0;
-		width: 50%;
+		top: 30%;
+		bottom: 30%;
+		width: 10em;
+		max-width: 25%;
 		font-family: arial, sans-serif;
 
 		text-indent: -99em;
