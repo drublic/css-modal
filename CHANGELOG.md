@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Fix bug on IE11 with close button and overlay of modal
 * Add possiblility to add iframes within modal nicely
 * Fix height of gallery if caption and footer are present
 * Make left and right navigation buttons in gallery smaller

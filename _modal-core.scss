@@ -187,23 +187,14 @@ html {
 		        transition: opacity 1ms .25s;
 
 		display: block;
+		right: auto;
 		bottom: auto;
 
 		&:target,
 		&.is-active {
+			width: 100%;
 			height: 100%;
 		}
-
-
-		&:before {
-			content: '';
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			z-index: 30;
-		}
-
 
 		.modal-inner {
 			-webkit-box-sizing: border-box;
@@ -217,7 +208,6 @@ html {
 			overflow: auto;
 		}
 
-
 		.modal-content {
 			max-height: none;
 
@@ -229,19 +219,22 @@ html {
 			        hyphens: auto;
 		}
 
-
 		.modal-close {
 			right: auto;
 
 			&:before {
-				display: none;
+				content: '';
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				z-index: 20;
 			}
 
 			&:after {
 				top: 5px !important;
 				right: 5px;
 				left: auto;
-				z-index: 40;
 				margin-left: 0;
 			}
 		}

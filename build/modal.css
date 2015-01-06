@@ -134,16 +134,11 @@ html {
       -ms-transition: opacity 1ms .25s;
       transition: opacity 1ms .25s;
       display: block;
+      right: auto;
       bottom: auto; }
       .modal--show:target, .is-active.modal--show {
+        width: 100%;
         height: 100%; }
-      .modal--show:before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 30; }
       .modal--show .modal-inner {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -163,12 +158,16 @@ html {
       .modal--show .modal-close {
         right: auto; }
         .modal--show .modal-close:before {
-          display: none; }
+          content: '';
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 20; }
         .modal--show .modal-close:after {
           top: 5px !important;
           right: 5px;
           left: auto;
-          z-index: 40;
           margin-left: 0; } }
   @media screen and (max-height: 46em) and (min-width: 30em) {
     .modal--show .modal-content {
@@ -264,13 +263,8 @@ html {
       text-decoration: none;
       text-indent: 0; }
   @media screen and (max-width: 30em) {
-    .modal--show:before {
-      background-color: #27aae2;
-      background-image: -webkit-gradient(linear, left top, left bottom, from(#27aae2), to(#1c9cd3));
-      background-image: -webkit-linear-gradient(top, #27aae2, #1c9cd3);
-      background-image: -moz-linear-gradient(top, #27aae2, #1c9cd3);
-      background-image: -o-linear-gradient(top, #27aae2, #1c9cd3);
-      background-image: linear-gradient(to bottom, #27aae2, #1c9cd3);
+    .modal--show .modal-close:before {
+      background: #27aae2;
       height: 3em;
       -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.6); }
