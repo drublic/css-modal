@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Update word break property of modal content
 * Fix bug on IE11 with close button and overlay of modal
 * Add possiblility to add iframes within modal nicely
 * Fix height of gallery if caption and footer are present
