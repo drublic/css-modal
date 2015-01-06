@@ -72,6 +72,10 @@ html {
     .modal--show .modal-inner > img {
       width: auto;
       max-width: 100%; }
+    .modal--show .modal-inner iframe {
+      display: block;
+      width: 100%;
+      border: 0; }
   .modal--show .modal-content {
     position: relative;
     max-height: 400px;

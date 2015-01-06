@@ -337,7 +337,7 @@
 			modal.removeClass(lastStacked, 'is-stacked');
 
 			// Set hash to modal, activates the modal automatically
-			window.location.hash = lastStacked.id;
+			global.location.hash = lastStacked.id;
 
 			// Remove modal from stackedElements array
 			modal.stackedElements.splice(stackedCount - 1, 1);
@@ -349,7 +349,7 @@
 		 * @return {void}
 		 */
 		mainHandler: function (event, noHash) {
-			var hash = window.location.hash.replace('#', '');
+			var hash = global.location.hash.replace('#', '');
 			var index = 0;
 			var tmp = [];
 			var modalElement;
@@ -379,6 +379,7 @@
 
 				modalElement.index = (1 * index);
 			}
+
 			// If the hash element exists
 			if (modalElement) {
 
@@ -405,8 +406,8 @@
 					modal.addClass(document.documentElement, 'has-overlay');
 
 					// Set scroll position for modal
-					modal._currentScrollPositionY = window.scrollY;
-					modal._currentScrollPositionX = window.scrollX;
+					modal._currentScrollPositionY = global.scrollY;
+					modal._currentScrollPositionX = global.scrollX;
 
 					// Mark the active element
 					modal.setActive(modalElement);
@@ -421,6 +422,26 @@
 		},
 
 		/**
+		 * Inject iframes
+		 */
+		injectIframes: function () {
+			var iframes = document.querySelectorAll('[data-iframe-src]');
+			var iframe;
+			var i = 0;
+
+			for (; i < iframes.length; i++) {
+				iframe = document.createElement('iframe');
+
+				iframe.src = iframes[i].getAttribute('data-iframe-src');
+				iframe.setAttribute('webkitallowfullscreen', true);
+				iframe.setAttribute('mozallowfullscreen', true);
+				iframe.setAttribute('allowfullscreen', true);
+
+				iframes[i].appendChild(iframe);
+			}
+		},
+
+		/**
 		 * Listen to all relevant events
 		 * @return {void}
 		 */
@@ -430,12 +451,12 @@
 			 * Hide overlay when ESC is pressed
 			 */
 			this.on('keyup', document, function (event) {
-				var hash = window.location.hash.replace('#', '');
+				var hash = global.location.hash.replace('#', '');
 
 				// If key ESC is pressed
 				if (event.keyCode === 27) {
 					if (modal.activeElement && hash === modal.activeElement.id) {
-						window.location.hash = '!';
+						global.location.hash = '!';
 					} else {
 						modal.unsetActive();
 					}
@@ -464,18 +485,23 @@
 			/*
 			 * Trigger main handler on load and hashchange
 			 */
-			this.on('hashchange', window, modal.mainHandler);
-			this.on('load', window, modal.mainHandler);
+			this.on('hashchange', global, modal.mainHandler);
+			this.on('load', global, modal.mainHandler);
 
 			/**
 			 * Prevent scrolling when modal is active
 			 * @return {void}
 			 */
-			window.onscroll = window.onmousewheel = function () {
+			global.onscroll = global.onmousewheel = function () {
 				if (document.documentElement.className.match(/has-overlay/)) {
-					window.scrollTo(modal._currentScrollPositionX, modal._currentScrollPositionY);
+					global.scrollTo(modal._currentScrollPositionX, modal._currentScrollPositionY);
 				}
 			};
+
+			/**
+			 * Inject iframes
+			 */
+			modal.injectIframes();
 		}
 	};
 

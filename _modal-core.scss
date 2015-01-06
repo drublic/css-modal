@@ -91,6 +91,12 @@ html {
 			width: auto;
 			max-width: 100%;
 		}
+
+		iframe {
+			display: block;
+			width: 100%;
+			border: 0;
+		}
 	}
 
 	// Content

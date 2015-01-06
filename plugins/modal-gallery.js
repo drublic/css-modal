@@ -158,7 +158,7 @@
 		}
 
 		// Setup keyboard events
-		CSSModal.on('keydown', window, _onKeyPress);
+		CSSModal.on('keydown', document, _onKeyPress);
 
 		// Setup swipe events
 		CSSModal.on('touch:swipe-left', element, showPrevious);
@@ -222,7 +222,6 @@
 
 			if (referenceImage.parentNode.getAttribute('data-iframe') !== null) {
 				img = document.createElement('iframe');
-
 				img.src = referenceImage.getAttribute('data-src-fullsize');
 				img.setAttribute('webkitallowfullscreen', true);
 				img.setAttribute('mozallowfullscreen', true);

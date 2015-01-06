@@ -29,6 +29,8 @@
 				<li><a href="#modal-zoomin" title="Clicking this link shows the modal">Demo ZoomIn</a></li>
 				<li><a href="#modal-plainscreen" title="Clicking this link shows the modal">Demo PlainScreen</a></li>
 				<li><a href="#modal-html5video" title="Clicking this link shows a modal with HTML5 Video content">Demo HTML5Video</a></li>
+				<li><a href="#modal-iframe" title="Clicking this link shows a modal with an iframe">Demo Iframe</a></li>
+				<li><a href="#modal-iframe-content" title="Clicking this link shows a modal with an iframe">Demo Iframe in content</a></li>
 				<li><a href="#modal-image" title="Clicking this link shows a modal with image content">Demo Image</a></li>
 				<li><a href="#modal-image2" title="Clicking this link shows a modal with image content">Demo Image 2</a></li>
 				<li><a href="#modal-max-width" title="Clicking this link shows a modal with a max width">Maximum width</a></li>
@@ -147,6 +149,26 @@
 						<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
 					</video>
 				</div>
+			</div>
+
+			<a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+				data-dismiss="modal">×</a>
+		</section>
+
+		<section class="modal--show" id="modal-iframe" tabindex="-1"
+				role="dialog" aria-hidden="true">
+
+			<div class="modal-inner" data-iframe-src="test/iframe.html"></div>
+
+			<a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+				data-dismiss="modal">×</a>
+		</section>
+
+		<section class="modal--show" id="modal-iframe-content" tabindex="-1"
+				role="dialog" aria-hidden="true">
+
+			<div class="modal-inner">
+				<div class="modal-content" data-iframe-src="test/iframe.html"></div>
 			</div>
 
 			<a href="#!" class="modal-close" title="Close this modal" data-close="Close"
