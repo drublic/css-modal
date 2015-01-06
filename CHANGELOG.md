@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Fix height of gallery if caption and footer are present
 * Make left and right navigation buttons in gallery smaller
 * Prevent scrolling of body when modal is open
 * Set inital scale to 1 in visual tests

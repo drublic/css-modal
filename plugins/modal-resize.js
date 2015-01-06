@@ -42,7 +42,7 @@
 			info = ('getComputedStyle' in global) && global.getComputedStyle(style, null) || style.currentStyle;
 
 			styleMedia = {
-				matchMedium: function(media) {
+				matchMedium: function (media) {
 					var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }';
 
 					// 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
@@ -178,27 +178,62 @@
 
 		var element = CSSModal.activeElement.querySelector('.modal-inner');
 		var elementContent = CSSModal.activeElement.querySelector('.modal-content');
+		var headerContent = CSSModal.activeElement.querySelector('header');
+		var captionContent = CSSModal.activeElement.querySelector('.modal--gallery-caption');
+		var footerContent = CSSModal.activeElement.querySelector('footer');
 		var containerDimentions;
+		var headerDimentions;
+		var captionDimentions;
+		var footerDimentions;
 		var offsetWidth = 0;
 		var offsetHeight = 0;
-		var margin = 40;
+		var elements;
+		var i;
+
+		// Margins for top and bottom of gallery in px
+		var margins = 35 + 35;
 
 		element.style.width = 'auto';
 		elementContent.style.maxHeight = 'none';
 
 		containerDimentions = getDimentions(elementContent);
+		footerDimentions = getDimentions(footerContent);
 
 		offsetWidth = containerDimentions.margin.left + containerDimentions.margin.right + containerDimentions.padding.left + containerDimentions.padding.right;
 		offsetHeight = containerDimentions.margin.top + containerDimentions.margin.bottom + containerDimentions.padding.top + containerDimentions.padding.bottom;
 
+		// Calculate offset from header, caption and footer
+		if (headerContent) {
+			headerDimentions = getDimentions(headerContent);
+			offsetHeight += headerDimentions.margin.top + headerDimentions.margin.bottom + headerDimentions.padding.top + headerDimentions.padding.bottom + headerDimentions.height;
+		}
+
+		if (captionContent) {
+			captionDimentions = getDimentions(captionContent);
+			offsetHeight += captionDimentions.margin.top + captionDimentions.margin.bottom + captionDimentions.padding.top + captionDimentions.padding.bottom + captionDimentions.height;
+		}
+
+		if (footerContent) {
+			footerDimentions = getDimentions(footerContent);
+			offsetHeight += footerDimentions.margin.top + footerDimentions.margin.bottom + footerDimentions.padding.top + footerDimentions.padding.bottom + footerDimentions.height;
+		}
+
 		if (containerDimentions.width > global.innerWidth) {
-			CSSModal.activeElement.querySelector('img').style.maxWidth = (global.innerWidth - offsetWidth - margin) + 'px';
-			CSSModal.activeElement.querySelector('img').style.maxHeight = '100%';
+			elements = CSSModal.activeElement.querySelectorAll('img, video, [data-iframe]');
+
+			for (i = 0; i < elements.length; i++) {
+				elements[i].style.maxWidth = (global.innerWidth - offsetWidth - margins) + 'px';
+				elements[i].style.maxHeight = '100%';
+			}
 		}
 
 		if (containerDimentions.height > global.innerHeight) {
-			CSSModal.activeElement.querySelector('img').style.maxWidth = '100%';
-			CSSModal.activeElement.querySelector('img').style.maxHeight = (global.innerHeight - offsetHeight - margin) + 'px';
+			elements = CSSModal.activeElement.querySelectorAll('img, video, [data-iframe]');
+
+			for (i = 0; i < elements.length; i++) {
+				elements[i].style.maxHeight = (global.innerHeight - offsetHeight - margins) + 'px';
+				elements[i].style.maxWidth = '100%';
+			}
 		}
 	};
 
