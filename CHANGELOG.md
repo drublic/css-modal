@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Include a build of the spinner CSS
 * Include a modal--fade by default to the output
 * Bugfix: Use jQuery to subscribe to events to prevent errors with trigger
 * Update word break property of modal content

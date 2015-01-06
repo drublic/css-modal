@@ -146,3 +146,7 @@ $spinner--width: 5%;
 		background-image:         linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
 	}
 }
+
+.spinner {
+	@extend %spinner;
+}
