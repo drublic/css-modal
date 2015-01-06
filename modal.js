@@ -52,14 +52,15 @@
 
 			for (; i < elements.length; i++) {
 
-				// Default way to support events
-				if ('addEventListener' in elements[i]) {
-					elements[i].addEventListener(event, callback, false);
-
 				// If jQuery is supported
-				} else if ($) {
+				if ($) {
 					$(elements[i]).on(event, callback);
+
+				// Default way to support events
+				} else if ('addEventListener' in elements[i]) {
+					elements[i].addEventListener(event, callback, false);
 				}
+
 			}
 		},
 
