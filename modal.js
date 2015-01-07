@@ -478,11 +478,6 @@
 				modal.mainHandler(event, true);
 			});
 
-			// And unset if close is pressed
-			this.on('click', document.querySelectorAll('.modal-close'), function () {
-				modal.unsetActive();
-			});
-
 			/*
 			 * Trigger main handler on load and hashchange
 			 */
