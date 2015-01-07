@@ -141,6 +141,8 @@ html {
       .modal--fade:target, .modal--show:target, .is-active.modal--fade, .is-active.modal--show {
         width: 100%;
         height: 100%; }
+        .modal--fade:target .modal-close, .modal--show:target .modal-close, .is-active.modal--fade .modal-close, .is-active.modal--show .modal-close {
+          display: block; }
       .modal--fade .modal-inner, .modal--show .modal-inner {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -159,6 +161,7 @@ html {
         -moz-hyphens: auto;
         hyphens: auto; }
       .modal--fade .modal-close, .modal--show .modal-close {
+        display: none;
         right: auto; }
         .modal--fade .modal-close:before, .modal--show .modal-close:before {
           content: '';

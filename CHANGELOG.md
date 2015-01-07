@@ -1,6 +1,8 @@
 # Changelog
 
 ## HEAD
+* Hide the close element to prevent overlay of other elements in IE
+* Remove close handler to unset window
 * Include a build of the spinner CSS
 * Include a modal--fade by default to the output
 * Bugfix: Use jQuery to subscribe to events to prevent errors with trigger
