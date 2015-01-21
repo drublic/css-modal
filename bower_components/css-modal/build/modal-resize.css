@@ -1,0 +1,13 @@
+/**
+ * CSS Modal Theme 'Resize'
+ * http://drublic.github.com/css-modal
+ */
+/**
+ * CSS Modal Configuration
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ */
+.modal-content img {
+  display: block;
+  margin: 0 auto; }

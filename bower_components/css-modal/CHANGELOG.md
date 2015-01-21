@@ -2,6 +2,45 @@
 
 ## HEAD
 
+## 1.3.0 - 07.01.2015
+
+### Breaking
+* Rename plugins to be more consistend and generate builds for each
+
+This change might break your existing plugin integrations. In order to fix it,
+you might want to change the URLs to the stylesheet and JS files of plugins to
+match the new structure.
+
+### Features
+* Add possiblility to add iframes within modal nicely
+* Add possibility to call modal without hashchange
+* Add new builds for all CSS files
+* Gallery: Add possibility to use iframes in slides
+* Add possibility to make modals non-stackable
+
+### Bug Fixes
+* Hide the close element to prevent overlay of other elements in IE
+* Remove close handler to unset window
+* Bugfix: Use jQuery to subscribe to events to prevent errors with trigger
+* Fix bug on IE11 with close button and overlay of modal
+* Fix height of gallery if caption and footer are present
+* Prevent scrolling of body when modal is open
+* Use correct error message in on-method, add webkit scroll momentum
+* Fix styling of visual test and center content
+* Fix issues with close button on iOS
+* Remove unused lt IE8 hack for scrollbars: fixes respond.js issues
+
+### Improvements
+* Include a build of the spinner CSS
+* Include a modal--fade by default to the output
+* Update word break property of modal content
+* Make left and right navigation buttons in gallery smaller
+* Set inital scale to 1 in visual tests
+* Use !default variables so that they can be easily overridden
+* Update jQuery to v1.11.1
+* Update node modules to latest version
+* Remove test CSS build from source control
+
 ## 1.2.0 - 19.11.2014
 * Fix IE8 error with HTML5 video plugin
 * Add images to test/ folder

@@ -26,6 +26,10 @@ fast!
 
 ## How to use
 
+Please be aware that modals get stacked above each other if you open one modal
+from within another. You can add a data-attribute `data-stackable="false"` to
+the modal in order to make it non-stackable.
+
 ### Markup
 
 You need to include the markup and content for modals in your website. This has
@@ -61,6 +65,15 @@ to prevent the page from scrolling to top when clicking on it.
 Please remember to set a unique ID for the header and change the
 `aria-labelledby` attribute to the same value.
 
+You link to a modal by simply setting the ID to a link element's href like this:
+
+```html
+<a href="#modal">Modal</a>
+```
+
+If you want to decouple the modal call from the location's hash you need to add
+`data-cssmodal-nohash` to the link.
+
 ### Sass
 
 If you use Sass you can use the file [modal.scss](modal.scss) and include it
@@ -84,7 +97,7 @@ CSS Modals uses Sass's placeholders. You can use them by calling them via
 As stated above you don't need JavaScript to get a good experience out of CSS
 Modals. But there are some issues where JavaScript helps:
 
-* IE 8 compatibility.
+* IE 8 compatibility (please include jQuery if you need full compatibility).
 * Pressing escape: If you press <kbd>ESC</kbd> on your keyboard while the modal is visible
 it closes itself. This behavior cannot be done with CSS only.
 * Preventing background page from scrolling: If you scroll within the modal and
@@ -120,7 +133,8 @@ In numbers:
 * Firefox
 * Safari 6.x
 * Opera 12+
-* Internet Explorer 8 (functional)
+* Internet Explorer 8 (functional, include jQuery if you want support for
+  events)
 * Internet Explorer 9+
 * iOS 6
 * Android 2.3 (functional)

@@ -85,13 +85,8 @@
 
 	// For small screens adjust the modal
 	@media screen and (max-width: $modal-small-breakpoint) {
-		&:before {
-			background-color:  $modal-mobile-header;
-			background-image: -webkit-gradient(linear, left top, left bottom, from($modal-mobile-header), to(darken($modal-mobile-header, 5%)));
-			background-image: -webkit-linear-gradient(top, $modal-mobile-header, darken($modal-mobile-header, 5%));
-			background-image:    -moz-linear-gradient(top, $modal-mobile-header, darken($modal-mobile-header, 5%));
-			background-image:      -o-linear-gradient(top, $modal-mobile-header, darken($modal-mobile-header, 5%));
-			background-image:         linear-gradient(to bottom, $modal-mobile-header, darken($modal-mobile-header, 5%));
+		.modal-close:before {
+			background:  $modal-mobile-header;
 
 			height: 3em;
 			-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.6);
@@ -120,7 +115,6 @@
 /*
  * Plain Screen Theme Styles
  */
-
 %modal-theme-plainScreen {
 
 	.modal-inner {

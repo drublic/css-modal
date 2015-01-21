@@ -5,3 +5,8 @@
 	@extend %modal;
 	@extend %modal-theme;
 }
+
+.modal--fade {
+	@extend %modal--transition-fade;
+	@extend %modal-theme;
+}

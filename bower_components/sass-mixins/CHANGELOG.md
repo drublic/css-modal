@@ -2,6 +2,10 @@
 
 ### HEAD
 
+### 0.11.0 - 20.10.2014
+* Use grunt-sass with libsass
+* Fix for x-opacity to not throw an exception
+
 ### 0.10.0 - 02.07.2014
 * Extend x-rem mixin to make it take px values and convert them to rem
 * Add strip-unit function to _rem.scss partial

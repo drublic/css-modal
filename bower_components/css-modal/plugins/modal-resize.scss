@@ -2,6 +2,8 @@
  * CSS Modal Theme 'Resize'
  * http://drublic.github.com/css-modal
  */
+@import "../modal-config";
+
 %modal--resize {
 	.modal-inner {
 		-webkit-transition: none;
@@ -35,4 +37,5 @@
 
 .modal-content img {
 	display: block;
+	margin: 0 auto;
 }

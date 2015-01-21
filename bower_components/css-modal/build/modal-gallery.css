@@ -1,0 +1,137 @@
+@charset "UTF-8";
+/*
+ * CSS Modal Plugin for displaying an image gallery
+ *
+ * @author Jonathan Weiß
+ * @author Hans Christian Reinl
+ * @date 2014-05-16
+ */
+/**
+ * CSS Modal Configuration
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ */
+.modal-detail {
+  position: relative;
+  min-width: 98px;
+  min-height: 98px;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  -webkit-transition: opacity 0s;
+  transition: opacity 0s;
+  /**
+   * Styling for Iframe in modal
+   */ }
+  .modal-detail.is-active {
+    opacity: 1;
+    width: auto;
+    height: auto;
+    -webkit-transition: opacity 0.2s ease-out;
+    transition: opacity 0.2s ease-out; }
+  .modal-detail > [data-iframe] {
+    position: relative;
+    float: left;
+    width: 600px; }
+    .modal-detail > [data-iframe]:after {
+      float: left;
+      content: '';
+      padding-top: 56.25%; }
+  .modal-detail iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    border: 0; }
+  @media screen and (max-width: 690px) {
+    .modal-detail > [data-iframe] {
+      width: 411px; } }
+  @media screen and (max-width: 30em) {
+    .modal-detail > [data-iframe] {
+      width: 100%; } }
+
+.modal--gallery .modal-content-list {
+  display: none;
+  list-style: none;
+  margin: 0.2em -0.2em -0.2em;
+  padding: 0;
+  overflow: hidden; }
+  .modal--gallery .modal-content-list.is-active {
+    display: block; }
+  .modal--gallery .modal-content-list > li {
+    float: left;
+    padding: 0.2em; }
+  .modal--gallery .modal-content-list img {
+    display: block;
+    border: 0; }
+
+.modal--gallery-navigation {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .modal--gallery-navigation a {
+    position: absolute;
+    top: 30%;
+    bottom: 30%;
+    width: 10em;
+    max-width: 25%;
+    font-family: arial, sans-serif;
+    text-indent: -99em;
+    overflow: hidden;
+    text-decoration: none;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.5); }
+  .modal--gallery-navigation img {
+    max-width: 98px;
+    max-height: 98px; }
+  .modal--gallery-navigation .modal--gallery-navigation-prev {
+    left: 0; }
+    .modal--gallery-navigation .modal--gallery-navigation-prev:after {
+      position: absolute;
+      top: 50%;
+      height: 32px;
+      margin-top: -24px;
+      line-height: 32px;
+      padding: 0 8px;
+      font-size: 64px;
+      opacity: 0; }
+    .modal--gallery-navigation .modal--gallery-navigation-prev:hover:after, .modal--gallery-navigation .modal--gallery-navigation-prev:focus:after, .modal--gallery-navigation .modal--gallery-navigation-prev:active:after {
+      opacity: 1; }
+    @media screen and (max-width: 30em) {
+      .modal--gallery-navigation .modal--gallery-navigation-prev:after {
+        opacity: 1; } }
+    .modal--gallery-navigation .modal--gallery-navigation-prev:after {
+      content: '‹';
+      left: 0;
+      text-indent: 0; }
+  .modal--gallery-navigation .modal--gallery-navigation-next {
+    right: 0; }
+    .modal--gallery-navigation .modal--gallery-navigation-next:after {
+      position: absolute;
+      top: 50%;
+      height: 32px;
+      margin-top: -24px;
+      line-height: 32px;
+      padding: 0 8px;
+      font-size: 64px;
+      opacity: 0; }
+    .modal--gallery-navigation .modal--gallery-navigation-next:hover:after, .modal--gallery-navigation .modal--gallery-navigation-next:focus:after, .modal--gallery-navigation .modal--gallery-navigation-next:active:after {
+      opacity: 1; }
+    @media screen and (max-width: 30em) {
+      .modal--gallery-navigation .modal--gallery-navigation-next:after {
+        opacity: 1; } }
+    .modal--gallery-navigation .modal--gallery-navigation-next:after {
+      content: '›';
+      right: 0;
+      text-indent: 0; }
+
+/**
+ * Caption
+ */
+.modal--gallery-caption {
+  border-bottom: 1px solid #ddd; }
+  .modal--gallery-caption p {
+    margin: 1em 15px; }

@@ -3,6 +3,8 @@
  *
  * Usage: Set `data-cssmodal-maxwidth` with a pixel-based max-width as a value.
  */
+@import "../modal-config";
+
 [data-cssmodal-maxwidth] {
 	.modal-inner {
 		width: 100%;

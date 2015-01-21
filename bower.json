@@ -1,6 +1,6 @@
 {
   "name": "css-modal-site",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "homepage": "https://github.com/drublic/css-modal",
   "authors": [
     "Hans Christian Reinl <info@drublic.de>"
@@ -14,9 +14,9 @@
     "tests"
   ],
   "devDependencies": {
-    "jquery": "~2.1.1",
-    "css-modal": "~1.2.0",
-    "normalize-scss": "~3.0.1",
-    "sass-mixins": "~0.10.0"
+    "jquery": "~2.1.3",
+    "css-modal": "~1.3.0",
+    "normalize-scss": "~3.0.2",
+    "sass-mixins": "~0.11.0"
   }
 }

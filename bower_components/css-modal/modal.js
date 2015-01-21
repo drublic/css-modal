@@ -5,7 +5,7 @@
  * @author Hans Christian Reinl - @drublic
  */
 
-(function (global) {
+(function (global, $) {
 
 	'use strict';
 
@@ -30,31 +30,37 @@
 		 * @param element {Node} node to fire event on
 		 * @param callback {function} gets fired if event is triggered
 		 */
-		on: function (event, element, callback) {
+		on: function (event, elements, callback) {
+			var i = 0;
 
 			if (typeof event !== 'string') {
-				throw new Error('Type error: `error` has to be a string');
+				throw new Error('Type error: `event` has to be a string');
 			}
 
 			if (typeof callback !== 'function') {
 				throw new Error('Type error: `callback` has to be a function');
 			}
 
-			if (!element) {
+			if (!elements) {
 				return;
 			}
 
-			// Default way to support events
-			if ('addEventListener' in element) {
-				element.addEventListener(event, callback, false);
+			// Make elements an array and attach event listeners
+			if (!elements.length) {
+				elements = [elements];
+			}
 
-			// If the event is a hashchange
-			} else if (event === 'hashchange' && element.attachEvent) {
-				element.attachEvent('on' + event, callback);
+			for (; i < elements.length; i++) {
 
-			// If the event is not a haschange and bean is supported
-			} else {
-				bean.on(element, event, callback);
+				// If jQuery is supported
+				if ($) {
+					$(elements[i]).on(event, callback);
+
+				// Default way to support events
+				} else if ('addEventListener' in elements[i]) {
+					elements[i].addEventListener(event, callback, false);
+				}
+
 			}
 		},
 
@@ -71,9 +77,9 @@
 				}
 			};
 
-			// Use the bean library to fire the event if it is included
-			if (global.bean) {
-				bean.fire(document, event, eventParams);
+			// Use jQuery to fire the event if it is included
+			if ($) {
+				$(document).trigger(event, eventParams);
 
 			// Use createEvent if supported (that's mostly the case)
 			} else if (document.createEvent) {
@@ -249,7 +255,7 @@
 		/*
 		 * Convenience function to check if an element is visible
 		 *
-		 * Test idea taken from jquery 1.3.2 source code
+		 * Test idea taken from jQuery 1.3.2 source code
 		 *
 		 * @param element {Node} element to test
 		 * @return {boolean} is the element visible or not
@@ -278,9 +284,12 @@
 
 		/*
 		 * Unset previous active modal
-		 * @param isStacked {boolean} true if element is stacked above another
+		 * @param isStacked          {boolean} `true` if element is stacked above another
+		 * @param shouldNotBeStacked {boolean} `true` if next element should be stacked
 		 */
-		unsetActive: function (isStacked) {
+		unsetActive: function (isStacked, shouldNotBeStacked) {
+			modal.removeClass(document.documentElement, 'has-overlay');
+
 			if (modal.activeElement) {
 				modal.removeClass(modal.activeElement, 'is-active');
 
@@ -294,7 +303,7 @@
 				modal.removeFocus();
 
 				// Make modal stacked if needed
-				if (isStacked) {
+				if (isStacked && !shouldNotBeStacked) {
 					modal.stackModal(modal.activeElement);
 				}
 
@@ -329,7 +338,7 @@
 			modal.removeClass(lastStacked, 'is-stacked');
 
 			// Set hash to modal, activates the modal automatically
-			window.location.hash = lastStacked.id;
+			global.location.hash = lastStacked.id;
 
 			// Remove modal from stackedElements array
 			modal.stackedElements.splice(stackedCount - 1, 1);
@@ -340,12 +349,19 @@
 		 * @param  {Object} event The incoming hashChange event
 		 * @return {void}
 		 */
-		mainHandler: function (event) {
-			var hash = window.location.hash.replace('#', '');
+		mainHandler: function (event, noHash) {
+			var hash = global.location.hash.replace('#', '');
 			var index = 0;
 			var tmp = [];
-			var modalElement = document.getElementById(hash);
+			var modalElement;
 			var modalChild;
+
+			// JS-only: no hash present
+			if (noHash) {
+				hash = event.target.getAttribute('href').replace('#', '');
+			}
+
+			modalElement = document.getElementById(hash);
 
 			// Check if the hash contains an index
 			if (hash.indexOf('/') !== -1) {
@@ -369,11 +385,11 @@
 			if (modalElement) {
 
 				// Polyfill to prevent the default behavior of events
-				event.preventDefault = event.preventDefault || function () {
+				try {
+					event.preventDefault();
+				} catch (ex) {
 					event.returnValue = false;
-				};
-
-				event.preventDefault();
+				}
 
 				// Get first element in selected element
 				modalChild = modalElement.children[0];
@@ -381,23 +397,49 @@
 				// When we deal with a modal and body-class `has-overlay` is not set
 				if (modalChild && modalChild.className.match(/modal-inner/)) {
 
+					// Make previous element stackable if it is not the same modal
+					modal.unsetActive(
+						!modal.hasClass(modalElement, 'is-active'),
+						(modalElement.getAttribute('data-stackable') === 'false')
+					);
+
 					// Set an html class to prevent scrolling
 					modal.addClass(document.documentElement, 'has-overlay');
 
-					// Make previous element stackable if it is not the same modal
-					modal.unsetActive( !modal.hasClass(modalElement, 'is-active') );
+					// Set scroll position for modal
+					modal._currentScrollPositionY = global.scrollY;
+					modal._currentScrollPositionX = global.scrollX;
 
 					// Mark the active element
 					modal.setActive(modalElement);
 				}
 			} else {
-				modal.removeClass(document.documentElement, 'has-overlay');
 
 				// If activeElement is already defined, delete it
 				modal.unsetActive();
 			}
 
 			return true;
+		},
+
+		/**
+		 * Inject iframes
+		 */
+		injectIframes: function () {
+			var iframes = document.querySelectorAll('[data-iframe-src]');
+			var iframe;
+			var i = 0;
+
+			for (; i < iframes.length; i++) {
+				iframe = document.createElement('iframe');
+
+				iframe.src = iframes[i].getAttribute('data-iframe-src');
+				iframe.setAttribute('webkitallowfullscreen', true);
+				iframe.setAttribute('mozallowfullscreen', true);
+				iframe.setAttribute('allowfullscreen', true);
+
+				iframes[i].appendChild(iframe);
+			}
 		},
 
 		/**
@@ -410,16 +452,15 @@
 			 * Hide overlay when ESC is pressed
 			 */
 			this.on('keyup', document, function (event) {
-				var hash = window.location.hash.replace('#', '');
-
-				// If hash is not set
-				if (hash === '' || hash === '!') {
-					return;
-				}
+				var hash = global.location.hash.replace('#', '');
 
 				// If key ESC is pressed
 				if (event.keyCode === 27) {
-					window.location.hash = '!';
+					if (modal.activeElement && hash === modal.activeElement.id) {
+						global.location.hash = '!';
+					} else {
+						modal.unsetActive();
+					}
 
 					if (modal.lastActive) {
 						return false;
@@ -430,11 +471,33 @@
 				}
 			}, false);
 
+			/**
+			 * Trigger main handler on click if hash is deactivated
+			 */
+			this.on('click', document.querySelectorAll('[data-cssmodal-nohash]'), function (event) {
+				modal.mainHandler(event, true);
+			});
+
 			/*
 			 * Trigger main handler on load and hashchange
 			 */
-			this.on('hashchange', window, modal.mainHandler);
-			this.on('load', window, modal.mainHandler);
+			this.on('hashchange', global, modal.mainHandler);
+			this.on('load', global, modal.mainHandler);
+
+			/**
+			 * Prevent scrolling when modal is active
+			 * @return {void}
+			 */
+			global.onscroll = global.onmousewheel = function () {
+				if (document.documentElement.className.match(/has-overlay/)) {
+					global.scrollTo(modal._currentScrollPositionX, modal._currentScrollPositionY);
+				}
+			};
+
+			/**
+			 * Inject iframes
+			 */
+			modal.injectIframes();
 		}
 	};
 
@@ -450,9 +513,9 @@
 	} else if (typeof define === 'function' && define.amd) {
 		define('CSSModal', [], function () {
 
-			// We use bean if the browser doesn't support CustomEvents
-			if (!global.CustomEvent && !global.bean) {
-				throw new Error('This browser doesn\'t support CustomEvent - please include bean: https://github.com/fat/bean');
+			// We use jQuery if the browser doesn't support CustomEvents
+			if (!global.CustomEvent && !$) {
+				throw new Error('This browser doesn\'t support CustomEvent - please include jQuery.');
 			}
 
 			modal.init();
@@ -466,4 +529,4 @@
 		modal.init();
 	}
 
-}(window));
+}(window, window.jQuery));

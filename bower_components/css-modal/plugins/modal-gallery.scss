@@ -2,8 +2,12 @@
  * CSS Modal Plugin for displaying an image gallery
  *
  * @author Jonathan Weiß
+ * @author Hans Christian Reinl
  * @date 2014-05-16
  */
+@import "../modal-config";
+
+$gallery--iframe-size: 600px !default;
 $gallery--min-size: 98px;
 $gallery--thumb-size: 98px;
 
@@ -54,10 +58,48 @@ $gallery--thumb-size: 98px;
 		-webkit-transition: opacity 0.2s ease-out;
 		        transition: opacity 0.2s ease-out;
 	}
+
+	/**
+	 * Styling for Iframe in modal
+	 */
+	> [data-iframe] {
+		position: relative;
+		float: left;
+		width: $gallery--iframe-size;
+
+		&:after {
+			float: left;
+			content: '';
+			padding-top: 56.25%;
+		}
+	}
+
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+
+	@media screen and (max-width: $modal-max-width + 40) {
+		> [data-iframe] {
+			width: 411px;
+		}
+	}
+
+	@media screen and (max-width: $modal-small-breakpoint) {
+		> [data-iframe] {
+			width: 100%;
+		}
+	}
 }
 
 .modal--gallery {
-	@extend %modal--transition-fade;
+	@extend %modal--transition-fade !optional;
 
 	.modal-content-list {
 		display: none;
@@ -90,9 +132,10 @@ $gallery--thumb-size: 98px;
 
 	a {
 		position: absolute;
-		top: 0;
-		bottom: 0;
-		width: 50%;
+		top: 30%;
+		bottom: 30%;
+		width: 10em;
+		max-width: 25%;
 		font-family: arial, sans-serif;
 
 		text-indent: -99em;

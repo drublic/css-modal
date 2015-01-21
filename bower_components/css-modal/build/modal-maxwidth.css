@@ -1,0 +1,34 @@
+/**
+ * Custom maximum width for a modal
+ *
+ * Usage: Set `data-cssmodal-maxwidth` with a pixel-based max-width as a value.
+ */
+/**
+ * CSS Modal Configuration
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ */
+[data-cssmodal-maxwidth] .modal-inner {
+  width: 100%;
+}
+@media screen and (max-width: 690px) {
+  [data-cssmodal-maxwidth] .modal-inner {
+    left: 50%;
+  }
+  [data-cssmodal-maxwidth] .modal-close:after {
+    right: 50% !important;
+  }
+}
+@media screen and (max-width: 30em) {
+  [data-cssmodal-maxwidth] .modal-inner {
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  [data-cssmodal-maxwidth] .modal-close:after {
+    margin-right: 0 !important;
+    right: 0 !important;
+  }
+}
+
+/*# sourceMappingURL=modal-maxwidth.css.map */

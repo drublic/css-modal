@@ -1,0 +1,105 @@
+/**
+ * A loading spinner
+ * http://stackoverflow.com/questions/16250260/android-holo-loading-spinner-in-css
+ */
+/**
+ * CSS Modal Configuration
+ * http://drublic.github.com/css-modal
+ *
+ * @author Hans Christian Reinl - @drublic
+ */
+@keyframes rotate-outer {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(1080deg);
+    -ms-transform: rotate(1080deg);
+    transform: rotate(1080deg); } }
+@-webkit-keyframes rotate-outer {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(1080deg); } }
+@keyframes rotate-inner {
+  0% {
+    -webkit-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    transform: rotate(720deg); }
+  100% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+@-webkit-keyframes rotate-inner {
+  0% {
+    -webkit-transform: rotate(720deg); }
+  100% {
+    -webkit-transform: rotate(0deg); } }
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  margin-top: -32px;
+  margin-left: -32px; }
+  .spinner .spinner__outer,
+  .spinner .spinner__inner, .spinner:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0; }
+  .spinner:after {
+    content: '';
+    margin: 5%;
+    border-radius: 100%;
+    background: #fff; }
+  .spinner .spinner__outer,
+  .spinner .spinner__inner {
+    -webkit-animation-duration: 4s;
+    animation-duration: 4s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear; }
+    .spinner .spinner__outer:before, .spinner .spinner__outer:after,
+    .spinner .spinner__inner:before,
+    .spinner .spinner__inner:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0; }
+    .spinner .spinner__outer:before,
+    .spinner .spinner__inner:before {
+      left: 0;
+      right: 50%;
+      border-radius: 64px 0 0 64px; }
+    .spinner .spinner__outer:after,
+    .spinner .spinner__inner:after {
+      left: 50%;
+      right: 0;
+      border-radius: 0 64px 64px 0; }
+  .spinner .spinner__outer {
+    -webkit-animation-name: rotate-outer;
+    animation-name: rotate-outer; }
+  .spinner .spinner__inner {
+    -webkit-animation-name: rotate-inner;
+    animation-name: rotate-inner; }
+  .spinner .spinner__outer:before {
+    background-image: -webkit-linear-gradient(top, rgba(150, 150, 150, 0), rgba(150, 150, 150, 0.5));
+    background-image: -moz-linear-gradient(top, rgba(150, 150, 150, 0), rgba(150, 150, 150, 0.5));
+    background-image: linear-gradient(to bottom, rgba(150, 150, 150, 0), rgba(150, 150, 150, 0.5)); }
+  .spinner .spinner__outer:after {
+    background-image: -webkit-linear-gradient(top, #969696, rgba(150, 150, 150, 0.5));
+    background-image: -moz-linear-gradient(top, #969696, rgba(150, 150, 150, 0.5));
+    background-image: linear-gradient(to bottom, #969696, rgba(150, 150, 150, 0.5)); }
+  .spinner .spinner__inner:before {
+    background-image: -webkit-linear-gradient(top, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5));
+    background-image: -moz-linear-gradient(top, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5));
+    background-image: linear-gradient(to bottom, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5)); }
+  .spinner .spinner__inner:after {
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5)); }

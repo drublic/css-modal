@@ -158,7 +158,7 @@
 		}
 
 		// Setup keyboard events
-		CSSModal.on('keydown', window, _onKeyPress);
+		CSSModal.on('keydown', document, _onKeyPress);
 
 		// Setup swipe events
 		CSSModal.on('touch:swipe-left', element, showPrevious);
@@ -219,8 +219,18 @@
 		// Load the original image, if we are in a gallery
 		if (_activeElement.getAttribute('class').indexOf('modal--gallery') !== -1) {
 			referenceImage = _detailView.getElementsByTagName('img')[0];
-			img.src = referenceImage.getAttribute('data-src-fullsize');
-			img.alt = referenceImage.getAttribute('alt');
+
+			if (referenceImage.parentNode.getAttribute('data-iframe') !== null) {
+				img = document.createElement('iframe');
+				img.src = referenceImage.getAttribute('data-src-fullsize');
+				img.setAttribute('webkitallowfullscreen', true);
+				img.setAttribute('mozallowfullscreen', true);
+				img.setAttribute('allowfullscreen', true);
+
+			} else {
+				img.src = referenceImage.getAttribute('data-src-fullsize');
+				img.alt = referenceImage.getAttribute('alt');
+			}
 
 			// Reposition and show
 			CSSModal.on('load', img, function () {

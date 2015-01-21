@@ -1,25 +1,19 @@
 // Prevent overflow on HTML element
 html {
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch; // Native scroll momentum
 }
 
+// To prevent jumping <body> should not have any margin on top or bottom
 
 .has-overlay {
 	overflow: hidden;
 
 	> body {
 		height: 100%;
-		overflow-y: scroll;
-	}
-
-
-	@media screen and (max-width: $modal-small-breakpoint) {
-		> body {
-			overflow: hidden;
-		}
+		overflow: hidden;
 	}
 }
-
 
 %modal {
 	// Hide initially
@@ -43,7 +37,6 @@ html {
 	overflow: hidden;
 	opacity: 0;
 
-
 	// Show modal when requested
 	&:target,
 	&.is-active {
@@ -62,13 +55,11 @@ html {
 	// Internet Explorer 8
 	display: none\9;
 
-
 	&.is-active {
 		display: block\9;
 		height: 100%\9;
 		width: 100%\9;
 	}
-
 
 	// Overwrite IE8 hack for IE9 and IE10
 	&:target,
@@ -76,11 +67,10 @@ html {
 		display: block\9;
 	}
 
-
 	// Content Area
 	.modal-inner {
 		position: absolute;
-		top: 50px;
+		top: 60px;
 		left: 50%;
 		z-index: 20;
 		margin-left: ($modal-max-width / 2) * -1;
@@ -88,11 +78,6 @@ html {
 		overflow-x: hidden;
 
 		-webkit-overflow-scrolling: touch; // Native style momentum scrolling
-
-		// This removes the scrollbar in lt IE9
-		@media \0screen\,screen\9 {
-			background: transparent;
-		}
 
 		> img,
 		> video,
@@ -106,28 +91,27 @@ html {
 			width: auto;
 			max-width: 100%;
 		}
-	}
 
+		iframe {
+			display: block;
+			width: 100%;
+			border: 0;
+		}
+	}
 
 	// Content
 	.modal-content {
 		position: relative;
 		max-height: 400px;
-		max-height: 80vh;
+		max-height: 60vh;
 		overflow-x: hidden;
 		overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
-
-		// This removes the scrollbar in lt IE9
-		@media \0screen\,screen\9 {
-			overflow: visible;
-		}
 
 		> * {
 			max-width: 100%;
 		}
 	}
-
 
 	// Footer
 	footer {
@@ -136,7 +120,6 @@ html {
 		background: #f0f0f0;
 		border-radius: 2px;
 	}
-
 
 	// A close button
 	.modal-close {
@@ -162,12 +145,11 @@ html {
 			z-index: 10;
 		}
 
-
 		// Actual close button on modal
 		&:after {
 			content: '\00d7';
 			position: absolute;
-			top: 25px;
+			top: 35px;
 			right: 50%;
 			z-index: 20;
 			margin-right: -($modal-max-width / 2);
@@ -192,7 +174,6 @@ html {
 		}
 	}
 
-
 	// For small screens adjust the modal
 	@media screen and (max-width: $modal-small-breakpoint) {
 		-webkit-transform: translate(0, 400px); // Use px to work around Android 2.3 bug
@@ -206,23 +187,19 @@ html {
 		        transition: opacity 1ms .25s;
 
 		display: block;
+		right: auto;
 		bottom: auto;
 
 		&:target,
 		&.is-active {
+			width: 100%;
 			height: 100%;
+
+			// For IE we need to hide the close element to prevent overlay of other elements
+			.modal-close {
+				display: block;
+			}
 		}
-
-
-		&:before {
-			content: '';
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			z-index: 30;
-		}
-
 
 		.modal-inner {
 			-webkit-box-sizing: border-box;
@@ -236,31 +213,35 @@ html {
 			overflow: auto;
 		}
 
-
 		.modal-content {
 			max-height: none;
 
 			// Prevent text from breaking modal in mobile view
 			-ms-word-break: break-all;
-			    word-break: break-word;
+				word-break: break-all;
+				word-break: break-word; // Non-standard for WebKit
 			-webkit-hyphens: auto;
 			   -moz-hyphens: auto;
 			        hyphens: auto;
 		}
 
-
 		.modal-close {
+			display: none;
 			right: auto;
 
 			&:before {
-				display: none;
+				content: '';
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				z-index: 20;
 			}
 
 			&:after {
 				top: 5px !important;
 				right: 5px;
 				left: auto;
-				z-index: 40;
 				margin-left: 0;
 			}
 		}
