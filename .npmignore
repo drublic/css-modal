@@ -1,0 +1,8 @@
+.misc
+node_modules
+test/modal.css
+.gitignore
+.travis.yml
+bower.json
+CONTRIBUTE.md
+FAQ.md

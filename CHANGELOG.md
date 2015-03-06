@@ -1,6 +1,8 @@
 # Changelog
 
 ## HEAD
+* Add a .npmignore file
+* Add `main` and `style` to package.json
 
 ## 1.3.0 - 07.01.2015
 
