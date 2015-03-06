@@ -8,6 +8,8 @@
 		"name": "Hans Christian Reinl",
 		"url": "http://drublic.de"
 	},
+	"main": "./modal.js",
+	"style": "./build/*.css",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/drublic/css-modal"
