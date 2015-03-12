@@ -358,7 +358,7 @@
 
 			// JS-only: no hash present
 			if (noHash) {
-				hash = event.target.getAttribute('href').replace('#', '');
+				hash = event.currentTarget.getAttribute('href').replace('#', '');
 			}
 
 			modalElement = document.getElementById(hash);

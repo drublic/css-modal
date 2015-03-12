@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Allow links to surround other html elements
 * Update node modules
 * Add a .npmignore file
 * Add `main` and `style` to package.json
