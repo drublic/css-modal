@@ -412,6 +412,7 @@
 
 					// Mark the active element
 					modal.setActive(modalElement);
+					modal.activeElement._noHash = noHash;
 				}
 			} else {
 
@@ -476,6 +477,13 @@
 			 */
 			this.on('click', document.querySelectorAll('[data-cssmodal-nohash]'), function (event) {
 				modal.mainHandler(event, true);
+			});
+
+			// And close modal without hash
+			this.on('click', document.querySelectorAll('.modal-close'), function (event) {
+				if (modal.activeElement._noHash){
+					modal.mainHandler(event, true);
+				}
 			});
 
 			/*

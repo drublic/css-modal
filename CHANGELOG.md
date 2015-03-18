@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Fix click on modal-close if no hash is present
 * Allow links to surround other html elements
 * Update node modules
 * Add a .npmignore file
