@@ -120,7 +120,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jasmine');
 
 	// Default task
-	grunt.registerTask('default', ['sass', 'jshint', 'jasmine']);
+	grunt.registerTask('default', ['sass:dev', 'jshint', 'jasmine']);
 
 	// Building a new version
 	grunt.registerTask('dist', ['jasmine', 'sass:dist', 'copy:dist']);
