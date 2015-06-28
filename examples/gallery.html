@@ -1,0 +1,94 @@
+<!-- A modal with some images -->
+<section class="modal modal--gallery" id="modal-gallery" tabindex="-1"
+		role="dialog" aria-labelledby="modal-label" aria-hidden="true"
+		data-cssmodal-resize="true">
+	<div class="modal-inner">
+		<div class="modal-content">
+			<div class="spinner">
+				<div class="spinner__outer"></div>
+				<div class="spinner__inner"></div>
+			</div>
+
+			<!-- Detail view of the gallery -->
+			<div class="modal-detail" aria-live="polite" aria-atomic="false"></div>
+
+			<ul class="modal--gallery-navigation">
+				<li><a title="Previous" class="modal--gallery-navigation-prev" href="#">Previous</a></li>
+				<li><a title="Next" class="modal--gallery-navigation-next" href="#">Next</a></li>
+			</ul>
+
+		</div>
+		<div class="modal--gallery-caption"></div>
+
+		<footer>
+			<ul class="modal-content-list is-active" aria-hidden="true">
+				<li data-caption="The last time I felt it was in the presence of my old master.">
+					<a href="#modal-gallery/0">
+						<img alt="The last time I felt it was in the presence of my old master."
+								src="test/img/cat-small.jpg"
+								data-src-fullsize="test/img/cat.jpg">
+					</a>
+				</li>
+				<li data-caption="I'm getting too old for this sort of thing.">
+					<a href="#modal-gallery/1">
+						<img alt="I'm getting too old for this sort of thing."
+								src="test/img/cat-small.jpg"
+								data-src-fullsize="test/img/cat.jpg">
+					</a>
+				</li>
+				<li data-caption="Don't underestimate the Force.">
+					<a href="#modal-gallery/2">
+						<img alt="Don't underestimate the Force."
+								src="test/img/cat-small.jpg"
+								data-src-fullsize="test/img/cat.jpg">
+					</a>
+				</li>
+				<li data-caption="Alderaan is peaceful. We have no weapons.">
+					<a href="#modal-gallery/3">
+						<img alt="Alderaan is peaceful. We have no weapons."
+								src="test/img/cat-small.jpg"
+								data-src-fullsize="test/img/cat.jpg">
+					</a>
+				</li>
+				<li data-caption="Escape is not his plan.">
+					<a href="#modal-gallery/4">
+						<img alt="Escape is not his plan."
+								src="test/img/cat-small.jpg"
+								data-src-fullsize="test/img/cat.jpg">
+					</a>
+				</li>
+				<li data-caption="The last time I felt it was in the presence of my old master.">
+					<a href="#modal-gallery/5">
+						<img alt="The last time I felt it was in the presence of my old master."
+								src="test/img/cat-small.jpg"
+								data-src-fullsize="test/img/cat.jpg">
+					</a>
+				</li>
+				<li data-cation="I'm getting too old for this sort of thing.">
+					<a href="#modal-gallery/6">
+						<img alt="I'm getting too old for this sort of thing."
+								src="test/img/cat-small.jpg"
+								data-src-fullsize="test/img/cat.jpg">
+					</a>
+				</li>
+				<li data-caption="Escape is not his plan.">
+					<a href="#modal-gallery/7">
+						<img alt="Escape is not his plan."
+								src="test/img/cat-small.jpg"
+								data-src-fullsize="test/img/cat.jpg">
+					</a>
+				</li>
+				<li data-caption="Escape is not his plan.">
+					<a href="#modal-gallery/8" data-iframe>
+						<img alt="Escape is not his plan."
+								src="test/img/cat-small.jpg"
+								data-src-fullsize="//player.vimeo.com/video/113287920">
+					</a>
+				</li>
+			</ul>
+		</footer>
+	</div>
+
+	<!-- Use Hash-Bang to maintain scroll position when closing modal -->
+	<a href="#!" class="modal-close" title="Close this modal" data-close="Close">&times;</a>
+</section>
