@@ -5,9 +5,9 @@ html {
 }
 
 // To prevent jumping <body> should not have any margin on top or bottom
-
 .has-overlay {
 	overflow: hidden;
+	height: auto;
 
 	> body {
 		height: 100%;

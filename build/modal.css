@@ -15,7 +15,8 @@ html {
   -webkit-overflow-scrolling: touch; }
 
 .has-overlay {
-  overflow: hidden; }
+  overflow: hidden;
+  height: auto; }
   .has-overlay > body {
     height: 100%;
     overflow: hidden; }
