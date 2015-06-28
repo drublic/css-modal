@@ -343,7 +343,7 @@
 
 	// Expose modal for loaders that implement the Node module pattern.
 	if (typeof module === 'object' && module && typeof module.exports === 'object') {
-		module.exports = {};
+		module.exports = init;
 
 	// Register as an AMD module
 	} else if (typeof define === 'function' && define.amd) {
