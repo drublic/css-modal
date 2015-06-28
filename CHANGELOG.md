@@ -1,6 +1,7 @@
 # Changelog
 
 ## HEAD
+* Set default height to `auto` when scroll is prevented
 * Fix CommonJS export in plugin resize
 * Update examples: load async
 * Remove moot `version` property from bower.json
