@@ -6,10 +6,13 @@
   ],
   "author": "Hans Christian Reinl",
   "ignore": [
-    ".*",
+    ".misc"
     "Gruntfile.js",
     "node_modules",
     "package.json",
-    "test"
+    "test/modal.css"
+    ".gitignore",
+    ".travis.yml",
+    "CONTRIBUTE.md"
   ]
 }
