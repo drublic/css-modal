@@ -1,6 +1,8 @@
 # Changelog
 
 ## HEAD
+
+## 1.4.0 - 08.07.2015
 * Set default height to `auto` when scroll is prevented
 * Fix CommonJS export in plugin resize
 * Update examples: load async
