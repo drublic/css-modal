@@ -23,12 +23,14 @@ module.exports = function (grunt) {
 		},
 
 		// Building CSS
-		sass: {
-			dev: {
+		pleeease: {
+			build: {
 				options: {
-					unixNewlines: true,
-					style: 'expanded'
+					sourcemaps: true,
+					sass: true,
+					rem: false
 				},
+
 				files: {
 					'site/css/main.css': 'site/scss/page.scss'
 				}
@@ -38,8 +40,8 @@ module.exports = function (grunt) {
 		// Watch that stuff
 		watch: {
 			scss: {
-				files: ['modal.scss', 'site/scss/**/*.scss'],
-				tasks: 'sass:dev'
+				files: ['site/scss/**/*.scss'],
+				tasks: 'pleeease'
 			},
 
 			hint: {
@@ -68,6 +70,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-pleeease');
 
 	// Default task
 	grunt.registerTask('default', ['sass', 'jshint']);

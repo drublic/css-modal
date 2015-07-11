@@ -19,7 +19,6 @@
 	"unused": true,
 
 	"globals": {
-		"bean": true,
 		"define": true
 	}
 }

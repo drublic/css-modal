@@ -5,12 +5,11 @@
  * http://drublic.github.com/css-modal
  */
 
-
 // Import styles for the website
-@import 'layout';
+@import 'site/scss/layout';
 
 // Include Modal
-@import '../../bower_components/css-modal/modal';
+@import 'node_modules/css-modal/modal';
 
 
 // Apply the modal with all its possible parts

@@ -9,7 +9,6 @@
 
 		<!-- Link to the built CSS -->
 		<link rel="stylesheet" href="site/css/main.css">
-		<link rel="stylesheet" href="site/css/prism.css">
 
 		<!--[if lt IE 9]><script src="site/js/html5shiv.js"></script><![endif]-->
 
@@ -48,6 +47,11 @@
 					class="twitter-share-button" data-via="drublic"
 					data-related="drublic" data-count="none"
 					data-size="large">Tweet</a>
+
+				<a href="https://twitter.com/drublic"
+						class="twitter-follow-button"
+						data-show-count="false"
+						data-size="large">Follow @drublic</a>
 			</p>
 		</header>
 
@@ -103,7 +107,8 @@
 
 				<p>Please refer to <a href="https://github.com/drublic/css-modal/blob/master/README.md">the README file on GitHub</a> to get the latest info on how to use.</p>
 
-				<p>The easiest way to install CSS Modal's files is with <a href="http://bower.io/">Bower</a>.</p>
+				<p>The easiest way to install CSS Modal's files is with npm or Bower.</p>
+				<pre><code class="language-css">npm install --save css-modal</code></pre>
 				<pre><code class="language-css">bower install --save css-modal</code></pre>
 
 				<p><a href="https://github.com/drublic/css-modal/blob/master/README.md"
@@ -163,8 +168,7 @@
 			<!-- Thanks -->
 			<section>
 				<h2>Authors &amp; Contributors</h2>
-				<p>This is a project by <a href="http://drublic.de/">Hans Christian Reinl</a>.</p>
-				<p>A special thanks goes out to co-maintainer <a href="https://twitter.com/helloanselm">Anselm Hannemann</a> and <a href="https://github.com/drublic/css-modal/graphs/contributors">all other contributors</a>.</p>
+				<p>This is a project by <a href="http://drublic.de/" class="button">Hans Christian Reinl</a> and <a href="https://github.com/drublic/css-modal/graphs/contributors" class="button">other contributors</a></p>
 			</section>
 
 			<!-- A modal with its content -->
@@ -289,26 +293,11 @@
 				<a href="#!" class="modal-close" title="Close this modal"
 						data-dismiss="modal" data-close="Close">&times;</a>
 			</section>
-
-
-			<!-- Footer -->
-			<footer class="site-footer">
-				<div class="follow-me">
-					<a href="https://twitter.com/share"
-							class="twitter-share-button" data-via="drublic"
-							data-size="large" data-related="drublic"
-							data-count="none">Tweet</a>
-					<a href="https://twitter.com/drublic"
-							class="twitter-follow-button"
-							data-show-count="false"
-							data-size="large">Follow @drublic</a>
-				</div>
-			</footer>
 		</div>
 
-		<script src="bower_components/css-modal/modal.js"></script><!-- JS for Modal -->
+		<script src="node_modules/css-modal/modal.js"></script><!-- JS for Modal -->
 
-		<script src="bower_components/jquery/dist/jquery.min.js"></script><!-- jQuery -->
+		<script src="node_modules/jquery/dist/jquery.min.js"></script><!-- jQuery -->
 		<script src="site/js/prism.js"></script><!-- code highlighting -->
 		<script src="site/js/page.js"></script><!-- demo page -->
 

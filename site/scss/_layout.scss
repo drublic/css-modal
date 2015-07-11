@@ -3,8 +3,9 @@
  */
 
 // Import helpers
-@import '../../bower_components/normalize-scss/normalize';
-@import '../../bower_components/sass-mixins/mixins';
+@import 'node_modules/normalize.css/normalize.css';
+@import 'node_modules/sass-mixins/mixins';
+@import 'site/scss/prism.css';
 
 // Main-Color
 $color: #27aae2;
@@ -60,7 +61,6 @@ a {
 
 // Code
 code {
-	@include x-rem(padding, 0.2);
 	@include x-rem(font-size, 0.9);
 
 	background: #f5f2f0;
