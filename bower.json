@@ -10,7 +10,7 @@
     "Gruntfile.js",
     "node_modules",
     "package.json",
-    "test/modal.css"
+    "test/modal.css",
     ".gitignore",
     ".travis.yml",
     "CONTRIBUTE.md"
