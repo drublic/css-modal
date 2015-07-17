@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## 1.4.1 - 17.07.2015
 * Add missing comma in bower.json
 * Add example for stackable modal
 
