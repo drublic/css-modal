@@ -1,6 +1,8 @@
 # Changelog
 
 ## HEAD
+* Add missing comma in bower.json
+* Add example for stackable modal
 
 ## 1.4.0 - 08.07.2015
 * Set default height to `auto` when scroll is prevented
