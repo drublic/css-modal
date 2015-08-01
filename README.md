@@ -5,22 +5,22 @@ Modals built out of pure CSS
 Please [visit the website](http://drublic.github.io/css-modal) to read more
 about this project and refer to the [FAQ](FAQ.md) in case of a question.
 
-### [Gratipay me](https://gratipay.com/drublic)
+## [Gratipay me](https://gratipay.com/drublic)
 (aka. Gittip) if you enjoy this plugin.
 
 ## What is it
 
-__Built with pure CSS:__ CSS Modal is built out of pure CSS. JavaScript is only
+**Built with pure CSS:** CSS Modal is built out of pure CSS. JavaScript is only
 for sugar. This makes them perfectly accessible.
 
-__Optimized for mobile:__ The modals are designed using responsive web design
+**Optimized for mobile:** The modals are designed using responsive web design
 methods. They work on all screen sizes from a small mobile phone up to high
 resolution screens.
 
-__Use as Sass plugin:__ You can use CSS Modal as [Sass](http://sass-lang.com/)
+**Use as Sass plugin:** You can use CSS Modal as [Sass](http://sass-lang.com/)
 plugin and apply it to your custom classes. No need to understand all the code.
 
-__A few other advantages:__ accessible, cross-browser, media-adaptive, small and
+**A few other advantages:** Accessible, cross-browser, media-adaptive, small and
 fast!
 
 
@@ -65,7 +65,7 @@ to prevent the page from scrolling to top when clicking on it.
 Please remember to set a unique ID for the header and change the
 `aria-labelledby` attribute to the same value.
 
-You link to a modal by simply setting the ID to a link element's href like this:
+You link to a modal by simply setting the ID to a link element's `href` like this:
 
 ```html
 <a href="#modal">Modal</a>
@@ -99,13 +99,13 @@ Modals. But there are some issues where JavaScript helps:
 
 * IE 8 compatibility (please include jQuery if you need full compatibility).
 * Pressing escape: If you press <kbd>ESC</kbd> on your keyboard while the modal is visible
-it closes itself. This behavior cannot be done with CSS only.
+it closes itself. This behavior cannot be achieved with CSS only.
 * Preventing background page from scrolling: If you scroll within the modal and
 you reach the end you don't want the page in the background to scroll. To
-prevent this JavaScript pushs a CSS class selector to the body element.
+prevent this JavaScript pushes a CSS class selector to the body element.
 * Being accessible: To get the browser's focus to the modal and back after
 closing.
-* Fireing events: When a modal opens a custom event is fired called
+* Firing events: When a modal opens a custom event is fired called
 `cssmodal:show`. When the modal is hidden, an event called `cssmodal:hide` is
 triggered.
 * To add this behavior to your website, please include the JavaScript file
