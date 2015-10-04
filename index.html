@@ -73,13 +73,13 @@
 		var i = 0;
 
 		var get = function (url, callback) {
-			var onload = function () {
-			  callback(this.responseText);
-			};
 			var request = new XMLHttpRequest();
-
-			request.onload = onload;
-			request.open("get", url, true);
+			request.open('GET', url, true);
+			request.onreadystatechange = function () {
+				if (this.readyState === 4 && this.status === 200){
+					callback(this.responseText);
+				}
+			};
 			request.send();
 		};
 
