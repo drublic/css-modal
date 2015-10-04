@@ -22,6 +22,19 @@ module.exports = function (grunt) {
 			}
 		},
 
+		uglify: {
+			js: {
+				files: {
+					'site/dist/index.min.js': [
+						'node_modules/css-modal/modal.js',
+						'node_modules/jquery/dist/jquery.js',
+						'site/js/prism.js',
+						'site/js/page.js'
+					]
+				}
+			}
+		},
+
 		// Building CSS
 		pleeease: {
 			build: {
@@ -47,9 +60,9 @@ module.exports = function (grunt) {
 			hint: {
 				files: [
 					'modal.js',
-					'site/js/main.js'
+					'site/js/*.js'
 				],
-				tasks: 'jshint'
+				tasks: ['jshint', 'uglify']
 			}
 		},
 
@@ -70,9 +83,10 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-pleeease');
 
 	// Default task
-	grunt.registerTask('default', ['sass', 'jshint']);
+	grunt.registerTask('default', ['sass', 'jshint', 'uglify']);
 
 };
