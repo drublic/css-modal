@@ -46,7 +46,11 @@
 			}
 
 			// Make elements an array and attach event listeners
-			if (!elements.length) {
+			// If a window contains at least one (i)frame, it will behave array-like,
+			//   see https://developer.mozilla.org/en-US/docs/Web/API/Window/length
+			// If we don't explicitly check for window, we'll be adding the event
+			// listeners to the frames instead of the root window.
+			if (elements === global || !elements.length) {
 				elements = [elements];
 			}
 
