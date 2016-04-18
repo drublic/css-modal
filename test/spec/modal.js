@@ -1,7 +1,17 @@
-/*global describe, it, expect, afterEach */
+/*global describe, it, xit, expect, afterEach, waitsFor */
 (function ($, CSSModal) {
 
 	'use strict';
+
+
+	// Helper for async tests, see https://gist.github.com/yyx990803/a6154353ae17dde81444
+	function async (run) {
+		return function () {
+			var done = false;
+			waitsFor(function () { return done; });
+			run(function () { done = true; });
+		};
+	}
 
 	// Testing if the modal works in general
 	describe('Modal', function () {
@@ -34,21 +44,23 @@
 			expect($modal.css('opacity')).toBe('1');
 		});
 
-		it('has class is-active when hash is set', function () {
+		it('has class is-active when hash is set', async(function (done) {
 			window.location.hash = '#modal';
 
 			setTimeout(function () {
 				expect($modal.hasClass('is-active')).toBe(true);
+				done();
 			}, 0);
-		});
+		}));
 
-		it('has not class is-active when hash is #!', function () {
+		it('has not class is-active when hash is #!', async(function (done) {
 			window.location.hash = '#!';
 
 			setTimeout(function () {
 				expect($modal.hasClass('is-active')).not.toBe(true);
+				done();
 			}, 0);
-		});
+		}));
 
 		// aria-hidden values tests
 		describe('aria-hidden', function () {
@@ -234,7 +246,8 @@
 				}, 0);
 			});
 
-			it('shows unstacked modal after close', function () {
+			// FIXME: Issue unrelated to iframes
+			xit('shows unstacked modal after close', function () {
 				window.location.hash = '#modal';
 				window.location.hash = '#stackable';
 
