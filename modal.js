@@ -49,18 +49,15 @@
 			if (!elements.length) {
 				elements = [elements];
 			}
-
-			for (; i < elements.length; i++) {
-
-				// If jQuery is supported
-				if ($) {
-					$(elements[i]).on(event, callback);
-
-				// Default way to support events
-				} else if ('addEventListener' in elements[i]) {
-					elements[i].addEventListener(event, callback, false);
+			
+			// If jQuery is supported
+			if ($) {
+				$(elements).on(event, callback);
+			// Default way to support events
+			} else {
+				for (; i < elements.length; i++) {
+					elements[i].addEventListener && elements[i].addEventListener(event, callback, false);
 				}
-
 			}
 		},
 
