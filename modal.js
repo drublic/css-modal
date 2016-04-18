@@ -49,14 +49,16 @@
 			if (!elements.length) {
 				elements = [elements];
 			}
-			
+
 			// If jQuery is supported
 			if ($) {
 				$(elements).on(event, callback);
 			// Default way to support events
 			} else {
 				for (; i < elements.length; i++) {
-					elements[i].addEventListener && elements[i].addEventListener(event, callback, false);
+					if (elements[i].addEventListener) {
+						elements[i].addEventListener(event, callback, false);
+					}
 				}
 			}
 		},
