@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.5.0 - 12.05.2016
+
+* Make sure iframes don't interfere with modal events [fixes #199]
+* Fix jshint issue in modal.js
+* Prevented an extra loop when jQuery is present
+* Improved tabbableElements selector string
+* 9c91b30 Update node modules
+* 300c3ff Fix demo loading in IE8
+
 ## 1.4.1 - 17.07.2015
 * Add missing comma in bower.json
 * Add example for stackable modal
