@@ -484,7 +484,7 @@
 
 			// And close modal without hash
 			this.on('click', document.querySelectorAll('.modal-close'), function (event) {
-				if (modal.activeElement._noHash){
+				if (modal.activeElement && modal.activeElement._noHash){
 					modal.mainHandler(event, true);
 				}
 			});
