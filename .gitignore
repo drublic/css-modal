@@ -4,5 +4,4 @@
 *.sass-cache
 node_modules
 test/modal.css
-bin/
-bin/index.js
+bin/*
