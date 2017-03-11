@@ -1,58 +1,56 @@
 {
-	"name": "css-modal",
-	"title": "CSS Modal",
-	"description": "Modals, built with pure CSS",
-	"version": "1.5.0",
-	"homepage": "https://github.com/drublic/css-modal",
-	"author": {
-		"name": "Hans Christian Reinl",
-		"url": "http://drublic.de"
-	},
-	"main": "./modal.js",
-	"style": "./build/*.css",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/drublic/css-modal"
-	},
-	"bugs": {
-		"url": "https://github.com/drublic/css-modal/issues"
-	},
-	"license": "MIT",
-	"scripts": {
-		"test": "grunt travis --verbose",
-		"start": "concurrently \"yarn run server\" \"yarn run css:change\" \"yarn run js:change\"",
-		"server": "lite-server",
-		"css": "node ./scripts/css.js",
-		"css:change": "onchange 'resources/css/**/*.css' -v -- yarn run css",
-		"js": "webpack",
-		"js:change": "webpack --watch",
-		"js:lint": "eslint js/{**/,}*.js",
-		"build": "npm run css && npm run js"
-	},
-	"engines": {
-		"node": ">=5"
-	},
-	"dependencies": {
-		"autoprefixer": "^6.7.7",
-		"babel-cli": "^6.23.0",
-		"babel-core": "^6.23.1",
-		"babel-loader": "^6.4.0",
-		"babel-preset-latest": "^6.22.0",
-		"concurrently": "^3.4.0",
-		"css-mqpacker": "^5.0.1",
-		"eslint": "^3.17.1",
-		"normalize.css": "^5.0.0",
-		"onchange": "^3.2.1",
-		"postcss": "^5.2.16",
-		"postcss-custom-media": "^5.0.1",
-		"postcss-custom-properties": "^5.0.2",
-		"postcss-import": "^9.1.0"
-	},
-	"devDependencies": {
-		"lite-server": "^2.3.0"
-	},
-	"keywords": [
-		"css",
-		"modal"
-	]
+  "name": "css-modal",
+  "title": "CSS Modal",
+  "description": "Modals, built with pure CSS",
+  "version": "1.5.0",
+  "homepage": "https://github.com/drublic/css-modal",
+  "author": {
+    "name": "Hans Christian Reinl",
+    "url": "http://drublic.de"
+  },
+  "main": "./js/index.js",
+  "style": "./bin/*.css",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drublic/css-modal"
+  },
+  "bugs": {
+    "url": "https://github.com/drublic/css-modal/issues"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "grunt travis --verbose",
+    "start": "concurrently \"yarn run server\" \"yarn run css:change\" \"yarn run js:change\"",
+    "server": "lite-server",
+    "css": "node ./scripts/css.js",
+    "css:change": "onchange 'resources/css/**/*.css' -v -- yarn run css",
+    "js": "webpack",
+    "js:change": "webpack --watch",
+    "js:lint": "eslint js/{**/,}*.js",
+    "build": "npm run css && npm run js"
+  },
+  "engines": {
+    "node": ">=5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.4.0",
+    "babel-preset-latest": "^6.22.0",
+    "concurrently": "^3.4.0",
+    "css-mqpacker": "^5.0.1",
+    "eslint": "^3.17.1",
+    "normalize.css": "^5.0.0",
+    "onchange": "^3.2.1",
+    "postcss": "^5.2.16",
+    "postcss-custom-media": "^5.0.1",
+    "postcss-custom-properties": "^5.0.2",
+    "postcss-import": "^9.1.0",
+    "lite-server": "^2.3.0"
+  },
+  "keywords": [
+    "css",
+    "modal"
+  ]
 }
