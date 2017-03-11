@@ -178,6 +178,23 @@ class Modal {
   }
 
   /*
+   * Focus modal
+   */
+  setFocus () {
+    if (this.activeElement) {
+
+      // Set element with last focus
+      this.lastActive = document.activeElement;
+
+      // New focussing
+      this.activeElement.focus();
+
+      // Add handler to keep the focus
+      this.keepFocus();
+    }
+  }
+
+  /*
    * Mark modal as active
    * @param element {Node} element to set active
    */
@@ -189,7 +206,7 @@ class Modal {
     this.activeElement.setAttribute('aria-hidden', 'false');
 
     // Set the focus to the modal
-    this.setFocus(element.id);
+    this.setFocus();
 
     // Fire an event
     Helpers.trigger('cssmodal:show', this.activeElement);
@@ -200,7 +217,7 @@ class Modal {
    * @param isStacked          {boolean} `true` if element is stacked above another
    * @param shouldNotBeStacked {boolean} `true` if next element should be stacked
    */
-  unsetActive (isStacked, shouldNotBeStacked) {
+  unsetActive (isStacked = false, shouldNotBeStacked = false) {
     Helpers.removeClass(document.documentElement, 'has-overlay');
 
     if (this.activeElement) {

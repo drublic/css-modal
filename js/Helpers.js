@@ -114,23 +114,6 @@ class Helpers {
   }
 
   /*
-   * Focus modal
-   */
-  setFocus () {
-    if (this.activeElement) {
-
-      // Set element with last focus
-      this.lastActive = document.activeElement;
-
-      // New focussing
-      this.activeElement.focus();
-
-      // Add handler to keep the focus
-      this.keepFocus();
-    }
-  }
-
-  /*
    * Convenience function to check if an element is visible
    *
    * Test idea taken from jQuery 1.3.2 source code
