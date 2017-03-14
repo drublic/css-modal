@@ -9,7 +9,7 @@
  * Usage:
  *
  * .selector {
- * 		@extend %modal--transition-fade;
+ *    @extend %modal--transition-fade;
  * }
  *
  */
@@ -19,104 +19,106 @@ $transition-duration: 0.4s !default;
 $transition-size-start: scale(0) !default;
 $transition-size-end: scale(1) !default;
 
-// Fade in the modal
-%modal--transition-fade {
-	@media screen and (min-width: $modal-small-breakpoint) {
-		transition: opacity $transition-duration;
-	}
-
-	@extend %modal;
-	@extend %modal-theme;
+/* Fade in the modal */
+.modal--transition--fade {
+  @extend %modal;
+  @extend %modal-theme;
 }
 
-// Fade in and zoom in the modal
-%modal--transition-zoomIn {
-	@extend %modal;
-	@extend %modal-theme;
+@media screen and (min-width: $modal-small-breakpoint) {
+  .modal--transition--fade {
+    transition: opacity $transition-duration;
+  }
+}
 
-	// Scale to zero
-	.modal-inner {
-		-webkit-transform: $transition-size-start;
-		        transform: $transition-size-start;
-		opacity: 0;
-		-webkit-transition: all $transition-duration;
-		        transition: all $transition-duration;
-	}
+/* Fade in and zoom in the modal */
+.modal--transition--zoom-in {
+  @extend %modal;
+  @extend %modal-theme;
+}
 
-	.modal-close:before {
-		-webkit-transition: all $transition-duration;
-		        transition: all $transition-duration;
-		opacity: 0;
-	}
-	.modal-close:after {
-		-webkit-transform: $transition-size-start;
-		        transform: $transition-size-start;
-		-webkit-transition: all $transition-duration;
-		        transition: all $transition-duration;
-		opacity: 0;
-	}
+/* Scale to zero */
+.modal--transition--zoom-in .modal_inner {
+  transform: $transition-size-start;
+  opacity: 0;
+  transition: all $transition-duration;
+}
 
-	// Show modal when requested
-	&:target,
-	&.is-active {
-		.modal-inner {
-			-webkit-transform: $transition-size-end;
-			        transform: $transition-size-end;
-			opacity: 1;
-		}
+.modal--transition--zoom-in .modal_close::before {
+  transition: all $transition-duration;
+  opacity: 0;
+}
 
-		.modal-close:before {
-			opacity: 1;
-		}
-		.modal-close:after {
-			-webkit-transform: $transition-size-end;
-			        transform: $transition-size-end;
-			opacity: 1;
-			// Move back to proper position
-			top: 25px;
+.modal--transition--zoom-in .modal_close::after {
+  transform: $transition-size-start;
+  transition: all $transition-duration;
+  opacity: 0;
+}
 
-			@media screen and (max-width: $modal-small-breakpoint) {
-				top: 5px;
-				right: 5px;
-				left: auto;
-			}
-		}
-	}
+/* Show modal when requested */
+.modal--transition--zoom-in:target,
+.modal--transition--zoom-in.is-active {
+  .modal_inner {
+    transform: $transition-size-end;
+    opacity: 1;
+  }
+
+  .modal_close::before {
+    opacity: 1;
+  }
+
+  .modal_close::after {
+    transform: $transition-size-end;
+    opacity: 1;
+    /* Move back to proper position */
+    top: 25px;
+  }
+
+  @media screen and (max-width: $modal-small-breakpoint) {
+    .modal_close::after {
+      top: 5px;
+      right: 5px;
+      left: auto;
+    }
+  }
 }
 
 // Fade in, zoom in and hide backgrund in the modal
-%modal--transition-plainScreen {
-	@extend %modal;
-	@extend %modal-theme;
-	@extend %modal-theme-plainScreen;
-	@extend %modal--transition-zoomIn;
+.modal--transition-plain-screen {
+  @extend %modal;
+  @extend %modal-theme;
+  @extend %modal-theme-plainScreen;
+  @extend %modal--transition-zoomIn;
+}
 
-	.modal-inner {
-		box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.25);
-	}
+.modal--transition-plain-screen .modal_inner {
+  box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.25);
+}
 
-	.modal-close:before {
-		-webkit-transition: all $transition-duration;
-		        transition: all $transition-duration;
-		background: $modal-inner-background;
-		opacity: 0;
-	}
-	.modal-close:after {
-		box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.2);
-	}
+.modal--transition-plain-screen .modal_close::before {
+  transition: all $transition-duration;
+  background: $modal-inner-background;
+  opacity: 0;
+}
 
-	// Show modal when requested
-	&:target,
-	&.is-active {
-		.modal-close:before {
-			opacity: 1;
-		}
-		.modal-close:after {
-			top: 23px;
+.modal--transition-plain-screen .modal_close::after {
+  box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.2);
+}
 
-			@media screen and (max-width: $modal-small-breakpoint) {
-				top: 5px;
-			}
-		}
-	}
+/* Show modal when requested */
+.modal--transition-plain-screen:target,
+.modal--transition-plain-screen.is-active {
+  .modal_close::before {
+    opacity: 1;
+  }
+
+  .modal_close::after {
+    top: 23px;
+  }
+
+  @media screen and (max-width: $modal-small-breakpoint) {
+    .modal_close::after {
+      top: 5px;
+    }
+  }
 }

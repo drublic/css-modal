@@ -2,11 +2,11 @@
  * Apply the desired modal behavior to your container selector
  */
 .modal--show {
-	@extend %modal;
-	@extend %modal-theme;
+  @extend %modal;
+  @extend %modal-theme;
 }
 
 .modal--fade {
-	@extend %modal--transition-fade;
-	@extend %modal-theme;
+  @extend %modal--transition-fade;
+  @extend %modal-theme;
 }
