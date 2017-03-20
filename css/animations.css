@@ -14,7 +14,7 @@
  *
  */
 
-// Configuration:
+/* Configuration: */
 $transition-duration: 0.4s !default;
 $transition-size-start: scale(0) !default;
 $transition-size-end: scale(1) !default;
@@ -27,7 +27,7 @@ $transition-size-end: scale(1) !default;
 
 @media screen and (min-width: $modal-small-breakpoint) {
   .modal--transition--fade {
-    transition: opacity $transition-duration;
+    transition: opacity var(--modal--transition-duration);
   }
 }
 
@@ -39,19 +39,19 @@ $transition-size-end: scale(1) !default;
 
 /* Scale to zero */
 .modal--transition--zoom-in .modal_inner {
-  transform: $transition-size-start;
+  transform: var(--modal--transition-size-start);
   opacity: 0;
-  transition: all $transition-duration;
+  transition: all var(--modal--transition-duration);
 }
 
 .modal--transition--zoom-in .modal_close::before {
-  transition: all $transition-duration;
+  transition: all var(--modal--transition-duration);
   opacity: 0;
 }
 
 .modal--transition--zoom-in .modal_close::after {
-  transform: $transition-size-start;
-  transition: all $transition-duration;
+  transform: var(--modal--transition-size-start);
+  transition: all var(--modal--transition-duration);
   opacity: 0;
 }
 
@@ -59,7 +59,7 @@ $transition-size-end: scale(1) !default;
 .modal--transition--zoom-in:target,
 .modal--transition--zoom-in.is-active {
   .modal_inner {
-    transform: $transition-size-end;
+    transform: var(--modal--transition-size-end);
     opacity: 1;
   }
 
@@ -68,7 +68,7 @@ $transition-size-end: scale(1) !default;
   }
 
   .modal_close::after {
-    transform: $transition-size-end;
+    transform: var(--modal--transition-size-end);
     opacity: 1;
     /* Move back to proper position */
     top: 25px;
@@ -96,8 +96,8 @@ $transition-size-end: scale(1) !default;
 }
 
 .modal--transition-plain-screen .modal_close::before {
-  transition: all $transition-duration;
-  background: $modal-inner-background;
+  transition: all var(--modal--transition-duration);
+  background: var(--modal--inner-background);
   opacity: 0;
 }
 

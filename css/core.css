@@ -30,7 +30,7 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: $modal-layer;
+  z-index: var(--modal--layer);
   width: 0;
   height: 0;
   overflow: hidden;
@@ -56,11 +56,11 @@ html {
   top: 60px;
   left: 50%;
   z-index: 20;
-  margin-left: ($modal-max-width / 2) * -1;
-  width: $modal-max-width;
+  margin-left: (var(--modal--max-width) / 2) * -1;
+  width: var(--modal--max-width);
   overflow-x: hidden;
 
-  -webkit-overflow-scrolling: touch; // Native style momentum scrolling
+  -webkit-overflow-scrolling: touch; /* Native style momentum scrolling */
 }
 
 .css-modal_inner > img,
@@ -102,7 +102,7 @@ html {
  * Footer
  */
 .css-modal_footer {
-  border-top: 1px solid lighten($modal-border-color, 20);
+  border-top: 1px solid lighten(var(--modal--border-color), 20);
   padding: 0 1.2em 18px;
   background: #f0f0f0;
   border-radius: 2px;
@@ -113,7 +113,7 @@ html {
  */
 .css-modal_close {
   display: block;
-  height: 1px; // Prevent close element to appear
+  height: 1px; /* Prevent close element to appear */
   clip: rect(0 0 0 0);
   margin: -1px;
   overflow: hidden;
@@ -147,7 +147,7 @@ html {
   top: 35px;
   right: 50%;
   z-index: 20;
-  margin-right: -($modal-max-width / 2);
+  margin-right: -(var(--modal--max-width) / 2);
 }
 
 
