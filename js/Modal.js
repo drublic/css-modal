@@ -12,12 +12,17 @@ import Helpers from './Helpers.js';
  */
 class Modal {
   constructor ($) {
-
     /**
      * jQuery on Object
      * @type {Object}
      */
     this.$ = $;
+
+    /**
+     * Helpers class
+     * @type {Helpers}
+     */
+    this.Helpers = new Helpers();
 
     /**
      * Store for currently active element
@@ -123,7 +128,7 @@ class Modal {
       }
     };
 
-    Helpers.on('keydown', element, focusHandler);
+    this.Helpers.on('keydown', element, focusHandler);
   }
 
   /*
@@ -136,11 +141,11 @@ class Modal {
     let nodeListLength = nodeList.length;
 
     // If the first item is not visible
-    if (!Helpers.isElementVisible(nodeList[0])) {
+    if (!this.Helpers.isElementVisible(nodeList[0])) {
       for (let i = 1; i < nodeListLength - 1; i++) {
 
         // Iterate elements in the NodeList, return the first visible
-        if (Helpers.isElementVisible(nodeList[i])) {
+        if (this.Helpers.isElementVisible(nodeList[i])) {
           return nodeList[i];
         }
       }
@@ -162,11 +167,11 @@ class Modal {
     var lastTabbableElement = nodeList[nodeListLength - 1];
 
     // If the last item is not visible
-    if (!Helpers.isElementVisible(lastTabbableElement)) {
+    if (!this.Helpers.isElementVisible(lastTabbableElement)) {
       for (let i = nodeListLength - 1; i >= 0; i--) {
 
         // Iterate elements in the NodeList, return the first visible
-        if (Helpers.isElementVisible(nodeList[i])) {
+        if (this.Helpers.isElementVisible(nodeList[i])) {
           return nodeList[i];
         }
       }
@@ -199,7 +204,7 @@ class Modal {
    * @param element {Node} element to set active
    */
   setActive (element) {
-    Helpers.addClass(element, 'is-active');
+    this.Helpers.addClass(element, 'is-active');
     this.activeElement = element;
 
     // Update aria-hidden
@@ -209,7 +214,7 @@ class Modal {
     this.setFocus();
 
     // Fire an event
-    Helpers.trigger('cssmodal:show', this.activeElement);
+    this.Helpers.trigger('cssmodal:show', this.activeElement);
   }
 
   /*
@@ -218,13 +223,13 @@ class Modal {
    * @param shouldNotBeStacked {boolean} `true` if next element should be stacked
    */
   unsetActive (isStacked = false, shouldNotBeStacked = false) {
-    Helpers.removeClass(document.documentElement, 'has-overlay');
+    this.Helpers.removeClass(document.documentElement, 'has-overlay');
 
     if (this.activeElement) {
-      Helpers.removeClass(this.activeElement, 'is-active');
+      this.Helpers.removeClass(this.activeElement, 'is-active');
 
       // Fire an event
-      Helpers.trigger('cssmodal:hide', this.activeElement);
+      this.Helpers.trigger('cssmodal:hide', this.activeElement);
 
       // Update aria-hidden
       this.activeElement.setAttribute('aria-hidden', 'true');
@@ -252,7 +257,7 @@ class Modal {
    * @param stackableModal {node} element to be stacked
    */
   stackModal (stackableModal) {
-    Helpers.addClass(stackableModal, 'is-stacked');
+    this.Helpers.addClass(stackableModal, 'is-stacked');
 
     // Set modal as stacked
     this.stackedElements.push(this.activeElement);
@@ -265,7 +270,7 @@ class Modal {
     var stackedCount = this.stackedElements.length;
     var lastStacked = this.stackedElements[stackedCount - 1];
 
-    Helpers.removeClass(lastStacked, 'is-stacked');
+    this.Helpers.removeClass(lastStacked, 'is-stacked');
 
     // Set hash to modal, activates the modal automatically
     global.location.hash = lastStacked.id;
@@ -329,12 +334,12 @@ class Modal {
 
         // Make previous element stackable if it is not the same modal
         this.unsetActive(
-          !Helpers.hasClass(modalElement, 'is-active'),
+          !this.Helpers.hasClass(modalElement, 'is-active'),
           (modalElement.getAttribute('data-stackable') === 'false')
         );
 
         // Set an html class to prevent scrolling
-        Helpers.addClass(document.documentElement, 'has-overlay');
+        this.Helpers.addClass(document.documentElement, 'has-overlay');
 
         // Set scroll position for modal
         this._currentScrollPositionY = global.scrollY;
@@ -407,16 +412,16 @@ class Modal {
     /*
      * Hide overlay when ESC is pressed
      */
-    Helpers.on('keyup', document, this.onKeyup.bind(this), false);
+    this.Helpers.on('keyup', document, this.onKeyup.bind(this), false);
 
     /**
      * Trigger main handler on click if hash is deactivated
      */
     let noHashElements = document.querySelectorAll('[data-cssmodal-nohash]');
-    Helpers.on('click', noHashElements, (event) => this.mainHandler(event, true));
+    this.Helpers.on('click', noHashElements, (event) => this.mainHandler(event, true));
 
     // And close modal without hash
-    Helpers.on('click', document.querySelectorAll('.modal-close'), function (event) {
+    this.Helpers.on('click', document.querySelectorAll('.modal-close'), function (event) {
       if (this.activeElement._noHash){
         this.mainHandler(event, true);
       }
@@ -425,8 +430,8 @@ class Modal {
     /*
      * Trigger main handler on load and hashchange
      */
-    Helpers.on('hashchange', window, this.mainHandler);
-    Helpers.on('load', window, this.mainHandler);
+    this.Helpers.on('hashchange', window, this.mainHandler);
+    this.Helpers.on('load', window, this.mainHandler);
 
     /**
      * Prevent scrolling when modal is active
