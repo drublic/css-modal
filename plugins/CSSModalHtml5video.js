@@ -3,7 +3,7 @@
  */
 import Modal from '../js/Modal.js';
 
-class ModalHtml5video extends Modal {
+class CSSModalHtml5video extends Modal {
   constructor () {
     super();
 
@@ -47,4 +47,4 @@ class ModalHtml5video extends Modal {
   }
 }
 
-export default ModalHtml5video;
+export default CSSModalHtml5video;

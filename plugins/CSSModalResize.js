@@ -8,7 +8,7 @@
 import Modal from '../js/Modal.js';
 import injectStyles from './Helper/injectStyles.js';
 
-class ModalResize extends Modal {
+class CSSModalResize extends Modal {
   constructor () {
     super();
 
@@ -222,4 +222,4 @@ class ModalResize extends Modal {
   }
 }
 
-export default ModalResize;
+export default CSSModalResize;

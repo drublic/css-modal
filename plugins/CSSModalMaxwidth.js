@@ -4,7 +4,7 @@
 import Modal from '../js/Modal.js';
 import injectStyles from './Helper/injectStyles.js';
 
-class ModalMaxwidth extends Modal {
+class CSSModalMaxwidth extends Modal {
   constructor () {
     super();
 
@@ -96,4 +96,4 @@ class ModalMaxwidth extends Modal {
   }
 }
 
-export default ModalMaxwidth;
+export default CSSModalMaxwidth;
