@@ -1,0 +1,127 @@
+/**
+ * A loading spinner
+ * http://stackoverflow.com/questions/16250260/android-holo-loading-spinner-in-css
+ */
+
+:root {
+  --css-modal_spinner_size: 64px;
+  --css-modal_spinner_background: #fff;
+  --css-modal_spinner_width: 5%;
+}
+
+/**
+ * Spinning animations
+ */
+@keyframes rotate-outer {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(1080deg);
+  }
+}
+
+@keyframes rotate-inner {
+  0% {
+    transform: rotate(720deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.css-modal_spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--css-modal_spinner_size);
+  height: var(--css-modal_spinner_size);
+  margin-top: calc(-1 * var(--css-modal_spinner_size) / 2);
+  margin-left: calc(-1 * var(--css-modal_spinner_size) / 2);
+}
+
+.css-modal_spinner_outer,
+.css-modal_spinner_inner,
+.css-modal_spinner::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/**
+ * Mask
+ */
+.css-modal_spinner:after {
+  content: '';
+  margin: var(--css-modal_spinner_width);
+  border-radius: 100%;
+  background: var(--css-modal_spinner_background);
+}
+
+.css-modal_spinner_outer,
+.css-modal_spinner_inner {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.css-modal_spinner_outer::before,
+.css-modal_spinner_outer::after,
+.css-modal_spinner_inner::before,
+.css-modal_spinner_inner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+/**
+ * Left
+ */
+.css-modal_spinner_outer::before,
+.css-modal_spinner_inner::before {
+  left: 0;
+  right: 50%;
+  border-radius: var(--css-modal_spinner_size) 0 0 var(--css-modal_spinner_size);
+}
+
+/**
+ * Right
+ */
+.css-modal_spinner_outer::after,
+.css-modal_spinner_inner::after {
+  left: 50%;
+  right: 0;
+  border-radius: 0 var(--css-modal_spinner_size) var(--css-modal_spinner_size) 0;
+}
+
+.css-modal_spinner_outer {
+  animation-name: rotate-outer;
+}
+
+.css-modal_spinner_inner {
+  animation-name: rotate-inner;
+}
+
+/**
+ * Gradients
+ */
+.css-modal_spinner_outer::before {
+  background-image: linear-gradient(to bottom, rgba(150, 150, 150, 0.0), rgba(150, 150, 150, 0.5));
+}
+
+.css-modal_spinner_outer::after {
+  background-image: linear-gradient(to bottom, rgba(150, 150, 150, 1.0), rgba(150, 150, 150, 0.5));
+}
+
+.css-modal_spinner_inner::before {
+  background-image: linear-gradient(to bottom, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5));
+}
+
+.css-modal_spinner_inner::after {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5));
+}

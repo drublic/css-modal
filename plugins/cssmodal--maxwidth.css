@@ -1,0 +1,30 @@
+/**
+ * Custom maximum width for a modal
+ *
+ * Usage: Set `data-cssmodal-maxwidth` with a pixel-based max-width as a value.
+ */
+.css-modal--maxwidth .css-modal_inner {
+  width: 100%;
+}
+
+@media screen and (max-width: $modal-max-width + 40) {
+  .css-modal--maxwidth .css-modal_inner {
+    left: 50%;
+  }
+
+  .css-modal--maxwidth .css-modal_close:after {
+    right: 50% !important;
+  }
+}
+
+@media screen and (max-width: $modal-small-breakpoint) {
+  .css-modal--maxwidth .css-modal_inner {
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  .css-modal--maxwidth .css-modal_close:after {
+    margin-right: 0 !important;
+    right: 0 !important;
+  }
+}

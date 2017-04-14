@@ -1,0 +1,167 @@
+/*
+ * CSS Modal Plugin for displaying an image gallery
+ */
+:root {
+  --css-modal--gallery_iframe-size: 600px;
+  --css-modal--gallery_min-size: 98px;
+  --css-modal--gallery_thumb-size: 98px;
+}
+
+.css-modal_detail {
+  position: relative;
+  min-width: var(--css-modal--gallery_min-size);
+  min-height: var(--css-modal--gallery_min-size);
+
+  opacity: 0;
+  width: 0;
+  height: 0;
+  transition: opacity 0s;
+}
+
+.css-modal_detail.is-active {
+  opacity: 1;
+  width: auto;
+  height: auto;
+  transition: opacity 0.2s ease-out;
+}
+
+/**
+ * Styling for Iframe in modal
+ */
+.css-modal_detail > [data-iframe] {
+  position: relative;
+  float: left;
+  width: var(--css-modal--gallery_iframe-size);
+}
+
+.css-modal_detail > [data-iframe]:after {
+  float: left;
+  content: '';
+  padding-top: 56.25%;
+}
+
+.css-modal_detail iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media screen and (max-width: $modal-max-width + 40) {
+  .css-modal_detail > [data-iframe] {
+    width: 411px;
+  }
+}
+
+@media screen and (max-width: $modal-small-breakpoint) {
+  .css-modal_detail > [data-iframe] {
+    width: 100%;
+  }
+}
+
+.css-modal--gallery .css-modal_content-list {
+  display: none;
+  list-style: none;
+  margin: 0.2em -0.2em -0.2em;
+  padding: 0;
+  overflow: hidden;
+}
+
+.css-modal--gallery .css-modal_content-list.is-active {
+  display: block;
+}
+
+.css-modal--gallery .css-modal_content-list > li {
+  float: left;
+  padding: 0.2em;
+}
+
+.css-modal--gallery .css-modal_content-list img {
+  display: block;
+  border: 0;
+}
+
+.css-modal--gallery_navigation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.css-modal--gallery_navigation a {
+  position: absolute;
+  top: 30%;
+  bottom: 30%;
+  width: 10em;
+  max-width: 25%;
+  font-family: arial, sans-serif;
+
+  text-indent: -99em;
+  overflow: hidden;
+  text-decoration: none;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.css-modal--gallery_navigation img {
+  max-width: var(--css-modal--gallery_thumb-size);
+  max-height: var(--css-modal--gallery_thumb-size);
+}
+
+.css-modal--gallery_navigation_item::after {
+  position: absolute;
+  top: 50%;
+  height: 32px;
+
+  margin-top: -24px;
+  line-height: 32px;
+  padding: 0 8px;
+  font-size: 64px;
+  opacity: 0;
+}
+
+.css-modal--gallery_navigation_item:hover::after,
+.css-modal--gallery_navigation_item:focus::after,
+.css-modal--gallery_navigation_item:active::after {
+  opacity: 1;
+}
+
+// Show on mobile
+@media screen and (max-width: $modal-small-breakpoint) {
+  .css-modal--gallery_navigation_item:after {
+    opacity: 1;
+  }
+}
+
+.css-modal--gallery_navigation_item--prev {
+  left: 0;
+}
+
+.css-modal--gallery_navigation_item--prev:after {
+  content: '‹';
+  left: 0;
+  text-indent: 0;
+}
+
+.css-modal--gallery_navigation_item--next {
+  right: 0;
+}
+
+.css-modal--gallery_navigation_item--next::after {
+  content: '›';
+  right: 0;
+  text-indent: 0;
+}
+
+/**
+ * Caption
+ */
+.css-modal--gallery_caption {
+  border-bottom: 1px solid var(--css-modal_border-color);
+}
+
+.css-modal--gallery_caption p {
+  margin: 1em 15px;
+}
