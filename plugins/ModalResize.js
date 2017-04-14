@@ -6,6 +6,7 @@
  * - Add `data-cssmodal-resize` to the modal which should be resized
  */
 import Modal from '../js/Modal.js';
+import injectStyles from './Helper/injectStyles.js';
 
 class ModalResize extends Modal {
   constructor () {
@@ -14,32 +15,9 @@ class ModalResize extends Modal {
     /*
      * Assign basic event handlers
      */
-    this.Helper.on('resize', window, this._scale);
-    this.Helper.on('cssmodal:show', document, this._scale);
-    this.Helper.on('cssmodal:resize', document, this._scale);
-  }
-
-  /**
-   * Include styles into the DOM
-   * @param {string} rule Styles to inject into the DOM
-   * @param {string} id   Unique ID for styles
-   */
-  _injectStyles (rule, id) {
-    id = 'modal__rule--' + (id || '');
-
-    let head = document.querySelector('head');
-    let existingStyleElement = document.getElementById(id);
-    let styleElement = null;
-
-    if (existingStyleElement) {
-      styleElement = existingStyleElement;
-    } else {
-      styleElement = document.createElement('style');
-      styleElement.id = id;
-    }
-
-    styleElement.innerHTML = rule;
-    head.appendChild(styleElement);
+    this.Helpers.on('resize', window, this._scale);
+    this.Helpers.on('cssmodal:show', document, this._scale);
+    this.Helpers.on('cssmodal:resize', document, this._scale);
   }
 
   /**
@@ -220,7 +198,7 @@ class ModalResize extends Modal {
     element.style.marginRight = margin + 'px';
 
     // Close button
-    this._injectStyles(`
+    injectStyles(`
       [data-cssmodal-resize] .modal-close:after {
         top: ${offset.top - 25}px !important;
         margin-right: -${elementWidth / 2}px !important;
