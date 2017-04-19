@@ -36,7 +36,7 @@ class CSSModalGallery extends Modal {
     } else {
       this._currentItem--;
     }
-  };
+  }
 
   /**
    * Shows the content previous to the current item
@@ -50,7 +50,7 @@ class CSSModalGallery extends Modal {
     this._setPreviousItem();
 
     this.setActiveItem(this._currentItem);
-  };
+  }
 
   /**
    * Increases the counter for the active item regarding the "endless"
@@ -63,7 +63,7 @@ class CSSModalGallery extends Modal {
     } else {
       this._currentItem++;
     }
-  };
+  }
 
   /**
    * Shows the content next to the current item
@@ -77,7 +77,7 @@ class CSSModalGallery extends Modal {
     this._setNextItem();
 
     this.setActiveItem(this._currentItem);
-  };
+  }
 
   /**
    * Returns the detail image element
@@ -92,7 +92,7 @@ class CSSModalGallery extends Modal {
     }
 
     return container;
-  };
+  }
 
   /**
    * Registers the listerns on the previous / next buttons to enable gallery
@@ -127,7 +127,7 @@ class CSSModalGallery extends Modal {
     this._items = this._readContent(this._activeElement);
 
     this.setActiveItem(this._currentItem);
-  };
+  }
 
   /**
    * Reacts to specific keyboard commands to enable viewing a differnt item
@@ -141,7 +141,7 @@ class CSSModalGallery extends Modal {
     } else if (event.keyCode === 37) {
       this.showPrevious(event);
     }
-  };
+  }
 
   /**
    * Wires the previous / next button to the function to navigation through
@@ -157,8 +157,8 @@ class CSSModalGallery extends Modal {
     this._next = element.querySelectorAll('.modal--gallery-navigation-next')[0];
 
     for (let i = 0; i < events.length; i++) {
-      this.Helpers.on(events[i], _prev, this.showPrevious);
-      this.Helpers.on(events[i], _next, this.showNext);
+      this.Helpers.on(events[i], this._prev, this.showPrevious);
+      this.Helpers.on(events[i], this._next, this.showNext);
     }
 
     // Setup keyboard events
@@ -167,7 +167,7 @@ class CSSModalGallery extends Modal {
     // Setup swipe events
     this.Helpers.on('touch:swipe-left', element, this.showPrevious);
     this.Helpers.on('touch:swipe-right', element, this.showNext);
-  };
+  }
 
   /**
    * Gathers information about the gallery content and stores it.
@@ -178,7 +178,7 @@ class CSSModalGallery extends Modal {
     let contentList = element.querySelectorAll('.css-modal_content-list')[0];
 
     return contentList.getElementsByTagName('li');
-  };
+  }
 
   /**
    * Set a caption for a given modal
@@ -196,7 +196,7 @@ class CSSModalGallery extends Modal {
     if (caption) {
       captionElement.innerHTML = '<p>' + caption + '</p>';
     }
-  };
+  }
 
   /**
    * Shows the full content of the designated item
@@ -245,10 +245,10 @@ class CSSModalGallery extends Modal {
       referenceImage.parentNode.insertBefore(img, referenceImage);
       referenceImage.parentNode.removeChild(referenceImage);
 
-      _detailView.style.width = 'auto';
-      _detailView.style.height = 'auto';
+      this._detailView.style.width = 'auto';
+      this._detailView.style.height = 'auto';
     }
-  };
+  }
 
   /**
    * Store the index of the currently active item on the gallery instance
@@ -256,7 +256,7 @@ class CSSModalGallery extends Modal {
    * @return {void}
    */
   _storeActiveItem () {
-    this._activeElement._currentItem = _currentItem;
+    this._activeElement._currentItem = this._currentItem;
   }
 }
 
