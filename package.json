@@ -19,11 +19,11 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "grunt travis --verbose",
+    "test": "yarn run js:lint && grunt travis --verbose",
     "start": "concurrently \"yarn run server\" \"yarn run css:change\" \"yarn run js:change\"",
     "server": "lite-server",
     "css": "node ./scripts/css.js",
-    "css:change": "onchange 'resources/css/**/*.css' -v -- yarn run css",
+    "css:change": "onchange 'css/**/*.css' -v -- yarn run css",
     "js": "webpack",
     "js:change": "webpack --watch",
     "js:lint": "eslint js/{**/,}*.js",
