@@ -285,11 +285,11 @@ class Modal {
    * @return {void}
    */
   mainHandler (event, noHash) {
-    var hash = window.location.hash.replace('#', '');
-    var index = 0;
-    var tmp = [];
-    var modalElement;
-    var modalChild;
+    let hash = window.location.hash.replace('#', '');
+    let index = 0;
+    let tmp = [];
+    let modalElement;
+    let modalChild;
 
     // JS-only: no hash present
     if (noHash) {
@@ -318,19 +318,13 @@ class Modal {
 
     // If the hash element exists
     if (modalElement) {
-
-      // Polyfill to prevent the default behavior of events
-      try {
-        event.preventDefault();
-      } catch (ex) {
-        event.returnValue = false;
-      }
+      event.preventDefault();
 
       // Get first element in selected element
       modalChild = modalElement.children[0];
 
       // When we deal with a modal and body-class `has-overlay` is not set
-      if (modalChild && modalChild.className.match(/modal-inner/)) {
+      if (modalChild && modalChild.className.match(/css-modal_inner/)) {
 
         // Make previous element stackable if it is not the same modal
         this.unsetActive(
@@ -421,8 +415,8 @@ class Modal {
     this.Helpers.on('click', noHashElements, (event) => this.mainHandler(event, true));
 
     // And close modal without hash
-    this.Helpers.on('click', document.querySelectorAll('.modal-close'), function (event) {
-      if (this.activeElement._noHash){
+    this.Helpers.on('click', document.querySelectorAll('.css-modal_close'), (event) => {
+      if (this.activeElement._noHash) {
         this.mainHandler(event, true);
       }
     });
@@ -430,8 +424,8 @@ class Modal {
     /*
      * Trigger main handler on load and hashchange
      */
-    this.Helpers.on('hashchange', window, this.mainHandler);
-    this.Helpers.on('load', window, this.mainHandler);
+    this.Helpers.on('hashchange', window, this.mainHandler.bind(this));
+    this.Helpers.on('load', window, this.mainHandler.bind(this));
 
     /**
      * Prevent scrolling when modal is active
