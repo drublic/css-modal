@@ -15,7 +15,7 @@
   margin-top: -25px;
 }
 
-@media screen and (max-width: $modal-small-breakpoint) {
+@media (max-width: 30em) {
   .css-modal--stretch .css-modal_inner {
     top: 0;
   }

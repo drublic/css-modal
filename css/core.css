@@ -53,12 +53,12 @@ html {
  */
 .css-modal_inner {
   position: absolute;
-  top: 60px;
+  top: 3rem;
   left: 50%;
   z-index: 20;
-  margin-left: (var(--modal--max-width) / 2) * -1;
   width: var(--modal--max-width);
   overflow-x: hidden;
+  transform: translateX(-50%);
 
   -webkit-overflow-scrolling: touch; /* Native style momentum scrolling */
 }
@@ -87,8 +87,7 @@ html {
  */
 .css-modal_content {
   position: relative;
-  max-height: 400px;
-  max-height: 60vh;
+  max-height: calc(100vh - (3rem * 2));
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -135,26 +134,28 @@ html {
   right: 0;
   bottom: 0;
   z-index: 10;
+  background-color: var(--modal--background);
 }
 
 
 /**
  * Actual close button on modal
  */
-.css-modal_colose:after {
+.css-modal_close::after {
   content: '\00d7';
   position: absolute;
   top: 35px;
   right: 50%;
+  left: auto;
   z-index: 20;
-  margin-right: -(var(--modal--max-width) / 2);
+  margin-right: calc(var(--modal--max-width) / 2 * -1);
 }
 
 
 /**
  * When screen isn't as wide as the modal anymore
  */
-@media screen and (max-width: $modal-max-width + 40) {
+@media (max-width: 30em) {
   .css-modal_inner {
     width: auto;
     left: 20px;
@@ -173,7 +174,7 @@ html {
 /**
  * For small screens adjust the modal
  */
-@media screen and (max-width: $modal-small-breakpoint) {
+@media (max-width: 30em) {
   .css-modal {
     -webkit-transform: translate(0, 400px); /* Use px to work around Android 2.3 bug */
     -webkit-transform: translate3d(0, 100%, 0); /* And overwrite px if 3D transforms are supported */
@@ -237,25 +238,6 @@ html {
 
 
 /**
- * For small heights
- */
-@media screen and (max-height: 46em) and (min-width: $modal-small-breakpoint) {
-  .css-modal_content {
-    max-height: 340px;
-    max-height: 50vh;
-  }
-}
-
-
-@media screen and (max-height: 36em) and (min-width: $modal-small-breakpoint) {
-  .css-modal_content {
-    max-height: 265px;
-    max-height: 40vh;
-  }
-}
-
-
-/**
  * Stackable Modals
  */
 .css-modal.is-stacked {
@@ -286,7 +268,7 @@ html {
 /**
  * On small screens
  */
-@media screen and (max-width: $modal-small-breakpoint) {
+@media (max-width: 30em) {
   .css-modal.is-stacked {
     animation: scaleDown .7s ease both;
   }

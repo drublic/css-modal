@@ -6,7 +6,7 @@
  */
 :root {
   /* Modal General Styles */
-  --modal--max-width: 650px;
+  --modal--max-width: 45rem;
   --modal--border-radius: 2px;
   --modal--small-breakpoint: 30em;
 
@@ -19,6 +19,7 @@
   /* Color configuration */
   --modal--border-color: #ddd;
   --modal--inner-background: #fff;
+  --modal--background: rgba(0, 0, 0, 0.7);
   --modal--color: #222;
   --modal--mobile-header: #27aae2;
 }

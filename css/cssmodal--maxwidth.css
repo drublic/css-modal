@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-@media screen and (max-width: $modal-max-width + 40) {
+@media (max-width: 30em) {
   .css-modal--maxwidth .css-modal_inner {
     left: 50%;
   }
@@ -17,7 +17,7 @@
   }
 }
 
-@media screen and (max-width: $modal-small-breakpoint) {
+@media (max-width: 30em) {
   .css-modal--maxwidth .css-modal_inner {
     max-width: 100% !important;
     margin-left: 0 !important;

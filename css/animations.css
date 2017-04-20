@@ -1,81 +1,72 @@
 /**
  * All animations for CSS Modal
  *
- * Available:
- * - %modal--transition-fade (fade)
- * - %modal--transition-zoomIn (zooms in)
- * - %modal--transition-plainScreen (hides background)
- *
- * Usage:
- *
- * .selector {
- *    @extend %modal--transition-fade;
- * }
- *
  */
 
 /* Configuration: */
-$transition-duration: 0.4s !default;
-$transition-size-start: scale(0) !default;
-$transition-size-end: scale(1) !default;
+:root {
+  --transition-duration: 0.4s;
+  --transition-size-start: scale(0);
+  --transition-size-end: scale(1);
+}
 
 /* Fade in the modal */
-.modal--transition--fade {
+.css-modal--transition--fade {
   @extend %modal;
   @extend %modal-theme;
 }
 
-@media screen and (min-width: $modal-small-breakpoint) {
-  .modal--transition--fade {
+@media screen and (min-width: 30em) {
+  .css-modal--transition--fade {
     transition: opacity var(--modal--transition-duration);
   }
 }
 
 /* Fade in and zoom in the modal */
-.modal--transition--zoom-in {
+.css-modal--transition--zoom-in {
   @extend %modal;
   @extend %modal-theme;
 }
 
 /* Scale to zero */
-.modal--transition--zoom-in .modal_inner {
+.css-modal--transition--zoom-in .css-modal_inner {
   transform: var(--modal--transition-size-start);
   opacity: 0;
   transition: all var(--modal--transition-duration);
 }
 
-.modal--transition--zoom-in .modal_close::before {
+.css-modal--transition--zoom-in .css-modal_close::before {
   transition: all var(--modal--transition-duration);
   opacity: 0;
 }
 
-.modal--transition--zoom-in .modal_close::after {
+.css-modal--transition--zoom-in .css-modal_close::after {
   transform: var(--modal--transition-size-start);
   transition: all var(--modal--transition-duration);
   opacity: 0;
 }
 
 /* Show modal when requested */
-.modal--transition--zoom-in:target,
-.modal--transition--zoom-in.is-active {
-  .modal_inner {
+.css-modal--transition--zoom-in:target,
+.css-modal--transition--zoom-in.is-active {
+  .css-modal_inner {
     transform: var(--modal--transition-size-end);
     opacity: 1;
   }
 
-  .modal_close::before {
+  .css-modal_close::before {
     opacity: 1;
   }
 
-  .modal_close::after {
+  .css-modal_close::after {
     transform: var(--modal--transition-size-end);
     opacity: 1;
     /* Move back to proper position */
     top: 25px;
   }
 
-  @media screen and (max-width: $modal-small-breakpoint) {
-    .modal_close::after {
+  @media (max-width: 30em) {
+    .css-modal_close::after {
       top: 5px;
       right: 5px;
       left: auto;
@@ -84,40 +75,40 @@ $transition-size-end: scale(1) !default;
 }
 
 // Fade in, zoom in and hide backgrund in the modal
-.modal--transition-plain-screen {
+.css-modal--transition-plain-screen {
   @extend %modal;
   @extend %modal-theme;
   @extend %modal-theme-plainScreen;
   @extend %modal--transition-zoomIn;
 }
 
-.modal--transition-plain-screen .modal_inner {
+.css-modal--transition-plain-screen .css-modal_inner {
   box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.25);
 }
 
-.modal--transition-plain-screen .modal_close::before {
+.css-modal--transition-plain-screen .css-modal_close::before {
   transition: all var(--modal--transition-duration);
   background: var(--modal--inner-background);
   opacity: 0;
 }
 
-.modal--transition-plain-screen .modal_close::after {
+.css-modal--transition-plain-screen .css-modal_close::after {
   box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.2);
 }
 
 /* Show modal when requested */
-.modal--transition-plain-screen:target,
-.modal--transition-plain-screen.is-active {
-  .modal_close::before {
+.css-modal--transition-plain-screen:target,
+.css-modal--transition-plain-screen.is-active {
+  .css-modal_close::before {
     opacity: 1;
   }
 
-  .modal_close::after {
+  .css-modal_close::after {
     top: 23px;
   }
 
-  @media screen and (max-width: $modal-small-breakpoint) {
-    .modal_close::after {
+  @media (max-width: 30em) {
+    .css-modal_close::after {
       top: 5px;
     }
   }

@@ -14,7 +14,7 @@
 /**
  * When screen isn't as wide as the modal anymore
  */
-@media screen and (max-width: $modal-max-width + 40) {
+@media (max-width: 30em) {
   .css-modal--resize .css-modal_inner {
     right: auto !important;
   }
@@ -28,7 +28,7 @@
   }
 }
 
-@media screen and (max-width: $modal-small-breakpoint) {
+@media (max-width: 30em) {
   .css-modal--resize .css-modal_inner {
     left: 0 !important;
     right: 0 !important;

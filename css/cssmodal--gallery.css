@@ -51,13 +51,13 @@
   border: 0;
 }
 
-@media screen and (max-width: $modal-max-width + 40) {
+@media (max-width: 30em) {
   .css-modal_detail > [data-iframe] {
     width: 411px;
   }
 }
 
-@media screen and (max-width: $modal-small-breakpoint) {
+@media (max-width: 30em) {
   .css-modal_detail > [data-iframe] {
     width: 100%;
   }
@@ -129,7 +129,7 @@
 }
 
 // Show on mobile
-@media screen and (max-width: $modal-small-breakpoint) {
+@media (max-width: 30em) {
   .css-modal--gallery_navigation_item:after {
     opacity: 1;
   }
