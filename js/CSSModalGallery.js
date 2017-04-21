@@ -14,8 +14,8 @@ class CSSModalGallery extends Modal {
     this._items = [];
     this._currentItem = 0;
 
-    this.Helpers.on('cssmodal:show', document, this._initNavigation);
-    this.Helpers.on('cssmodal:hide', document, this._storeActiveItem);
+    this.Helpers.on('cssmodal:show', document, this._initNavigation.bind(this));
+    this.Helpers.on('cssmodal:hide', document, this._storeActiveItem.bind(this));
 
     return {
       showNext: this.showNext,
@@ -237,7 +237,7 @@ class CSSModalGallery extends Modal {
       }
 
       // Reposition and show
-      this.Helpers.on('load', img, function () {
+      this.Helpers.on('load', img, () => {
         this.Helpers.addClass(this._detailView, 'is-active');
         this.Helpers.trigger('cssmodal:resize', this._activeElement);
       });

@@ -41,14 +41,14 @@
 /* Content */
 .css-modal_content {
   border-bottom: 1px solid var(--modal--border-color);
-  padding: 15px 1.2em;
+  padding: var(--modal--content-margin);
 }
 
 
 /* Footer */
 .css-modal_footer {
-  border-top: 1px solid lighten(var(--modal--border-color), 20);
-  padding: 0 1.2em 18px;
+  border-top: 1px solid var(--modal--border-color);
+  padding: 0 var(--modal--content-margin) var(--modal--content-margin);
   background: #f0f0f0;
   border-radius: var(--modal--border-radius);
 }
@@ -67,15 +67,16 @@
   /* Actual close button on modal */
 .css-modal_close::after {
   content: '\00d7';
-
   background: var(--modal--inner-background);
 
-  border-radius: var(--modal--border-radius);
-  padding: 2px 8px;
-
-  font-size: 1.2em;
+  border-radius: var(--modal--border-radius) var(--modal--border-radius) 0 0;
+  font-size: 1.2rem;
   text-decoration: none;
   text-indent: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  text-align: center;
+  vertical-align: middle;
 }
 
 
@@ -102,22 +103,4 @@
     font-size: 1em;
     padding: 0.5em 1em;
   }
-}
-
-
-/*
-* Plain Screen Theme Styles
-*/
-.css-modal--plain-screen .modal_inner {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-}
-
-/* A close button */
-/* Background as close */
-.css-modal--plain-screen .modal_close::before {
-  background: var(--modal--plain-screen-overlay);
-}
-
-.css-modal--plain-screen .modal_close:after {
-  box-shadow: 0px -4px 8px -1px rgba(0, 0, 0, 0.25);
 }

@@ -9,6 +9,8 @@
   --modal--max-width: 45rem;
   --modal--border-radius: 2px;
   --modal--small-breakpoint: 30em;
+  --modal--content-margin: 1rem;
+  --modal--margin-top: 3rem;
 
   /* Modal Plain Screen Styles */
   --modal--plain-screen-overlay: #fff;
@@ -22,4 +24,5 @@
   --modal--background: rgba(0, 0, 0, 0.7);
   --modal--color: #222;
   --modal--mobile-header: #27aae2;
+
 }

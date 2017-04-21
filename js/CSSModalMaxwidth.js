@@ -19,12 +19,12 @@ class CSSModalMaxwidth extends Modal {
     /*
      * Assign basic event handlers
      */
-    this.Helpers.on('cssmodal:show', document, function () {
+    this.Helpers.on('cssmodal:show', document, () => {
       this._scale();
       this._scaleLower();
     });
 
-    this.Helpers.on('resize', window, function () {
+    this.Helpers.on('resize', window, () => {
       this._scale();
       this._scaleLower();
     });

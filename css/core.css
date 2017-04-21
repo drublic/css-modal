@@ -87,7 +87,7 @@ html {
  */
 .css-modal_content {
   position: relative;
-  max-height: calc(100vh - (3rem * 2));
+  max-height: calc(80vh - (3rem * 2));
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -102,7 +102,7 @@ html {
  */
 .css-modal_footer {
   border-top: 1px solid lighten(var(--modal--border-color), 20);
-  padding: 0 1.2em 18px;
+  padding: 0 1.2rem 1rem;
   background: #f0f0f0;
   border-radius: 2px;
 }
@@ -142,9 +142,9 @@ html {
  * Actual close button on modal
  */
 .css-modal_close::after {
-  content: '\00d7';
+  content: '';
   position: absolute;
-  top: 35px;
+  top: calc(var(--modal--margin-top) - 1.5rem);
   right: 50%;
   left: auto;
   z-index: 20;
@@ -158,16 +158,14 @@ html {
 @media (max-width: 30em) {
   .css-modal_inner {
     width: auto;
-    left: 20px;
-    right: 20px;
+    left: var(--modal--content-margin);
+    right: var(--modal--content-margin);
     margin-left: 0;
   }
 
-  .css-modal_close {
-    &:after {
-      margin-right: 0 !important;
-      right: 20px;
-    }
+  .css-modal_close::after {
+    margin-right: 0 !important;
+    right: car(--modal--content-margin);
   }
 }
 
@@ -176,12 +174,8 @@ html {
  */
 @media (max-width: 30em) {
   .css-modal {
-    -webkit-transform: translate(0, 400px); /* Use px to work around Android 2.3 bug */
-    -webkit-transform: translate3d(0, 100%, 0); /* And overwrite px if 3D transforms are supported */
-            transform: translate3d(0, 100%, 0);
-
+    transform: translate3d(0, 100%, 0);
     transition: opacity 1ms .25s;
-
     display: block;
     right: auto;
     bottom: auto;
@@ -209,8 +203,8 @@ html {
      * Prevent text from breaking modal in mobile view
      */
     -ms-word-break: break-all;
-      word-break: break-all;
-      word-break: break-word; // Non-standard for WebKit
+        word-break: break-all;
+        word-break: break-word; /* Non-standard for WebKit */
     hyphens: auto;
   }
 
@@ -229,8 +223,8 @@ html {
   }
 
   .css-modal_close::after {
-    top: 5px !important;
-    right: 5px;
+    top: 0.25em !important;
+    right: 0.25em;
     left: auto;
     margin-left: 0;
   }
@@ -241,19 +235,12 @@ html {
  * Stackable Modals
  */
 .css-modal.is-stacked {
-  -webkit-transform: translate(0, 0) scale(1, 1);
-     -moz-transform: translate(0, 0) scale(1, 1);
-       -o-transform: translate(0, 0) scale(1, 1);
-      -ms-transform: translate(0, 0) scale(1, 1);
-          transform: translate(0, 0) scale(1, 1);
-
+  transform: translate(0, 0) scale(1, 1);
   opacity: 1;
 }
 
 .css-modal.is-stacked .css-modal_inner {
-  -webkit-animation: scaleDown .7s ease both;
-     -moz-animation: scaleDown .7s ease both;
-          animation: scaleDown .7s ease both;
+  animation: scaleDown .7s ease both;
 }
 
 

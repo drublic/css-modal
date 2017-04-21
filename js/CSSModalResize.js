@@ -15,9 +15,9 @@ class CSSModalResize extends Modal {
     /*
      * Assign basic event handlers
      */
-    this.Helpers.on('resize', window, this._scale);
-    this.Helpers.on('cssmodal:show', document, this._scale);
-    this.Helpers.on('cssmodal:resize', document, this._scale);
+    this.Helpers.on('resize', window, this._scale.bind(this));
+    this.Helpers.on('cssmodal:show', document, this._scale.bind(this));
+    this.Helpers.on('cssmodal:resize', document, this._scale.bind(this));
   }
 
   /**
@@ -62,11 +62,11 @@ class CSSModalResize extends Modal {
       throw new Error('Error: No active modal.');
     }
 
-    let element = this.activeElement.querySelector('.modal-inner');
-    let elementContent = this.activeElement.querySelector('.modal-content');
-    let headerContent = this.activeElement.querySelector('header');
-    let captionContent = this.activeElement.querySelector('.modal--gallery-caption');
-    let footerContent = this.activeElement.querySelector('footer');
+    let element = this.activeElement.querySelector('.css-modal_inner');
+    let elementContent = this.activeElement.querySelector('.css-modal_content');
+    let headerContent = this.activeElement.querySelector('.css-modal_header');
+    let captionContent = this.activeElement.querySelector('.css-modal--gallery_caption');
+    let footerContent = this.activeElement.querySelector('.css-modal_footer');
     let containerDimentions;
     let headerDimentions;
     let captionDimentions;
@@ -138,10 +138,10 @@ class CSSModalResize extends Modal {
    * @param CSSModal {CSSModal} (required)
    */
   resetModal () {
-    var modalInner = this.activeElement.querySelector('.modal-inner');
+    var modalInner = this.activeElement.querySelector('.css-modal_inner');
     var modalImage = this.activeElement.querySelector('img');
 
-    if (modalInner.style) {
+    if (modalInner && modalInner.style) {
       modalInner.style.top = '0';
       modalInner.style.left = '0';
 
@@ -166,7 +166,7 @@ class CSSModalResize extends Modal {
 
   getHorizontalOffset () {
     var innerWidth = window.innerWidth || document.documentElement.clientWidth;
-    var element = this.activeElement.querySelector('.modal-inner');
+    var element = this.activeElement.querySelector('.css-modal_inner');
     var elementWidth = parseInt(global.getComputedStyle(element).getPropertyValue('width'), 10);
     var offset = (innerWidth - elementWidth) / 2;
 
@@ -175,7 +175,7 @@ class CSSModalResize extends Modal {
 
   getVerticalOffset () {
     var innerHeight = window.innerHeight || document.documentElement.clientHeight;
-    var element = this.activeElement.querySelector('.modal-inner');
+    var element = this.activeElement.querySelector('.css-modal_inner');
     var elementHeight = parseInt(window.getComputedStyle(element).getPropertyValue('height'), 10);
     var offset = (innerHeight - elementHeight) / 2;
 
@@ -188,7 +188,7 @@ class CSSModalResize extends Modal {
       left: this.getHorizontalOffset()
     };
 
-    var element = this.activeElement.querySelector('.modal-inner');
+    var element = this.activeElement.querySelector('.css-modal_inner');
     var elementWidth = parseInt(global.getComputedStyle(element).getPropertyValue('width'), 10);
     var margin = 20;
 
@@ -199,7 +199,7 @@ class CSSModalResize extends Modal {
 
     // Close button
     injectStyles(`
-      [data-cssmodal-resize] .modal-close:after {
+      [data-cssmodal-resize] .css-modal_close::after {
         top: ${offset.top - 25}px !important;
         margin-right: -${elementWidth / 2}px !important;
       }
