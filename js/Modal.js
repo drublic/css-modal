@@ -11,13 +11,7 @@ import Helpers from './Helpers.js';
  * Storage for functions and attributes
  */
 class Modal {
-  constructor ($) {
-    /**
-     * jQuery on Object
-     * @type {Object}
-     */
-    this.$ = $;
-
+  constructor () {
     /**
      * Helpers class
      * @type {Helpers}
@@ -61,7 +55,7 @@ class Modal {
     ];
 
     // We use jQuery if the browser doesn't support CustomEvents
-    if (!window.CustomEvent && !this.$) {
+    if (!window.CustomEvent && !window.$) {
       throw new Error('This browser doesn\'t support CustomEvent - please include jQuery.');
     }
 
