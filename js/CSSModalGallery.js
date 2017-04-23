@@ -1,9 +1,9 @@
-/*
+CSSModal/*
  * CSS Modal Plugin for displaying an image gallery
  */
-import Modal from '../js/Modal.js';
+import CSSModal from '../js/CSSModal.js';
 
-class CSSModalGallery extends Modal {
+class CSSModalGallery extends CSSModal {
   constructor () {
     super();
 

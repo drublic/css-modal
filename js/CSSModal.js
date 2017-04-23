@@ -10,7 +10,7 @@ import Helpers from './Helpers.js';
 /*
  * Storage for functions and attributes
  */
-class Modal {
+class CSSModal {
   constructor () {
     /**
      * Helpers class
@@ -433,4 +433,4 @@ class Modal {
   }
 }
 
-export default Modal;
+export default CSSModal;

@@ -1,9 +1,9 @@
 /*
  * CSS Modal Plugin for HTML5 Video (play/pause)
  */
-import Modal from '../js/Modal.js';
+import CSSModal from '../js/CSSModal.js';
 
-class CSSModalHtml5video extends Modal {
+class CSSModalHtml5video extends CSSModal {
   constructor () {
     super();
 

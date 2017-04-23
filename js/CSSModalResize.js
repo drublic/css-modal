@@ -5,10 +5,10 @@
  * - Add modal-resize.js to your JS (via AMD you can easily require it)
  * - Add `data-cssmodal-resize` to the modal which should be resized
  */
-import Modal from '../js/Modal.js';
+import CSSModal from '../js/CSSModal.js';
 import injectStyles from './Helper/injectStyles.js';
 
-class CSSModalResize extends Modal {
+class CSSModalResize extends CSSModal {
   constructor () {
     super();
 

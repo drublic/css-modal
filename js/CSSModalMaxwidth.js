@@ -1,10 +1,10 @@
 /*
  * CSS Modal Plugin for setting a max-width for modals
  */
-import Modal from '../js/Modal.js';
+import CSSModal from '../js/CSSModal.js';
 import injectStyles from './Helper/injectStyles.js';
 
-class CSSModalMaxwidth extends Modal {
+class CSSModalMaxwidth extends CSSModal {
   constructor () {
     super();
 
