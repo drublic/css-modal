@@ -71,24 +71,6 @@ You link to a modal by simply setting the ID to a link element's `href` like thi
 If you want to decouple the modal call from the location's hash you need to add
 `data-cssmodal-nohash` to the link.
 
-### Sass
-
-If you use Sass you can use the file [modal.scss](modal.scss) and include it
-into your project. Here is an example:
-
-```scss
-@import "modules/modal";
-```
-
-CSS Modals uses Sass's placeholders. You can use them by calling them via
-@extend in your modal's class name. The snippet looks something like that:
-
-```scss
-.my-awesome-class-name {
-    @extend %modal;
-}
-```
-
 ### JavaScript
 
 As stated above you don't need JavaScript to get a good experience out of CSS
