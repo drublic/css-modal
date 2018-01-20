@@ -9,13 +9,17 @@
 
 Yes. Just push the hash (ID of the modal) on load via JavaScript.
 
-	window.location.hash = 'the-modals-id';
+```javascript
+window.location.hash = 'the-modals-id';
+```
 
 Remember to check if another hash is already set:
 
-	if (!window.location.hash) {
-	    window.location.hash = 'the-id';
-	}
+```javascript
+if (!window.location.hash) {
+    window.location.hash = 'the-id';
+}
+```
 
 ## Can I open a modal via JavaScript?
 
