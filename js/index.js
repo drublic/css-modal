@@ -1,6 +1,6 @@
 /**
  * An example on how to use the modal
  */
-import Modal from './Modal.js';
+import CSSModal from './CSSModal.js';
 
-new Modal();
+new CSSModal();

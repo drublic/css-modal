@@ -16,7 +16,7 @@
 
 /* Content Area */
 .css-modal_inner {
-  border-radius: var(--modal--border-radius);
+  border-radius: var(--modal--border-radius) 0 var(--modal--border-radius) var(--modal--border-radius);
   background: var(--modal--inner-background);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
 

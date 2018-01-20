@@ -1,0 +1,16 @@
+/*
+ * Tests for CSS Modal
+ * by @drublic - http://drublic.de/
+ *
+ * http://drublic.github.com/css-modal
+ */
+body {
+  margin: 0;
+}
+
+.content {
+  margin: 0 auto;
+  padding: 0 1em;
+  max-width: 30em;
+  font-size: 1.25em;
+}

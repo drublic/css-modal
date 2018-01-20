@@ -19,7 +19,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "yarn run js:lint && grunt travis --verbose",
+    "test": "yarn run js:lint && yarn js:test",
     "start": "concurrently \"yarn run server\" \"yarn run css:change\" \"yarn run js:change\"",
     "server": "lite-server",
     "css": "node ./scripts/css.js",
@@ -27,6 +27,7 @@
     "js": "webpack",
     "js:change": "webpack --watch",
     "js:lint": "eslint js/{**/,}*.js",
+    "js:test": "jest",
     "build": "npm run css && npm run js"
   },
   "engines": {
@@ -41,14 +42,15 @@
     "concurrently": "^3.4.0",
     "css-mqpacker": "^5.0.1",
     "eslint": "^3.17.1",
+    "lite-server": "^2.3.0",
     "normalize.css": "^5.0.0",
     "onchange": "^3.2.1",
     "postcss": "^5.2.16",
     "postcss-custom-media": "^5.0.1",
     "postcss-custom-properties": "^5.0.2",
-    "postcss-import": "^9.1.0",
-    "lite-server": "^2.3.0"
+    "postcss-import": "^9.1.0"
   },
+  "dependencies": {},
   "keywords": [
     "css",
     "modal"
