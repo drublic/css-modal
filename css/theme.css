@@ -31,12 +31,11 @@
 .css-modal_header {
   border-bottom: 1px solid var(--modal--border-color);
   padding: 0 1.2em;
-
-  > h2 {
-    margin: 0.5em 0;
-  }
 }
 
+.css-modal_header > h2 {
+  margin: 0.5em 0;
+}
 
 /* Content */
 .css-modal_content {
