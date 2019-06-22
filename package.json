@@ -31,7 +31,7 @@
     "build": "npm run css && npm run js"
   },
   "engines": {
-    "node": ">=5"
+    "node": ">=10"
   },
   "devDependencies": {
     "autoprefixer": "^9.6.0",
@@ -41,13 +41,13 @@
     "babel-preset-latest": "^6.24.1",
     "concurrently": "^4.1.0",
     "css-mqpacker": "^7.0.0",
-    "eslint": "^5.16.0",
+    "eslint": "^6.0.0",
     "lite-server": "^2.5.3",
     "normalize.css": "^8.0.1",
     "onchange": "^6.0.0",
     "postcss": "^7.0.17",
     "postcss-custom-media": "^7.0.8",
-    "postcss-custom-properties": "^8.0.10",
+    "postcss-custom-properties": "^9.0.1",
     "postcss-import": "^12.0.1"
   },
   "dependencies": {},
