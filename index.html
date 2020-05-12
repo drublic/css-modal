@@ -50,46 +50,47 @@
     </div>
 
     <script>
-    'use strict';
+      (function () {
 
-    var templates = [
-      'fade',
-      'gallery-2',
-      'gallery',
-      'html5-video',
-      'iframe-content',
-      'iframe',
-      'images-2',
-      'images',
-      'max-width-2',
-      'max-width',
-      'show',
-      'stackable',
-      'stretch',
-    ];
-    var i = 0;
+        var templates = [
+          'fade',
+          'gallery-2',
+          'gallery',
+          'html5-video',
+          'iframe-content',
+          'iframe',
+          'images-2',
+          'images',
+          'max-width-2',
+          'max-width',
+          'show',
+          'stackable',
+          'stretch',
+        ];
+        var i = 0;
 
-    var get = function (url, callback) {
-      var request = new XMLHttpRequest();
-      request.open('GET', url, true);
-      request.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200){
-          callback(this.responseText);
+        var get = function (url, callback) {
+          var request = new XMLHttpRequest();
+          request.open('GET', url, true);
+          request.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200){
+              callback(this.responseText);
+            }
+          };
+          request.send();
+        };
+
+        var append = function (template) {
+          var element = document.createElement('div');
+          element.innerHTML = template;
+
+          document.body.appendChild(element);
+        };
+
+        for (; i < templates.length; i++) {
+          get('examples/' + templates[i] + '.html', append);
         }
-      };
-      request.send();
-    };
-
-    var append = function (template) {
-      var element = document.createElement('div');
-      element.innerHTML = template;
-
-      document.body.appendChild(element);
-    };
-
-    for (; i < templates.length; i++) {
-      get('examples/' + templates[i] + '.html', append);
-    }
+      }());
     </script>
   </body>
 </html>

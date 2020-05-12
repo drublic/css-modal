@@ -1,111 +1,62 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Jasmine Spec Runner</title>
 
-    <link rel="stylesheet" href="lib/jasmine-1.3.1/jasmine.css">
-    <link rel="stylesheet" href="modal.css">
+  <!-- A modal with its content -->
+  <section class="css-modal" id="modal"
+      style="top: 101%;"
+      tabindex="-1" role="dialog" aria-labelledby="css-modal_label" aria-hidden="true">
 
-    <script src="lib/jquery.js"></script>
-    <script src="lib/jasmine-1.3.1/jasmine.js"></script>
-    <script src="lib/jasmine-1.3.1/jasmine-html.js"></script>
-  </head>
+    <div class="css-modal_inner">
+      <header class="css-modal_header">
+        <h2 id="css-modal_label">Headline</h2>
+      </header>
 
-  <body>
-
-    <!-- A modal with its content -->
-    <section class="css-modal" id="modal"
-        style="top: 101%;"
-        tabindex="-1" role="dialog" aria-labelledby="css-modal_label" aria-hidden="true">
-
-      <div class="css-modal_inner">
-        <header class="css-modal_header">
-          <h2 id="css-modal_label">Headline</h2>
-        </header>
-
-        <div class="css-modal_content">
-          <p>Content.</p>
-          <p><a href="#stackable">Stackable</a></p>
-        </div>
-
-        <footer>
-          <p>Footer</p>
-        </footer>
+      <div class="css-modal_content">
+        <p>Content.</p>
+        <p><a href="#stackable">Stackable</a></p>
       </div>
 
-      <!-- Use Hash-Bang to maintain scroll position when closing modal -->
-      <a href="#!" class="css-modal_close" title="Close this modal"
-          data-dismiss="modal" data-close="Close">&times;</a>
-    </section>
+      <footer>
+        <p>Footer</p>
+      </footer>
+    </div>
 
-    <!-- A modal with its content -->
-    <section class="css-modal" id="stackable"
-        style="top: 101%;"
-        tabindex="-1" role="dialog" aria-labelledby="css-modal_label" aria-hidden="true">
+    <!-- Use Hash-Bang to maintain scroll position when closing modal -->
+    <a href="#!" class="css-modal_close" title="Close this modal"
+        data-dismiss="modal" data-close="Close">&times;</a>
+  </section>
 
-      <div class="css-modal_inner">
-        <div class="css-modal_content"></div>
-      </div>
+  <!-- A modal with its content -->
+  <section class="css-modal" id="stackable"
+      style="top: 101%;"
+      tabindex="-1" role="dialog" aria-labelledby="css-modal_label" aria-hidden="true">
 
-      <!-- Use Hash-Bang to maintain scroll position when closing modal -->
-      <a href="#!" class="css-modal_close" title="Close this modal"
-          data-dismiss="modal" data-close="Close">&times;</a>
-    </section>
+    <div class="css-modal_inner">
+      <div class="css-modal_content"></div>
+    </div>
 
-    <!-- A modal with its content -->
-    <section class="css-modal" id="non-stackable"
-        style="top: 101%;"
-        tabindex="-1" role="dialog" aria-labelledby="css-modal_label" aria-hidden="true">
+    <!-- Use Hash-Bang to maintain scroll position when closing modal -->
+    <a href="#!" class="css-modal_close" title="Close this modal"
+        data-dismiss="modal" data-close="Close">&times;</a>
+  </section>
 
-      <div class="css-modal_inner">
-        <div class="css-modal_content"></div>
-      </div>
+  <!-- A modal with its content -->
+  <section class="css-modal" id="non-stackable"
+      style="top: 101%;"
+      tabindex="-1" role="dialog" aria-labelledby="css-modal_label" aria-hidden="true">
 
-      <!-- Use Hash-Bang to maintain scroll position when closing modal -->
-      <a href="#!" class="css-modal_close" title="Close this modal"
-          data-dismiss="modal" data-close="Close">&times;</a>
-    </section>
+    <div class="css-modal_inner">
+      <div class="css-modal_content"></div>
+    </div>
 
-    <!-- An iframe that may interfere with modal script -->
-    <iframe style="position: fixed; top: 101%" src="iframe.html" frameborder="0" allowfullscreen></iframe>
+    <!-- Use Hash-Bang to maintain scroll position when closing modal -->
+    <a href="#!" class="css-modal_close" title="Close this modal"
+        data-dismiss="modal" data-close="Close">&times;</a>
+  </section>
 
-    <!-- Source -->
-    <script src="../modal.js"></script>
+  <!-- An iframe that may interfere with modal script -->
+  <iframe style="position: fixed; top: 101%" src="iframe.html" frameborder="0" allowfullscreen></iframe>
 
-    <!-- Specs -->
-    <script src="spec/modal.js"></script>
+  <!-- Source -->
+  <script src="../modal.js"></script>
 
-    <script src="lib/reporter.js"></script>
-
-    <script>
-      (function() {
-        var jasmineEnv = jasmine.getEnv();
-        jasmineEnv.updateInterval = 1000;
-
-        var htmlReporter = new jasmine.HtmlReporter();
-
-        jasmineEnv.addReporter(htmlReporter);
-
-        jasmineEnv.specFilter = function(spec) {
-          return htmlReporter.specFilter(spec);
-        };
-
-        var currentWindowOnload = window.onload;
-
-        window.onload = function() {
-          if (currentWindowOnload) {
-            currentWindowOnload();
-          }
-          execJasmine();
-        };
-
-        function execJasmine() {
-          jasmineEnv.execute();
-        }
-
-      }());
-    </script>
-
-  </body>
-</html>
+  <!-- Specs -->
+  <script src="spec/modal.js"></script>
