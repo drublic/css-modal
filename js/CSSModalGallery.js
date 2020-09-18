@@ -95,7 +95,7 @@ class CSSModalGallery extends CSSModal {
   }
 
   /**
-   * Registers the listerns on the previous / next buttons to enable gallery
+   * Registers the listeners on the previous / next buttons to enable gallery
    * navigation
    * @return {void}
    */
