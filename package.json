@@ -45,7 +45,7 @@
     "lite-server": "^2.5.3",
     "normalize.css": "^8.0.1",
     "onchange": "^6.0.0",
-    "postcss": "^7.0.17",
+    "postcss": "^8.2.10",
     "postcss-custom-media": "^7.0.8",
     "postcss-custom-properties": "^9.0.1",
     "postcss-import": "^12.0.1"
